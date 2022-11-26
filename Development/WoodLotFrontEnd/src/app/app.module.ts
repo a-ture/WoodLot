@@ -6,18 +6,25 @@ import { AppComponent } from './app.component';
 
 import {ToggleButtonModule} from 'primeng/togglebutton';
 import {PaginatorModule} from "primeng/paginator";
+import { OrsoViewComponent } from './component/orsoview/orso-view/orso-view.component';
+import {PanelModule} from "primeng/panel";
+import {OrsoService} from "./service/orso.service";
+import { OrsoViewListComponent } from './component/orsoview/orso-view-list/orso-view-list.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    OrsoViewComponent,
+    OrsoViewListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ToggleButtonModule,
-    PaginatorModule
+    PaginatorModule,
+    PanelModule
   ],
-  providers: [],
+  providers: [OrsoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,8 +1,8 @@
 package it.unisa.WoodLot.model.entity;
 
-import jakarta.persistence.*;
 import lombok.Data;
 
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Data //Crea i getter and setter per ogni fild della classe
