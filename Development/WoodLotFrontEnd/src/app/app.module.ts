@@ -19,7 +19,7 @@ import { MdbTabsModule } from 'mdb-angular-ui-kit/tabs';
 import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {AlertModule, AvatarModule} from '@coreui/angular';
+import {AlertModule, AvatarModule, CardModule} from '@coreui/angular';
 import { IconModule } from '@coreui/icons-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/pages/home/home.component';
@@ -36,9 +36,12 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { CardTondaConTestoComponent } from './components/card-tonda-con-testo/card-tonda-con-testo.component';
 import { CardTondaConTestoListComponent } from './components/card-tonda-con-testo-list/card-tonda-con-testo-list.component';
-import {UniscitiService} from "./services/unisciti.service";
+import {UniscitiService} from "./services/statistiche/unisciti.service";
 import { CardRettangolareConTestoComponent } from './components/card-rettangolare-con-testo/card-rettangolare-con-testo.component';
 import { CardRettangolareConTestoListComponent } from './components/card-rettangolare-con-testo-list/card-rettangolare-con-testo-list.component';
+import { CardProdottoComponent } from './components/card-prodotto/card-prodotto.component';
+import { CardProdottoListComponent } from './components/card-prodotto-list/card-prodotto-list.component';
+import {ProdottoService} from "./services/prodotto/prodotto.service";
 
 
 @NgModule({
@@ -60,32 +63,35 @@ import { CardRettangolareConTestoListComponent } from './components/card-rettang
     CardTondaConTestoListComponent,
     CardRettangolareConTestoComponent,
     CardRettangolareConTestoListComponent,
+    CardProdottoComponent,
+    CardProdottoListComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    MdbAccordionModule,
-    MdbCarouselModule,
-    MdbCheckboxModule,
-    MdbCollapseModule,
-    MdbDropdownModule,
-    MdbFormsModule,
-    MdbModalModule,
-    MdbPopoverModule,
-    MdbRadioModule,
-    MdbRangeModule,
-    MdbRippleModule,
-    MdbScrollspyModule,
-    MdbTabsModule,
-    MdbTooltipModule,
-    MdbValidationModule,
-    BrowserAnimationsModule,
-    AlertModule,
-    IconModule,
-    HttpClientModule,
-    AvatarModule
-  ],
-  providers: [UniscitiService],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        MdbAccordionModule,
+        MdbCarouselModule,
+        MdbCheckboxModule,
+        MdbCollapseModule,
+        MdbDropdownModule,
+        MdbFormsModule,
+        MdbModalModule,
+        MdbPopoverModule,
+        MdbRadioModule,
+        MdbRangeModule,
+        MdbRippleModule,
+        MdbScrollspyModule,
+        MdbTabsModule,
+        MdbTooltipModule,
+        MdbValidationModule,
+        BrowserAnimationsModule,
+        AlertModule,
+        IconModule,
+        HttpClientModule,
+        AvatarModule,
+        CardModule
+    ],
+  providers: [UniscitiService, ProdottoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

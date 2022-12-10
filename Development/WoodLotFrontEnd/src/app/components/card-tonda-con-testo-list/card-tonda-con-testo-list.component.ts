@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {UniscitiService} from "../../services/unisciti.service";
+import {UniscitiService} from "../../services/statistiche/unisciti.service";
 
 @Component({
   selector: 'app-card-tonda-con-testo-list',
