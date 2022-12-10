@@ -19,14 +19,47 @@ import { MdbTabsModule } from 'mdb-angular-ui-kit/tabs';
 import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AlertModule } from '@coreui/angular';
+import {AlertModule, AvatarModule} from '@coreui/angular';
 import { IconModule } from '@coreui/icons-angular';
 import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './components/pages/home/home.component';
+import { ProdottoComponent } from './components/pages/prodotto/prodotto.component';
+import { CatalogoComponent } from './components/pages/catalogo/catalogo.component';
+import { ChiSiamoComponent } from './components/pages/chi-siamo/chi-siamo.component';
+import { DiventaContadinoComponent } from './components/pages/diventa-contadino/diventa-contadino.component';
+import { CarrelloComponent } from './components/pages/carrello/carrello.component';
+import { CheckoutComponent } from './components/pages/checkout/checkout.component';
+import { UtenteComponent } from './components/pages/utente/utente.component';
+import { ContadinoComponent } from './components/pages/contadino/contadino.component';
+import { ResponsabileCatalogoComponent } from './components/pages/responsabile-catalogo/responsabile-catalogo.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { CardTondaConTestoComponent } from './components/card-tonda-con-testo/card-tonda-con-testo.component';
+import { CardTondaConTestoListComponent } from './components/card-tonda-con-testo-list/card-tonda-con-testo-list.component';
+import {UniscitiService} from "./services/unisciti.service";
+import { CardRettangolareConTestoComponent } from './components/card-rettangolare-con-testo/card-rettangolare-con-testo.component';
+import { CardRettangolareConTestoListComponent } from './components/card-rettangolare-con-testo-list/card-rettangolare-con-testo-list.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    HomeComponent,
+    ProdottoComponent,
+    CatalogoComponent,
+    ChiSiamoComponent,
+    DiventaContadinoComponent,
+    CarrelloComponent,
+    CheckoutComponent,
+    UtenteComponent,
+    ContadinoComponent,
+    ResponsabileCatalogoComponent,
+    HeaderComponent,
+    FooterComponent,
+    CardTondaConTestoComponent,
+    CardTondaConTestoListComponent,
+    CardRettangolareConTestoComponent,
+    CardRettangolareConTestoListComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,9 +82,10 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     AlertModule,
     IconModule,
-    HttpClientModule
+    HttpClientModule,
+    AvatarModule
   ],
-  providers: [],
+  providers: [UniscitiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

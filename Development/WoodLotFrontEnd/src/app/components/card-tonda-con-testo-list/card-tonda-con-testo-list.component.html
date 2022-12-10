@@ -1,0 +1,21 @@
+<div class="text-center">
+  <h2>Unisciti a WoodLot</h2>
+</div>
+<div class="text-center">
+  <div class="row">
+    <app-card-tonda-con-testo *ngFor="let item of listaSource; index as i"
+                              class="col-sm"
+                              [colore]="listaColori[i]" [sourceimage]="listaSource[i]" [numero]="listaNumeri[i]" [testo]="listaNomi[i]"
+    ></app-card-tonda-con-testo>
+  </div>
+</div>
+<div class = "text-center">
+  <h2 class="mt-2">Ogni albero nel modo giusto</h2>
+  <p>Crediamo che gettare 100 semi in un campo, non significhi aver piantato 100 alberi.
+  E crediamo che pinatare una sola specie, in modo intensivo, non sia una scelta sostenibile e rispettosa della biodiversità.
+  Crediamo che le comunità di persone che vivono in un luogo siano i migliori custodi degli alberi, per questo le sosteniamo finanziariamente e le aiutiamo a piantare e far crescere alberi nei loro terreni. Gli alberi daranno benefici a loro, al luogo in cui vivono e a tutto il pianeta.
+  Crediamo nel legame che, attraverso gli alberi e grazie a WoodLot, si può creare tra persone lontane.
+  Crediamo che ciascuno di noi debba impegnarsi per ridurre le proprie emissioni di CO<sub>2</sub> e che nel farlo possa contribuire anche ad assorbirne piantando alberi.
+  Crediamo che si possa rendere questo pianeta più verde. E vogliamo farlo nel modo giusto.</p>
+</div>
+
