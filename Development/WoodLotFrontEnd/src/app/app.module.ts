@@ -19,7 +19,7 @@ import { MdbTabsModule } from 'mdb-angular-ui-kit/tabs';
 import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {AlertModule, AvatarModule, ButtonModule, CardModule, DropdownModule} from '@coreui/angular';
+import {AlertModule, AvatarModule, ButtonModule, CardModule, DropdownModule, ModalModule} from '@coreui/angular';
 import { IconModule } from '@coreui/icons-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/pages/home/home.component';
@@ -48,6 +48,8 @@ import { FiltroListComponent } from './components/filtro-list/filtro-list.compon
 import {CategoriaService} from "./services/categoria/categoria.service";
 import {PaeseService} from "./services/paese/paese.service";
 import {UsoLocaleService} from "./services/usoLocale/uso-locale.service";
+import { CardRegaloComponent } from './components/card-regalo/card-regalo.component';
+import { CardRegaloListComponent } from './components/card-regalo-list/card-regalo-list.component';
 
 
 @NgModule({
@@ -74,6 +76,8 @@ import {UsoLocaleService} from "./services/usoLocale/uso-locale.service";
     FaqComponent,
     FiltroComponent,
     FiltroListComponent,
+    CardRegaloComponent,
+    CardRegaloListComponent,
   ],
   imports: [
     BrowserModule,
@@ -100,7 +104,8 @@ import {UsoLocaleService} from "./services/usoLocale/uso-locale.service";
     AvatarModule,
     CardModule,
     DropdownModule,
-    ButtonModule
+    ButtonModule,
+    ModalModule
   ],
   providers: [UniscitiService, ProdottoService, CategoriaService,PaeseService, UsoLocaleService],
   bootstrap: [AppComponent]

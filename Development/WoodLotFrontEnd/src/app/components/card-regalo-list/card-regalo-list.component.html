@@ -1,0 +1,9 @@
+<div class="container">
+  <h1 class="text-center p-3">Ogni occasione è quella giusta!</h1>
+  <div class="row row-cols-2 row-cols-lg-5 row-cols-md-3  g-2 d-flex justify-content-center text-center">
+    <app-card-regalo *ngFor="let item of listTitoli; index as i"
+                     [titolo]= listTitoli[i] [sourceimage]= listSourceImage[i]
+                     [titoloModal]= listTitoliModal[i] [descrizioneModal]= listDescrizioni[i]
+    ></app-card-regalo>
+  </div>
+</div>
