@@ -1,0 +1,13 @@
+<div class="m-1">
+  <h1 class="text-center mb-4">Scegli e pianta i tuoi alberi</h1>
+  <p  class="text-center">Hai mai pensato di piantare un albero? È un gesto semplice, ma con un grande impatto. Porterà benefici all'ambiente
+    e alle persone, e diventerà un regalo originale per le persone che ami.</p>
+  <p class="m-3">Scegli e pianta il tuo albero in base alle  sue caratteristiche </p>
+  <div class="row row-cols-lg-5 text-center">
+    <app-filtro *ngFor="let item of listNomiFiltri; index as i"
+                [nomeFiltro]= "listNomiFiltri[i]"  [elementi]="listFiltri[i]"
+                class="col mt-1"
+    ></app-filtro>
+  </div>
+</div>
+

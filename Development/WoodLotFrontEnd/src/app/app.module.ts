@@ -19,7 +19,7 @@ import { MdbTabsModule } from 'mdb-angular-ui-kit/tabs';
 import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {AlertModule, AvatarModule, CardModule} from '@coreui/angular';
+import {AlertModule, AvatarModule, ButtonModule, CardModule, DropdownModule} from '@coreui/angular';
 import { IconModule } from '@coreui/icons-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/pages/home/home.component';
@@ -42,6 +42,12 @@ import { CardRettangolareConTestoListComponent } from './components/card-rettang
 import { CardProdottoComponent } from './components/card-prodotto/card-prodotto.component';
 import { CardProdottoListComponent } from './components/card-prodotto-list/card-prodotto-list.component';
 import {ProdottoService} from "./services/prodotto/prodotto.service";
+import { FaqComponent } from './components/faq/faq.component';
+import { FiltroComponent } from './components/filtro/filtro.component';
+import { FiltroListComponent } from './components/filtro-list/filtro-list.component';
+import {CategoriaService} from "./services/categoria/categoria.service";
+import {PaeseService} from "./services/paese/paese.service";
+import {UsoLocaleService} from "./services/usoLocale/uso-locale.service";
 
 
 @NgModule({
@@ -65,33 +71,38 @@ import {ProdottoService} from "./services/prodotto/prodotto.service";
     CardRettangolareConTestoListComponent,
     CardProdottoComponent,
     CardProdottoListComponent,
+    FaqComponent,
+    FiltroComponent,
+    FiltroListComponent,
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        MdbAccordionModule,
-        MdbCarouselModule,
-        MdbCheckboxModule,
-        MdbCollapseModule,
-        MdbDropdownModule,
-        MdbFormsModule,
-        MdbModalModule,
-        MdbPopoverModule,
-        MdbRadioModule,
-        MdbRangeModule,
-        MdbRippleModule,
-        MdbScrollspyModule,
-        MdbTabsModule,
-        MdbTooltipModule,
-        MdbValidationModule,
-        BrowserAnimationsModule,
-        AlertModule,
-        IconModule,
-        HttpClientModule,
-        AvatarModule,
-        CardModule
-    ],
-  providers: [UniscitiService, ProdottoService],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    MdbAccordionModule,
+    MdbCarouselModule,
+    MdbCheckboxModule,
+    MdbCollapseModule,
+    MdbDropdownModule,
+    MdbFormsModule,
+    MdbModalModule,
+    MdbPopoverModule,
+    MdbRadioModule,
+    MdbRangeModule,
+    MdbRippleModule,
+    MdbScrollspyModule,
+    MdbTabsModule,
+    MdbTooltipModule,
+    MdbValidationModule,
+    BrowserAnimationsModule,
+    AlertModule,
+    IconModule,
+    HttpClientModule,
+    AvatarModule,
+    CardModule,
+    DropdownModule,
+    ButtonModule
+  ],
+  providers: [UniscitiService, ProdottoService, CategoriaService,PaeseService, UsoLocaleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
