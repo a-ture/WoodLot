@@ -51,6 +51,8 @@ import { CardRegaloComponent } from './components/card-regalo/card-regalo.compon
 import { CardRegaloListComponent } from './components/card-regalo-list/card-regalo-list.component';
 import {FotoConBottoneComponent} from "./components/foto-con-bottone/foto-con-bottone.component";
 import { FotoObiettiviComponent } from './components/foto-obiettivi/foto-obiettivi.component';
+import { CardRettangolareConBottoneComponent } from './components/card-rettangolare-con-bottone/card-rettangolare-con-bottone.component';
+import { CardRettangolareConBottoneListComponent } from './components/card-rettangolare-con-bottone-list/card-rettangolare-con-bottone-list.component';
 
 
 @NgModule({
@@ -79,7 +81,9 @@ import { FotoObiettiviComponent } from './components/foto-obiettivi/foto-obietti
     CardRegaloComponent,
     CardRegaloListComponent,
     FotoConBottoneComponent,
-    FotoObiettiviComponent
+    FotoObiettiviComponent,
+    CardRettangolareConBottoneComponent,
+    CardRettangolareConBottoneListComponent
   ],
   imports: [
     BrowserModule,
