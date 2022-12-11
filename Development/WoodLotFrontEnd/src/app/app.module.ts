@@ -42,7 +42,6 @@ import { CardRettangolareConTestoListComponent } from './components/card-rettang
 import { CardProdottoComponent } from './components/card-prodotto/card-prodotto.component';
 import { CardProdottoListComponent } from './components/card-prodotto-list/card-prodotto-list.component';
 import {ProdottoService} from "./services/prodotto/prodotto.service";
-import { FaqComponent } from './components/faq/faq.component';
 import { FiltroComponent } from './components/filtro/filtro.component';
 import { FiltroListComponent } from './components/filtro-list/filtro-list.component';
 import {CategoriaService} from "./services/categoria/categoria.service";
@@ -50,6 +49,7 @@ import {PaeseService} from "./services/paese/paese.service";
 import {UsoLocaleService} from "./services/usoLocale/uso-locale.service";
 import { CardRegaloComponent } from './components/card-regalo/card-regalo.component';
 import { CardRegaloListComponent } from './components/card-regalo-list/card-regalo-list.component';
+import {FotoConBottoneComponent} from "./components/foto-con-bottone/foto-con-bottone.component";
 
 
 @NgModule({
@@ -73,11 +73,11 @@ import { CardRegaloListComponent } from './components/card-regalo-list/card-rega
     CardRettangolareConTestoListComponent,
     CardProdottoComponent,
     CardProdottoListComponent,
-    FaqComponent,
     FiltroComponent,
     FiltroListComponent,
     CardRegaloComponent,
     CardRegaloListComponent,
+    FotoConBottoneComponent
   ],
   imports: [
     BrowserModule,
