@@ -50,6 +50,7 @@ import {UsoLocaleService} from "./services/usoLocale/uso-locale.service";
 import { CardRegaloComponent } from './components/card-regalo/card-regalo.component';
 import { CardRegaloListComponent } from './components/card-regalo-list/card-regalo-list.component';
 import {FotoConBottoneComponent} from "./components/foto-con-bottone/foto-con-bottone.component";
+import { FotoObiettiviComponent } from './components/foto-obiettivi/foto-obiettivi.component';
 
 
 @NgModule({
@@ -77,7 +78,8 @@ import {FotoConBottoneComponent} from "./components/foto-con-bottone/foto-con-bo
     FiltroListComponent,
     CardRegaloComponent,
     CardRegaloListComponent,
-    FotoConBottoneComponent
+    FotoConBottoneComponent,
+    FotoObiettiviComponent
   ],
   imports: [
     BrowserModule,
