@@ -55,6 +55,8 @@ import { CardRettangolareConBottoneComponent } from './components/card-rettangol
 import { CardRettangolareConBottoneListComponent } from './components/card-rettangolare-con-bottone-list/card-rettangolare-con-bottone-list.component';
 import { CardConIconaComponent } from './components/card-con-icona/card-con-icona.component';
 import { CardConIconaListComponent } from './components/card-con-icona-list/card-con-icona-list.component';
+import { FotoConTestoComponent } from './components/foto-con-testo/foto-con-testo.component';
+import { FotoConTestoListComponent } from './components/foto-con-testo-list/foto-con-testo-list.component';
 
 
 @NgModule({
@@ -87,7 +89,9 @@ import { CardConIconaListComponent } from './components/card-con-icona-list/card
     CardRettangolareConBottoneComponent,
     CardRettangolareConBottoneListComponent,
     CardConIconaComponent,
-    CardConIconaListComponent
+    CardConIconaListComponent,
+    FotoConTestoComponent,
+    FotoConTestoListComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,9 @@
+<div class="container">
+  <app-foto-con-testo *ngFor="let item of listTitoli; index as i;"
+                      [titolo]=listTitoli[i] [descrizione]=listTesto[i]
+                      [sourceImage]=listSourceImage[i]
+                      [class]= listClassi[i%2]
+  ></app-foto-con-testo>
+</div>
+
+
