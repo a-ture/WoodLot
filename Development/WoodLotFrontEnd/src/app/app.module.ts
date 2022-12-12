@@ -19,7 +19,15 @@ import { MdbTabsModule } from 'mdb-angular-ui-kit/tabs';
 import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {AlertModule, AvatarModule, ButtonModule, CardModule, DropdownModule, ModalModule} from '@coreui/angular';
+import {
+    AlertModule,
+    AvatarModule,
+    ButtonModule,
+    CardModule,
+    DropdownModule,
+    FormModule,
+    ModalModule
+} from '@coreui/angular';
 import { IconModule } from '@coreui/icons-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/pages/home/home.component';
@@ -57,6 +65,7 @@ import { CardConIconaComponent } from './components/card-con-icona/card-con-icon
 import { CardConIconaListComponent } from './components/card-con-icona-list/card-con-icona-list.component';
 import { FotoConTestoComponent } from './components/foto-con-testo/foto-con-testo.component';
 import { FotoConTestoListComponent } from './components/foto-con-testo-list/foto-con-testo-list.component';
+import { CarrelloItemComponent } from './components/carrello-item/carrello-item.component';
 
 
 @NgModule({
@@ -91,36 +100,38 @@ import { FotoConTestoListComponent } from './components/foto-con-testo-list/foto
     CardConIconaComponent,
     CardConIconaListComponent,
     FotoConTestoComponent,
-    FotoConTestoListComponent
+    FotoConTestoListComponent,
+    CarrelloItemComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    MdbAccordionModule,
-    MdbCarouselModule,
-    MdbCheckboxModule,
-    MdbCollapseModule,
-    MdbDropdownModule,
-    MdbFormsModule,
-    MdbModalModule,
-    MdbPopoverModule,
-    MdbRadioModule,
-    MdbRangeModule,
-    MdbRippleModule,
-    MdbScrollspyModule,
-    MdbTabsModule,
-    MdbTooltipModule,
-    MdbValidationModule,
-    BrowserAnimationsModule,
-    AlertModule,
-    IconModule,
-    HttpClientModule,
-    AvatarModule,
-    CardModule,
-    DropdownModule,
-    ButtonModule,
-    ModalModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        MdbAccordionModule,
+        MdbCarouselModule,
+        MdbCheckboxModule,
+        MdbCollapseModule,
+        MdbDropdownModule,
+        MdbFormsModule,
+        MdbModalModule,
+        MdbPopoverModule,
+        MdbRadioModule,
+        MdbRangeModule,
+        MdbRippleModule,
+        MdbScrollspyModule,
+        MdbTabsModule,
+        MdbTooltipModule,
+        MdbValidationModule,
+        BrowserAnimationsModule,
+        AlertModule,
+        IconModule,
+        HttpClientModule,
+        AvatarModule,
+        CardModule,
+        DropdownModule,
+        ButtonModule,
+        ModalModule,
+        FormModule
+    ],
   providers: [UniscitiService, ProdottoService, CategoriaService,PaeseService, UsoLocaleService],
   bootstrap: [AppComponent]
 })
