@@ -8,12 +8,12 @@ import {ProdottoService} from "../../../../servizi/prodotto/prodotto.service";
 })
 export class CardProdottoListComponent implements OnInit {
 
-  public urlBase= "assets/img/alberi/"
+  public urlBase = "assets/img/alberi/"
   public endBase = "/catalogo.png"
 
   public listaAlberi
 
-  constructor(private serviceProdotto : ProdottoService ) {
+  constructor(private serviceProdotto : ProdottoService) {
     this.listaAlberi = serviceProdotto.getProdotto();
   }
 

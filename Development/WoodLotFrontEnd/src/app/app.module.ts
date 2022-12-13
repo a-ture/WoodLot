@@ -61,6 +61,7 @@ import { InterfacciaHomeComponent } from './home/interfaccia.home/interfaccia.ho
 import { InterfacciaDiventaContadinoComponent } from './diventaContadino/interfaccia.diventa-contadino/interfaccia.diventa-contadino.component';
 import { NumeroConTestoComponent } from './responsabileCatalogo/componenti/numeroConTesto.componenti/numero-con-testo/numero-con-testo.component';
 import { NumeroConTestoListComponent } from './responsabileCatalogo/componenti/numeroConTesto.componenti/numero-con-testo-list/numero-con-testo-list.component';
+import { ConsiglioAlberiListComponent } from './prodotto/componenti/consiglio-alberi-list/consiglio-alberi-list.component';
 
 
 @NgModule({
@@ -92,7 +93,8 @@ import { NumeroConTestoListComponent } from './responsabileCatalogo/componenti/n
     InterfacciaHomeComponent,
     InterfacciaDiventaContadinoComponent,
     NumeroConTestoComponent,
-    NumeroConTestoListComponent
+    NumeroConTestoListComponent,
+    ConsiglioAlberiListComponent
   ],
   imports: [
     BrowserModule,

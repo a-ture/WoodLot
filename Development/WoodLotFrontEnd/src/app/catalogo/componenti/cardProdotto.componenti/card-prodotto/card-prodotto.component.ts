@@ -5,7 +5,7 @@ import {Albero} from "../../../../entita/albero/albero";
   selector: 'app-card-prodotto',
   styleUrls: ['./card-prodotto.component.scss'],
   template:`
-    <div class="card text-center rounded col g-3 rounded-5" style="width: 18rem;">
+    <div class="card text-center rounded col rounded-5" style="width: 18rem;">
       <img src="{{sourceimage}}" class="card-img-top"/>
       <div class="card-body">
         <h5 class="card-title">{{albero.nome}}</h5>
