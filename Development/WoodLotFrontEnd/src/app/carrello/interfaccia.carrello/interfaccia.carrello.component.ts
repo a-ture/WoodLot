@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CarrelloService} from "../../servizi/carrello /carrello.service";
 
+//TODO aggiungere logica pulsanti
 @Component({
   selector: 'app-interfaccia-carrello',
   templateUrl: './interfaccia.carrello.component.html',
@@ -35,6 +36,10 @@ export class InterfacciaCarrelloComponent implements OnInit {
 
   public getTasse(){
     return (this.getTotale()*22)/100
+  }
+
+  public getTotaleSenzaTasse(){
+    return this.getTotale()-this.getTasse()
   }
 
   ngOnInit(): void {
