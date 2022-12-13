@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {CarrelloService} from "../../servizi/carrello /carrello.service";
 
 @Component({
-  selector: 'app-interfaccia.carrello',
+  selector: 'app-interfaccia-carrello',
   templateUrl: './interfaccia.carrello.component.html',
   styleUrls: ['./interfaccia.carrello.component.scss']
 })

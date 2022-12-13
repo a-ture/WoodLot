@@ -19,24 +19,21 @@ import { MdbTabsModule } from 'mdb-angular-ui-kit/tabs';
 import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {AlertModule, AvatarModule, ButtonModule, CardModule, DropdownModule, ModalModule} from '@coreui/angular';
+import {
+  AlertModule,
+  AvatarModule,
+  ButtonModule,
+  CardModule,
+  DropdownModule,
+  FormModule,
+  ModalModule
+} from '@coreui/angular';
 import { IconModule } from '@coreui/icons-angular';
 import { HttpClientModule } from '@angular/common/http';
-import { HomeComponent } from './pages/home/home.component';
-import { ProdottoComponent } from './pages/prodotto/prodotto.component';
-import { CatalogoComponent } from './pages/catalogo/catalogo.component';
-import { ChiSiamoComponent } from './pages/chi-siamo/chi-siamo.component';
-import { DiventaContadinoComponent } from './pages/diventa-contadino/diventa-contadino.component';
-import { CarrelloComponent } from './pages/carrello/carrello.component';
-import { CheckoutComponent } from './pages/checkout/checkout.component';
-import { UtenteComponent } from './pages/utente/utente.component';
-import { ContadinoComponent } from './pages/contadino/contadino.component';
-import { ResponsabileCatalogoComponent } from './pages/responsabile-catalogo/responsabile-catalogo.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { CardTondaConTestoComponent } from './diventaContadino/componenti/cardTondaConTesto.componenti/card-tonda-con-testo/card-tonda-con-testo.component';
 import { CardTondaConTestoListComponent } from './diventaContadino/componenti/cardTondaConTesto.componenti/card-tonda-con-testo-list/card-tonda-con-testo-list.component';
-import {UniscitiService} from "./servizi/statistiche/unisciti.service";
 import { CardRettangolareConTestoComponent } from './diventaContadino/componenti/cardRettangolareConTesto.componenti/card-rettangolare-con-testo/card-rettangolare-con-testo.component';
 import { CardRettangolareConTestoListComponent } from './diventaContadino/componenti/cardRettangolareConTesto.componenti/card-rettangolare-con-testo-list/card-rettangolare-con-testo-list.component';
 import { CardProdottoComponent } from './catalogo/componenti/cardProdotto.componenti/card-prodotto/card-prodotto.component';
@@ -67,16 +64,6 @@ import { InterfacciaDiventaContadinoComponent } from './diventaContadino/interfa
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    ProdottoComponent,
-    CatalogoComponent,
-    ChiSiamoComponent,
-    DiventaContadinoComponent,
-    CarrelloComponent,
-    CheckoutComponent,
-    UtenteComponent,
-    ContadinoComponent,
-    ResponsabileCatalogoComponent,
     HeaderComponent,
     FooterComponent,
     CardTondaConTestoComponent,
@@ -129,9 +116,10 @@ import { InterfacciaDiventaContadinoComponent } from './diventaContadino/interfa
     CardModule,
     DropdownModule,
     ButtonModule,
-    ModalModule
+    ModalModule,
+    FormModule
   ],
-  providers: [UniscitiService, ProdottoService, CategoriaService,PaeseService, UsoLocaleService],
+  providers: [ProdottoService, CategoriaService,PaeseService, UsoLocaleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

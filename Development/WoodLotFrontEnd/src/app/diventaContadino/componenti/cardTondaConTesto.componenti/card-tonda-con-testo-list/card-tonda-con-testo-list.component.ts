@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {UniscitiService} from "../../../../servizi/statistiche/unisciti.service";
+import {StatisticheService} from "../../../../servizi/statistiche/statistiche.service";
 
 @Component({
   selector: 'app-card-tonda-con-testo-list',
@@ -18,7 +18,7 @@ export class CardTondaConTestoListComponent implements OnInit {
     "assets/img/diventaUnContadino/13.svg",
     ]
 
-  constructor(private serviceStatistiche:UniscitiService) {
+  constructor(private serviceStatistiche:StatisticheService) {
     this.listaNumeri = serviceStatistiche.getStatistiche()
   }
 

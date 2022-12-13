@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ProdottoCarrello} from "../../../entita/prodottoCarrello/prodotto-carrello";
 
 @Component({
-  selector: 'app-prodotto.carrello',
+  selector: 'app-prodotto-carrello',
   templateUrl: './prodotto.carrello.component.html',
   styleUrls: ['./prodotto.carrello.component.scss']
 })
