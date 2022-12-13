@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {UtenteService} from "../../servizi/utente/utente.service";
 
 @Component({
   selector: 'app-interfaccia-utente',
@@ -7,7 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InterfacciaUtenteComponent implements OnInit {
 
-  constructor() { }
+  public utente
+
+  constructor(private serviceUtente:UtenteService) {
+    this.utente = serviceUtente.getUtente()
+  }
+
 
   ngOnInit(): void {
   }

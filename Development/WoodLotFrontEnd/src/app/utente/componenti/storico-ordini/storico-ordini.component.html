@@ -1,0 +1,62 @@
+<div class="text-center mx-5 my-4" style="border-radius: 20px; background-color:#C4D89F">
+  <div class="row">
+    <h3 class="my-4">Storico Ordini</h3>
+    <div class="row px-5">
+      <table class="table table-borderless">
+        <thead>
+        <tr>
+          <th scope="col">Codice</th>
+          <th scope="col">Totale</th>
+          <th scope="col">N. Pezzi</th>
+          <th scope="col">Data</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr *ngFor="let item of listaOrdini.slice(0,3)">
+          <th scope="row">{{item.codice}}</th>
+          <td>{{item.totale.toFixed(2)}}€</td>
+          <td>{{item.listaProdottiOrdine.length}}</td>
+          <td>{{item.dataAcquisto | date: 'dd/MM/yy'}}</td>
+        </tr>
+        </tbody>
+      </table>
+
+      <a [cModalToggle]="staticBackdropModal.id" class="mb-3" cButton style="background: #93C572; border-color:#93C572">Scopri
+        tutti!</a>
+
+    </div>
+  </div>
+</div>
+
+<c-modal #staticBackdropModal backdrop="static" id="storicoOrdini">
+  <c-modal-header>
+    <h2 cModalTitle>Storico Ordini</h2>
+    <button [cModalToggle]="staticBackdropModal.id" cButtonClose></button>
+  </c-modal-header>
+  <c-modal-body>
+    <div clas="col-8 text-center">
+
+      <div class="row m-3" *ngFor="let item of listaOrdini">
+        <hr>
+        <h3>Dettaglio ordine n.{{item.codice}}</h3>
+        <p>Ordine effettuato il:{{item.dataAcquisto |date: 'dd/MM/yy' }}</p>
+        <p>Hai speso: </p>
+        <p>Alberi che hai acquistato in questo ordine: </p>
+        <ul class="mx-5">
+          <li  *ngFor="let i of item.listaProdottiOrdine">
+            <em>{{i.nome}}</em> (Quantità: {{i.quantita}}, Prezzo: {{i.prezzo.toFixed(2)}}€)</li>
+        </ul>
+
+        <hr>
+      </div>
+
+    </div>
+  </c-modal-body>
+  <c-modal-footer>
+    <button [cModalToggle]="staticBackdropModal.id" cButton color="secondary" class="w-100"
+            style="background-color:#5E7250; color:white">
+      Grandioso
+    </button>
+  </c-modal-footer>
+</c-modal>

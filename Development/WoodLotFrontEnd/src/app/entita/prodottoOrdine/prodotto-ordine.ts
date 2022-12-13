@@ -4,15 +4,17 @@ export class ProdottoOrdine {
   public prezzo : number
   public destinatarioRegalo : String
   public stato : String
-  public data : Date
+  public dataAssegnazione : Date
+  public nome : String
 
   constructor(codice:number, quantita:number, prezzo:number, destinatarioRegalo:String,
-              data:Date, stato:String) {
+              data:Date, stato:String,nome:String) {
     this.codice = codice
-    this.data = new Date()
+    this.dataAssegnazione = new Date()
     this.destinatarioRegalo = destinatarioRegalo
     this.stato = stato
     this.prezzo = prezzo
     this.quantita = quantita
+    this.nome = nome
   }
 }

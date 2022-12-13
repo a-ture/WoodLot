@@ -65,6 +65,7 @@ import { ConsiglioAlberiListComponent } from './prodotto/componenti/consiglio-al
 import { CardTestoConIconaComponent } from './prodotto/componenti/cardTestoConIcona.componenti/card-testo-con-icona/card-testo-con-icona.component';
 import { CardTestoConIconaListComponent } from './prodotto/componenti/cardTestoConIcona.componenti/card-testo-con-icona-list/card-testo-con-icona-list.component';
 import { BenvenutoComponent } from './utente/componenti/benvenuto/benvenuto.component';
+import { StoricoOrdiniComponent } from './utente/componenti/storico-ordini/storico-ordini.component';
 
 
 @NgModule({
@@ -101,6 +102,7 @@ import { BenvenutoComponent } from './utente/componenti/benvenuto/benvenuto.comp
     CardTestoConIconaComponent,
     CardTestoConIconaListComponent,
     BenvenutoComponent,
+    StoricoOrdiniComponent,
 
   ],
   imports: [
