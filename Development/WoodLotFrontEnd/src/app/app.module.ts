@@ -19,53 +19,49 @@ import { MdbTabsModule } from 'mdb-angular-ui-kit/tabs';
 import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {
-    AlertModule,
-    AvatarModule,
-    ButtonModule,
-    CardModule,
-    DropdownModule,
-    FormModule,
-    ModalModule
-} from '@coreui/angular';
+import {AlertModule, AvatarModule, ButtonModule, CardModule, DropdownModule, ModalModule} from '@coreui/angular';
 import { IconModule } from '@coreui/icons-angular';
 import { HttpClientModule } from '@angular/common/http';
-import { HomeComponent } from './components/pages/home/home.component';
-import { ProdottoComponent } from './components/pages/prodotto/prodotto.component';
-import { CatalogoComponent } from './components/pages/catalogo/catalogo.component';
-import { ChiSiamoComponent } from './components/pages/chi-siamo/chi-siamo.component';
-import { DiventaContadinoComponent } from './components/pages/diventa-contadino/diventa-contadino.component';
-import { CarrelloComponent } from './components/pages/carrello/carrello.component';
-import { CheckoutComponent } from './components/pages/checkout/checkout.component';
-import { UtenteComponent } from './components/pages/utente/utente.component';
-import { ContadinoComponent } from './components/pages/contadino/contadino.component';
-import { ResponsabileCatalogoComponent } from './components/pages/responsabile-catalogo/responsabile-catalogo.component';
-import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { CardTondaConTestoComponent } from './components/card-tonda-con-testo/card-tonda-con-testo.component';
-import { CardTondaConTestoListComponent } from './components/card-tonda-con-testo-list/card-tonda-con-testo-list.component';
-import {UniscitiService} from "./services/statistiche/unisciti.service";
-import { CardRettangolareConTestoComponent } from './components/card-rettangolare-con-testo/card-rettangolare-con-testo.component';
-import { CardRettangolareConTestoListComponent } from './components/card-rettangolare-con-testo-list/card-rettangolare-con-testo-list.component';
-import { CardProdottoComponent } from './components/card-prodotto/card-prodotto.component';
-import { CardProdottoListComponent } from './components/card-prodotto-list/card-prodotto-list.component';
-import {ProdottoService} from "./services/prodotto/prodotto.service";
-import { FiltroComponent } from './components/filtro/filtro.component';
-import { FiltroListComponent } from './components/filtro-list/filtro-list.component';
-import {CategoriaService} from "./services/categoria/categoria.service";
-import {PaeseService} from "./services/paese/paese.service";
-import {UsoLocaleService} from "./services/usoLocale/uso-locale.service";
-import { CardRegaloComponent } from './components/card-regalo/card-regalo.component';
-import { CardRegaloListComponent } from './components/card-regalo-list/card-regalo-list.component';
-import {FotoConBottoneComponent} from "./components/foto-con-bottone/foto-con-bottone.component";
-import { FotoObiettiviComponent } from './components/foto-obiettivi/foto-obiettivi.component';
-import { CardRettangolareConBottoneComponent } from './components/card-rettangolare-con-bottone/card-rettangolare-con-bottone.component';
-import { CardRettangolareConBottoneListComponent } from './components/card-rettangolare-con-bottone-list/card-rettangolare-con-bottone-list.component';
-import { CardConIconaComponent } from './components/card-con-icona/card-con-icona.component';
-import { CardConIconaListComponent } from './components/card-con-icona-list/card-con-icona-list.component';
-import { FotoConTestoComponent } from './components/foto-con-testo/foto-con-testo.component';
-import { FotoConTestoListComponent } from './components/foto-con-testo-list/foto-con-testo-list.component';
-import { CarrelloItemComponent } from './components/carrello-item/carrello-item.component';
+import { HomeComponent } from './pages/home/home.component';
+import { ProdottoComponent } from './pages/prodotto/prodotto.component';
+import { CatalogoComponent } from './pages/catalogo/catalogo.component';
+import { ChiSiamoComponent } from './pages/chi-siamo/chi-siamo.component';
+import { DiventaContadinoComponent } from './pages/diventa-contadino/diventa-contadino.component';
+import { CarrelloComponent } from './pages/carrello/carrello.component';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { UtenteComponent } from './pages/utente/utente.component';
+import { ContadinoComponent } from './pages/contadino/contadino.component';
+import { ResponsabileCatalogoComponent } from './pages/responsabile-catalogo/responsabile-catalogo.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { CardTondaConTestoComponent } from './diventaContadino/componenti/cardTondaConTesto.componenti/card-tonda-con-testo/card-tonda-con-testo.component';
+import { CardTondaConTestoListComponent } from './diventaContadino/componenti/cardTondaConTesto.componenti/card-tonda-con-testo-list/card-tonda-con-testo-list.component';
+import {UniscitiService} from "./servizi/statistiche/unisciti.service";
+import { CardRettangolareConTestoComponent } from './diventaContadino/componenti/cardRettangolareConTesto.componenti/card-rettangolare-con-testo/card-rettangolare-con-testo.component';
+import { CardRettangolareConTestoListComponent } from './diventaContadino/componenti/cardRettangolareConTesto.componenti/card-rettangolare-con-testo-list/card-rettangolare-con-testo-list.component';
+import { CardProdottoComponent } from './catalogo/componenti/cardProdotto.componenti/card-prodotto/card-prodotto.component';
+import { CardProdottoListComponent } from './catalogo/componenti/cardProdotto.componenti/card-prodotto-list/card-prodotto-list.component';
+import {ProdottoService} from "./servizi/prodotto/prodotto.service";
+import { FiltroComponent } from './catalogo/componenti/filtro.componenti/filtro/filtro.component';
+import { FiltroListComponent } from './catalogo/componenti/filtro.componenti/filtro-list/filtro-list.component';
+import {CategoriaService} from "./servizi/categoria/categoria.service";
+import {PaeseService} from "./servizi/paese/paese.service";
+import {UsoLocaleService} from "./servizi/usoLocale/uso-locale.service";
+import { CardRegaloComponent } from './catalogo/componenti/cardRegalo.componenti/card-regalo/card-regalo.component';
+import { CardRegaloListComponent } from './catalogo/componenti/cardRegalo.componenti/card-regalo-list/card-regalo-list.component';
+import {FotoConBottoneComponent} from "./diventaContadino/componenti/foto-con-bottone/foto-con-bottone.component";
+import { FotoObiettiviComponent } from './diventaContadino/componenti/foto-obiettivi/foto-obiettivi.component';
+import { InterfacciaCarrelloComponent } from './carrello/interfaccia.carrello/interfaccia.carrello.component';
+import { ProdottoCarrelloComponent } from './carrello/componenti/prodotto.carrello/prodotto.carrello.component';
+import { InterfacciaCatalogoComponent } from './catalogo/interfaccia.catalogo/interfaccia.catalogo.component';
+import { InterfacciaCheckoutComponent } from './checkout/interfaccia.checkout/interfaccia.checkout.component';
+import { InterfacciaChiSiamoComponent } from './chiSiamo/interfaccia.chi-siamo/interfaccia.chi-siamo.component';
+import { InterfacciaContadinoComponent } from './contadino/interfaccia.contadino/interfaccia.contadino.component';
+import { InterfacciaProdottoComponent } from './prodotto/interfaccia.prodotto/interfaccia.prodotto.component';
+import { InterfacciaResponsabileCatalogoComponent } from './responsabileCatalogo/interfaccia.responsabile-catalogo/interfaccia.responsabile-catalogo.component';
+import { InterfacciaUtenteComponent } from './utente/interfaccia.utente/interfaccia.utente.component';
+import { InterfacciaHomeComponent } from './home/interfaccia.home/interfaccia.home.component';
+import { InterfacciaDiventaContadinoComponent } from './diventaContadino/interfaccia.diventa-contadino/interfaccia.diventa-contadino.component';
 
 
 @NgModule({
@@ -95,43 +91,46 @@ import { CarrelloItemComponent } from './components/carrello-item/carrello-item.
     CardRegaloListComponent,
     FotoConBottoneComponent,
     FotoObiettiviComponent,
-    CardRettangolareConBottoneComponent,
-    CardRettangolareConBottoneListComponent,
-    CardConIconaComponent,
-    CardConIconaListComponent,
-    FotoConTestoComponent,
-    FotoConTestoListComponent,
-    CarrelloItemComponent
+    InterfacciaCarrelloComponent,
+    ProdottoCarrelloComponent,
+    InterfacciaCatalogoComponent,
+    InterfacciaCheckoutComponent,
+    InterfacciaChiSiamoComponent,
+    InterfacciaContadinoComponent,
+    InterfacciaProdottoComponent,
+    InterfacciaResponsabileCatalogoComponent,
+    InterfacciaUtenteComponent,
+    InterfacciaHomeComponent,
+    InterfacciaDiventaContadinoComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        MdbAccordionModule,
-        MdbCarouselModule,
-        MdbCheckboxModule,
-        MdbCollapseModule,
-        MdbDropdownModule,
-        MdbFormsModule,
-        MdbModalModule,
-        MdbPopoverModule,
-        MdbRadioModule,
-        MdbRangeModule,
-        MdbRippleModule,
-        MdbScrollspyModule,
-        MdbTabsModule,
-        MdbTooltipModule,
-        MdbValidationModule,
-        BrowserAnimationsModule,
-        AlertModule,
-        IconModule,
-        HttpClientModule,
-        AvatarModule,
-        CardModule,
-        DropdownModule,
-        ButtonModule,
-        ModalModule,
-        FormModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    MdbAccordionModule,
+    MdbCarouselModule,
+    MdbCheckboxModule,
+    MdbCollapseModule,
+    MdbDropdownModule,
+    MdbFormsModule,
+    MdbModalModule,
+    MdbPopoverModule,
+    MdbRadioModule,
+    MdbRangeModule,
+    MdbRippleModule,
+    MdbScrollspyModule,
+    MdbTabsModule,
+    MdbTooltipModule,
+    MdbValidationModule,
+    BrowserAnimationsModule,
+    AlertModule,
+    IconModule,
+    HttpClientModule,
+    AvatarModule,
+    CardModule,
+    DropdownModule,
+    ButtonModule,
+    ModalModule
+  ],
   providers: [UniscitiService, ProdottoService, CategoriaService,PaeseService, UsoLocaleService],
   bootstrap: [AppComponent]
 })
