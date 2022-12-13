@@ -3,8 +3,8 @@ import {ProdottoCarrello} from "../../../entita/prodottoCarrello/prodotto-carrel
 //TODO aggiungere collegamento ai bottone
 @Component({
   selector: 'app-prodotto-carrello',
-  templateUrl: './prodotto.carrello.component.html',
-  styleUrls: ['./prodotto.carrello.component.scss']
+  templateUrl: './prodotto-carrello.component.html',
+  styleUrls: ['./prodotto-carrello.component.scss']
 })
 export class ProdottoCarrelloComponent implements OnInit {
 

@@ -49,7 +49,7 @@ import { CardRegaloListComponent } from './catalogo/componenti/cardRegalo.compon
 import {FotoConBottoneComponent} from "./diventaContadino/componenti/foto-con-bottone/foto-con-bottone.component";
 import { FotoObiettiviComponent } from './diventaContadino/componenti/foto-obiettivi/foto-obiettivi.component';
 import { InterfacciaCarrelloComponent } from './carrello/interfaccia.carrello/interfaccia.carrello.component';
-import { ProdottoCarrelloComponent } from './carrello/componenti/prodotto.carrello/prodotto.carrello.component';
+import { ProdottoCarrelloComponent } from './carrello/componenti/prodottoCarrello/prodotto-carrello.component';
 import { InterfacciaCatalogoComponent } from './catalogo/interfaccia.catalogo/interfaccia.catalogo.component';
 import { InterfacciaCheckoutComponent } from './checkout/interfaccia.checkout/interfaccia.checkout.component';
 import { InterfacciaChiSiamoComponent } from './chiSiamo/interfaccia.chi-siamo/interfaccia.chi-siamo.component';
@@ -62,6 +62,8 @@ import { InterfacciaDiventaContadinoComponent } from './diventaContadino/interfa
 import { NumeroConTestoComponent } from './responsabileCatalogo/componenti/numeroConTesto.componenti/numero-con-testo/numero-con-testo.component';
 import { NumeroConTestoListComponent } from './responsabileCatalogo/componenti/numeroConTesto.componenti/numero-con-testo-list/numero-con-testo-list.component';
 import { ConsiglioAlberiListComponent } from './prodotto/componenti/consiglio-alberi-list/consiglio-alberi-list.component';
+import { CardTestoConIconaComponent } from './prodotto/componenti/cardTestoConIcona.componenti/card-testo-con-icona/card-testo-con-icona.component';
+import { CardTestoConIconaListComponent } from './prodotto/componenti/cardTestoConIcona.componenti/card-testo-con-icona-list/card-testo-con-icona-list.component';
 
 
 @NgModule({
@@ -94,7 +96,9 @@ import { ConsiglioAlberiListComponent } from './prodotto/componenti/consiglio-al
     InterfacciaDiventaContadinoComponent,
     NumeroConTestoComponent,
     NumeroConTestoListComponent,
-    ConsiglioAlberiListComponent
+    ConsiglioAlberiListComponent,
+    CardTestoConIconaComponent,
+    CardTestoConIconaListComponent
   ],
   imports: [
     BrowserModule,
