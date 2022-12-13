@@ -1,0 +1,9 @@
+<div class="text-center mx-5 my-4 w-50" style="border-radius: 20px; background-color:#C4D89F">
+  <div class="row">
+    <h3 class="my-4">Benvenuto, <em>{{utente.nome}} {{utente.cognome}}</em></h3>
+    <app-numero-con-testo *ngFor="let item of listaNumeri; index as i"
+                          class="col-sm"
+                          [numero]="listaNumeri[i]" [testo]="listaNomi[i]"
+    ></app-numero-con-testo>
+  </div>
+</div>
