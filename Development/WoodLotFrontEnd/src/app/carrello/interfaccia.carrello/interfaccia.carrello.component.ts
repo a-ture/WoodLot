@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {CarrelloService} from "../../servizi/carrello /carrello.service";
+import {CarrelloService} from "../../servizi/carrello/carrello.service";
 
 //TODO aggiungere logica pulsanti
 @Component({
