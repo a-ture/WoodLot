@@ -23,9 +23,9 @@ import {
   AlertModule,
   AvatarModule,
   ButtonModule,
-  CardModule,
+  CardModule, CarouselModule,
   DropdownModule,
-  FormModule,
+  FormModule, GridModule,
   ModalModule
 } from '@coreui/angular';
 import { IconModule } from '@coreui/icons-angular';
@@ -66,6 +66,8 @@ import { CardTestoConIconaComponent } from './prodotto/componenti/cardTestoConIc
 import { CardTestoConIconaListComponent } from './prodotto/componenti/cardTestoConIcona.componenti/card-testo-con-icona-list/card-testo-con-icona-list.component';
 import { BenvenutoComponent } from './utente/componenti/benvenuto/benvenuto.component';
 import { StoricoOrdiniComponent } from './utente/componenti/storico-ordini/storico-ordini.component';
+import { CarouselImmaginiComponent } from './prodotto/componenti/cardInfoProdotto.componenti/carousel-immagini/carousel-immagini.component';
+import { CardInfoProdottoComponent } from './prodotto/componenti/cardInfoProdotto.componenti/card-info-prodotto/card-info-prodotto.component';
 
 
 @NgModule({
@@ -103,6 +105,8 @@ import { StoricoOrdiniComponent } from './utente/componenti/storico-ordini/stori
     CardTestoConIconaListComponent,
     BenvenutoComponent,
     StoricoOrdiniComponent,
+    CarouselImmaginiComponent,
+    CardInfoProdottoComponent,
 
   ],
   imports: [
@@ -132,7 +136,9 @@ import { StoricoOrdiniComponent } from './utente/componenti/storico-ordini/stori
     DropdownModule,
     ButtonModule,
     ModalModule,
-    FormModule
+    FormModule,
+    CarouselModule,
+    GridModule
   ],
   providers: [ProdottoService, CategoriaService,PaeseService, UsoLocaleService],
   bootstrap: [AppComponent]
