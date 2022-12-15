@@ -62,8 +62,6 @@ import { InterfacciaHomeComponent } from './pagine/home/interfaccia.home/interfa
 import { InterfacciaDiventaContadinoComponent } from './pagine/diventaContadino/interfaccia.diventa-contadino/interfaccia.diventa-contadino.component';
 import { NumeroConTestoComponent } from './componenti/benvenuto.componenti/numero-con-testo/numero-con-testo.component';
 import { ConsiglioAlberiListComponent } from './componenti/consiglio-alberi-list/consiglio-alberi-list.component';
-import { CardTestoConIconaComponent } from './componenti/card.componenti/card-testo-con-icona/card-testo-con-icona.component';
-import { CardTestoConIconaListComponent } from './pagine/prodotto/componenti/card-testo-con-icona-list/card-testo-con-icona-list.component';
 import { BenvenutoComponent } from './componenti/benvenuto.componenti/benvenuto/benvenuto.component';
 import { StoricoOrdiniComponent } from './pagine/utente/componenti/storico-ordini/storico-ordini.component';
 import { CarouselImmaginiComponent } from './pagine/prodotto/componenti/cardInfoProdotto.componenti/carousel-immagini/carousel-immagini.component';
@@ -72,6 +70,10 @@ import { MenuLateraleComponent } from './pagine/utente/componenti/menu-laterale/
 import {FotoConTestoListComponent}from "./pagine/home/componenti/foto-con-testo-list/foto-con-testo-list.component";
 import {FotoConTestoComponent} from "./componenti/fotoTesto.componenti/foto-con-testo/foto-con-testo.component";
 import { FaqComponent } from './pagine/catalogo/componenti/faq/faq.component';
+import { CardConTestoConIconaLateraleComponent } from './componenti/card.componenti/card-con-testo-con-icona-laterale/card-con-testo-con-icona-laterale.component';
+import { CardConTestoConIconaLateraleListComponent } from './pagine/home/componenti/card-con-testo-con-icona-laterale-list/card-con-testo-con-icona-laterale-list.component';
+import { CardConTestoConIconaCentraleComponent } from './componenti/card.componenti/card-con-testo-con-icona-centrale/card-con-testo-con-icona-centrale.component';
+import { CardConTestoConIconaCentraleListComponent } from './pagine/prodotto/componenti/card-con-testo-con-icona-centrale-list/card-con-testo-con-icona-centrale-list.component';
 
 
 @NgModule({
@@ -104,8 +106,6 @@ import { FaqComponent } from './pagine/catalogo/componenti/faq/faq.component';
     InterfacciaDiventaContadinoComponent,
     NumeroConTestoComponent,
     ConsiglioAlberiListComponent,
-    CardTestoConIconaComponent,
-    CardTestoConIconaListComponent,
     BenvenutoComponent,
     StoricoOrdiniComponent,
     CarouselImmaginiComponent,
@@ -114,6 +114,10 @@ import { FaqComponent } from './pagine/catalogo/componenti/faq/faq.component';
     FotoConTestoComponent,
     FotoConTestoListComponent,
     FaqComponent,
+    CardConTestoConIconaLateraleComponent,
+    CardConTestoConIconaLateraleListComponent,
+    CardConTestoConIconaCentraleComponent,
+    CardConTestoConIconaCentraleListComponent,
   ],
   imports: [
     BrowserModule,

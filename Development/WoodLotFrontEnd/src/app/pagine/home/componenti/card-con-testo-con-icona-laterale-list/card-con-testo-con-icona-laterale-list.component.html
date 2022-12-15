@@ -1,0 +1,11 @@
+<div class="container px-4 py-5">
+  <h2 class="pb-2 border-bottom">Tutto molto trasparente!</h2>
+
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 g-4 py-5">
+    <app-card-con-testo-con-icona-laterale *ngFor="let item of listTitoli; index as i"
+                        [titolo]= listTitoli[i] [descrizione]= listDescrizione[i]
+                        [iclass]= listIcone[i]
+    ></app-card-con-testo-con-icona-laterale>
+  </div>
+</div>
+

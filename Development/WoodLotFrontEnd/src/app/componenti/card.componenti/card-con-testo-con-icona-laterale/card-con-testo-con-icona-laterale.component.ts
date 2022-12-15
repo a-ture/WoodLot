@@ -1,9 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-card-con-icona',
-  styleUrls: ['./card-con-icona.component.scss'],
-  template: `
+  selector: 'app-card-con-testo-con-icona-laterale',
+  styleUrls: ['./card-con-testo-con-icona-laterale.component.scss'],
+  template:`
     <div class="col d-flex align-items-start" >
       <i [ngClass]="iclass" ></i>
       <div style="background-color:#F4EBC7">
@@ -13,7 +13,8 @@ import {Component, Input, OnInit} from '@angular/core';
     </div>
   `
 })
-export class CardConIconaComponent implements OnInit {
+export class CardConTestoConIconaLateraleComponent implements OnInit {
+
   @Input()
   public iclass !: String
 
@@ -22,7 +23,6 @@ export class CardConIconaComponent implements OnInit {
 
   @Input()
   public descrizione !: String
-
   constructor() { }
 
   ngOnInit(): void {

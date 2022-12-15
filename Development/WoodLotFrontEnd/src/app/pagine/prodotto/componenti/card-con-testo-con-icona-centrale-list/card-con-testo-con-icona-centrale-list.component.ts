@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-card-testo-con-icona-list',
-  templateUrl: './card-testo-con-icona-list.component.html',
-  styleUrls: ['./card-testo-con-icona-list.component.scss']
+  selector: 'app-card-con-testo-con-icona-centrale-list',
+  templateUrl: './card-con-testo-con-icona-centrale-list.component.html',
+  styleUrls: ['./card-con-testo-con-icona-centrale-list.component.scss']
 })
-export class CardTestoConIconaListComponent implements OnInit {
+export class CardConTestoConIconaCentraleListComponent implements OnInit {
 
   public listaTitoli = [
     "Trasparenza e tracciabilità",
@@ -22,7 +22,7 @@ export class CardTestoConIconaListComponent implements OnInit {
   ]
 
   public listaSource = [
-   "fas fa-map-pin",
+    "fas fa-map-pin",
     "fas fa-book",
     "fas fa-gift"
   ]
@@ -32,7 +32,6 @@ export class CardTestoConIconaListComponent implements OnInit {
     "primary",
     "danger"
   ]
-
 
   constructor() { }
 

@@ -3,10 +3,11 @@
     <h2>Cosa vuol dire piantare un albero con WoodLot</h2>
   </div>
   <div class="row text-center mx-5">
-    <app-card-testo-con-icona *ngFor="let item of listaSource; index as i"
+    <app-card-con-testo-con-icona-centrale *ngFor="let item of listaSource; index as i"
                               class="col-sm"
                               [sourceimage]="listaSource[i]" [titolo]="listaTitoli[i]" [testo]="listaTesto[i]"
                               [colore]="listaColore[i]"
-    ></app-card-testo-con-icona>
+    ></app-card-con-testo-con-icona-centrale>
   </div>
 </div>
+

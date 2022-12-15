@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-card-con-icona-list',
-  templateUrl: './card-con-icona-list.component.html',
-  styleUrls: ['./card-con-icona-list.component.scss']
+  selector: 'app-card-con-testo-con-icona-laterale-list',
+  templateUrl: './card-con-testo-con-icona-laterale-list.component.html',
+  styleUrls: ['./card-con-testo-con-icona-laterale-list.component.scss']
 })
-export class CardConIconaListComponent implements OnInit {
+export class CardConTestoConIconaLateraleListComponent implements OnInit {
 
   public listTitoli = [
     "Sì, lo paghi una volta sola", "No, non ti arriva a casa l’albero", "No, non ti arriva a casa la frutta",
