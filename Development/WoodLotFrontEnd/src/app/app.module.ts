@@ -76,6 +76,8 @@ import { CardConTestoConIconaCentraleComponent } from './componenti/card.compone
 import { CardConTestoConIconaCentraleListComponent } from './pagine/prodotto/componenti/card-con-testo-con-icona-centrale-list/card-con-testo-con-icona-centrale-list.component';
 import { CardAlberoComponent } from './componenti/card.componenti/card-albero/card-albero.component';
 import { CardAlberoListComponent } from './pagine/utente/componenti/sezioneAlberi.componenti/card-albero-list/card-albero-list.component';
+import { BadgeComponent } from './pagine/utente/componenti/sezioneBadge.componenti/badge/badge.component';
+import { SezioneBadgeComponent } from './pagine/utente/componenti/sezioneBadge.componenti/sezione-badge/sezione-badge.component';
 
 
 
@@ -124,6 +126,8 @@ import { CardAlberoListComponent } from './pagine/utente/componenti/sezioneAlber
     CardConTestoConIconaCentraleListComponent,
     CardAlberoComponent,
     CardAlberoListComponent,
+    BadgeComponent,
+    SezioneBadgeComponent,
 
 
   ],

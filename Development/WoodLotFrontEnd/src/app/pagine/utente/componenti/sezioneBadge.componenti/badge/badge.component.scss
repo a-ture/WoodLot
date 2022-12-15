@@ -1,0 +1,14 @@
+button:hover{
+  background-color: #94AD6E;
+  border-color: #94AD6E
+}
+button{
+  --cui-btn-active-bg: #94AD6E;
+  --cui-btn-active-border-color:#94AD6E ;
+  --cui-btn-bg: #3E5C26;
+  --cui-btn-border-color: #3E5C26;
+}
+
+.sblocca{
+  filter: grayscale(100%);
+}
