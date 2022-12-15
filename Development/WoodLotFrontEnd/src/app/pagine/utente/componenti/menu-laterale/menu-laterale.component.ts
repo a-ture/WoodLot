@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+//TODO aggiungere il routing
 @Component({
   selector: 'app-menu-laterale',
   templateUrl: './menu-laterale.component.html',
