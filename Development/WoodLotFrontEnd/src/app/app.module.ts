@@ -74,6 +74,9 @@ import { CardConTestoConIconaLateraleComponent } from './componenti/card.compone
 import { CardConTestoConIconaLateraleListComponent } from './pagine/home/componenti/card-con-testo-con-icona-laterale-list/card-con-testo-con-icona-laterale-list.component';
 import { CardConTestoConIconaCentraleComponent } from './componenti/card.componenti/card-con-testo-con-icona-centrale/card-con-testo-con-icona-centrale.component';
 import { CardConTestoConIconaCentraleListComponent } from './pagine/prodotto/componenti/card-con-testo-con-icona-centrale-list/card-con-testo-con-icona-centrale-list.component';
+import { CardAlberoComponent } from './componenti/card.componenti/card-albero/card-albero.component';
+import { CardAlberoListComponent } from './pagine/utente/componenti/sezioneAlberi.componenti/card-albero-list/card-albero-list.component';
+
 
 
 
@@ -119,6 +122,9 @@ import { CardConTestoConIconaCentraleListComponent } from './pagine/prodotto/com
     CardConTestoConIconaLateraleListComponent,
     CardConTestoConIconaCentraleComponent,
     CardConTestoConIconaCentraleListComponent,
+    CardAlberoComponent,
+    CardAlberoListComponent,
+
 
   ],
   imports: [

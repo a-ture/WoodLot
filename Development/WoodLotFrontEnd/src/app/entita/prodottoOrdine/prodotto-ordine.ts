@@ -6,9 +6,10 @@ export class ProdottoOrdine {
   public stato : String
   public dataAssegnazione : Date
   public nome : String
+  public coordinateGeografiche : String
 
   constructor(codice:number, quantita:number, prezzo:number, destinatarioRegalo:String,
-              data:Date, stato:String,nome:String) {
+              data:Date, stato:String, nome:String, coordinateGeografiche:String) {
     this.codice = codice
     this.dataAssegnazione = new Date()
     this.destinatarioRegalo = destinatarioRegalo
@@ -16,5 +17,6 @@ export class ProdottoOrdine {
     this.prezzo = prezzo
     this.quantita = quantita
     this.nome = nome
+    this.coordinateGeografiche = coordinateGeografiche
   }
 }

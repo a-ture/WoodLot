@@ -25,9 +25,9 @@ export class FiltroListComponent implements OnInit {
   public listFiltri
 
   constructor(private serviceCategorie:CategoriaService, private serviceUsiLocali:UsoLocaleService, private servicePaese:PaeseService) {
-    let listUsiLocali = new Array()
-    let listCategorie = new Array()
-    let listPaesi = new Array()
+    let listUsiLocali = new Array<String>()
+    let listCategorie = new Array<String>()
+    let listPaesi = new Array<String>()
 
     serviceCategorie.getCategorie().forEach(e => {
       listCategorie.push(e.nome)

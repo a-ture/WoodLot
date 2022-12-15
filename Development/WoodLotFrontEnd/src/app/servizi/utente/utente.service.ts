@@ -15,24 +15,27 @@ export class UtenteService {
   public getUtente(){
     return new Utente("Mario","Rossi", [
       new Ordine (3, [new ProdottoOrdine(13.00, 34, 45,
-        "", new Date(), "fiore","castagno"),
+        "", new Date(), "fiore","castagno","Coordinate Geografiche"),
         new ProdottoOrdine(13.00, 34, 45,
-          "", new Date(), "fiore","mandorlo")
+          "", new Date(), "fiore","mandorlo", "Coordinate Geografiche")
         ],233, new Date()),
+
       new Ordine (1, [new ProdottoOrdine(13.00, 34, 45,
-        "", new Date(), "fiore","castagno"),
+        "", new Date(), "fiore","castagno","Coordinate Geografiche"),
         new ProdottoOrdine(13.00, 34, 45,
-          "", new Date(), "fiore","mandorlo")
+          "", new Date(), "fiore","mandorlo" ,"Coordinate Geografiche")
       ],233, new Date()),
+
       new Ordine (2, [new ProdottoOrdine(13.00, 34, 45,
-        "", new Date(), "fiore","castagno"),
+        "", new Date(), "fiore","castagno","Coordinate Geografiche"),
         new ProdottoOrdine(13.00, 34, 45,
-          "", new Date(), "fiore","mandorlo")
+          "", new Date(), "fiore","mandorlo","Coordinate Geografiche")
       ],233, new Date()),
+
       new Ordine (4, [new ProdottoOrdine(13.00, 34, 45,
-        "", new Date(), "fiore","castagno"),
+        "", new Date(), "fiore","castagno","Coordinate Geografiche"),
         new ProdottoOrdine(13.00, 34, 45,
-          "", new Date(), "fiore","mandorlo")
+          "", new Date(), "fiore","mandorlo","Coordinate Geografiche")
       ],233, new Date()),
     ] )
   }

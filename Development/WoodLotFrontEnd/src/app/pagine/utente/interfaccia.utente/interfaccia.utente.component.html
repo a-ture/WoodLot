@@ -1,8 +1,5 @@
-<div  style="background:linear-gradient(180deg, #F4EBC7 5.73%, #FBD5B2 100%);;">
-  <div class="row d-flex align-items-stretch">
-    <app-benvenuto class="col-md-6 col-sm-12 h-100" [nome]= utente.nome [cognome]=utente.cognome
-                   [listaNomi]="listaNomi" [listaNumeri]="listaNumeri"
-    ></app-benvenuto>
-    <app-storico-ordini class="col-md-6" [listaOrdini]=utente.listaOrdini></app-storico-ordini>
-  </div>
-</div>
+
+ <app-card-albero-list
+    [listaAlberi]="getAlberiUtente()"></app-card-albero-list>
+
+
