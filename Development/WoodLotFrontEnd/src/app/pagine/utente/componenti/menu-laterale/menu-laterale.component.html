@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-lg-2">
+    <div class="main-box">
+      <ul class="menu-item list-unstyled">
+        <li (click)="goTo('Home')" [ngClass]="{'onActive':selectedMenu == 'Home'}"
+            class="fa-sharp fa-solid fa-leaf"> Alberi
+        </li>
+        <li (click)="goTo('Home1')" [ngClass]="{'onActive':selectedMenu == 'Home1'}"
+            class="fa-sharp fa-solid fa-trophy "> Badge
+        </li>
+        <li (click)="goTo('Home2')" [ngClass]="{'onActive':selectedMenu == 'Home2'}" class="fa-solid fa-tree">
+          Foreste
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="col-lg-10">
+
+      <div *ngIf="selectedMenu == 'Home'">
+        <p>This is home</p>
+      </div>
+      <div *ngIf="selectedMenu == 'Home1'">
+        <p>This is home1</p>
+      </div>
+      <div *ngIf="selectedMenu == 'Home2'">
+        <p>This is home2</p>
+      </div>
+
+  </div>
+</div>
+
+

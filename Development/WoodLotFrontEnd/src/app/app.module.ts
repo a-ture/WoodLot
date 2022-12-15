@@ -20,6 +20,7 @@ import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
+  AccordionModule,
   AlertModule,
   AvatarModule,
   ButtonModule,
@@ -30,44 +31,47 @@ import {
 } from '@coreui/angular';
 import { IconModule } from '@coreui/icons-angular';
 import { HttpClientModule } from '@angular/common/http';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { CardTondaConTestoComponent } from './diventaContadino/componenti/cardTondaConTesto.componenti/card-tonda-con-testo/card-tonda-con-testo.component';
-import { CardTondaConTestoListComponent } from './diventaContadino/componenti/cardTondaConTesto.componenti/card-tonda-con-testo-list/card-tonda-con-testo-list.component';
-import { CardRettangolareConTestoComponent } from './diventaContadino/componenti/cardRettangolareConTesto.componenti/card-rettangolare-con-testo/card-rettangolare-con-testo.component';
-import { CardRettangolareConTestoListComponent } from './diventaContadino/componenti/cardRettangolareConTesto.componenti/card-rettangolare-con-testo-list/card-rettangolare-con-testo-list.component';
-import { CardProdottoComponent } from './catalogo/componenti/cardProdotto.componenti/card-prodotto/card-prodotto.component';
-import { CardProdottoListComponent } from './catalogo/componenti/cardProdotto.componenti/card-prodotto-list/card-prodotto-list.component';
+import { HeaderComponent } from './componenti/header/header.component';
+import { FooterComponent } from './componenti/footer/footer.component';
+import { CardTondaConTestoComponent } from './componenti/card.componenti/card-tonda-con-testo/card-tonda-con-testo.component';
+import { CardTondaConTestoListComponent } from './pagine/diventaContadino/componenti/card-tonda-con-testo-list/card-tonda-con-testo-list.component';
+import { CardRettangolareConTestoComponent } from './pagine/diventaContadino/componenti/cardRettangolareConTesto.componenti/card-rettangolare-con-testo/card-rettangolare-con-testo.component';
+import { CardRettangolareConTestoListComponent } from './pagine/diventaContadino/componenti/cardRettangolareConTesto.componenti/card-rettangolare-con-testo-list/card-rettangolare-con-testo-list.component';
+import { CardProdottoComponent } from './componenti/card.componenti/card-prodotto/card-prodotto.component';
+import { CardProdottoListComponent } from './pagine/catalogo/componenti/card-prodotto-list/card-prodotto-list.component';
 import {ProdottoService} from "./servizi/prodotto/prodotto.service";
-import { FiltroComponent } from './catalogo/componenti/filtro.componenti/filtro/filtro.component';
-import { FiltroListComponent } from './catalogo/componenti/filtro.componenti/filtro-list/filtro-list.component';
+import { FiltroComponent } from './pagine/catalogo/componenti/filtro.componenti/filtro/filtro.component';
+import { FiltroListComponent } from './pagine/catalogo/componenti/filtro.componenti/filtro-list/filtro-list.component';
 import {CategoriaService} from "./servizi/categoria/categoria.service";
 import {PaeseService} from "./servizi/paese/paese.service";
 import {UsoLocaleService} from "./servizi/usoLocale/uso-locale.service";
-import { CardRegaloComponent } from './catalogo/componenti/cardRegalo.componenti/card-regalo/card-regalo.component';
-import { CardRegaloListComponent } from './catalogo/componenti/cardRegalo.componenti/card-regalo-list/card-regalo-list.component';
-import {FotoConBottoneComponent} from "./diventaContadino/componenti/foto-con-bottone/foto-con-bottone.component";
-import { FotoObiettiviComponent } from './diventaContadino/componenti/foto-obiettivi/foto-obiettivi.component';
-import { InterfacciaCarrelloComponent } from './carrello/interfaccia.carrello/interfaccia.carrello.component';
-import { ProdottoCarrelloComponent } from './carrello/componenti/prodottoCarrello/prodotto-carrello.component';
-import { InterfacciaCatalogoComponent } from './catalogo/interfaccia.catalogo/interfaccia.catalogo.component';
-import { InterfacciaCheckoutComponent } from './checkout/interfaccia.checkout/interfaccia.checkout.component';
-import { InterfacciaChiSiamoComponent } from './chiSiamo/interfaccia.chi-siamo/interfaccia.chi-siamo.component';
-import { InterfacciaContadinoComponent } from './contadino/interfaccia.contadino/interfaccia.contadino.component';
-import { InterfacciaProdottoComponent } from './prodotto/interfaccia.prodotto/interfaccia.prodotto.component';
-import { InterfacciaResponsabileCatalogoComponent } from './responsabileCatalogo/interfaccia.responsabile-catalogo/interfaccia.responsabile-catalogo.component';
-import { InterfacciaUtenteComponent } from './utente/interfaccia.utente/interfaccia.utente.component';
-import { InterfacciaHomeComponent } from './home/interfaccia.home/interfaccia.home.component';
-import { InterfacciaDiventaContadinoComponent } from './diventaContadino/interfaccia.diventa-contadino/interfaccia.diventa-contadino.component';
-import { NumeroConTestoComponent } from './responsabileCatalogo/componenti/numeroConTesto.componenti/numero-con-testo/numero-con-testo.component';
-import { NumeroConTestoListComponent } from './responsabileCatalogo/componenti/numeroConTesto.componenti/numero-con-testo-list/numero-con-testo-list.component';
-import { ConsiglioAlberiListComponent } from './prodotto/componenti/consiglio-alberi-list/consiglio-alberi-list.component';
-import { CardTestoConIconaComponent } from './prodotto/componenti/cardTestoConIcona.componenti/card-testo-con-icona/card-testo-con-icona.component';
-import { CardTestoConIconaListComponent } from './prodotto/componenti/cardTestoConIcona.componenti/card-testo-con-icona-list/card-testo-con-icona-list.component';
-import { BenvenutoComponent } from './utente/componenti/benvenuto/benvenuto.component';
-import { StoricoOrdiniComponent } from './utente/componenti/storico-ordini/storico-ordini.component';
-import { CarouselImmaginiComponent } from './prodotto/componenti/cardInfoProdotto.componenti/carousel-immagini/carousel-immagini.component';
-import { CardInfoProdottoComponent } from './prodotto/componenti/cardInfoProdotto.componenti/card-info-prodotto/card-info-prodotto.component';
+import { CardRegaloComponent } from './pagine/catalogo/componenti/cardRegalo.componenti/card-regalo/card-regalo.component';
+import { CardRegaloListComponent } from './pagine/catalogo/componenti/cardRegalo.componenti/card-regalo-list/card-regalo-list.component';
+import {FotoConBottoneComponent} from "./pagine/diventaContadino/componenti/foto-con-bottone/foto-con-bottone.component";
+import { FotoObiettiviComponent } from './pagine/diventaContadino/componenti/foto-obiettivi/foto-obiettivi.component';
+import { InterfacciaCarrelloComponent } from './pagine/carrello/interfaccia.carrello/interfaccia.carrello.component';
+import { ProdottoCarrelloComponent } from './pagine/carrello/componenti/prodottoCarrello/prodotto-carrello.component';
+import { InterfacciaCatalogoComponent } from './pagine/catalogo/interfaccia.catalogo/interfaccia.catalogo.component';
+import { InterfacciaCheckoutComponent } from './pagine/checkout/interfaccia.checkout/interfaccia.checkout.component';
+import { InterfacciaChiSiamoComponent } from './pagine/chiSiamo/interfaccia.chi-siamo/interfaccia.chi-siamo.component';
+import { InterfacciaContadinoComponent } from './pagine/contadino/interfaccia.contadino/interfaccia.contadino.component';
+import { InterfacciaProdottoComponent } from './pagine/prodotto/interfaccia.prodotto/interfaccia.prodotto.component';
+import { InterfacciaResponsabileCatalogoComponent } from './pagine/responsabileCatalogo/interfaccia.responsabile-catalogo/interfaccia.responsabile-catalogo.component';
+import { InterfacciaUtenteComponent } from './pagine/utente/interfaccia.utente/interfaccia.utente.component';
+import { InterfacciaHomeComponent } from './pagine/home/interfaccia.home/interfaccia.home.component';
+import { InterfacciaDiventaContadinoComponent } from './pagine/diventaContadino/interfaccia.diventa-contadino/interfaccia.diventa-contadino.component';
+import { NumeroConTestoComponent } from './componenti/benvenuto.componenti/numero-con-testo/numero-con-testo.component';
+import { ConsiglioAlberiListComponent } from './componenti/consiglio-alberi-list/consiglio-alberi-list.component';
+import { CardTestoConIconaComponent } from './componenti/card.componenti/card-testo-con-icona/card-testo-con-icona.component';
+import { CardTestoConIconaListComponent } from './pagine/prodotto/componenti/card-testo-con-icona-list/card-testo-con-icona-list.component';
+import { BenvenutoComponent } from './componenti/benvenuto.componenti/benvenuto/benvenuto.component';
+import { StoricoOrdiniComponent } from './pagine/utente/componenti/storico-ordini/storico-ordini.component';
+import { CarouselImmaginiComponent } from './pagine/prodotto/componenti/cardInfoProdotto.componenti/carousel-immagini/carousel-immagini.component';
+import { CardInfoProdottoComponent } from './pagine/prodotto/componenti/cardInfoProdotto.componenti/card-info-prodotto/card-info-prodotto.component';
+import { MenuLateraleComponent } from './pagine/utente/componenti/menu-laterale/menu-laterale.component';
+import {FotoConTestoListComponent}from "./pagine/home/componenti/foto-con-testo-list/foto-con-testo-list.component";
+import {FotoConTestoComponent} from "./componenti/fotoTesto.componenti/foto-con-testo/foto-con-testo.component";
+import { FaqComponent } from './pagine/catalogo/componenti/faq/faq.component';
 
 
 @NgModule({
@@ -99,7 +103,6 @@ import { CardInfoProdottoComponent } from './prodotto/componenti/cardInfoProdott
     InterfacciaHomeComponent,
     InterfacciaDiventaContadinoComponent,
     NumeroConTestoComponent,
-    NumeroConTestoListComponent,
     ConsiglioAlberiListComponent,
     CardTestoConIconaComponent,
     CardTestoConIconaListComponent,
@@ -107,7 +110,10 @@ import { CardInfoProdottoComponent } from './prodotto/componenti/cardInfoProdott
     StoricoOrdiniComponent,
     CarouselImmaginiComponent,
     CardInfoProdottoComponent,
-
+    MenuLateraleComponent,
+    FotoConTestoComponent,
+    FotoConTestoListComponent,
+    FaqComponent,
   ],
   imports: [
     BrowserModule,
@@ -138,7 +144,8 @@ import { CardInfoProdottoComponent } from './prodotto/componenti/cardInfoProdott
     ModalModule,
     FormModule,
     CarouselModule,
-    GridModule
+    GridModule,
+    AccordionModule
   ],
   providers: [ProdottoService, CategoriaService,PaeseService, UsoLocaleService],
   bootstrap: [AppComponent]

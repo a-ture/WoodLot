@@ -8,7 +8,9 @@ export class StatisticheService {
 
   constructor() { }
 
+  // restituisce le statistiche per la pagina diventa un contadino
   public getStatistiche(){
     return ["452525", "87678", "452", "4"]
   }
+
 }
