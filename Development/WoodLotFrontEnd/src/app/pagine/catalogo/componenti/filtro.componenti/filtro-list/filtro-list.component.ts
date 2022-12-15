@@ -29,7 +29,7 @@ export class FiltroListComponent implements OnInit {
     let listCategorie = new Array()
     let listPaesi = new Array()
 
-    serviceCategorie.getCategoie().forEach(e => {
+    serviceCategorie.getCategorie().forEach(e => {
       listCategorie.push(e.nome)
     })
 

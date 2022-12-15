@@ -9,7 +9,8 @@ export class CategoriaService {
 
   constructor() { }
 
-  public getCategoie(){
+  //restituisce tutte le categorie presenti nel DB
+  public getCategorie(){
     return[
       new Categoria("categoria1", "descrizione"),
       new Categoria("categoria2", "descrizione"),

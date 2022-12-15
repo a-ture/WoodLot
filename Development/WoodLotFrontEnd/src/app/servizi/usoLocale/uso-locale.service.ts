@@ -8,6 +8,7 @@ export class UsoLocaleService {
 
   constructor() { }
 
+  // restituisce tutti gli usi locali presenti nel DB
   public getUsiLocali(){
     return[
       new UsoLocale("usoLocale1","desccrizione"),

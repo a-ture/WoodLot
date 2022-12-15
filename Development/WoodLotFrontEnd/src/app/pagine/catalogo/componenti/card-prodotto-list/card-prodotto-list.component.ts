@@ -14,7 +14,7 @@ export class CardProdottoListComponent implements OnInit {
   public listaAlberi
 
   constructor(private serviceProdotto : ProdottoService) {
-    this.listaAlberi = serviceProdotto.getProdotto();
+    this.listaAlberi = serviceProdotto.getProdotti();
   }
 
   ngOnInit(): void {

@@ -76,6 +76,7 @@ import { CardConTestoConIconaCentraleComponent } from './componenti/card.compone
 import { CardConTestoConIconaCentraleListComponent } from './pagine/prodotto/componenti/card-con-testo-con-icona-centrale-list/card-con-testo-con-icona-centrale-list.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -118,6 +119,7 @@ import { CardConTestoConIconaCentraleListComponent } from './pagine/prodotto/com
     CardConTestoConIconaLateraleListComponent,
     CardConTestoConIconaCentraleComponent,
     CardConTestoConIconaCentraleListComponent,
+
   ],
   imports: [
     BrowserModule,

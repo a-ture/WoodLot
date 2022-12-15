@@ -4,7 +4,7 @@ import {Paese} from "../../entita/paese/paese";
 import {UsoLocale} from "../../entita/usoLocale/uso-locale";
 import {Beneficio} from "../../entita/beneficio/beneficio";
 import {Categoria} from "../../entita/categoria/categoria";
-
+//TODO collegamento con il back-end
 @Injectable({
   providedIn: 'root'
 })
@@ -13,8 +13,8 @@ export class ProdottoService {
   constructor() {}
 
 
-
-  public getProdotto(){
+  //restituisce tutti i prodotti presenti nel DB
+  public getProdotti(){
     return [
       new Albero(13.00, 34, "castagno"),
       new Albero(12.00, 434, "mandorlo"),
@@ -23,7 +23,7 @@ export class ProdottoService {
     ]
   }
 
-
+  //restituisce un singolo prodotto
   public getProdottoInformazioni(nome: String){
     return new Albero(13.00, 34, "castagno", new Paese("Italia", "Lorem ipsum dolor " +
       "sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. " +

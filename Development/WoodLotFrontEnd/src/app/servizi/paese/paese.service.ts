@@ -8,6 +8,7 @@ export class PaeseService {
 
   constructor() { }
 
+  //restituisce tutti i paesi presenti nel DB
   public getPaesi(){
     return [
       new Paese("Italia", "descrizione"),

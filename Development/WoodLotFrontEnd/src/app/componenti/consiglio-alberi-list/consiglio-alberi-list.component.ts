@@ -14,7 +14,7 @@ export class ConsiglioAlberiListComponent implements OnInit {
   public listaAlberi
 
   constructor(private serviceProdotto : ProdottoService) {
-    this.listaAlberi = serviceProdotto.getProdotto().slice(0,4);
+    this.listaAlberi = serviceProdotto.getProdotti().slice(0,4);
   }
 
   ngOnInit(): void {

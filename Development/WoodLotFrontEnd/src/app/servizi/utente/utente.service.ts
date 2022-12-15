@@ -11,6 +11,7 @@ export class UtenteService {
 
   constructor() { }
 
+  // restituisce un utente
   public getUtente(){
     return new Utente("Mario","Rossi", [
       new Ordine (3, [new ProdottoOrdine(13.00, 34, 45,
@@ -36,6 +37,7 @@ export class UtenteService {
     ] )
   }
 
+  //restituisce le statistiche relative ad un utente
   public getStatisticheUtente(){
     return ["34","45","65"]
   }
