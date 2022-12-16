@@ -82,6 +82,10 @@ import { CardAlberoRegaloListComponent } from './pagine/utente/componenti/sezion
 import { SezioneAlberoComponent } from './pagine/utente/componenti/sezioneAlberi.componenti/sezione-albero/sezione-albero.component';
 import { ImmagineComponent } from './componenti/foto.componenti/immagine/immagine.component';
 import { CardDescrizioneProdottoComponent } from './pagine/prodotto/componenti/cardInfoProdotto.componenti/card-descrizione-prodotto/card-descrizione-prodotto.component';
+import { CardForestaComponent } from './pagine/utente/componenti/sezioneForeste.componenti/card-foresta/card-foresta.component';
+import { CardForestaListComponent } from './pagine/utente/componenti/sezioneForeste.componenti/card-foresta-list/card-foresta-list.component';
+import { SezioneForesteComponent } from './pagine/utente/componenti/sezioneForeste.componenti/sezione-foreste/sezione-foreste.component';
+import { CardAlberoForestaListComponent } from './pagine/utente/componenti/sezioneForeste.componenti/card-albero-foresta-list/card-albero-foresta-list.component';
 
 
 @NgModule({
@@ -134,6 +138,10 @@ import { CardDescrizioneProdottoComponent } from './pagine/prodotto/componenti/c
     SezioneAlberoComponent,
     ImmagineComponent,
     CardDescrizioneProdottoComponent,
+    CardForestaComponent,
+    CardForestaListComponent,
+    SezioneForesteComponent,
+    CardAlberoForestaListComponent,
 
   ],
   imports: [

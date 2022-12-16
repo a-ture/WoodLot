@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UtenteService} from "../../../servizi/utente/utente.service";
 import {ProdottoOrdine} from "../../../entita/prodottoOrdine/prodotto-ordine";
 
@@ -12,19 +12,23 @@ export class InterfacciaUtenteComponent implements OnInit {
   public utente
   public listaNomi = ["Alberi", "Regali", "CO2"]
   public listaNumeri
+  public listaForeste
 
-  constructor(private serviceUtente:UtenteService) {
+
+  constructor(private serviceUtente: UtenteService) {
     this.utente = serviceUtente.getUtente()
     this.listaNumeri = serviceUtente.getStatisticheUtente()
+    this.listaForeste = serviceUtente.getForeste(this.utente)
   }
-  // restituisce tutti gli alberi di un utente
-  public getAlberiUtente(){
+
+  //restituisce tutti gli alberi di un utente
+  public getAlberiUtente() {
     let alberi = new Array<ProdottoOrdine>()
-    this.utente.listaOrdini.forEach( e => {
-      e.listaProdottiOrdine.forEach( i => {
+    this.utente.listaOrdini.forEach(e => {
+      e.listaProdottiOrdine.forEach(i => {
         alberi.push(i)
       })
-    } )
+    })
     return alberi
   }
 

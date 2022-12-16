@@ -1,11 +1,13 @@
 import {Ordine} from "../ordine/ordine";
+import {Foresta} from "../foresta/foresta";
 
 export class Utente {
-  public nome : String
-  public cognome : String
-  public listaOrdini : Ordine[]
+  public nome: String
+  public cognome: String
+  public listaOrdini: Ordine[]
 
-  constructor(nome:String, cognome:String, listaOrdini:Ordine[]) {
+
+  constructor(nome: String, cognome: String, listaOrdini: Ordine[]) {
     this.nome = nome
     this.cognome = cognome
     this.listaOrdini = listaOrdini
