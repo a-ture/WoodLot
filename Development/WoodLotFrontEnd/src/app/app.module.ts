@@ -81,6 +81,7 @@ import { SezioneBadgeComponent } from './pagine/utente/componenti/sezioneBadge.c
 import { CardAlberoRegaloListComponent } from './pagine/utente/componenti/sezioneAlberi.componenti/card-albero-regalo-list/card-albero-regalo-list.component';
 import { SezioneAlberoComponent } from './pagine/utente/componenti/sezioneAlberi.componenti/sezione-albero/sezione-albero.component';
 import { ImmagineComponent } from './componenti/immagine/immagine.component';
+import { CardDescrizioneProdottoComponent } from './pagine/prodotto/componenti/cardInfoProdotto.componenti/card-descrizione-prodotto/card-descrizione-prodotto.component';
 
 
 @NgModule({
@@ -132,6 +133,7 @@ import { ImmagineComponent } from './componenti/immagine/immagine.component';
     CardAlberoRegaloListComponent,
     SezioneAlberoComponent,
     ImmagineComponent,
+    CardDescrizioneProdottoComponent,
 
   ],
   imports: [
