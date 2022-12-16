@@ -8,7 +8,7 @@ import {Component, OnInit} from '@angular/core';
 export class SezioneBadgeComponent implements OnInit {
 
   public listaBadge = [
-    "Astrologo", "Benefattore", "Giramondo", "Matricola", "Multitasking", "Tarzan"
+    "Astrologo", "Benefattore", "Giramondo", "Matricola", "Tutto fare", "Tarzan"
   ]
 
   public listaDescrizioneBadge = [

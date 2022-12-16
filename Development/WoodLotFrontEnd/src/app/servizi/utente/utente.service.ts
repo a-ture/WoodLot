@@ -17,13 +17,13 @@ export class UtenteService {
       new Ordine (3, [new ProdottoOrdine(13.00, 34, 45,
         "", new Date(), "fiore","castagno","Coordinate Geografiche"),
         new ProdottoOrdine(13.00, 34, 45,
-          "", new Date(), "fiore","mandorlo", "Coordinate Geografiche")
+          "Alessia", new Date(), "fiore","mandorlo", "Coordinate Geografiche")
         ],233, new Date()),
 
       new Ordine (1, [new ProdottoOrdine(13.00, 34, 45,
         "", new Date(), "fiore","castagno","Coordinate Geografiche"),
         new ProdottoOrdine(13.00, 34, 45,
-          "", new Date(), "fiore","mandorlo" ,"Coordinate Geografiche")
+          "Antonio", new Date(), "fiore","mandorlo" ,"Coordinate Geografiche")
       ],233, new Date()),
 
       new Ordine (2, [new ProdottoOrdine(13.00, 34, 45,

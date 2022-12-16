@@ -27,7 +27,7 @@ import {
   CardModule, CarouselModule,
   DropdownModule,
   FormModule, GridModule,
-  ModalModule
+  ModalModule, NavModule, TabsModule
 } from '@coreui/angular';
 import { IconModule } from '@coreui/icons-angular';
 import { HttpClientModule } from '@angular/common/http';
@@ -78,6 +78,8 @@ import { CardAlberoComponent } from './componenti/card.componenti/card-albero/ca
 import { CardAlberoListComponent } from './pagine/utente/componenti/sezioneAlberi.componenti/card-albero-list/card-albero-list.component';
 import { BadgeComponent } from './pagine/utente/componenti/sezioneBadge.componenti/badge/badge.component';
 import { SezioneBadgeComponent } from './pagine/utente/componenti/sezioneBadge.componenti/sezione-badge/sezione-badge.component';
+import { CardAlberoRegaloListComponent } from './pagine/utente/componenti/sezioneAlberi.componenti/card-albero-regalo-list/card-albero-regalo-list.component';
+import { SezioneAlberoComponent } from './pagine/utente/componenti/sezioneAlberi.componenti/sezione-albero/sezione-albero.component';
 
 
 
@@ -128,6 +130,8 @@ import { SezioneBadgeComponent } from './pagine/utente/componenti/sezioneBadge.c
     CardAlberoListComponent,
     BadgeComponent,
     SezioneBadgeComponent,
+    CardAlberoRegaloListComponent,
+    SezioneAlberoComponent,
 
 
   ],
@@ -146,7 +150,6 @@ import { SezioneBadgeComponent } from './pagine/utente/componenti/sezioneBadge.c
     MdbRangeModule,
     MdbRippleModule,
     MdbScrollspyModule,
-    MdbTabsModule,
     MdbTooltipModule,
     MdbValidationModule,
     BrowserAnimationsModule,
@@ -161,7 +164,10 @@ import { SezioneBadgeComponent } from './pagine/utente/componenti/sezioneBadge.c
     FormModule,
     CarouselModule,
     GridModule,
-    AccordionModule
+    AccordionModule,
+    MdbTabsModule,
+    NavModule,
+    TabsModule
   ],
   providers: [ProdottoService, CategoriaService,PaeseService, UsoLocaleService],
   bootstrap: [AppComponent]

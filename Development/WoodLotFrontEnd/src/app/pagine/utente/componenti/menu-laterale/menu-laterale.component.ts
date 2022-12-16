@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {ProdottoOrdine} from "../../../../entita/prodottoOrdine/prodotto-ordine";
 
 //TODO aggiungere il routing
 @Component({
@@ -7,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu-laterale.component.scss']
 })
 export class MenuLateraleComponent implements OnInit {
+
+  @Input()
+  public listaAlberi !: ProdottoOrdine[]
 
   selectedMenu : String = "Home"
 

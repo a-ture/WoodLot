@@ -1,6 +1,6 @@
-<div class="row d-flex align-content-center">
+<div class="row">
   <div class="col-lg-2">
-    <div class="main-box m-3">
+    <div class="main-box">
       <ul class="menu-item list-unstyled">
         <li (click)="goTo('Alberi')" [ngClass]="{'onActive':selectedMenu == 'Alberi'}">
             <i class="fa-sharp fa-solid fa-leaf"> </i> Alberi
@@ -16,12 +16,11 @@
   </div>
 
   <div class="col-lg-10">
-
       <div *ngIf="selectedMenu == 'Alberi'">
-        <p>Alberi</p>
+          <app-sezione-albero [listaAlberi]="listaAlberi"></app-sezione-albero>
       </div>
       <div *ngIf="selectedMenu == 'Badge'">
-        <p>Badge</p>
+        <app-sezione-badge></app-sezione-badge>
       </div>
       <div *ngIf="selectedMenu == 'Foreste'">
         <p>Foreste</p>

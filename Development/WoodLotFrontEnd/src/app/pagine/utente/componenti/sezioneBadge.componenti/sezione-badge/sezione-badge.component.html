@@ -1,5 +1,5 @@
-<div class="container w-50">
-  <c-row [gutter]="5" class="mb-3" [md]="3" [sm]="2" [xs]="2">
+<div class="container">
+  <c-row [gutter]="3" [md]="3" [sm]="2" [xs]="2" >
     <c-col *ngFor="let item of listaBadge; index as i">
       <app-badge
         [nome]="item" [sourceImage]="listaSourceImage[i]"
