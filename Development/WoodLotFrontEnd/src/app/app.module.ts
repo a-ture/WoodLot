@@ -61,26 +61,26 @@ import { InterfacciaUtenteComponent } from './pagine/utente/interfaccia.utente/i
 import { InterfacciaHomeComponent } from './pagine/home/interfaccia.home/interfaccia.home.component';
 import { InterfacciaDiventaContadinoComponent } from './pagine/diventaContadino/interfaccia.diventa-contadino/interfaccia.diventa-contadino.component';
 import { NumeroConTestoComponent } from './componenti/benvenuto.componenti/numero-con-testo/numero-con-testo.component';
-import { ConsiglioAlberiListComponent } from './componenti/consiglio-alberi-list/consiglio-alberi-list.component';
+import { ConsiglioAlberiListComponent } from './componenti/card.componenti/consiglioAlberi/consiglio-alberi-list/consiglio-alberi-list.component';
 import { BenvenutoComponent } from './componenti/benvenuto.componenti/benvenuto/benvenuto.component';
 import { StoricoOrdiniComponent } from './pagine/utente/componenti/storico-ordini/storico-ordini.component';
 import { CarouselImmaginiComponent } from './pagine/prodotto/componenti/cardInfoProdotto.componenti/carousel-immagini/carousel-immagini.component';
 import { CardInfoProdottoComponent } from './pagine/prodotto/componenti/cardInfoProdotto.componenti/card-info-prodotto/card-info-prodotto.component';
 import { MenuLateraleComponent } from './pagine/utente/componenti/menu-laterale/menu-laterale.component';
 import {FotoConTestoListComponent}from "./pagine/home/componenti/foto-con-testo-list/foto-con-testo-list.component";
-import {FotoConTestoComponent} from "./componenti/fotoTesto.componenti/foto-con-testo/foto-con-testo.component";
+import {FotoConTestoComponent} from "./componenti/foto.componenti/foto-con-testo/foto-con-testo.component";
 import { FaqComponent } from './pagine/catalogo/componenti/faq/faq.component';
 import { CardConTestoConIconaLateraleComponent } from './componenti/card.componenti/card-con-testo-con-icona-laterale/card-con-testo-con-icona-laterale.component';
 import { CardConTestoConIconaLateraleListComponent } from './pagine/home/componenti/card-con-testo-con-icona-laterale-list/card-con-testo-con-icona-laterale-list.component';
 import { CardConTestoConIconaCentraleComponent } from './componenti/card.componenti/card-con-testo-con-icona-centrale/card-con-testo-con-icona-centrale.component';
 import { CardConTestoConIconaCentraleListComponent } from './pagine/prodotto/componenti/card-con-testo-con-icona-centrale-list/card-con-testo-con-icona-centrale-list.component';
-import { CardAlberoComponent } from './componenti/card.componenti/card-albero/card-albero.component';
+import { CardAlberoComponent } from './componenti/card.componenti/consiglioAlberi/card-albero/card-albero.component';
 import { CardAlberoListComponent } from './pagine/utente/componenti/sezioneAlberi.componenti/card-albero-list/card-albero-list.component';
 import { BadgeComponent } from './pagine/utente/componenti/sezioneBadge.componenti/badge/badge.component';
 import { SezioneBadgeComponent } from './pagine/utente/componenti/sezioneBadge.componenti/sezione-badge/sezione-badge.component';
 import { CardAlberoRegaloListComponent } from './pagine/utente/componenti/sezioneAlberi.componenti/card-albero-regalo-list/card-albero-regalo-list.component';
 import { SezioneAlberoComponent } from './pagine/utente/componenti/sezioneAlberi.componenti/sezione-albero/sezione-albero.component';
-import { ImmagineComponent } from './componenti/immagine/immagine.component';
+import { ImmagineComponent } from './componenti/foto.componenti/immagine/immagine.component';
 import { CardDescrizioneProdottoComponent } from './pagine/prodotto/componenti/cardInfoProdotto.componenti/card-descrizione-prodotto/card-descrizione-prodotto.component';
 
 

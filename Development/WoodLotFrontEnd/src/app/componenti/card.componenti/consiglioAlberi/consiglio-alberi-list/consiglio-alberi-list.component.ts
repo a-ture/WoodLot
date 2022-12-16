@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ProdottoService} from "../../servizi/prodotto/prodotto.service";
+import {ProdottoService} from "../../../../servizi/prodotto/prodotto.service";
 
 @Component({
   selector: 'app-consiglio-alberi-list',
