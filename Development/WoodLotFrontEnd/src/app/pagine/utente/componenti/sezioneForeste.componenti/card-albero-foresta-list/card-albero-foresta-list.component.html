@@ -1,5 +1,5 @@
 <div class="container d-flex justify-content-center">
-  <c-row [gutter]="2"  [md]="3" [xs]="2">
+  <c-row [gutter]="2"  [md]="3" [xs]="1">
     <c-col *ngFor="let item of listaAlberi; index as i">
       <app-card-albero [titolo]="item.nome" [sourceImage]="listaSourceImage[i]"
                        [listaNomi]="listaNomi" [listaDescrizioni]="getDescrizioneCard(i)"

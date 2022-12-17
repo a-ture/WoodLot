@@ -86,6 +86,7 @@ import { CardForestaComponent } from './pagine/utente/componenti/sezioneForeste.
 import { CardForestaListComponent } from './pagine/utente/componenti/sezioneForeste.componenti/card-foresta-list/card-foresta-list.component';
 import { SezioneForesteComponent } from './pagine/utente/componenti/sezioneForeste.componenti/sezione-foreste/sezione-foreste.component';
 import { CardAlberoForestaListComponent } from './pagine/utente/componenti/sezioneForeste.componenti/card-albero-foresta-list/card-albero-foresta-list.component';
+import { CreaForestaComponent } from './pagine/utente/componenti/sezioneForeste.componenti/crea-foresta/crea-foresta.component';
 
 
 @NgModule({
@@ -142,6 +143,7 @@ import { CardAlberoForestaListComponent } from './pagine/utente/componenti/sezio
     CardForestaListComponent,
     SezioneForesteComponent,
     CardAlberoForestaListComponent,
+    CreaForestaComponent,
 
   ],
   imports: [

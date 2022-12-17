@@ -3,8 +3,8 @@
   <div class="card-body">
     <h5 class="card-title">{{foresta.nome}}</h5>
     <div class="row">
-      <p class="card-text col-6" [cModalToggle]="modalXl.id">Scopri di piu!</p>
-      <a class="btn btn-primary col-6" [cModalToggle]="modalLg.id">Modifica dati</a>
+      <p class="card-text col-lg-6" [cModalToggle]="modalXl.id">Scopri di piu!</p>
+      <a class="btn btn-primary col-lg-6" *ngIf="tipo== 'creata'" [cModalToggle]="modalLg.id">Modifica dati</a>
     </div>
   </div>
 </div>
@@ -19,20 +19,20 @@
     <div class="row">
       <img src="{{sourceImage}}">
     </div>
-    <div class="row mt-3 mx-5 text-center">
-      <div class="col">
+    <div class="row my-3 mx-5 text-center">
+      <div class="col-lg-6">
         <h4><b>Foresta creata da: </b>{{foresta.proprietario.nome}} {{foresta.proprietario.cognome}}</h4>
       </div>
-      <div class="col">
+      <div class="col-lg-6">
         <h4><b>{{foresta.alberi.length}}</b> Alberi piantati</h4>
       </div>
     </div>
-    <div class="row justify-content-center my-3">
+    <div class="row justify-content-center my-3" *ngIf="foresta.tipologia == 'Pubblica'">
       <a class="btn btn-primary col-4" [cModalToggle]="verticallyCenteredModal.id">Pianta anche tu in questa
         foresta!</a>
     </div>
     <div class="row mx-2" style="background-color: #F4EBC7">
-      <div class="col-3">
+      <div class="col-lg-3">
         <p class="fw-bold">Impatto</p>
         <p>Gli alberi che piantiamo hanno grandi ambizioni: portare benefici non solo all'ambiente, ma anche alle
           persone che lo abitano. Per questo lavoriamo con ONG e comunità locali per selezionare l'albero giusto,
@@ -41,7 +41,7 @@
         <p style="background-color:#93C572">Gli alberi della foresta assorbiranno: {{getCo2Foresta()}} tonnellate di
           CO<sub>2</sub></p>
       </div>
-      <div class="col-9 ">
+      <div class="col-lg-9 col-sm-12">
         <h4 class="text-center">Gli alberi della foresta</h4>
         <app-card-albero-foresta-list [listaAlberi]="foresta.alberi.slice(0,3)"></app-card-albero-foresta-list>
         <div class="row justify-content-center mt-3">
@@ -52,16 +52,13 @@
   </c-modal-body>
 </c-modal>
 
-<c-modal #verticallyCenteredModal alignment="center" id="verticallyCenteredModal">
+<c-modal #verticallyCenteredModal alignment="center" id={{foresta.nome}}1>
   <c-modal-header>
     <h5 cModalTitle>Pianta un albero nella foresta: {{foresta.nome}}</h5>
   </c-modal-header>
   <c-modal-body>
-    <select aria-label="Small select example" cSelect sizing="sm">
-      <option>Open this select menu</option>
-      <option value="1">One</option>
-      <option value="2">Two</option>
-      <option value="3">Three</option>
+    <select aria-label="Default select example" cSelect>
+      <option *ngFor="let item of listaAlberi" value={{item.codice}}>({{item.codice}}) - {{item.nome}}</option>
     </select>
   </c-modal-body>
   <c-modal-footer>
@@ -104,7 +101,7 @@
         </c-input-group>
       </c-col>
       <c-col [xs]="12" class="text-center">
-        <button [cModalToggle]="modalLg.id"  cButton type="submit">Modifica</button>
+        <button [cModalToggle]="modalLg.id" cButton type="submit">Modifica</button>
       </c-col>
     </form>
 

@@ -7,18 +7,22 @@ import {ProdottoOrdine} from "../../../entita/prodottoOrdine/prodotto-ordine";
   templateUrl: './interfaccia.utente.component.html',
   styleUrls: ['./interfaccia.utente.component.scss']
 })
+
+
 export class InterfacciaUtenteComponent implements OnInit {
 
   public utente
   public listaNomi = ["Alberi", "Regali", "CO2"]
   public listaNumeri
-  public listaForeste
+  public listaForesteCreate
+  public listaForesteSupportate
 
 
   constructor(private serviceUtente: UtenteService) {
     this.utente = serviceUtente.getUtente()
     this.listaNumeri = serviceUtente.getStatisticheUtente()
-    this.listaForeste = serviceUtente.getForeste(this.utente)
+    this.listaForesteCreate = serviceUtente.getForesteCreate(this.utente)
+    this.listaForesteSupportate = serviceUtente.getForesteSupportate(this.utente)
   }
 
   //restituisce tutti gli alberi di un utente
@@ -31,6 +35,7 @@ export class InterfacciaUtenteComponent implements OnInit {
     })
     return alberi
   }
+
 
   ngOnInit(): void {
   }

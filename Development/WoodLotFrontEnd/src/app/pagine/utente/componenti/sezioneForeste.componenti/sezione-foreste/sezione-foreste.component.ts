@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Foresta} from "../../../../../entita/foresta/foresta";
+import {ProdottoOrdine} from "../../../../../entita/prodottoOrdine/prodotto-ordine";
 
 @Component({
   selector: 'app-sezione-foreste',
@@ -9,9 +10,30 @@ import {Foresta} from "../../../../../entita/foresta/foresta";
 export class SezioneForesteComponent implements OnInit {
 
   @Input()
-  public listaForeste !: Foresta[]
+  public listaForesteCreate !: Foresta[]
 
-  constructor() { }
+  @Input()
+  public listaForesteSupportate !: Foresta[]
+
+  @Input()
+  public listaAlberiDaPiantare !: ProdottoOrdine[]
+
+  public panes = [
+    {name: 'Create', content: 'One'},
+    {name: 'Supportate', content: 'Two'},
+    {name: 'Crea la tua foresta', content: 'Three'},
+  ];
+
+  activePane = 0;
+
+  onTabChange($event: number) {
+    this.activePane = $event;
+    console.log('onTabChange', $event);
+  }
+
+  constructor() {
+  }
+
 
   ngOnInit(): void {
   }

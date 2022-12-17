@@ -1,1 +1,21 @@
+c-nav {
+  --cui-nav-pills-link-active-bg: #93C572;
+  --cui-nav-pills-border-radius: 50px;
+  border-bottom: 1px solid black;
+}
+
+.nav-link:hover {
+  color: #93C572;
+}
+
+.btn-primary {
+  --cui-btn-bg: #93C572;
+  --cui-btn-border-color: #93C572;
+  --cui-btn-hover-border-color: #94AD6E;
+  --cui-btn-hover-bg: #94AD6E;
+  --cui-btn-border-radius: 30px;
+  --cui-btn-active-bg: #C4D89F;
+  --cui-btn-active-border-color: #C4D89F;
+}
+
 

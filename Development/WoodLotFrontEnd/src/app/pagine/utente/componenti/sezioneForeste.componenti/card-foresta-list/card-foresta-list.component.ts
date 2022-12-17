@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Foresta} from "../../../../../entita/foresta/foresta";
+import {ProdottoOrdine} from "../../../../../entita/prodottoOrdine/prodotto-ordine";
 
 @Component({
   selector: 'app-card-foresta-list',
@@ -9,7 +10,13 @@ import {Foresta} from "../../../../../entita/foresta/foresta";
 export class CardForestaListComponent implements OnInit {
 
   @Input()
+  public listaAlberi!: ProdottoOrdine[]
+
+  @Input()
   public listaAlberiForesta !: Foresta[]
+
+  @Input()
+  public tipo !: String
 
   public listaSourceImage = [
     "assets/img/profiloUtente/foreste/foresta.jpeg",

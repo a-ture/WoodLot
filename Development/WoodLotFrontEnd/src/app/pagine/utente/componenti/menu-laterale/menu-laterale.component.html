@@ -23,7 +23,10 @@
       <app-sezione-badge></app-sezione-badge>
     </div>
     <div *ngIf="selectedMenu == 'Foreste'">
-      <app-sezione-foreste [listaForeste]="listaForeste"></app-sezione-foreste>
+      <app-sezione-foreste [listaForesteCreate]="listaForesteCreate"
+                           [listaAlberiDaPiantare]="getAlberiDaPiantare()"
+                           [listaForesteSupportate]="listaForesteSupportate"
+      ></app-sezione-foreste>
     </div>
   </div>
 </div>

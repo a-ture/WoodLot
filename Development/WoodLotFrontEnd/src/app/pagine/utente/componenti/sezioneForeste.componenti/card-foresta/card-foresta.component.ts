@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Foresta} from "../../../../../entita/foresta/foresta";
+import {ProdottoOrdine} from "../../../../../entita/prodottoOrdine/prodotto-ordine";
 
 @Component({
   selector: 'app-card-foresta',
@@ -12,6 +13,12 @@ export class CardForestaComponent implements OnInit {
 
   @Input()
   public foresta !: Foresta
+
+  @Input()
+  public listaAlberi!: ProdottoOrdine[]
+
+  @Input()
+  public tipo !: String
 
   public getCo2Foresta() {
     let co2 = 0

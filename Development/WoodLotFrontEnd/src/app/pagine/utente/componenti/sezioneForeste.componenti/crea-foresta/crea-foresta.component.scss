@@ -3,7 +3,7 @@
   --cui-btn-border-color: #5E7250;
   --cui-btn-hover-border-color: #94AD6E;
   --cui-btn-hover-bg: #94AD6E;
-  --cui-btn-border-radius: 30px;
+  --cui-btn-border-radius: 15px;
   --cui-btn-active-bg: #C4D89F;
   --cui-btn-active-border-color: #C4D89F;
 }
@@ -18,11 +18,6 @@
   background-color: #C4D89F;
   border-color: #C4D89F;
   color: white;
-}
-
-.card-text {
-  color: #94AD6E;
-  cursor: pointer;
 }
 
 .form-control:focus {
