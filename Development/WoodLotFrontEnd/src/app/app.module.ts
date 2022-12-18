@@ -32,7 +32,6 @@ import {
 import { IconModule } from '@coreui/icons-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './componenti/header/header.component';
-import { FooterComponent } from './componenti/footer/footer.component';
 import { CardTondaConTestoComponent } from './componenti/card.componenti/card-tonda-con-testo/card-tonda-con-testo.component';
 import { CardTondaConTestoListComponent } from './pagine/diventaContadino/componenti/card-tonda-con-testo-list/card-tonda-con-testo-list.component';
 import { CardRettangolareConTestoComponent } from './pagine/diventaContadino/componenti/cardRettangolareConTesto.componenti/card-rettangolare-con-testo/card-rettangolare-con-testo.component';
@@ -87,6 +86,7 @@ import { CardForestaListComponent } from './pagine/utente/componenti/sezioneFore
 import { SezioneForesteComponent } from './pagine/utente/componenti/sezioneForeste.componenti/sezione-foreste/sezione-foreste.component';
 import { CardAlberoForestaListComponent } from './pagine/utente/componenti/sezioneForeste.componenti/card-albero-foresta-list/card-albero-foresta-list.component';
 import { CreaForestaComponent } from './pagine/utente/componenti/sezioneForeste.componenti/crea-foresta/crea-foresta.component';
+import {FooterComponent} from "./componenti/footer/footer.component";
 
 
 @NgModule({
