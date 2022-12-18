@@ -87,6 +87,10 @@ import { SezioneForesteComponent } from './pagine/utente/componenti/sezioneFores
 import { CardAlberoForestaListComponent } from './pagine/utente/componenti/sezioneForeste.componenti/card-albero-foresta-list/card-albero-foresta-list.component';
 import { CreaForestaComponent } from './pagine/utente/componenti/sezioneForeste.componenti/crea-foresta/crea-foresta.component';
 import {FooterComponent} from "./componenti/footer/footer.component";
+import {
+  FotoConTestoSovrappostoComponent
+} from "./pagine/home/componenti/foto-con-testo-sovrapposto/foto-con-testo-sovrapposto.component";
+
 
 
 @NgModule({
@@ -144,6 +148,7 @@ import {FooterComponent} from "./componenti/footer/footer.component";
     SezioneForesteComponent,
     CardAlberoForestaListComponent,
     CreaForestaComponent,
+    FotoConTestoSovrappostoComponent,
 
   ],
   imports: [
