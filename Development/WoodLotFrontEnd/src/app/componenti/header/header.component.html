@@ -1,0 +1,115 @@
+<nav class="navbar navbar-expand-lg navbar-light ">
+  <!-- Container wrapper -->
+  <div class="container-fluid">
+
+    <button id="menu"
+            cButton [cOffcanvasToggle]="offcanvasNoBackdrop.id"
+            class="mx-4">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <a class="navbar-brand me-2" href="#!" id="logo">
+      <img
+        src="assets/img/header/logoWoodLot.jpg"
+        height="50"
+        loading="lazy"
+      />
+      <small class="fs-3">
+        WoodLot</small>
+    </a>
+
+
+    <!-- Collapsible wrapper -->
+    <div
+      class="collapse navbar-collapse"
+      id="navbarRightAlignExample"
+      mdbCollapse
+      #rightAligned="mdbCollapse"
+    >
+      <!-- Left links -->
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item" *ngIf="utente != null">
+          <button type="button" class="btn btn-link px-3 me-2">
+            Logout
+          </button>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="btn btn-primary me-3" *ngIf="utente != null; else accedi">
+            Profilo
+          </button>
+          <ng-template #accedi>
+            <button type="button" class="btn btn-primary me-3">
+              Accedi
+            </button>
+          </ng-template>
+        </li>
+        <li class="nav-item">
+          <a  *ngIf="elementiInCarrello == 0; else carrelloPieno"
+             class="btn px-3 carrello"
+             href="#!"
+          ><img src="assets/img/header/carriola.svg" height="20"></a>
+          <ng-template #carrelloPieno>
+            <a class="btn px-3 carrello"
+               href="#!"><img src="assets/img/header/carriolaPiena.svg" height="20"></a>
+          </ng-template>
+        </li>
+      </ul>
+      <!-- Left links -->
+    </div>
+    <!-- Collapsible wrapper -->
+  </div>
+  <!-- Container wrapper -->
+</nav>
+
+
+<c-offcanvas
+  id="OffcanvasNoBackdrop"
+  [backdrop]="false"
+  [scroll]="true"
+  placement="start"
+  #offcanvasNoBackdrop
+>
+  <c-offcanvas-header>
+    <h5 cOffcanvasTitle>WoodLot</h5>
+    <button
+      aria-label="Close"
+      cButtonClose
+      [cOffcanvasToggle]="offcanvasNoBackdrop.id"
+      class="text-reset"
+    ></button>
+  </c-offcanvas-header>
+  <c-offcanvas-body>
+    <ul class="list-unstyled">
+      <li class="my-2"><a href="#!">Catalogo</a></li>
+      <li class="my-2"><a href="#!">Diventa un contadino</a></li>
+      <li class="my-2"><a href="#!">Chi Siamo</a></li>
+      <li class="my-2"><a class="btn btn-primary" style="color: white">Hai un TreeCode?</a></li>
+      <li class="d-lg-none my-2" *ngIf="utente != null">
+        <button type="button" class="btn btn-link px-3 me-2">
+          Logout
+        </button>
+      </li>
+      <li class="d-lg-none my-2">
+        <button type="button" class="btn btn-primary me-3" *ngIf="utente != null; else accedi">
+          Profilo
+        </button>
+        <ng-template #accedi>
+          <button type="button" class="btn btn-primary me-3">
+            Accedi
+          </button>
+        </ng-template>
+      </li>
+      <li class="d-lg-none my-2">
+        <a *ngIf="elementiInCarrello == 0; else carrelloPieno"
+           class="btn px-3 carrello"
+           href="#!"
+        ><img src="assets/img/header/carriola.svg" height="20"></a>
+        <ng-template #carrelloPieno>
+          <a class="btn px-3 carrello"
+             href="#!"
+          ><img src="assets/img/header/carriolaPiena.svg" height="20"></a>
+        </ng-template>
+      </li>
+    </ul>
+  </c-offcanvas-body>
+</c-offcanvas>

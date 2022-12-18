@@ -1,0 +1,76 @@
+#menu {
+  --cui-btn-bg: white;
+  --cui-btn-border-color: white;
+  --cui-btn-hover-border-color: #94AD6E;
+  --cui-btn-hover-bg: #94AD6E;
+  --cui-btn-border-radius: 15px;
+  --cui-btn-active-bg: #C4D89F;
+  --cui-btn-active-border-color: #C4D89F;
+  --cui-btn-color: #688952;
+}
+
+#logo {
+  color: #688952;
+}
+
+.btn-primary {
+  --cui-btn-bg: #C4D89F;
+  --cui-btn-border-color: #C4D89F;
+  --cui-btn-hover-border-color: #94AD6E;
+  --cui-btn-hover-bg: #94AD6E;
+  --cui-btn-border-radius: 15px;
+  --cui-btn-active-bg: #5E7250;
+  --cui-btn-active-border-color: #5E7250;
+}
+
+.btn-link {
+  color: #917975;
+  text-decoration: none;
+}
+
+.btn-link:hover {
+  color: #E5C59C;
+}
+
+.carrello{
+  background-color: transparent;
+  --cui-btn-hover-border-color: #C4D89F;
+  --cui-btn-hover-bg: transparent;
+  --cui-btn-border-radius: 15px;
+  --cui-btn-active-bg: transparent;
+  --cui-btn-active-border-color:#C4D89F ;
+  --cui-btn-color: #688952;
+}
+
+.btn {
+  box-shadow: none;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  color: #688952;
+}
+
+.offcanvas-title {
+  color: #688952
+}
+
+.offcanvas-start {
+  margin: 5px;
+  border: 1px solid grey;
+  --cui-offcanvas-border-color: grey;
+  border-radius: 30px;
+  max-height: 250px;
+  --cui-offcanvas-width: auto;
+  background-color: #F4EBC7;
+}
+
+@media (max-width: 992px) {
+  .offcanvas-start {
+    max-height: 380px;
+  }
+}

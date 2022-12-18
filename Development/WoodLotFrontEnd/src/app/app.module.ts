@@ -27,7 +27,7 @@ import {
   CardModule, CarouselModule,
   DropdownModule,
   FormModule, GridModule,
-  ModalModule, NavModule, TabsModule
+  ModalModule, NavModule, OffcanvasModule, TabsModule
 } from '@coreui/angular';
 import { IconModule } from '@coreui/icons-angular';
 import { HttpClientModule } from '@angular/common/http';
@@ -178,7 +178,8 @@ import {FooterComponent} from "./componenti/footer/footer.component";
     AccordionModule,
     MdbTabsModule,
     NavModule,
-    TabsModule
+    TabsModule,
+    OffcanvasModule
   ],
   providers: [ProdottoService, CategoriaService,PaeseService, UsoLocaleService],
   bootstrap: [AppComponent]

@@ -52,7 +52,7 @@ export class UtenteService {
     ])
   }
 
-  //restituisce le foreste di un utente
+  //restituisce le foreste create da un utente
   public getForesteCreate(utente: Utente) {
     return [
       new Foresta("Breaking Forest", utente, [new ProdottoOrdine(13.00, 34, 45,
@@ -79,7 +79,7 @@ export class UtenteService {
 
   //restiruisce le foreste supportate da un utente
   public getForesteSupportate(utente: Utente) {
-    return [new Foresta("Animali a 4 zampe", utente, [new ProdottoOrdine(13.00, 34, 45,
+    return [new Foresta("Animali a 4 zampe", new Utente("mario", "rossi", []), [new ProdottoOrdine(13.00, 34, 45,
       "Antonio", new Date(), "fiore", "mandorlo",
       "Coordinate Geografiche", 59, "Animali a 4 zampe")], "Privata")]
   }
@@ -89,4 +89,8 @@ export class UtenteService {
     return ["34", "45", "65"]
   }
 
+  //controlla se un utente è loggato, restiuisce l'utente se è presente in sessione, null altrimenti
+  public eAttivo(){
+    return null
+  }
 }
