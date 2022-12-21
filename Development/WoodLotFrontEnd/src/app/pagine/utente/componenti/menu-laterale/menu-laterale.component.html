@@ -8,9 +8,6 @@
         <li (click)="goTo('Badge')" [ngClass]="{'onActive':selectedMenu == 'Badge'}">
           <i class="fa-sharp fa-solid fa-trophy "></i> Badge
         </li>
-        <li (click)="goTo('Foreste')" [ngClass]="{'onActive':selectedMenu == 'Foreste'}">
-          <i class="fa-solid fa-tree"></i> Foreste
-        </li>
       </ul>
     </div>
   </div>
@@ -21,12 +18,6 @@
     </div>
     <div *ngIf="selectedMenu == 'Badge'">
       <app-sezione-badge></app-sezione-badge>
-    </div>
-    <div *ngIf="selectedMenu == 'Foreste'">
-      <app-sezione-foreste [listaForesteCreate]="listaForesteCreate"
-                           [listaAlberiDaPiantare]="getAlberiDaPiantare()"
-                           [listaForesteSupportate]="listaForesteSupportate"
-      ></app-sezione-foreste>
     </div>
   </div>
 </div>

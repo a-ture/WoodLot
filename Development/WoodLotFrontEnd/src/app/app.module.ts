@@ -77,19 +77,11 @@ import { CardAlberoComponent } from './componenti/card.componenti/consiglioAlber
 import { CardAlberoListComponent } from './pagine/utente/componenti/sezioneAlberi.componenti/card-albero-list/card-albero-list.component';
 import { BadgeComponent } from './pagine/utente/componenti/sezioneBadge.componenti/badge/badge.component';
 import { SezioneBadgeComponent } from './pagine/utente/componenti/sezioneBadge.componenti/sezione-badge/sezione-badge.component';
-import { CardAlberoRegaloListComponent } from './pagine/utente/componenti/sezioneAlberi.componenti/card-albero-regalo-list/card-albero-regalo-list.component';
 import { SezioneAlberoComponent } from './pagine/utente/componenti/sezioneAlberi.componenti/sezione-albero/sezione-albero.component';
 import { ImmagineComponent } from './componenti/foto.componenti/immagine/immagine.component';
 import { CardDescrizioneProdottoComponent } from './pagine/prodotto/componenti/cardInfoProdotto.componenti/card-descrizione-prodotto/card-descrizione-prodotto.component';
-import { CardForestaComponent } from './pagine/utente/componenti/sezioneForeste.componenti/card-foresta/card-foresta.component';
-import { CardForestaListComponent } from './pagine/utente/componenti/sezioneForeste.componenti/card-foresta-list/card-foresta-list.component';
-import { SezioneForesteComponent } from './pagine/utente/componenti/sezioneForeste.componenti/sezione-foreste/sezione-foreste.component';
-import { CardAlberoForestaListComponent } from './pagine/utente/componenti/sezioneForeste.componenti/card-albero-foresta-list/card-albero-foresta-list.component';
-import { CreaForestaComponent } from './pagine/utente/componenti/sezioneForeste.componenti/crea-foresta/crea-foresta.component';
 import {FooterComponent} from "./componenti/footer/footer.component";
-import {
-  FotoConTestoSovrappostoComponent
-} from "./pagine/home/componenti/foto-con-testo-sovrapposto/foto-con-testo-sovrapposto.component";
+import {FotoConTestoSovrappostoComponent} from "./pagine/home/componenti/foto-con-testo-sovrapposto/foto-con-testo-sovrapposto.component";
 import { RegistrazioneUtenteComponent } from './componenti/registrazione-utente/registrazione-utente.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { LoginComponent } from './componenti/login/login.component';
@@ -142,15 +134,9 @@ import { LoginComponent } from './componenti/login/login.component';
     CardAlberoListComponent,
     BadgeComponent,
     SezioneBadgeComponent,
-    CardAlberoRegaloListComponent,
     SezioneAlberoComponent,
     ImmagineComponent,
     CardDescrizioneProdottoComponent,
-    CardForestaComponent,
-    CardForestaListComponent,
-    SezioneForesteComponent,
-    CardAlberoForestaListComponent,
-    CreaForestaComponent,
     FotoConTestoSovrappostoComponent,
     RegistrazioneUtenteComponent,
     LoginComponent,

@@ -1,8 +1,18 @@
-<div class="container-fluid">
-  <app-menu-laterale [listaAlberi]="getAlberiUtente()" [listaForesteCreate]="listaForesteCreate"
-                     [listaForesteSupportate]="listaForesteSupportate"
-  ></app-menu-laterale>
+<app-header></app-header>
+
+<div class="container-fluid"style="background:linear-gradient(180deg, #F4EBC7 5.73%, #FBD5B2 100%);">
+  <div class="row d-flex align-items-stretch">
+    <app-benvenuto class="col-md-6 col-sm-12 h-100" [nome]=utente.nome [cognome]=utente.cognome
+                   [listaNomi]="listaNomi" [listaNumeri]="listaNumeri"
+    ></app-benvenuto>
+    <app-storico-ordini class="col-md-6" [listaOrdini]=utente.listaOrdini></app-storico-ordini>
+  </div>
+  <div class="mt-3 container-fluid">
+    <app-menu-laterale [listaAlberi]="getAlberiUtente()"
+    ></app-menu-laterale>
+  </div>
 </div>
 
 
+<app-footer></app-footer>
 

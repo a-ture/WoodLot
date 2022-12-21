@@ -1,9 +1,0 @@
-<div class="container">
-  <c-row [gutter]="3" [md]="2" [sm]="2" [xs]="2" class="mt-5">
-    <c-col *ngFor="let item of listaAlberiForesta; index as i">
-      <app-card-foresta
-        [foresta]="item" [sourceImage]="listaSourceImage[i]" [listaAlberi]="listaAlberi" [tipo]="tipo"
-      ></app-card-foresta>
-    </c-col>
-  </c-row>
-</div>

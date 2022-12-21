@@ -4,8 +4,8 @@ import {Component, Input, OnInit} from '@angular/core';
   selector: 'app-badge',
   styleUrls: ['./badge.component.scss'],
   template: `
-    <c-card class="text-center w-75" style="border-color: black;">
-      <img cCardImg="top" src="{{sourceImage}}" class="sblocca">
+    <c-card class="text-center" style="border-color: black;">
+      <img cCardImg="top" src="{{sourceImage}}" class="sblocca"  >
       <c-card-body>
         <h5 cCardTitle>{{nome}}</h5>
         <button [cModalToggle]="verticallyCenteredModal.id" cButton>Sblocca</button>

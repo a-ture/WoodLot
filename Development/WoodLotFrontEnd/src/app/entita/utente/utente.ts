@@ -1,5 +1,5 @@
 import {Ordine} from "../ordine/ordine";
-import {Foresta} from "../foresta/foresta";
+
 
 export class Utente {
   public nome: String

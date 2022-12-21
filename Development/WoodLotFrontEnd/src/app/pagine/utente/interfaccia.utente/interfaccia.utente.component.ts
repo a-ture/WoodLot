@@ -12,17 +12,15 @@ import {ProdottoOrdine} from "../../../entita/prodottoOrdine/prodotto-ordine";
 export class InterfacciaUtenteComponent implements OnInit {
 
   public utente
-  public listaNomi = ["Alberi", "Regali", "CO2"]
+  public listaNomi = ["Alberi", "Regali", "- Anidride Carbonica"]
   public listaNumeri
-  public listaForesteCreate
-  public listaForesteSupportate
+
 
 
   constructor(private serviceUtente: UtenteService) {
     this.utente = serviceUtente.getUtente()
     this.listaNumeri = serviceUtente.getStatisticheUtente()
-    this.listaForesteCreate = serviceUtente.getForesteCreate(this.utente)
-    this.listaForesteSupportate = serviceUtente.getForesteSupportate(this.utente)
+
   }
 
   //restituisce tutti gli alberi di un utente

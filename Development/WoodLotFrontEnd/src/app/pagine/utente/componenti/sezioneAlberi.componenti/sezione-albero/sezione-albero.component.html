@@ -11,10 +11,8 @@
                  (activeTabPaneIdxChange)="onTabChange($event)"
                  [activeTabPaneIdx]="activePane">
     <c-tab-pane *ngFor="let pane of panes; index as i;" class="p-3">
-      <app-card-albero-list *ngIf="activePane == 0" [listaAlberi]="getAlberiUtente()">
+      <app-card-albero-list *ngIf="activePane == 0" [listaAlberi]="listaAlberi">
       </app-card-albero-list>
-      <app-card-albero-regalo-list *ngIf="activePane == 1" [listaAlberi]="getAlberiRegalati()">
-      </app-card-albero-regalo-list>
     </c-tab-pane>
   </c-tab-content>
 </div>

@@ -10,7 +10,6 @@ export class SezioneAlberoComponent implements OnInit {
 
   public panes = [
     {name: 'Tuoi', content: 'One'},
-    {name: 'Regalati', content: 'Two'},
   ];
 
   activePane = 0;
@@ -24,27 +23,6 @@ export class SezioneAlberoComponent implements OnInit {
 
   constructor() {}
 
-  //questo metodo restituisce gli alberi dell'utente, per la sezione "Tuoi"
-  public getAlberiUtente(){
-    let alberi = new Array<ProdottoOrdine>()
-    this.listaAlberi.forEach( e =>{
-      if (e.destinatarioRegalo == ""){
-        alberi.push(e)
-      }
-    })
-    return alberi
-  }
-
-  //questo metodo restituisce gli alberi che l'utente ha regalato, per la sezione "Regalati"
-  public getAlberiRegalati(){
-    let alberi = new Array<ProdottoOrdine>()
-    this.listaAlberi.forEach( e =>{
-      if (e.destinatarioRegalo != ""){
-        alberi.push(e)
-      }
-    })
-    return alberi
-  }
   ngOnInit(): void {
 
   }
