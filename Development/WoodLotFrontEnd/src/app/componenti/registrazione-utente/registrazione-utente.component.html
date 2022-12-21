@@ -8,11 +8,11 @@
     <button [cModalToggle]="registrazioneUtente.id" cButtonClose></button>
   </c-modal-header>
   <c-modal-body>
-    <ng-container *ngTemplateOutlet="form"></ng-container>
+    <ng-container *ngTemplateOutlet="formRegistrazione"></ng-container>
   </c-modal-body>
 </c-modal>
-<ng-template #form>
-  <form [formGroup]="formRegistrazione"
+<ng-template #formRegistrazione>
+  <form [formGroup]="formRegistrazioneUtente"
         (ngSubmit)="onSubmit()"
         [gutter]="3"
         novalidate
@@ -47,7 +47,7 @@
       />
       <div *ngIf="submitted && f['cognomeUtente'].invalid" class="invalid-feedback">
         <div *ngIf="f['cognomeUtente'].errors?.['required']">Compila questo campo</div>
-        <div *ngIf="f['cognomeUtente'].errors?.['maxLength']">ttt</div>
+        <div *ngIf="f['cognomeUtente'].errors?.['maxLength']">{{formErrori.conomeUtente.maxLength}}</div>
         <div *ngIf="f['cognomeUtente'].errors?.['pattern']">{{formErrori.conomeUtente.pattern}}</div>
       </div>
       <div *ngIf="submitted && f['cognomeUtente'].valid" class="valid-feedback">
@@ -113,9 +113,9 @@
              [ngClass]="{ 'is-invalid': (submitted || f['ripetiPassword'].touched) && f['ripetiPassword'].invalid,
               'is-valid':(submitted || f['ripetiPassword'].touched) && f['ripetiPassword'].valid}"
       />
-      <div *ngIf="submitted && formRegistrazione.errors" class="invalid-feedback">
+      <div *ngIf="submitted && formRegistrazioneUtente.errors" class="invalid-feedback">
         <div *ngIf="f['ripetiPassword'].errors?.['required']">Compila questo campo</div>
-        <div *ngIf="formRegistrazione.errors['passwordMismatch']">{{formErrori['confermaPassward'].passwordMismatch}}</div>
+        <div *ngIf="formRegistrazioneUtente.errors['passwordMismatch']">{{formErrori['confermaPassward'].passwordMismatch}}</div>
       </div>
       <div *ngIf="submitted && f['ripetiPassword'].valid" class="valid-feedback">
         Looks good!

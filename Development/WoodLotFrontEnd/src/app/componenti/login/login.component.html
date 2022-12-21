@@ -17,22 +17,23 @@
 </c-modal>
 
 <ng-template #form>
-  <form cRow>
+  <form cRow [formGroup]="formLogin"
+        (ngSubmit)="onSubmit()">
     <c-col class="mb-3" [sm]="12">
       <label cLabel for="emailUtenteLogin">E-mail</label>
       <input cFormControl
-             id="emailUtenteLogin" formControlName="emailUtente"
+             id="emailUtenteLogin" formControlName="emailUtenteLogin"
              type="text" placeholder="mariorossi@gmail.com"
       />
     </c-col>
     <c-col class="mb-3" [sm]="12">
-      <label cLabel for="password">Password</label>
+      <label cLabel for="passwordLogin">Password</label>
       <input cFormControl
-             id="password" formControlName="password" type="password" placeholder="Inserisci la tua password"
+             id="passwordLogin" formControlName="passwordLogin" type="password" placeholder="Inserisci la tua password"
       />
       <div class="my-3 text-muted">
         Non hai ancora un account?
-        <app-registrazione-utente></app-registrazione-utente>
+        Registrati!
       </div>
       <div class="row justify-content-center mt-3">
         <input class="col-6" cButton color="primary" type="submit" value="Accedi">

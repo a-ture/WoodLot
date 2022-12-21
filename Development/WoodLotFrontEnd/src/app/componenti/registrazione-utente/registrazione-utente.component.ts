@@ -20,12 +20,12 @@ export function confirmPasswordValidator(control: FormGroup): ValidationErrors |
 })
 export class RegistrazioneUtenteComponent implements OnInit {
 
-  formRegistrazione: FormGroup
+  formRegistrazioneUtente: FormGroup
   submitted = false;
   formErrori: any;
 
   constructor(private sericeValidazione: ValidazioneFormRegistrazioneUtenteService) {
-    this.formRegistrazione = new FormGroup({
+    this.formRegistrazioneUtente = new FormGroup({
       nomeUtente: new FormControl('', [Validators.required,
         Validators.maxLength(sericeValidazione.regoleForm.nomeUtenteMax),
         Validators.pattern(sericeValidazione.regoleForm.nonVuota)]),
@@ -48,7 +48,7 @@ export class RegistrazioneUtenteComponent implements OnInit {
   onSubmit(): void {
     if (this.onValidate()) {
       // TODO: Submit form value
-      console.warn(this.formRegistrazione.value);
+      console.warn(this.formRegistrazioneUtente.value);
       alert('SUCCESS!');
     }
   }
@@ -56,12 +56,12 @@ export class RegistrazioneUtenteComponent implements OnInit {
   onValidate() {
     this.submitted = true;
     //fermati qui se il modulo non è valido
-    return this.formRegistrazione.status === 'VALID';
+    return this.formRegistrazioneUtente.status === 'VALID';
   }
 
   //getter per un facile accesso ai campi del modulo
   get f() {
-    return this.formRegistrazione.controls;
+    return this.formRegistrazioneUtente.controls;
   }
 
 }

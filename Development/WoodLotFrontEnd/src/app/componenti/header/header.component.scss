@@ -64,13 +64,13 @@ a:hover {
   border: 1px solid grey;
   --cui-offcanvas-border-color: grey;
   border-radius: 30px;
-  max-height: 250px;
+  max-height: 200px;
   --cui-offcanvas-width: auto;
   background-color: #F4EBC7;
 }
 
 @media (max-width: 992px) {
   .offcanvas-start {
-    max-height: 380px;
+    max-height: 300px;
   }
 }
