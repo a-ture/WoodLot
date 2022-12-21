@@ -1,8 +1,9 @@
-<button [cModalToggle]="registrazioneUtente.id" cButton xmlns="http://www.w3.org/1999/html">Scrollable long content
+<button id="registrazioneButton" [cModalToggle]="registrazioneUtente.id" cButton xmlns="http://www.w3.org/1999/html">
+  Registrati
 </button>
 
-<c-modal #registrazioneUtente id="modal" scrollable>
-  <c-modal-header>
+<c-modal #registrazioneUtente id="registrazione" scrollable>
+  <c-modal-header >
     <h5 cModalTitle>Benvenuto su WoodLot<small><br>Completa il tuo profilo</small></h5>
     <button [cModalToggle]="registrazioneUtente.id" cButtonClose></button>
   </c-modal-header>

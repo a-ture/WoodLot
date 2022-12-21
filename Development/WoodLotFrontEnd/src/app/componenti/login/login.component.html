@@ -1,0 +1,42 @@
+<button [cModalToggle]="login.id" id="loginButton" cButton>
+  Accedi
+</button>
+<c-modal #login id="login" scrollable>
+  <c-modal-header>
+    <c-col>
+      <h5 class="text-center mt-3" cModalTitle>Entra su WoodLot!</h5>
+      <h6 class="text-center mt-3">Sei già registrato in WoodLot o sei un utente
+        nuovo?
+        <br/> In entrambi i casi sei nel posto giusto!</h6>
+    </c-col>
+    <button [cModalToggle]="login.id" cButtonClose></button>
+  </c-modal-header>
+  <c-modal-body>
+    <ng-container *ngTemplateOutlet="form"></ng-container>
+  </c-modal-body>
+</c-modal>
+
+<ng-template #form>
+  <form cRow>
+    <c-col class="mb-3" [sm]="12">
+      <label cLabel for="emailUtenteLogin">E-mail</label>
+      <input cFormControl
+             id="emailUtenteLogin" formControlName="emailUtente"
+             type="text" placeholder="mariorossi@gmail.com"
+      />
+    </c-col>
+    <c-col class="mb-3" [sm]="12">
+      <label cLabel for="password">Password</label>
+      <input cFormControl
+             id="password" formControlName="password" type="password" placeholder="Inserisci la tua password"
+      />
+      <div class="my-3 text-muted">
+        Non hai ancora un account?
+        <app-registrazione-utente></app-registrazione-utente>
+      </div>
+      <div class="row justify-content-center mt-3">
+        <input class="col-6" cButton color="primary" type="submit" value="Accedi">
+      </div>
+    </c-col>
+  </form>
+</ng-template>

@@ -16,8 +16,8 @@ export class HeaderComponent implements OnInit {
   //controlliamo se l'utente è loggato -> cosi possiamo cambiare dinamicamente i btn (logout/accedi)
   //controlliamo se l'utente ha almeno un articolo nel carrello per cambiare l'icon del carrello
   constructor(private serviceUtente: UtenteService, private serviceCarrello: CarrelloService) {
-    //this.utente = serviceUtente.eAttivo() l' ho lasciato per vedere come si coporta se non è presente un utente
-    this.utente= serviceUtente.getUtente()
+    this.utente = serviceUtente.eAttivo() //l' ho lasciato per vedere come si coporta se non è presente un utente
+   // this.utente= serviceUtente.getUtente()
     this.elementiInCarrello = serviceCarrello.getCarrello().length
   }
 

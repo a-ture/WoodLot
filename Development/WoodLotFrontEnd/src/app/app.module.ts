@@ -92,6 +92,7 @@ import {
 } from "./pagine/home/componenti/foto-con-testo-sovrapposto/foto-con-testo-sovrapposto.component";
 import { RegistrazioneUtenteComponent } from './componenti/registrazione-utente/registrazione-utente.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { LoginComponent } from './componenti/login/login.component';
 
 
 
@@ -152,6 +153,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     CreaForestaComponent,
     FotoConTestoSovrappostoComponent,
     RegistrazioneUtenteComponent,
+    LoginComponent,
 
   ],
   imports: [
