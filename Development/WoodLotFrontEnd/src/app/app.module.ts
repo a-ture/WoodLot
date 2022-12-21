@@ -90,6 +90,8 @@ import {FooterComponent} from "./componenti/footer/footer.component";
 import {
   FotoConTestoSovrappostoComponent
 } from "./pagine/home/componenti/foto-con-testo-sovrapposto/foto-con-testo-sovrapposto.component";
+import { RegistrazioneUtenteComponent } from './componenti/registrazione-utente/registrazione-utente.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 
@@ -149,6 +151,7 @@ import {
     CardAlberoForestaListComponent,
     CreaForestaComponent,
     FotoConTestoSovrappostoComponent,
+    RegistrazioneUtenteComponent,
 
   ],
   imports: [
@@ -184,7 +187,9 @@ import {
     MdbTabsModule,
     NavModule,
     TabsModule,
-    OffcanvasModule
+    OffcanvasModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [ProdottoService, CategoriaService,PaeseService, UsoLocaleService],
   bootstrap: [AppComponent]

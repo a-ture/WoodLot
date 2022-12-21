@@ -1,0 +1,132 @@
+<button [cModalToggle]="registrazioneUtente.id" cButton xmlns="http://www.w3.org/1999/html">Scrollable long content
+</button>
+
+<c-modal #registrazioneUtente id="modal" scrollable>
+  <c-modal-header>
+    <h5 cModalTitle>Benvenuto su WoodLot<small><br>Completa il tuo profilo</small></h5>
+    <button [cModalToggle]="registrazioneUtente.id" cButtonClose></button>
+  </c-modal-header>
+  <c-modal-body>
+    <ng-container *ngTemplateOutlet="form"></ng-container>
+  </c-modal-body>
+</c-modal>
+<ng-template #form>
+  <form [formGroup]="formRegistrazione"
+        (ngSubmit)="onSubmit()"
+        [gutter]="3"
+        novalidate
+        cForm cRow
+        class="needs-validation"
+  >
+    <c-col class="mb-3" [sm]="12">
+      <label cLabel for="nomeUtente">Nome</label>
+      <input cFormControl
+             id="nomeUtente" formControlName="nomeUtente"
+             type="text" placeholder="Inserisci il tuo nome"
+             [ngClass]="{ 'is-invalid': (submitted || f['nomeUtente'].touched) && f['nomeUtente'].invalid,
+              'is-valid':(submitted || f['nomeUtente'].touched) && f['nomeUtente'].valid}"
+      />
+      <div *ngIf="submitted && f['nomeUtente'].invalid" class="invalid-feedback">
+        <div *ngIf="f['nomeUtente'].errors?.['required']">Compila questo campo</div>
+        <div *ngIf="f['nomeUtente'].errors?.['maxLength']">{{formErrori.nomeUtente.maxLength}}</div>
+        <div *ngIf="f['nomeUtente'].errors?.['pattern']">{{formErrori.nomeUtente.pattern}}</div>
+      </div>
+      <div *ngIf="submitted && f['nomeUtente'].valid" class="valid-feedback">
+        Looks good!
+      </div>
+    </c-col>
+
+    <c-col class="mb-3" [sm]="12">
+      <label cLabel for="cognomeUtente">Cognome</label>
+      <input cFormControl
+             id="cognomeUtente" formControlName="cognomeUtente"
+             type="text" placeholder="Inserisci il tuo cognome"
+             [ngClass]="{ 'is-invalid': (submitted || f['cognomeUtente'].touched) && f['cognomeUtente'].invalid,
+              'is-valid':(submitted || f['cognomeUtente'].touched) && f['cognomeUtente'].valid}"
+      />
+      <div *ngIf="submitted && f['cognomeUtente'].invalid" class="invalid-feedback">
+        <div *ngIf="f['cognomeUtente'].errors?.['required']">Compila questo campo</div>
+        <div *ngIf="f['cognomeUtente'].errors?.['maxLength']">ttt</div>
+        <div *ngIf="f['cognomeUtente'].errors?.['pattern']">{{formErrori.conomeUtente.pattern}}</div>
+      </div>
+      <div *ngIf="submitted && f['cognomeUtente'].valid" class="valid-feedback">
+        Looks good!
+      </div>
+    </c-col>
+
+    <c-col class="mb-3" [sm]="12">
+      <label cLabel for="dataDiNascitaUtente">Data di nascita</label>
+      <input cFormControl
+             id="dataDiNascitaUtente" formControlName="dataDiNascitaUtente"
+             type="date" placeholder="dd/MM/aaaa"
+             [ngClass]="{ 'is-invalid': (submitted || f['dataDiNascitaUtente'].touched) && f['dataDiNascitaUtente'].invalid,
+              'is-valid':(submitted || f['dataDiNascitaUtente'].touched) && f['dataDiNascitaUtente'].valid}"
+      />
+      <div *ngIf="submitted && f['dataDiNascitaUtente'].invalid" class="invalid-feedback">
+        <div *ngIf="f['dataDiNascitaUtente'].errors?.['required']">Compila questo campo</div>
+      </div>
+      <div *ngIf="submitted && f['dataDiNascitaUtente'].valid" class="valid-feedback">
+        Looks good!
+      </div>
+    </c-col>
+
+    <c-col class="mb-3" [sm]="12">
+      <label cLabel for="emailUtente">E-mail</label>
+      <input cFormControl class="has-validation"
+             id="emailUtente" formControlName="emailUtente"
+             type="text" placeholder="mariorossi@gmail.com"
+             [ngClass]="{ 'is-invalid': (submitted || f['emailUtente'].touched) && f['emailUtente'].invalid,
+              'is-valid':(submitted || f['emailUtente'].touched) && f['emailUtente'].valid}"
+      />
+      <div *ngIf="submitted && f['emailUtente'].invalid" class="invalid-feedback">
+        <div *ngIf="f['emailUtente'].errors?.['required']">Compila questo campo</div>
+        <div *ngIf="f['emailUtente'].errors?.['email']">{{formErrori.emailUtente.email}}</div>
+      </div>
+      <div *ngIf="submitted && f['emailUtente'].valid" class="valid-feedback">
+        Looks good!
+      </div>
+    </c-col>
+
+    <c-col class="mb-3" [sm]="12">
+      <label cLabel for="password">Password</label>
+      <input cFormControl
+             id="password" formControlName="password" type="password" placeholder="Password!4"
+             [ngClass]="{ 'is-invalid': (submitted || f['password'].touched) && f['password'].invalid,
+              'is-valid':(submitted || f['password'].touched) && f['password'].valid}"
+      />
+      <div *ngIf="submitted && f['password'].invalid" class="invalid-feedback">
+        <div *ngIf="f['password'].errors?.['required']">Compila questo campo</div>
+        <div *ngIf="f['password'].errors?.['minlength']">{{formErrori['password'].minLength}}</div>
+        <div *ngIf="f['password'].errors?.['pattern']">{{formErrori['password'].pattern}}</div>
+      </div>
+      <div *ngIf="submitted && f['password'].valid" class="valid-feedback">
+        Looks good!
+      </div>
+    </c-col>
+
+    <c-col class="mb-3" [sm]="12">
+      <label cLabel for="ripetiPassword">Conferma password</label>
+      <input cFormControl
+             id="ripetiPassword" formControlName="ripetiPassword"
+             type="password" placeholder="Password!4"
+             [ngClass]="{ 'is-invalid': (submitted || f['ripetiPassword'].touched) && f['ripetiPassword'].invalid,
+              'is-valid':(submitted || f['ripetiPassword'].touched) && f['ripetiPassword'].valid}"
+      />
+      <div *ngIf="submitted && formRegistrazione.errors" class="invalid-feedback">
+        <div *ngIf="f['ripetiPassword'].errors?.['required']">Compila questo campo</div>
+        <div *ngIf="formRegistrazione.errors['passwordMismatch']">{{formErrori['confermaPassward'].passwordMismatch}}</div>
+      </div>
+      <div *ngIf="submitted && f['ripetiPassword'].valid" class="valid-feedback">
+        Looks good!
+      </div>
+    </c-col>
+
+    <div class="mb-3 text-muted">
+      Procedendo con l'iscrizione confermo la lettura e l'accettazione di Termini e Condizioni,
+      Uso dei cookie e normativa di utilizzo dei dati
+    </div>
+    <div class="row justify-content-center mt-3">
+      <input class="col-6" cButton color="primary" type="submit" value="Iscriviti">
+    </div>
+  </form>
+</ng-template>
