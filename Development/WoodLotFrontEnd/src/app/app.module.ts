@@ -85,6 +85,12 @@ import {FotoConTestoSovrappostoComponent} from "./pagine/home/componenti/foto-co
 import { RegistrazioneUtenteComponent } from './componenti/registrazione-utente/registrazione-utente.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { LoginComponent } from './componenti/login/login.component';
+import {CardRettangolareConBottoneComponent} from "./pagine/home/componenti/cardRettancoglareConBottone.componenti/card-rettangolare-con-bottone/card-rettangolare-con-bottone.component";
+import {CardRettangolareConBottoneListComponent} from "./pagine/home/componenti/cardRettancoglareConBottone.componenti/card-rettangolare-con-bottone-list/card-rettangolare-con-bottone-list.component";
+import { ComeFunzionaComponent } from './pagine/home/componenti/come-funziona/come-funziona.component';
+import { WoodlotInUnMinutoComponent } from './pagine/home/componenti/woodlot-in-un-minuto/woodlot-in-un-minuto.component';
+import { RaccoltaFotoComponent } from './pagine/home/componenti/raccolta-foto/raccolta-foto.component';
+import { PercheWoodlotComponent } from './pagine/home/componenti/perche-woodlot/perche-woodlot.component';
 
 
 
@@ -140,6 +146,12 @@ import { LoginComponent } from './componenti/login/login.component';
     FotoConTestoSovrappostoComponent,
     RegistrazioneUtenteComponent,
     LoginComponent,
+    CardRettangolareConBottoneComponent,
+    CardRettangolareConBottoneListComponent,
+    ComeFunzionaComponent,
+    WoodlotInUnMinutoComponent,
+    RaccoltaFotoComponent,
+    PercheWoodlotComponent,
 
   ],
     imports: [

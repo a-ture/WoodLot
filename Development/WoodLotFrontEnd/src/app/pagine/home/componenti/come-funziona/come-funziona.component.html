@@ -1,0 +1,9 @@
+<div class="container mt-3">
+  <h1 class="text-center mt-5">Come funziona?</h1>
+  <div class="row row-cols-1 row-cols-sm-1 row-cols-md-3 row-cols-lg-3 g-4 py-5">
+    <app-card-con-testo-con-icona-laterale *ngFor="let item of listaTitoli; index as i"
+                                           [titolo]=listaTitoli[i] [descrizione]=listaDescrizioni[i]
+                                           [iclass]=listaIcone[i]
+    ></app-card-con-testo-con-icona-laterale>
+  </div>
+</div>

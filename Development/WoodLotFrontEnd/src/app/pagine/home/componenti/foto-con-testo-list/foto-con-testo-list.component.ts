@@ -25,7 +25,7 @@ export class FotoConTestoListComponent implements OnInit {
   ]
 
   public listClassi = [
-    "col-md-7", "col-md-5 order-md-2"
+    "col-md-7 col-sm-12", "col-md-7 order-md-2 col-sm-12"
   ]
   constructor() { }
 

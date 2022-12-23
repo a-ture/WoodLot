@@ -1,0 +1,26 @@
+<div class="container-fluid my-5">
+  <div class="text-center">
+    <div class="mb-5">
+      <h2>Perché un albero,perché WoodLot ...</h2>
+    </div>
+    <c-row id="percheWoodLot" class="row  d-flex justify-content-center g-0">
+      <app-card-con-testo-con-icona-centrale *ngFor="let item of listaSource; index as i"
+                                             class="col-lg-6 col-md-12 col-xs-12
+                                             d-flex justify-content-center "
+                                             [sourceimage]="listaSource[i]" [titolo]="listaTitoli[i]"
+                                             [testo]="listaTesto[i]"
+                                             [colore]="listaColore[i]"
+      ></app-card-con-testo-con-icona-centrale>
+    </c-row>
+    <div class="row justify-content-center mt-3">
+      <button class="btn btn-primary col-3">Scopri di più!</button>
+    </div>
+    <div class="row justify-content-center mt-5">
+      <h6 class="fw-bold">Paesi</h6>
+      <p>
+        I nostri alberi nascono in tutto il mondo! <a href="#!">Scopri!</a>
+      </p>
+    </div>
+  </div>
+</div>
+

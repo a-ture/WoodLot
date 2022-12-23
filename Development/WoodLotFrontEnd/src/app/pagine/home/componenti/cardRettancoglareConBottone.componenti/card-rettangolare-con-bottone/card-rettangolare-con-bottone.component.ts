@@ -4,8 +4,8 @@ import {Component, Input, OnInit} from '@angular/core';
   selector: 'app-card-rettangolare-con-bottone',
   styleUrls: ['./card-rettangolare-con-bottone.component.scss'],
   template: `
-      <div class="card text-center h-100 "
-           style="width:14rem;background-color:white">
+      <div class="card text-center h-100"
+           style="width:15rem;background-color:white; border-radius: 30px;">
         <img src="{{sourceimage}}" class="card-img" width="206px" height="206px"/>
         <div class="card-body">
           <p class="card-title fw-bold">{{titolo}}</p>

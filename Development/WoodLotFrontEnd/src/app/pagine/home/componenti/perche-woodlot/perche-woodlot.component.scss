@@ -1,0 +1,28 @@
+@media (min-width: 1200px) {
+  #percheWoodLot {
+    margin-left: 200px;
+    margin-right: 200px;
+  }
+}
+
+
+
+
+
+.btn-primary {
+  --cui-btn-bg: #5E7250;
+  --cui-btn-border-color: #5E7250;
+  --cui-btn-hover-border-color: #93C572;
+  --cui-btn-hover-bg: #93C572;
+  --cui-btn-border-radius: 15px;
+  --cui-btn-active-bg: #94AD6E;
+  --cui-btn-active-border-color: #94AD6E;
+}
+
+a {
+  color: #5E7250;
+}
+
+a:hover {
+  color: #94AD6E
+}
