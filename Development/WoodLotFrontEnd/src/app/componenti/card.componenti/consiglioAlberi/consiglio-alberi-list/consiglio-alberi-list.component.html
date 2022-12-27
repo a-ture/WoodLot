@@ -2,9 +2,10 @@
   <div>
     <h1 class="mb-4">Pianta altri alberi!</h1>
   </div>
-  <div class="row text-center px-5 ">
+  <div class="row text-center mx-5 g-3">
     <app-card-prodotto *ngFor="let item of listaAlberi; index as i"
-                       class="col"
+                       class="col-lg-3 col-md-4 col-xs-12 col-sm-6
+                            col-xs-12 d-flex justify-content-center"
                        [sourceImage]="urlBase+item.nome+endBase" [albero]="item"
     ></app-card-prodotto>
   </div>

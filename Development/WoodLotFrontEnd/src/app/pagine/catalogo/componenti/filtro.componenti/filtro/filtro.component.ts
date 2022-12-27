@@ -4,8 +4,8 @@ import {Component, Input, OnInit} from '@angular/core';
   selector: 'app-filtro',
   styleUrls: ['./filtro.component.scss'],
   template: `
-    <c-dropdown direction="dropend" >
-      <button cButton cDropdownToggle   style="background-color:#5E7250; border-color:#5E7250">
+    <c-dropdown direction="dropend">
+      <button cButton cDropdownToggle style="background-color:#5E7250; border-color:#5E7250; border-radius: 15px;">
         {{nomeFiltro}}
       </button>
       <ul cDropdownMenu>
@@ -22,7 +22,8 @@ export class FiltroComponent implements OnInit {
   @Input()
   public elementi !: String[]
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

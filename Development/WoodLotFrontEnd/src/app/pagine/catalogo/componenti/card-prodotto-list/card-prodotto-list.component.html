@@ -1,6 +1,7 @@
-<div class="row text-center px-5 ">
+<div class="row  d-flex justify-content-center mx-5 mt-3 g-5">
   <app-card-prodotto *ngFor="let item of listaAlberi; index as i"
-                     class="col py-3"
-                     [sourceImage]="urlBase+item.nome+endBase" [albero]= "item"
+                     class="col-lg-3 col-md-4 col-xs-12 col-sm-6
+                            col-xs-12 d-flex justify-content-center"
+                     [sourceImage]="urlBase+item.nome+endBase" [albero]="item"
   ></app-card-prodotto>
 </div>

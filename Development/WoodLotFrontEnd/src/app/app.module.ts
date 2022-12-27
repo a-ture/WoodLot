@@ -91,6 +91,7 @@ import { ComeFunzionaComponent } from './pagine/home/componenti/come-funziona/co
 import { WoodlotInUnMinutoComponent } from './pagine/home/componenti/woodlot-in-un-minuto/woodlot-in-un-minuto.component';
 import { RaccoltaFotoComponent } from './pagine/home/componenti/raccolta-foto/raccolta-foto.component';
 import { PercheWoodlotComponent } from './pagine/home/componenti/perche-woodlot/perche-woodlot.component';
+import { CicloDiVitaAlberoComponent } from './pagine/catalogo/componenti/ciclo-di-vita-albero/ciclo-di-vita-albero.component';
 
 
 
@@ -152,6 +153,7 @@ import { PercheWoodlotComponent } from './pagine/home/componenti/perche-woodlot/
     WoodlotInUnMinutoComponent,
     RaccoltaFotoComponent,
     PercheWoodlotComponent,
+    CicloDiVitaAlberoComponent,
 
   ],
     imports: [
