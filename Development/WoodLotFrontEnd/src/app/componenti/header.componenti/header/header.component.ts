@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {UtenteService} from "../../servizi/utente/utente.service";
-import {Utente} from "../../entita/utente/utente";
-import {CarrelloService} from "../../servizi/carrello/carrello.service";
+import {UtenteService} from "../../../servizi/utente/utente.service";
+import {Utente} from "../../../entita/utente/utente";
+import {CarrelloService} from "../../../servizi/carrello/carrello.service";
 
 
 @Component({

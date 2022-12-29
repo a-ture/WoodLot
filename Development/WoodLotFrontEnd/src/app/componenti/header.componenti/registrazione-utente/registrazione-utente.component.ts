@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, ValidationErrors, Validators} from "@angular/forms";
 import {
   ValidazioneFormRegistrazioneUtenteService
-} from "../../servizi/validazioneFormRegistrazioneUtente/validazione-form-registrazione-utente.service";
+} from "../../../servizi/validazioneFormRegistrazioneUtente/validazione-form-registrazione-utente.service";
 import {MdbModalRef} from "mdb-angular-ui-kit/modal";
 
 

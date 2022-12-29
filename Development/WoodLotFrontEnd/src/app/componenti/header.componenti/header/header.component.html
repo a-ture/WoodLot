@@ -1,5 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light ">
-  <!-- Container wrapper -->
+<nav class="navbar navbar-expand-lg navbar-light">
   <div class="container-fluid">
 
     <button id="menu"
@@ -8,9 +7,9 @@
       <i class="fa-solid fa-bars"></i>
     </button>
 
-    <a class="navbar-brand me-2" href="#!" id="logo">
+    <a class="navbar-brand me-2" routerLink="" id="logo">
       <img
-        src="assets/img/header/logoWoodLot.jpg"
+        src="../../../../assets/img/header/logoWoodLot.jpg"
         height="50"
         loading="lazy"
       />
@@ -18,14 +17,11 @@
         WoodLot</small>
     </a>
 
-
-    <!-- Collapsible wrapper -->
     <div
       class="collapse navbar-collapse"
       id="navbarRightAlignExample"
       mdbCollapse
     >
-      <!-- Left links -->
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item" *ngIf="utente != null">
           <button type="button" class="btn btn-link px-3 me-2">
@@ -41,21 +37,17 @@
           </ng-template>
         </li>
         <li class="nav-item">
-          <a *ngIf="elementiInCarrello == 0; else carrelloPieno"
+          <a routerLink="/carrello" *ngIf="elementiInCarrello == 0; else carrelloPieno"
              class="btn px-3 carrello"
-             href="#!"
-          ><img src="assets/img/header/carriola.svg" height="20"></a>
+          ><img src="../../../../assets/img/header/carriola.svg" height="20"></a>
           <ng-template #carrelloPieno>
-            <a class="btn px-3 carrello"
-               href="#!"><img src="assets/img/header/carriolaPiena.svg" height="20"></a>
+            <a class="btn px-3 carrello" routerLink="/carrello">
+              <img src="../../../../assets/img/header/carriolaPiena.svg" height="20"></a>
           </ng-template>
         </li>
       </ul>
-      <!-- Left links -->
     </div>
-    <!-- Collapsible wrapper -->
   </div>
-  <!-- Container wrapper -->
 </nav>
 
 
@@ -77,9 +69,9 @@
   </c-offcanvas-header>
   <c-offcanvas-body>
     <ul class="list-unstyled">
-      <li class="my-2"><a href="#!">Catalogo</a></li>
-      <li class="my-2"><a href="#!">Diventa un contadino</a></li>
-      <li class="my-2"><a href="#!">Chi Siamo</a></li>
+      <li class="my-2"><a routerLink="/catalogo">Catalogo</a></li>
+      <li class="my-2"><a routerLink="/diventaUnContadino">Diventa un contadino</a></li>
+      <li class="my-2"><a routerLink="/chiSiamo">Chi Siamo</a></li>
       <li class="d-lg-none my-2" *ngIf="utente != null">
         <button type="button" class="btn btn-link px-3 me-2">
           Logout
@@ -90,18 +82,18 @@
           Profilo
         </button>
         <ng-template #accedi>
-          <app-login class="me-3" ></app-login>
+          <app-login class="me-3"></app-login>
         </ng-template>
       </li>
       <li class="d-lg-none my-2">
         <a *ngIf="elementiInCarrello == 0; else carrelloPieno"
            class="btn px-3 carrello"
-           href="#!"
-        ><img src="assets/img/header/carriola.svg" height="20"></a>
+           routerLink="/carrello"
+        ><img src="../../../../assets/img/header/carriola.svg" height="20"></a>
         <ng-template #carrelloPieno>
           <a class="btn px-3 carrello"
-             href="#!"
-          ><img src="assets/img/header/carriolaPiena.svg" height="20"></a>
+             routerLink="/carrello"
+          ><img src="../../../../assets/img/header/carriolaPiena.svg" height="20"></a>
         </ng-template>
       </li>
     </ul>

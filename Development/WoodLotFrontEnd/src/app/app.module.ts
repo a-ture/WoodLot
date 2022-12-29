@@ -31,7 +31,7 @@ import {
 } from '@coreui/angular';
 import { IconModule } from '@coreui/icons-angular';
 import { HttpClientModule } from '@angular/common/http';
-import { HeaderComponent } from './componenti/header/header.component';
+import { HeaderComponent } from './componenti/header.componenti/header/header.component';
 import { CardTondaConTestoComponent } from './componenti/card.componenti/card-tonda-con-testo/card-tonda-con-testo.component';
 import { CardTondaConTestoListComponent } from './pagine/diventaContadino/componenti/card-tonda-con-testo-list/card-tonda-con-testo-list.component';
 import { CardRettangolareConTestoComponent } from './pagine/diventaContadino/componenti/cardRettangolareConTesto.componenti/card-rettangolare-con-testo/card-rettangolare-con-testo.component';
@@ -82,9 +82,9 @@ import { ImmagineComponent } from './componenti/foto.componenti/immagine/immagin
 import { CardDescrizioneProdottoComponent } from './pagine/prodotto/componenti/cardInfoProdotto.componenti/card-descrizione-prodotto/card-descrizione-prodotto.component';
 import {FooterComponent} from "./componenti/footer/footer.component";
 import {FotoConTestoSovrappostoComponent} from "./pagine/home/componenti/foto-con-testo-sovrapposto/foto-con-testo-sovrapposto.component";
-import { RegistrazioneUtenteComponent } from './componenti/registrazione-utente/registrazione-utente.component';
+import { RegistrazioneUtenteComponent } from './componenti/header.componenti/registrazione-utente/registrazione-utente.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { LoginComponent } from './componenti/login/login.component';
+import { LoginComponent } from './componenti/header.componenti/login/login.component';
 import {CardRettangolareConBottoneComponent} from "./pagine/home/componenti/cardRettancoglareConBottone.componenti/card-rettangolare-con-bottone/card-rettangolare-con-bottone.component";
 import {CardRettangolareConBottoneListComponent} from "./pagine/home/componenti/cardRettancoglareConBottone.componenti/card-rettangolare-con-bottone-list/card-rettangolare-con-bottone-list.component";
 import { ComeFunzionaComponent } from './pagine/home/componenti/come-funziona/come-funziona.component';
@@ -92,6 +92,7 @@ import { WoodlotInUnMinutoComponent } from './pagine/home/componenti/woodlot-in-
 import { RaccoltaFotoComponent } from './pagine/home/componenti/raccolta-foto/raccolta-foto.component';
 import { PercheWoodlotComponent } from './pagine/home/componenti/perche-woodlot/perche-woodlot.component';
 import { CicloDiVitaAlberoComponent } from './pagine/catalogo/componenti/ciclo-di-vita-albero/ciclo-di-vita-albero.component';
+import { HeaderCheckoutComponent } from './componenti/header.componenti/header-checkout/header-checkout.component';
 
 
 
@@ -154,6 +155,7 @@ import { CicloDiVitaAlberoComponent } from './pagine/catalogo/componenti/ciclo-d
     RaccoltaFotoComponent,
     PercheWoodlotComponent,
     CicloDiVitaAlberoComponent,
+    HeaderCheckoutComponent,
 
   ],
     imports: [

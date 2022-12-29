@@ -1,10 +1,25 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {InterfacciaHomeComponent} from "./pagine/home/interfaccia.home/interfaccia.home.component";
+import {InterfacciaCatalogoComponent} from "./pagine/catalogo/interfaccia.catalogo/interfaccia.catalogo.component";
+import {InterfacciaCarrelloComponent} from "./pagine/carrello/interfaccia.carrello/interfaccia.carrello.component";
+import {InterfacciaChiSiamoComponent} from "./pagine/chiSiamo/interfaccia.chi-siamo/interfaccia.chi-siamo.component";
+import {
+  InterfacciaDiventaContadinoComponent
+} from "./pagine/diventaContadino/interfaccia.diventa-contadino/interfaccia.diventa-contadino.component";
 
-const routes: Routes = [];
+
+const routes: Routes = [
+  {path: '', component: InterfacciaHomeComponent},
+  {path: 'catalogo', component: InterfacciaCatalogoComponent},
+  {path: 'carrello', component: InterfacciaCarrelloComponent},
+  {path: 'chiSiamo', component: InterfacciaChiSiamoComponent},
+  {path: 'diventaUnContadino', component: InterfacciaDiventaContadinoComponent},
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

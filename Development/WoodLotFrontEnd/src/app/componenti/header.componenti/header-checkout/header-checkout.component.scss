@@ -1,0 +1,54 @@
+#logo {
+  color: #688952;
+}
+#menu {
+  --cui-btn-bg: white;
+  --cui-btn-border-color: white;
+  --cui-btn-hover-border-color: #94AD6E;
+  --cui-btn-hover-bg: #94AD6E;
+  --cui-btn-border-radius: 15px;
+  --cui-btn-active-bg: #C4D89F;
+  --cui-btn-active-border-color: #C4D89F;
+  --cui-btn-color: #688952;
+}
+
+#logo {
+  color: #688952;
+}
+
+.btn-primary {
+  --cui-btn-bg: #C4D89F;
+  --cui-btn-border-color: #C4D89F;
+  --cui-btn-hover-border-color: #94AD6E;
+  --cui-btn-hover-bg: #94AD6E;
+  --cui-btn-border-radius: 15px;
+  --cui-btn-active-bg: #5E7250;
+  --cui-btn-active-border-color: #5E7250;
+  box-shadow: none;
+}
+
+.btn-link {
+  color: #917975;
+  text-decoration: none;
+}
+
+.btn-link:hover {
+  color: #E5C59C;
+}
+
+
+
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  color: #688952;
+}
+
+
+
+
+
