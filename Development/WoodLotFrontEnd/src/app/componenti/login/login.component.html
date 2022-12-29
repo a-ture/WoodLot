@@ -1,7 +1,7 @@
-<button [cModalToggle]="login.id" id="loginButton" cButton>
+<button (click)="toggleLiveDemo()" id="loginButton" cButton>
   Accedi
 </button>
-<c-modal #login id="login" scrollable>
+<c-modal [visible]="visible" (visibleChange)="handleLiveDemoChange($event)"  [backdrop]="false"  scrollable>
   <c-modal-header>
     <c-col>
       <h5 class="text-center mt-3" cModalTitle>Entra su WoodLot!</h5>
@@ -9,7 +9,7 @@
         nuovo?
         <br/> In entrambi i casi sei nel posto giusto!</h6>
     </c-col>
-    <button [cModalToggle]="login.id" cButtonClose></button>
+    <button (click)="toggleLiveDemo()"  cButtonClose></button>
   </c-modal-header>
   <c-modal-body>
     <ng-container *ngTemplateOutlet="form"></ng-container>
@@ -31,13 +31,15 @@
       <input cFormControl
              id="passwordLogin" formControlName="passwordLogin" type="password" placeholder="Inserisci la tua password"
       />
-      <div class="my-3 text-muted">
-        Non hai ancora un account?
-        Registrati!
-      </div>
       <div class="row justify-content-center mt-3">
         <input class="col-6" cButton color="primary" type="submit" value="Accedi">
       </div>
     </c-col>
   </form>
+  <div class="my-3 text-muted">
+    Non hai ancora un account?
+    <button id="registrazioneButton" cButton (click)="openModal()">
+      Registrati
+    </button>
+  </div>
 </ng-template>

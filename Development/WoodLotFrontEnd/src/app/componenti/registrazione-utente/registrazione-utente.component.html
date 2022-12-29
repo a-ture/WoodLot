@@ -1,16 +1,13 @@
-<button id="registrazioneButton" [cModalToggle]="registrazioneUtente.id" cButton xmlns="http://www.w3.org/1999/html">
-  Registrati
-</button>
+<div class="modal-header">
 
-<c-modal #registrazioneUtente id="registrazione" scrollable>
-  <c-modal-header >
-    <h5 cModalTitle>Benvenuto su WoodLot<small><br>Completa il tuo profilo</small></h5>
-    <button [cModalToggle]="registrazioneUtente.id" cButtonClose></button>
-  </c-modal-header>
-  <c-modal-body>
-    <ng-container *ngTemplateOutlet="formRegistrazione"></ng-container>
-  </c-modal-body>
-</c-modal>
+  <h5 cModalTitle>Benvenuto su WoodLot<small><br>Completa il tuo profilo</small></h5>
+  <button cButtonClose (click)="modalRef.close()"></button>
+
+</div>
+<div class="modal-body">
+  <ng-container *ngTemplateOutlet="formRegistrazione"></ng-container>
+</div>
+
 <ng-template #formRegistrazione>
   <form [formGroup]="formRegistrazioneUtente"
         (ngSubmit)="onSubmit()"
@@ -115,7 +112,8 @@
       />
       <div *ngIf="submitted && formRegistrazioneUtente.errors" class="invalid-feedback">
         <div *ngIf="f['ripetiPassword'].errors?.['required']">Compila questo campo</div>
-        <div *ngIf="formRegistrazioneUtente.errors['passwordMismatch']">{{formErrori['confermaPassward'].passwordMismatch}}</div>
+        <div
+          *ngIf="formRegistrazioneUtente.errors['passwordMismatch']">{{formErrori['confermaPassward'].passwordMismatch}}</div>
       </div>
       <div *ngIf="submitted && f['ripetiPassword'].valid" class="valid-feedback">
         Looks good!
@@ -131,3 +129,5 @@
     </div>
   </form>
 </ng-template>
+
+

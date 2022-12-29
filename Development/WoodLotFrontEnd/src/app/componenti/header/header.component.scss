@@ -21,6 +21,7 @@
   --cui-btn-border-radius: 15px;
   --cui-btn-active-bg: #5E7250;
   --cui-btn-active-border-color: #5E7250;
+  box-shadow: none;
 }
 
 .btn-link {
@@ -32,13 +33,13 @@
   color: #E5C59C;
 }
 
-.carrello{
+.carrello {
   background-color: transparent;
   --cui-btn-hover-border-color: #C4D89F;
   --cui-btn-hover-bg: transparent;
   --cui-btn-border-radius: 15px;
   --cui-btn-active-bg: transparent;
-  --cui-btn-active-border-color:#C4D89F ;
+  --cui-btn-active-border-color: #C4D89F;
   --cui-btn-color: #688952;
 }
 
@@ -74,3 +75,5 @@ a:hover {
     max-height: 300px;
   }
 }
+
+

@@ -3,6 +3,7 @@ import {FormControl, FormGroup, ValidationErrors, Validators} from "@angular/for
 import {
   ValidazioneFormRegistrazioneUtenteService
 } from "../../servizi/validazioneFormRegistrazioneUtente/validazione-form-registrazione-utente.service";
+import {MdbModalRef} from "mdb-angular-ui-kit/modal";
 
 
 export function confirmPasswordValidator(control: FormGroup): ValidationErrors | null {
@@ -24,7 +25,9 @@ export class RegistrazioneUtenteComponent implements OnInit {
   submitted = false;
   formErrori: any;
 
-  constructor(private sericeValidazione: ValidazioneFormRegistrazioneUtenteService) {
+
+
+  constructor(private sericeValidazione: ValidazioneFormRegistrazioneUtenteService, public modalRef: MdbModalRef<RegistrazioneUtenteComponent>) {
     this.formRegistrazioneUtente = new FormGroup({
       nomeUtente: new FormControl('', [Validators.required,
         Validators.maxLength(sericeValidazione.regoleForm.nomeUtenteMax),
