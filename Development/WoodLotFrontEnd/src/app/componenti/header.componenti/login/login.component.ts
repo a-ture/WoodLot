@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {RegistrazioneUtenteComponent} from "../registrazione-utente/registrazione-utente.component";
 import {MdbModalRef, MdbModalService} from "mdb-angular-ui-kit/modal";
+import {ReimpostaPasswordComponent} from "../reimposta-password/reimposta-password.component";
 
 
 @Component({
@@ -11,8 +12,10 @@ import {MdbModalRef, MdbModalService} from "mdb-angular-ui-kit/modal";
 })
 export class LoginComponent implements OnInit {
   formLogin: FormGroup
-  modalRef: MdbModalRef<RegistrazioneUtenteComponent> | null = null;
-  public visible = false;
+  modalRefRegistrazioneUtente: MdbModalRef<RegistrazioneUtenteComponent> | null = null;
+  modalRefReimpostaPassword: MdbModalRef<ReimpostaPasswordComponent> | null = null;
+
+  public visibleLogin = false;
 
   config = {
     backdrop: false,
@@ -35,16 +38,22 @@ export class LoginComponent implements OnInit {
     alert('SUCCESS!');
   }
 
-  openModal() {
-    this.modalRef = this.modalService.open(RegistrazioneUtenteComponent, this.config)
-    this.visible = !this.visible;
+  openModalRegistrazione() {
+    this.modalRefRegistrazioneUtente = this.modalService.open(RegistrazioneUtenteComponent, this.config)
+    this.toggleLogin()
   }
 
-  toggleLiveDemo() {
-    this.visible = !this.visible;
+  toggleLogin() {
+    this.visibleLogin = !this.visibleLogin;
   }
 
-  handleLiveDemoChange(event: any) {
-    this.visible = event;
+  handleLogin(event: any) {
+    this.visibleLogin = event;
   }
+
+  openModalReimpostaPassword() {
+    this.modalRefReimpostaPassword = this.modalService.open(ReimpostaPasswordComponent, this.config)
+    this.toggleLogin()
+  }
+
 }

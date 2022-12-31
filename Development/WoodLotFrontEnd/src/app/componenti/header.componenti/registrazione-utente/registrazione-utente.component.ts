@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, ValidationErrors, Validators} from "@angular/forms";
 import {
-  ValidazioneFormRegistrazioneUtenteService
-} from "../../../servizi/validazioneFormRegistrazioneUtente/validazione-form-registrazione-utente.service";
+  ValidazioneFormUtenteService
+} from "../../../servizi/validazioneFormRegistrazioneUtente/validazione-form-utente.service";
 import {MdbModalRef} from "mdb-angular-ui-kit/modal";
 
 
@@ -27,7 +27,7 @@ export class RegistrazioneUtenteComponent implements OnInit {
 
 
 
-  constructor(private sericeValidazione: ValidazioneFormRegistrazioneUtenteService, public modalRef: MdbModalRef<RegistrazioneUtenteComponent>) {
+  constructor(private sericeValidazione: ValidazioneFormUtenteService, public modalRef: MdbModalRef<RegistrazioneUtenteComponent>) {
     this.formRegistrazioneUtente = new FormGroup({
       nomeUtente: new FormControl('', [Validators.required,
         Validators.maxLength(sericeValidazione.regoleForm.nomeUtenteMax),

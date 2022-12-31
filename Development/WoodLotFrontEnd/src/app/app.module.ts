@@ -93,6 +93,7 @@ import { RaccoltaFotoComponent } from './pagine/home/componenti/raccolta-foto/ra
 import { PercheWoodlotComponent } from './pagine/home/componenti/perche-woodlot/perche-woodlot.component';
 import { CicloDiVitaAlberoComponent } from './pagine/catalogo/componenti/ciclo-di-vita-albero/ciclo-di-vita-albero.component';
 import { HeaderCheckoutComponent } from './componenti/header.componenti/header-checkout/header-checkout.component';
+import { ReimpostaPasswordComponent } from './componenti/header.componenti/reimposta-password/reimposta-password.component';
 
 
 
@@ -156,6 +157,7 @@ import { HeaderCheckoutComponent } from './componenti/header.componenti/header-c
     PercheWoodlotComponent,
     CicloDiVitaAlberoComponent,
     HeaderCheckoutComponent,
+    ReimpostaPasswordComponent,
 
   ],
     imports: [

@@ -4,7 +4,7 @@ import {Injectable} from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class ValidazioneFormRegistrazioneUtenteService {
+export class ValidazioneFormUtenteService {
 
   public errori: any;
 

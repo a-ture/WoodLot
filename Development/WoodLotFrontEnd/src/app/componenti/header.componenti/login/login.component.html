@@ -1,7 +1,8 @@
-<button (click)="toggleLiveDemo()" id="loginButton" cButton>
+<button (click)="toggleLogin()" id="loginButton" cButton>
   Accedi
 </button>
-<c-modal [visible]="visible" (visibleChange)="handleLiveDemoChange($event)"  [backdrop]="false"  scrollable>
+<c-modal [visible]="visibleLogin" (visibleChange)="handleLogin($event)"
+         [backdrop]="false" scrollable>
   <c-modal-header>
     <c-col>
       <h5 class="text-center mt-3" cModalTitle>Entra su WoodLot!</h5>
@@ -9,7 +10,7 @@
         nuovo?
         <br/> In entrambi i casi sei nel posto giusto!</h6>
     </c-col>
-    <button (click)="toggleLiveDemo()"  cButtonClose></button>
+    <button (click)="toggleLogin()" cButtonClose></button>
   </c-modal-header>
   <c-modal-body>
     <ng-container *ngTemplateOutlet="form"></ng-container>
@@ -18,7 +19,7 @@
 
 <ng-template #form>
   <form cRow [formGroup]="formLogin"
-        (ngSubmit)="onSubmit()">
+        (ngSubmit)="onSubmit()" class="border-bottom">
     <c-col class="mb-3" [sm]="12">
       <label cLabel for="emailUtenteLogin">E-mail</label>
       <input cFormControl
@@ -38,8 +39,12 @@
   </form>
   <div class="my-3 text-muted">
     Non hai ancora un account?
-    <button id="registrazioneButton" cButton (click)="openModal()">
+    <button class="modalButton" cButton (click)="openModalRegistrazione()">
       Registrati
     </button>
+  </div>
+  <div class="my-3 text-muted">
+    Non ricordi la tua password?
+    <button cButton class="modalButton" (click)="openModalReimpostaPassword()">Reimposta password</button>
   </div>
 </ng-template>
