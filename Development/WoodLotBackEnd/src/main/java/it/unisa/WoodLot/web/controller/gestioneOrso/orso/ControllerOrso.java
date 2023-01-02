@@ -1,7 +1,7 @@
-package it.unisa.WoodLot.web.controller;
+package it.unisa.WoodLot.web.controller.gestioneOrso.orso;
 
 import it.unisa.WoodLot.model.entity.Orso;
-import it.unisa.WoodLot.sevice.OrsoService;
+import it.unisa.WoodLot.sevice.gestioneOrso.orso.OrsoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

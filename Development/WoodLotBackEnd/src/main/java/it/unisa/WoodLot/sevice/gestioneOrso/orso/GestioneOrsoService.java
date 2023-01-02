@@ -1,4 +1,4 @@
-package it.unisa.WoodLot.sevice;
+package it.unisa.WoodLot.sevice.gestioneOrso.orso;
 
 import it.unisa.WoodLot.model.entity.Orso;
 import it.unisa.WoodLot.model.repository.OrsoRepository;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class GestioneOrsoService implements OrsoService{
+public class GestioneOrsoService implements OrsoService {
     @Autowired
     private OrsoRepository orsoRepository;
 

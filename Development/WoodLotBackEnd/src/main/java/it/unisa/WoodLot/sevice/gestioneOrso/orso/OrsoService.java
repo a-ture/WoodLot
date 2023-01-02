@@ -1,4 +1,4 @@
-package it.unisa.WoodLot.sevice;
+package it.unisa.WoodLot.sevice.gestioneOrso.orso;
 
 import it.unisa.WoodLot.model.entity.Orso;
 
