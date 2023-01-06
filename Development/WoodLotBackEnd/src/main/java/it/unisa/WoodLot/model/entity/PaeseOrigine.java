@@ -22,6 +22,6 @@ public class PaeseOrigine implements Serializable {
     @Column(name = "nome", nullable = false)
     private String nome;
 
-    @Column(name = "descrizione", nullable = false)
+    @Column(name = "descrizione", nullable = false, length = 5000)
     private String descrizione;
 }

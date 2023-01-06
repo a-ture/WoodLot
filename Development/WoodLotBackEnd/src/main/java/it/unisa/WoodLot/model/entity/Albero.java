@@ -26,13 +26,13 @@ public class Albero implements Serializable {
     @Column(name = "descrizione_breve", nullable = false)
     private String descrizioneBreve;
 
-    @Column(name = "descrizione", nullable = false)
+    @Column(name = "descrizione", nullable = false, length = 5000)
     private String descrizione;
 
     @Column(name = "prezzo", nullable = false)
     private double prezzo;
 
-    @Column(name = "CO2_assorbita", nullable = false)
+    @Column(name = "CO2", nullable = false)
     private int anidirdeCarbonicaAssorbita;
 
     @Column(name = "salvaguardia", nullable = false)
