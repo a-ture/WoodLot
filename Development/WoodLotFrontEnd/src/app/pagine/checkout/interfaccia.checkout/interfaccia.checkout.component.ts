@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {CarrelloService} from "../../../servizi/carrello/carrello.service";
 
 @Component({
   selector: 'app-interfaccia-checkout',
@@ -7,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InterfacciaCheckoutComponent implements OnInit {
 
-  constructor() { }
+
+  constructor() {}
 
   ngOnInit(): void {
   }

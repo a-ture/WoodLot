@@ -3,7 +3,7 @@ import {MdbModalRef} from "mdb-angular-ui-kit/modal";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {
   ValidazioneFormUtenteService
-} from "../../../servizi/validazioneFormRegistrazioneUtente/validazione-form-utente.service";
+} from "../../../servizi/validazioneFormUtente/validazione-form-utente.service";
 
 @Component({
   selector: 'app-reimposta-password',

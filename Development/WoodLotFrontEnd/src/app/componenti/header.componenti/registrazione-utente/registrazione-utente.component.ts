@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, ValidationErrors, Validators} from "@angular/forms";
 import {
   ValidazioneFormUtenteService
-} from "../../../servizi/validazioneFormRegistrazioneUtente/validazione-form-utente.service";
+} from "../../../servizi/validazioneFormUtente/validazione-form-utente.service";
 import {MdbModalRef} from "mdb-angular-ui-kit/modal";
 
 
@@ -24,7 +24,6 @@ export class RegistrazioneUtenteComponent implements OnInit {
   formRegistrazioneUtente: FormGroup
   submitted = false;
   formErrori: any;
-
 
 
   constructor(private sericeValidazione: ValidazioneFormUtenteService, public modalRef: MdbModalRef<RegistrazioneUtenteComponent>) {

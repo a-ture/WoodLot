@@ -1,0 +1,122 @@
+<div class="m-5">
+  <div class="row g-5">
+    <!-- Carrello -->
+    <div class="col-md-5 col-lg-4 order-md-last">
+      <h4 class="d-flex justify-content-between align-items-center mb-3">
+        <span class="text-primary">Il tuo carrello</span>
+        <span class="badge bg-primary rounded-pill">{{getTotalePezzi()}}</span>
+      </h4>
+      <ul class="list-group mb-3">
+        <li class="list-group-item d-flex justify-content-between lh-sm"
+            *ngFor="let item of listProdotti; index as i;">
+          <div>
+            <h6 class="my-0">{{item.nome}}</h6>
+            <small>Quantità: {{item.quantita}}, prezzo unitario {{item.prezzo.toFixed(2)}}€</small>
+          </div>
+          <span class="fw-lighter">{{(item.prezzo * item.quantita).toFixed(2)}}€</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+          <span class="fw-semibold">Totale: </span>
+          <strong>{{getTotale().toFixed(2)}}€</strong>
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-md-7 col-lg-8">
+      <h4 class="mb-3">Pagamento</h4>
+      <form [formGroup]="formPagamento"
+            (ngSubmit)="onSubmit()"
+            [gutter]="3"
+            novalidate
+            cForm cRow
+            class="needs-validation">
+
+        <div class="my-3">
+          <div class="form-check">
+            <input cFormCheckInput id="mastercard" formControlName="metodoPagamento" type="radio"
+                   class="form-check-input" value="mastercard">
+            <label class="form-check-label" for="mastercard">MasterCard</label>
+          </div>
+          <div class="form-check">
+            <input cFormCheckInput id="visa" formControlName="metodoPagamento" type="radio"
+                   class="form-check-input" value="visa">
+            <label class="form-check-label" for="visa">Visa</label>
+          </div>
+          <div class="form-check">
+            <input cFormCheckInput id="americanExpress" formControlName="metodoPagamento" type="radio"
+                   class="form-check-input" value="americanExpress">
+            <label class="form-check-label" for="americanExpress">American Express</label>
+          </div>
+        </div>
+
+        <div class="row gy-3">
+          <div class="col-md-6">
+            <label for="cc-name" class="form-label">Nome titolare</label>
+            <input cFormControl formControlName="nomeTitolare" type="text" class="form-control" id="cc-name"
+                   placeholder="Inserisci il nome del titolare"
+                   [ngClass]="{'is-invalid':(submitted || f['nomeTitolare'].touched) && f['nomeTitolare'].invalid,
+            'is-valid': (submitted ||f['nomeTitolare'].touched) && f['nomeTitolare'].valid }">
+            <div *ngIf="submitted && f['nomeTitolare'].invalid" class="invalid-feedback">
+              <div *ngIf="f['nomeTitolare'].errors?.['required']">Compila questo campo</div>
+              <div *ngIf="f['nomeTitolare'].errors?.['maxLength']">{{formErrori.nomeTitolare.maxLength}}</div>
+              <div *ngIf="f['nomeTitolare'].errors?.['pattern']">{{formErrori.nomeTitolare.pattern}}</div>
+            </div>
+            <div *ngIf="submitted && f['nomeTitolare'].valid" class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label for="cc-number" class="form-label">Numero della carta di credito</label>
+            <input cFormControl formControlName="numeroCartaDiCredito" type="text" class="form-control" id="cc-number"
+                   placeholder="Numero della carta di credito"
+                   [ngClass]="{'is-invalid':(submitted || f['numeroCartaDiCredito'].touched) && f['numeroCartaDiCredito'].invalid,
+            'is-valid': (submitted ||f['numeroCartaDiCredito'].touched) && f['numeroCartaDiCredito'].valid }">
+            <div *ngIf="submitted && f['numeroCartaDiCredito'].invalid" class="invalid-feedback">
+              <div *ngIf="f['numeroCartaDiCredito'].errors?.['required']">Compila questo campo</div>
+              <div
+                *ngIf="f['numeroCartaDiCredito'].errors?.['maxLength']">{{formErrori.numeroCartaDiCredito.maxLength}}</div>
+              <div
+                *ngIf="f['numeroCartaDiCredito'].errors?.['pattern']">{{formErrori.numeroCartaDiCredito.pattern}}</div>
+            </div>
+            <div *ngIf="submitted && f['numeroCartaDiCredito'].valid" class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <label for="cc-expiration" class="form-label">Data di scadenza</label>
+            <input cFormControl formControlName="dataScadenza" type="date" class="form-control" id="cc-expiration"
+                   placeholder="">
+            <div class="invalid-feedback">
+              Compila questo campo!
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <label for="cc-cvv" class="form-label">CVV</label>
+            <input cFormControl formControlName="cvv" type="text" class="form-control" id="cc-cvv"
+                   placeholder="Inserisci il cvv"
+                   [ngClass]="{'is-invalid':(submitted || f['cvv'].touched) && f['cvv'].invalid,
+            'is-valid': (submitted ||f['cvv'].touched) && f['cvv'].valid }">
+            <div *ngIf="submitted && f['cvv'].invalid" class="invalid-feedback">
+              <div *ngIf="f['cvv'].errors?.['required']">Compila questo campo</div>
+              <div
+                *ngIf="f['cvv'].errors?.['maxLength']">{{formErrori.numeroCartaDiCredito.maxLength}}</div>
+              <div
+                *ngIf="f['cvv'].errors?.['pattern']">{{formErrori.numeroCartaDiCredito.pattern}}</div>
+            </div>
+            <div *ngIf="submitted && f['cvv'].valid" class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
+        </div>
+
+        <hr class="my-4">
+        <div class="row justify-content-center mt-3">
+          <button class="col-6 btn btn-primary btn-lg" type="submit">Acquista</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
