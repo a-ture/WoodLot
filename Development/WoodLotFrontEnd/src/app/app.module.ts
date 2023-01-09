@@ -44,7 +44,9 @@ import {
 import {
   CardRettangolareConTestoListComponent
 } from './pagine/diventaContadino/componenti/cardRettangolareConTesto.componenti/card-rettangolare-con-testo-list/card-rettangolare-con-testo-list.component';
-import {CardProdottoComponent} from './componenti/card.componenti/card-prodotto/card-prodotto.component';
+import {
+  CardProdottoComponent
+} from './componenti/card.componenti/consiglioAlberi/card-prodotto/card-prodotto.component';
 import {CardProdottoListComponent} from './pagine/catalogo/componenti/card-prodotto-list/card-prodotto-list.component';
 import {ProdottoService} from "./servizi/prodotto/prodotto.service";
 import {FiltroComponent} from './pagine/catalogo/componenti/filtro.componenti/filtro/filtro.component';
@@ -105,7 +107,7 @@ import {
 import {
   CardConTestoConIconaCentraleListComponent
 } from './pagine/prodotto/componenti/card-con-testo-con-icona-centrale-list/card-con-testo-con-icona-centrale-list.component';
-import {CardAlberoComponent} from './componenti/card.componenti/consiglioAlberi/card-albero/card-albero.component';
+import {CardAlberoComponent} from './componenti/card.componenti/card-albero/card-albero.component';
 import {
   CardAlberoListComponent
 } from './pagine/utente/componenti/sezioneAlberi.componenti/card-albero-list/card-albero-list.component';
@@ -147,6 +149,12 @@ import {
   ReimpostaPasswordComponent
 } from './componenti/header.componenti/reimposta-password/reimposta-password.component';
 import {FormPagamentoComponent} from "./pagine/checkout/componenti /form-pagamento/form-pagamento.component";
+import {
+  SezioneAggiungiComponent
+} from './pagine/responsabileCatalogo/componenti/sezione-aggiungi/sezione-aggiungi.component';
+import {
+  SezioneEliminaComponent
+} from './pagine/responsabileCatalogo/componenti/sezione-elimina/sezione-elimina.component';
 
 
 @NgModule({
@@ -211,6 +219,8 @@ import {FormPagamentoComponent} from "./pagine/checkout/componenti /form-pagamen
     HeaderCheckoutComponent,
     ReimpostaPasswordComponent,
     FormPagamentoComponent,
+    SezioneAggiungiComponent,
+    SezioneEliminaComponent,
 
   ],
   imports: [

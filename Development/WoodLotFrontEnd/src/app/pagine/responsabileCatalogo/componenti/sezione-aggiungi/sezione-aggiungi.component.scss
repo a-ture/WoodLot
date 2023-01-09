@@ -1,0 +1,31 @@
+.btn-primary {
+  --cui-btn-bg: #5E7250;
+  --cui-btn-border-color: #5E7250;
+  --cui-btn-hover-border-color: #93C572;
+  --cui-btn-hover-bg: #93C572;
+  --cui-btn-border-radius: 15px;
+  --cui-btn-active-bg: #94AD6E;
+  --cui-btn-active-border-color: #94AD6E;
+  text-transform: capitalize;
+}
+
+.btn-primary:disabled, .btn-primary.disabled {
+  color: #fff;
+  background-color: red;
+  border-color: red;
+}
+
+.form-control:focus {
+  background-color: var(--cui-input-focus-bg, #fff);
+  border-color: #93C572;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(196, 216, 159, 1);
+}
+
+.form-select:focus {
+  background-color: var(--cui-input-focus-bg, #fff);
+  border-color: #93C572;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(196, 216, 159, 1);
+
+}

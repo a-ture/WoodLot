@@ -20,17 +20,22 @@ export class FormPagamentoComponent implements OnInit {
   formErrori: any;
 
   constructor(private serviceCarrelloProdotto: CarrelloService,
-              serviceValidazioneFomrPagamento: ValidazioneFormPagamentoService) {
+              private serviceValidazioneFomrPagamento: ValidazioneFormPagamentoService) {
     this.listProdotti = serviceCarrelloProdotto.getCarrello()
     this.formPagamento = new FormGroup(
       {
-        metodoPagamento: new FormControl(false, Validators.requiredTrue),
-        nomeTitolare: new FormControl('', Validators.required),
-        numeroCartaDiCredito: new FormControl('', Validators.required),
-        dataScadenza: new FormControl('', Validators.required),
-        cvv: new FormControl('', Validators.required),
+        metodoPagamento: new FormControl(false, [Validators.requiredTrue]),
+        nomeTitolare: new FormControl('', [Validators.required,
+          Validators.maxLength(serviceValidazioneFomrPagamento.regoleForm.nomeTitolareCartaMax),
+          Validators.pattern(serviceValidazioneFomrPagamento.regoleForm.nomeTitolareCarta)]),
+        numeroCartaDiCredito: new FormControl('', [Validators.required,
+          Validators.maxLength(serviceValidazioneFomrPagamento.regoleForm.numeroCartaDiCreditoMax),
+          Validators.pattern(serviceValidazioneFomrPagamento.regoleForm.numeroCartaDiCredito)]),
+        dataScadenza: new FormControl('', [Validators.required]),
+        cvv: new FormControl('', [Validators.required, Validators.pattern(serviceValidazioneFomrPagamento.regoleForm.cvv)]),
       }
     )
+    this.formErrori = this.serviceValidazioneFomrPagamento.errori;
   }
 
   ngOnInit(): void {

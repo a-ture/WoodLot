@@ -1,0 +1,177 @@
+<div class="row  justify-content-center m-3">
+  <h2 class="mb-3 text-center">Inserisci un nuovo prodotto</h2>
+  <form [formGroup]="formInserimento"
+        (ngSubmit)="onSubmit()"
+        [gutter]="3"
+        novalidate
+        cForm cRow
+        class="needs-validation">
+
+    <div class="row gy-3">
+
+      <div class="col-md-6">
+        <label for="nomeAlbero" class="form-label">Nome albero</label>
+        <input cFormControl formControlName="nomeAlbero" type="text" class="form-control" id="nomeAlbero"
+               placeholder="Inserisci il nome del nuovo albero"
+               [ngClass]="{'is-invalid':(submitted || f['nomeAlbero'].touched) && f['nomeAlbero'].invalid,
+            'is-valid': (submitted ||f['nomeAlbero'].touched) && f['nomeAlbero'].valid }">
+        <div *ngIf="submitted && f['nomeAlbero'].invalid" class="invalid-feedback">
+          <div *ngIf="f['nomeAlbero'].errors?.['required']">Compila questo campo</div>
+          <div *ngIf="f['nomeAlbero'].errors?.['maxLength']">{{formErrori.nomeAlbero.maxLength}}</div>
+          <div *ngIf="f['nomeAlbero'].errors?.['pattern']">{{formErrori.nomeAlbero.pattern}}</div>
+        </div>
+        <div *ngIf="submitted && f['nomeAlbero'].valid" class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <label for="specieScientifica" class="form-label">Specie scientifica</label>
+        <input cFormControl formControlName="specieScientifica" type="text" class="form-control" id="specieScientifica"
+               placeholder="Inserisci la specie scientifica dell'albero"
+               [ngClass]="{'is-invalid':(submitted || f['specieScientifica'].touched) && f['specieScientifica'].invalid,
+            'is-valid': (submitted ||f['specieScientifica'].touched) && f['specieScientifica'].valid }">
+        <div *ngIf="submitted && f['specieScientifica'].invalid" class="invalid-feedback">
+          <div *ngIf="f['specieScientifica'].errors?.['required']">Compila questo campo</div>
+          <div *ngIf="f['specieScientifica'].errors?.['maxLength']">{{formErrori.specieScientifica.maxLength}}</div>
+          <div *ngIf="f['specieScientifica'].errors?.['pattern']">{{formErrori.specieScientifica.pattern}}</div>
+        </div>
+        <div *ngIf="submitted && f['specieScientifica'].valid" class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+    </div>
+
+    <div class="row gy-3">
+
+      <div class="col-md-6">
+        <label class="form-label">Paese</label>
+        <select cSelect>
+          <option *ngFor="let item of listaPaesi" value="{{item.nome}}">{{item.nome}}</option>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <label for="prezzo" class="form-label">Prezzo</label>
+        <input cFormControl formControlName="prezzo" type="text" class="form-control" id="prezzo"
+               placeholder="Inserisci il prezzo dell'albero"
+               [ngClass]="{'is-invalid':(submitted || f['prezzo'].touched) && f['prezzo'].invalid,
+            'is-valid': (submitted ||f['prezzo'].touched) && f['prezzo'].valid }">
+        <div *ngIf="submitted && f['prezzo'].invalid" class="invalid-feedback">
+          <div *ngIf="f['prezzo'].errors?.['required']">Compila questo campo</div>
+          <div *ngIf="f['prezzo'].errors?.['pattern']">{{formErrori.prezzo.pattern}}</div>
+        </div>
+        <div *ngIf="submitted && f['prezzo'].valid" class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row gy-3">
+      <div class="col-md-6">
+        <label for="descrizioneBreve" class="form-label">Descrizione breve</label>
+        <textarea cFormControl formControlName="descrizioneBreve" type="text" class="form-control" id="descrizioneBreve"
+                  placeholder="Inserisci la descrizione breve dell'albero"
+                  [ngClass]="{'is-invalid':(submitted || f['descrizioneBreve'].touched) && f['descrizioneBreve'].invalid,
+            'is-valid': (submitted ||f['descrizioneBreve'].touched) && f['descrizioneBreve'].valid }">
+        </textarea>
+        <div *ngIf="submitted && f['descrizioneBreve'].invalid" class="invalid-feedback">
+          <div *ngIf="f['descrizioneBreve'].errors?.['required']">Compila questo campo</div>
+          <div *ngIf="f['descrizioneBreve'].errors?.['maxLength']">{{formErrori.descrizioneBreve.maxLength}}</div>
+        </div>
+        <div *ngIf="submitted && f['descrizioneBreve'].valid" class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="descrizione" class="form-label">Descrizione</label>
+        <textarea cFormControl formControlName="descrizione" type="text" class="form-control" id="descrizione"
+                  placeholder="Inserisci la descrizione dell'albero"
+                  [ngClass]="{'is-invalid':(submitted || f['descrizione'].touched) && f['descrizione'].invalid,
+            'is-valid': (submitted ||f['descrizione'].touched) && f['descrizione'].valid }">
+        </textarea>
+        <div *ngIf="submitted && f['descrizione'].invalid" class="invalid-feedback">
+          <div *ngIf="f['descrizione'].errors?.['required']">Compila questo campo</div>
+          <div *ngIf="f['descrizione'].errors?.['maxLength']">{{formErrori.descrizione.maxLength}}</div>
+        </div>
+        <div *ngIf="submitted && f['descrizione'].valid" class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+    </div>
+
+    <div class="row gy-3">
+      <div class="col-md-6">
+        <label class="form-label">Usi locali</label>
+        <select aria-label="Small select example" multiple cSelect>
+          <option *ngFor="let item of listaUsiLocali" value="{{item.nome}}">{{item.nome}}</option>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Benefici</label>
+        <select aria-label="Small select example" cSelect multiple>
+          <option *ngFor="let item of listaBenfici" value="{{item.nome}}">{{item.nome}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row gy-3">
+      <div class="col-md-6">
+        <label for="anidrideCarbonica" class="form-label">CO<sub>2</sub></label>
+        <input cFormControl formControlName="anidrideCarbonica" type="text" class="form-control" id="anidrideCarbonica"
+               placeholder="Inserisci l'anidride carbonica assorbita dall'albero"
+               [ngClass]="{'is-invalid':(submitted || f['anidrideCarbonica'].touched) && f['anidrideCarbonica'].invalid,
+            'is-valid': (submitted ||f['anidrideCarbonica'].touched) && f['anidrideCarbonica'].valid }">
+        <div *ngIf="submitted && f['anidrideCarbonica'].invalid" class="invalid-feedback">
+          <div *ngIf="f['anidrideCarbonica'].errors?.['required']">Compila questo campo</div>
+          <div *ngIf="f['anidrideCarbonica'].errors?.['pattern']">{{formErrori.anidrideCarbonica.pattern}}</div>
+        </div>
+        <div *ngIf="submitted && f['anidrideCarbonica'].valid" class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="salvaguardia" class="form-label">Salvaguardia</label>
+        <input cFormControl formControlName="salvaguardia" type="text" class="form-control" id="salvaguardia"
+               placeholder="Inserisci la salvaguardia"
+               [ngClass]="{'is-invalid':(submitted || f['salvaguardia'].touched) && f['salvaguardia'].invalid,
+            'is-valid': (submitted ||f['salvaguardia'].touched) && f['salvaguardia'].valid }">
+        <div *ngIf="submitted && f['salvaguardia'].invalid" class="invalid-feedback">
+          <div *ngIf="f['salvaguardia'].errors?.['required']">Compila questo campo</div>
+          <div *ngIf="f['salvaguardia'].errors?.['pattern']">{{formErrori.salvaguardia.pattern}}</div>
+        </div>
+        <div *ngIf="submitted && f['salvaguardia'].valid" class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+    </div>
+
+    <div class="row gy-3">
+      <div class="col-md-4">
+        <label for="foto1" class="form-label">Foto</label>
+        <input cFormControl formControlName="foto1" type="file" class="form-control" id="foto1"
+               [ngClass]="{'is-invalid':(submitted || f['foto1'].touched) && f['foto1'].invalid,
+            'is-valid': (submitted ||f['foto1'].touched) && f['foto1'].valid }">
+      </div>
+      <div class="col-md-4">
+        <label for="foto2" class="form-label">Foto</label>
+        <input cFormControl formControlName="foto2" type="file" class="form-control" id="foto2"
+               [ngClass]="{'is-invalid':(submitted || f['foto2'].touched) && f['foto2'].invalid,
+            'is-valid': (submitted ||f['foto2'].touched) && f['foto2'].valid }">
+      </div>
+      <div class="col-md-4">
+        <label for="foto3" class="form-label">Foto</label>
+        <input cFormControl formControlName="foto3" type="file" class="form-control" id="foto3"
+               [ngClass]="{'is-invalid':(submitted || f['foto3'].touched) && f['foto3'].invalid,
+            'is-valid': (submitted ||f['foto3'].touched) && f['foto3'].valid }">
+      </div>
+    </div>
+
+    <hr class="my-4">
+
+    <div class="row justify-content-center mt-3">
+      <button class="col-6 btn btn-primary btn-lg" type="submit">Inserisci</button>
+    </div>
+
+  </form>
+</div>

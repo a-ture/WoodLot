@@ -13,7 +13,7 @@ export class CardAlberoListComponent implements OnInit {
   public listaAlberi !: ProdottoOrdine[]
 
   public listaNomi = [
-    "Stato", "Dove è piantato"
+    "Stato", "Dove è piantato",
   ]
 
   public listaSourceImage = [
@@ -28,7 +28,7 @@ export class CardAlberoListComponent implements OnInit {
     "assets/img/profiloUtente/alberiUtente/03.jpeg",
   ]
 
-  public getDescrizioneCard(position : number){
+  public getDescrizioneCard(position: number) {
     let prodotto = this.listaAlberi[position]
     return [prodotto.stato, prodotto.coordinateGeografiche]
   }
