@@ -53,4 +53,6 @@ public class Albero implements Serializable {
     @ManyToMany
     @JoinColumn(name = "beneficio", referencedColumnName = "nome")
     private List<Beneficio> benefici;
+
+
 }
