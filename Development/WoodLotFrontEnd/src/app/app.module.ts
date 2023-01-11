@@ -154,10 +154,10 @@ import {
 } from './pagine/responsabileCatalogo/componenti/sezione-aggiungi/sezione-aggiungi.component';
 import {
   SezioneEliminaComponent
-} from './pagine/responsabileCatalogo/componenti/sezione-elimina/sezione-elimina.component';
+} from './pagine/responsabileCatalogo/componenti/sezioneElimina.componenti/sezione-elimina/sezione-elimina.component';
 import {
   CardEliminaComponent
-} from './pagine/responsabileCatalogo/componenti/sezione-elimina/card-elimina/card-elimina.component';
+} from './pagine/responsabileCatalogo/componenti/sezioneElimina.componenti/card-elimina/card-elimina.component';
 
 
 @NgModule({

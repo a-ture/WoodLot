@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -6,11 +6,16 @@ import { Injectable } from '@angular/core';
 //TODO bisogna effettuare il collegamento con il back-end
 export class StatisticheService {
 
-  constructor() { }
+  constructor() {
+  }
 
   // restituisce le statistiche per la pagina diventa un contadino e per il profilo responsabile catalogo
-  public getStatistiche(){
+  public getStatistiche() {
     return ["452525", "87678", "452", "4"]
   }
 
+  //restituisce le statistiche per la pagina del contadino
+  public getStatischeContadino() {
+    return ["45", "56", "33"]
+  }
 }

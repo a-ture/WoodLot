@@ -1,1 +1,31 @@
-<p>interfaccia.contadino works!</p>
+<app-header></app-header>
+
+<div class="container-fluid" style="background:linear-gradient(180deg, #F4EBC7 5.73%, #FBD5B2 100%);">
+  <div class="row d-flex align-items-stretch">
+    <app-benvenuto class="col-md-6 col-sm-12 h-100"
+                   [nome]="contadino.nome" [cognome]="contadino.cognome"
+                   [listaNomi]="listNomi" [listaNumeri]="listaNumeri"
+    ></app-benvenuto>
+
+  </div>
+  <div class="container">
+    <c-nav variant="pills">
+      <c-nav-item *ngFor="let nav of panes; index as i; first as isFirst;">
+        <a [cTabContent]="tabContent" [routerLink] [tabPaneIdx]="i" cNavLink>
+          {{nav.name}}
+        </a>
+      </c-nav-item>
+    </c-nav>
+
+    <c-tab-content #tabContent="cTabContent"
+                   (activeTabPaneIdxChange)="onTabChange($event)"
+                   [activeTabPaneIdx]="activePane">
+      <c-tab-pane *ngFor="let pane of panes; index as i;" class="p-3">
+
+      </c-tab-pane>
+    </c-tab-content>
+  </div>
+
+</div>
+
+<app-footer></app-footer>
