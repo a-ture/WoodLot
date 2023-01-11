@@ -7,22 +7,14 @@ import {Albero} from "../../../../entita/albero/albero";
   styleUrls: ['./sezione-elimina.component.scss']
 })
 export class SezioneEliminaComponent implements OnInit {
+
   @Input()
   public listaAlberi !: Albero[]
-
-  public listaNomi = [
-    "Prezzo", "Paese"
-  ]
-
+  
   public urlBase = "assets/img/alberi/"
   public endBase = "/catalogo.png"
 
   constructor() {
-  }
-
-  public getDescrizioneCard(position: number) {
-    let prodotto = this.listaAlberi[position]
-    return [prodotto.prezzo + "", prodotto.paese?.nome+""]
   }
 
   ngOnInit(): void {

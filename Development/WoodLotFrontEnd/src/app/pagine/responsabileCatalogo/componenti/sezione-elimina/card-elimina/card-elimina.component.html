@@ -1,0 +1,28 @@
+<c-card class="mb-3">
+  <img cCardImg="top" src="{{sourceImage}}">
+  <c-card-body>
+    <h5 cCardTitle>{{titolo}}</h5>
+    <p cCardText>
+      <b>Prezzo: </b> {{prezzo.toFixed(2)}}€
+    </p>
+    <a cCardLink (click)="toggleModal()">Vuoi eliminare il prodotto?</a>
+  </c-card-body>
+</c-card>
+
+<c-modal [visible]="visible" (visibleChange)="handleModal($event)"
+         [backdrop]="false" scrollable id={{titolo}}>
+  <c-modal-header>
+    <h2 cModalTitle>{{titolo}}</h2>
+  </c-modal-header>
+  <c-modal-body>
+    <div class="row d-flex align-items-center m-4">
+      Sei sicuro di voler procedere?
+    </div>
+  </c-modal-body>
+  <c-modal-footer>
+    <button cButton color="secondary" (click)="toggleModal()">Annulla</button>
+    <button cButton color="primary">Confermo</button>
+  </c-modal-footer>
+</c-modal>
+
+

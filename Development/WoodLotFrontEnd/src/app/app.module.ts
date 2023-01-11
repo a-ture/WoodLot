@@ -155,6 +155,9 @@ import {
 import {
   SezioneEliminaComponent
 } from './pagine/responsabileCatalogo/componenti/sezione-elimina/sezione-elimina.component';
+import {
+  CardEliminaComponent
+} from './pagine/responsabileCatalogo/componenti/sezione-elimina/card-elimina/card-elimina.component';
 
 
 @NgModule({
@@ -221,6 +224,7 @@ import {
     FormPagamentoComponent,
     SezioneAggiungiComponent,
     SezioneEliminaComponent,
+    CardEliminaComponent,
 
   ],
   imports: [

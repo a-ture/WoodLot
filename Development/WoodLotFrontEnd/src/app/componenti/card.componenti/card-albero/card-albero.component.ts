@@ -11,7 +11,6 @@ import {Component, Input, OnInit} from '@angular/core';
         <p cCardText *ngFor="let item of listaNomi; index as i">
           <b>{{listaNomi[i]}}</b>: {{listaDescrizioni[i]}}
         </p>
-
       </c-card-body>
     </c-card>
   `
