@@ -3,6 +3,7 @@ export class ProdottoOrdine {
   public quantita: number
   public prezzo: number
   public stato: String
+  // possiamo fare che la data assegnazione dopo che è stato efettivamente piantato allora è la data dell'ultima modifca
   public dataAssegnazione: Date
   public nome: String
   public coordinateGeografiche: String

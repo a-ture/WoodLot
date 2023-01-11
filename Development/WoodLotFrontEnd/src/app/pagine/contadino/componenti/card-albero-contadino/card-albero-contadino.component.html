@@ -1,0 +1,78 @@
+<c-card class="mb-3 text-center">
+  <img cCardImg="top" src="{{sourceImage}}">
+  <c-card-body>
+    <h5 cCardTitle>{{titolo}}</h5>
+    <p cCardText>
+      <b>Id: </b> {{id}}
+    </p>
+    <p cCardText>
+      <b>Data ultima mofica:</b> {{dataModifica | date: 'dd/MM/yy'}}
+    </p>
+    <a cCardLink (click)="toggleModal()">Vuoi modificare lo stato?</a>
+  </c-card-body>
+</c-card>
+
+<c-modal [visible]="visible" (visibleChange)="handleModal($event)"
+         [backdrop]="false" scrollable id={{titolo}}>
+  <c-modal-header>
+    <h2 cModalTitle>{{titolo}}</h2>
+  </c-modal-header>
+  <div class="modal-body">
+    <ng-container *ngTemplateOutlet="form"></ng-container>
+  </div>
+</c-modal>
+
+<ng-template #form>
+  <form cRow [formGroup]="formAggionaStato"
+        (ngSubmit)="onSubmit()">
+    <c-col class="mb-3" [sm]="12">
+      <label cLabel for="breveDescrizione">Breve descrizione</label>
+      <textarea cFormControl
+                id="breveDescrizione" formControlName="breveDescrizione"
+                type="text" placeholder="Inserisci la descrizione"
+                [ngClass]="{'is-invalid':(submitted || f['breveDescrizione'].touched) && f['breveDescrizione'].invalid,
+            'is-valid': (submitted ||f['breveDescrizione'].touched) && f['breveDescrizione'].valid }">
+      </textarea>
+      <div *ngIf="submitted && f['breveDescrizione'].invalid" class="invalid-feedback">
+        <div *ngIf="f['breveDescrizione'].errors?.['required']">Compila questo campo</div>
+        <div *ngIf="f['breveDescrizione'].errors?.['maxLength']">{{formErrori.descrizioneBreve.maxLength}}</div>
+      </div>
+      <div *ngIf="submitted && f['breveDescrizione'].valid" class="valid-feedback">
+        Looks good!
+      </div>
+    </c-col>
+    <c-col class="mb-3" [sm]="12" *ngIf="stato == 'frutto'">
+      <label cLabel for="frutta">Quantità di frutta raccolta</label>
+      <input cFormControl
+             id="frutta" formControlName="frutta"
+             type="text" placeholder="Inserisci la  quantità di frutta raccolta"
+             [ngClass]="{'is-invalid':(submitted || f['frutta'].touched) && f['frutta'].invalid,
+            'is-valid': (submitted ||f['frutta'].touched) && f['frutta'].valid }"/>
+      <div *ngIf="submitted && f['frutta'].invalid" class="invalid-feedback">
+        <div *ngIf="f['frutta'].errors?.['required']">Compila questo campo</div>
+        <div *ngIf="f['frutta'].errors?.['pattern']">{{formErrori.frutta.pattern}}</div>
+      </div>
+      <div *ngIf="submitted && f['frutta'].valid" class="valid-feedback">
+        Looks good!
+      </div>
+    </c-col>
+    <c-col class="mb-3" [sm]="12">
+      <label for="foto" class="form-label">Foto</label>
+      <input cFormControl formControlName="foto" type="file" class="form-control" id="foto"
+             [ngClass]="{'is-invalid':(submitted || f['foto'].touched) && f['foto'].invalid,
+            'is-valid': (submitted ||f['foto'].touched) && f['foto'].valid }">
+    </c-col>
+    <c-col class="mb-3" [sm]="12">
+      <c-form-check>
+        <input cFormCheckInput id="senescenza" type="checkbox" formControlName="senescenza"/>
+        <label cFormCheckLabel for="senescenza">Comunica la senescenza dell'albeo</label>
+      </c-form-check>
+    </c-col>
+    <c-col class="mb-3" [sm]="12">
+      <div class="row justify-content-center mt-3">
+        <input class="col-6" cButton color="primary" type="submit" value="Aggiorna">
+      </div>
+    </c-col>
+  </form>
+</ng-template>
+

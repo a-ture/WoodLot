@@ -158,7 +158,9 @@ import {
 import {
   CardEliminaComponent
 } from './pagine/responsabileCatalogo/componenti/sezioneElimina.componenti/card-elimina/card-elimina.component';
-
+import {
+  CardAlberoContadinoComponent
+} from './pagine/contadino/componenti/card-albero-contadino/card-albero-contadino.component';
 
 @NgModule({
   declarations: [
@@ -225,6 +227,7 @@ import {
     SezioneAggiungiComponent,
     SezioneEliminaComponent,
     CardEliminaComponent,
+    CardAlberoContadinoComponent,
 
   ],
   imports: [

@@ -1,7 +1,6 @@
 export class ProdottoCarrello {
   public quantita: number
   public nome: String
-  public regalo: boolean
   public prezzo: number
 
 
@@ -9,6 +8,5 @@ export class ProdottoCarrello {
     this.prezzo = prezzo
     this.quantita = quantita
     this.nome = nome
-    this.regalo = regalo
   }
 }
