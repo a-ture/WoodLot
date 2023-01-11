@@ -1,7 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-light">
 
   <div class="container-fluid justify-content-center">
-    <a class="navbar-brand" routerLink="" id="logo">
+    <a class="navbar-brand" id="logo" [mdbPopover]="template"
+       role="button"
+       trigger="click">
       <img
         src="/assets/img/header/logoWoodLot.jpg"
         height="50"
@@ -13,3 +15,13 @@
     <h1 class="ms-3 display-4" style="color:#E7B077">Riepilogo ordine </h1>
   </div>
 </nav>
+<ng-template #template>
+
+  <div class="row mx-2">
+    Sei sicuro di voler abbandonare il pagamento?
+  </div>
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+    <button type="button" class="btn btn-primary btn-rounded" routerLink="">Vai alla home!</button>
+  </div>
+
+</ng-template>

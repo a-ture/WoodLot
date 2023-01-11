@@ -27,7 +27,7 @@ import {
   CardModule, CarouselModule,
   DropdownModule, FooterModule,
   FormModule, GridModule,
-  ModalModule, NavModule, OffcanvasModule, TabsModule
+  ModalModule, NavModule, OffcanvasModule, TabsModule, ToastModule,
 } from '@coreui/angular';
 import {IconModule} from '@coreui/icons-angular';
 import {HttpClientModule} from '@angular/common/http';
@@ -161,6 +161,7 @@ import {
 import {
   CardAlberoContadinoComponent
 } from './pagine/contadino/componenti/card-albero-contadino/card-albero-contadino.component';
+import { OrdineEffettuatoComponent } from './pagine/checkout/componenti /ordine-effettuato/ordine-effettuato.component';
 
 @NgModule({
   declarations: [
@@ -228,6 +229,8 @@ import {
     SezioneEliminaComponent,
     CardEliminaComponent,
     CardAlberoContadinoComponent,
+    OrdineEffettuatoComponent,
+
 
   ],
   imports: [
@@ -266,7 +269,9 @@ import {
     OffcanvasModule,
     ReactiveFormsModule,
     FormsModule,
-    FooterModule
+    FooterModule,
+    ToastModule,
+
   ],
   providers: [ProdottoService, CategoriaService, PaeseService, UsoLocaleService],
   bootstrap: [AppComponent]

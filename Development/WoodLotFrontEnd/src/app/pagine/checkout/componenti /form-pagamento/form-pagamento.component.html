@@ -32,20 +32,12 @@
             class="needs-validation">
 
         <div class="my-3">
-          <div class="form-check">
-            <input cFormCheckInput id="mastercard" formControlName="metodoPagamento" type="radio"
-                   class="form-check-input" value="mastercard">
-            <label class="form-check-label" for="mastercard">MasterCard</label>
-          </div>
-          <div class="form-check">
-            <input cFormCheckInput id="visa" formControlName="metodoPagamento" type="radio"
-                   class="form-check-input" value="visa">
-            <label class="form-check-label" for="visa">Visa</label>
-          </div>
-          <div class="form-check">
-            <input cFormCheckInput id="americanExpress" formControlName="metodoPagamento" type="radio"
-                   class="form-check-input" value="americanExpress">
-            <label class="form-check-label" for="americanExpress">American Express</label>
+          <div class="form-check"*ngFor="let item of metodoPagamento">
+            <input  cFormCheckInput id="pagamento" type="radio"
+                   formControlName="metodoPagamento"
+                   class="form-check-input" value="{{item}}" [ngClass]="{'is-invalid':(submitted || f['metodoPagamento'].touched) && f['metodoPagamento'].invalid,
+            'is-valid': (submitted ||f['metodoPagamento'].touched) && f['metodoPagamento'].valid }">
+            <label class="form-check-label" for="pagamento">{{item}}</label>
           </div>
         </div>
 
@@ -87,9 +79,10 @@
           <div class="col-md-3">
             <label for="cc-expiration" class="form-label">Data di scadenza</label>
             <input cFormControl formControlName="dataScadenza" type="date" class="form-control" id="cc-expiration"
-                   placeholder="">
-            <div class="invalid-feedback">
-              Compila questo campo!
+                   placeholder="" [ngClass]="{'is-invalid':(submitted || f['dataScadenza'].touched) && f['dataScadenza'].invalid,
+            'is-valid': (submitted ||f['dataScadenza'].touched) && f['dataScadenza'].valid }">
+            <div *ngIf="submitted && f['dataScadenza'].valid" class="valid-feedback">
+              Looks good!
             </div>
           </div>
 
