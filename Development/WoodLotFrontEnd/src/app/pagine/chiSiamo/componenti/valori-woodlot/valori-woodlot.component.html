@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="mx-3 row text-center d-flex justify-content-center">
+    <h1 class="mt-5 fw-semibold">I valori di WoodLot</h1>
+    <p class="fs-5 fw-lighter">
+      Il nostro obiettivo principale è contrastare la crisi climatica alimentando un modello di sviluppo sostenibile
+    </p>
+    <div class="row  d-flex justify-content-center g-2" id="valoriWoodlot">
+      <app-card-con-testo-con-icona-centrale *ngFor="let item of listaSource; index as i"
+                                             class="col-sm  fw-light  d-flex justify-content-center"
+                                             [sourceimage]="listaSource[i]" [titolo]="listaTitoli[i]"
+                                             [testo]="listaTesto[i]"
+                                             [colore]="listaColore[i]"
+      ></app-card-con-testo-con-icona-centrale>
+    </div>
+  </div>
+</div>
+

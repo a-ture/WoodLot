@@ -162,6 +162,8 @@ import {
   CardAlberoContadinoComponent
 } from './pagine/contadino/componenti/card-albero-contadino/card-albero-contadino.component';
 import { OrdineEffettuatoComponent } from './pagine/checkout/componenti /ordine-effettuato/ordine-effettuato.component';
+import { IntestazioneComponent } from './pagine/chiSiamo/componenti/intestazione/intestazione.component';
+import { ValoriWoodlotComponent } from './pagine/chiSiamo/componenti/valori-woodlot/valori-woodlot.component';
 
 @NgModule({
   declarations: [
@@ -230,6 +232,8 @@ import { OrdineEffettuatoComponent } from './pagine/checkout/componenti /ordine-
     CardEliminaComponent,
     CardAlberoContadinoComponent,
     OrdineEffettuatoComponent,
+    IntestazioneComponent,
+    ValoriWoodlotComponent,
 
 
   ],
