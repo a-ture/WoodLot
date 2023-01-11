@@ -164,6 +164,7 @@ import {
 import { OrdineEffettuatoComponent } from './pagine/checkout/componenti /ordine-effettuato/ordine-effettuato.component';
 import { IntestazioneComponent } from './pagine/chiSiamo/componenti/intestazione/intestazione.component';
 import { ValoriWoodlotComponent } from './pagine/chiSiamo/componenti/valori-woodlot/valori-woodlot.component';
+import { MoltoPiuDiUnAlberoComponent } from './pagine/chiSiamo/componenti/molto-piu-di-un-albero/molto-piu-di-un-albero.component';
 
 @NgModule({
   declarations: [
@@ -234,6 +235,7 @@ import { ValoriWoodlotComponent } from './pagine/chiSiamo/componenti/valori-wood
     OrdineEffettuatoComponent,
     IntestazioneComponent,
     ValoriWoodlotComponent,
+    MoltoPiuDiUnAlberoComponent,
 
 
   ],

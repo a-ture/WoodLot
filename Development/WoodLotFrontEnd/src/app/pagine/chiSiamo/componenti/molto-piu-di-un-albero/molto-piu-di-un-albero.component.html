@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="mx-3 row text-center d-flex justify-content-center">
+    <h3 class="mt-5 fw-semibold">Un albero, che idea!</h3>
+    <p class="fs-5">
+      WoodLot è la prima piattaforma al mondo che permette di piantare un albero a distanza eseguire la storia del
+      progetto online. Originariamente ispirato dal celebre gioco online FarmVille, WoodLot ha aggiornato il concetto
+      del piantare alberi grazie alla propria piattaforma interattiva.</p>
+  </div>
+
+  <div class="mx-3 row text-center d-flex justify-content-center">
+    <h3 class="mt-5 fw-semibold">Perchè WoodLot?</h3>
+    <div class="fs-5 fw-lighter">
+      <p>
+        <b>Innovazione: </b>Se milioni di persone spendono soldi per piantare alberi virtuali su FarmVille,
+        perché non creare
+        qualcosa che permetta loro di piantarne di veri. Ed ecco che una semplice idea si è trasformata in innovazione
+        ed
+        un semplice albero è diventato lo strumento per creare una community. Creatività, innovazione e condivisione
+        sono
+        da sempre nel nostro DNA.
+      </p>
+      <p>
+        <b>Una bella storia è importante:</b> Un albero WoodLot è una storia che emoziona che chiunque può
+        vivere in prima
+        persona. È un racconto fatto di natura e dei contadini che se ne prendono cura. Un albero può raccontare la
+        storia
+        in cui credi e che vuoi condividere.
+      </p>
+    </div>
+  </div>
+
+  <div class="mx-3 row text-center d-flex justify-content-center">
+    <h3 class="mt-5 fw-semibold">Molto più di un albero!</h3>
+    <p class="fs-5 fw-lighter">
+      WoodLot finanzia direttamente progetti agroforestali, diffusi sul territorio. La filosofia è quella di realizzare
+      ecosistemi sostenibili e permettere a migliaia di contadini di far fronte ai costi iniziali della piantumazione di
+      nuovi alberi, garantendo nel tempo sovranità alimentare ed opportunità di reddito.</p>
+  </div>
+  <div class="container">
+    <app-foto-con-testo *ngFor="let item of listTitoli; index as i;"
+                        [titolo]=listTitoli[i] [descrizione]=listTesto[i]
+                        [sourceImage]=listSourceImage[i]
+                        [class]=listClassi[i%2]
+                        class="fw-lighter"
+    ></app-foto-con-testo>
+  </div>
+</div>

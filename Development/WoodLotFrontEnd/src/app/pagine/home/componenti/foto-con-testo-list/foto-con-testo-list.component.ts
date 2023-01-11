@@ -11,7 +11,7 @@ export class FotoConTestoListComponent implements OnInit {
     "E se un albero muore?", "Una storia da raccontare."
   ]
 
-  public  listTesto = [
+  public listTesto = [
     "Facciamo tutto il possibile per non far morire neanche un albero, ma in ogni caso se il tuo albero dovesse morire, " +
     "lo sostituiremo e tu potrai seguire la storia del nuovo albero. ",
     "Dalle prime foto nel vivaio fino al momento della piantumazione. Potrai vedere il tuo albero germogliare, crescere," +

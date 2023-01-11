@@ -23,14 +23,15 @@ export class ValoriWoodlotComponent implements OnInit {
   ]
 
   public listaSource = [
-    "fa-solid fa-leaf",
-    "fa-solid fa-lemon",
-    "fa-solid fa-cloud",
+    "fa-solid fa-seedling",
+    "fa-solid fa-apple-whole",
+    "fa-solid fa-map-location-dot",
   ]
+
 
   public listaColore = [
     "success",
-    "warning",
+    "danger",
     "info",
   ]
 
