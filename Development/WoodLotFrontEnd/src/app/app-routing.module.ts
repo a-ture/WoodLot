@@ -8,6 +8,7 @@ import {
   InterfacciaDiventaContadinoComponent
 } from "./pagine/diventaContadino/interfaccia.diventa-contadino/interfaccia.diventa-contadino.component";
 import {InterfacciaCheckoutComponent} from "./pagine/checkout/interfaccia.checkout/interfaccia.checkout.component";
+import {InterfacciaProdottoComponent} from "./pagine/prodotto/interfaccia.prodotto/interfaccia.prodotto.component";
 
 
 const routes: Routes = [
@@ -16,7 +17,8 @@ const routes: Routes = [
   {path: 'carrello', component: InterfacciaCarrelloComponent},
   {path: 'chiSiamo', component: InterfacciaChiSiamoComponent},
   {path: 'diventaUnContadino', component: InterfacciaDiventaContadinoComponent},
-  {path: 'checkout', component: InterfacciaCheckoutComponent}
+  {path: 'checkout', component: InterfacciaCheckoutComponent},
+  {path: 'paginaProdotto', component: InterfacciaProdottoComponent}
 ];
 
 @NgModule({

@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Albero} from "../../../../entita/albero/albero";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-card-prodotto',
@@ -15,7 +16,7 @@ import {Albero} from "../../../../entita/albero/albero";
         <li class="list-group-item px-4"><strong>Prezzo:</strong> {{albero.prezzo.toFixed(2)}} €</li>
       </ul>
       <div class="card-body">
-        <a href="#" class="btn btn-rounded" style="background-color:#5E7250; color:white">Scopri di più!</a>
+        <a routerLink="/paginaProdotto" class="btn btn-rounded" style="background-color:#5E7250; color:white">Scopri di più!</a>
       </div>
     </div>
   `
@@ -28,9 +29,10 @@ export class CardProdottoComponent implements OnInit {
   @Input()
   public sourceImage!:String
 
-  constructor() { }
+  constructor(private router: Router ) { }
 
   ngOnInit(): void {
   }
+
 
 }

@@ -167,6 +167,7 @@ import { ValoriWoodlotComponent } from './pagine/chiSiamo/componenti/valori-wood
 import { MoltoPiuDiUnAlberoComponent } from './pagine/chiSiamo/componenti/molto-piu-di-un-albero/molto-piu-di-un-albero.component';
 import { PaesiComponent } from './pagine/chiSiamo/componenti/paesi/paesi.component';
 import { CondividiWoodlotComponent } from './pagine/chiSiamo/componenti/condividi-woodlot/condividi-woodlot.component';
+import { InclusoNelPrezzoComponent } from './pagine/prodotto/componenti/cardInfoProdotto.componenti/incluso-nel-prezzo/incluso-nel-prezzo.component';
 
 @NgModule({
   declarations: [
@@ -240,6 +241,7 @@ import { CondividiWoodlotComponent } from './pagine/chiSiamo/componenti/condivid
     MoltoPiuDiUnAlberoComponent,
     PaesiComponent,
     CondividiWoodlotComponent,
+    InclusoNelPrezzoComponent,
 
 
   ],
