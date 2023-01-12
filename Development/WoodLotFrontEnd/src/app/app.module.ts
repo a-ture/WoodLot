@@ -148,7 +148,7 @@ import {HeaderCheckoutComponent} from './componenti/header.componenti/header-che
 import {
   ReimpostaPasswordComponent
 } from './componenti/header.componenti/reimposta-password/reimposta-password.component';
-import {FormPagamentoComponent} from "./pagine/checkout/componenti /form-pagamento/form-pagamento.component";
+import {FormPagamentoComponent} from "./pagine/checkout/componenti/form-pagamento/form-pagamento.component";
 import {
   SezioneAggiungiComponent
 } from './pagine/responsabileCatalogo/componenti/sezione-aggiungi/sezione-aggiungi.component';
@@ -161,10 +161,12 @@ import {
 import {
   CardAlberoContadinoComponent
 } from './pagine/contadino/componenti/card-albero-contadino/card-albero-contadino.component';
-import { OrdineEffettuatoComponent } from './pagine/checkout/componenti /ordine-effettuato/ordine-effettuato.component';
+import { OrdineEffettuatoComponent } from './pagine/checkout/componenti/ordine-effettuato/ordine-effettuato.component';
 import { IntestazioneComponent } from './pagine/chiSiamo/componenti/intestazione/intestazione.component';
 import { ValoriWoodlotComponent } from './pagine/chiSiamo/componenti/valori-woodlot/valori-woodlot.component';
 import { MoltoPiuDiUnAlberoComponent } from './pagine/chiSiamo/componenti/molto-piu-di-un-albero/molto-piu-di-un-albero.component';
+import { PaesiComponent } from './pagine/chiSiamo/componenti/paesi/paesi.component';
+import { CondividiWoodlotComponent } from './pagine/chiSiamo/componenti/condividi-woodlot/condividi-woodlot.component';
 
 @NgModule({
   declarations: [
@@ -236,6 +238,8 @@ import { MoltoPiuDiUnAlberoComponent } from './pagine/chiSiamo/componenti/molto-
     IntestazioneComponent,
     ValoriWoodlotComponent,
     MoltoPiuDiUnAlberoComponent,
+    PaesiComponent,
+    CondividiWoodlotComponent,
 
 
   ],
