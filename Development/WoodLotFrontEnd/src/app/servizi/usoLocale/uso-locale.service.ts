@@ -16,7 +16,7 @@ export class UsoLocaleService {
       new UsoLocale("Allevamento", "Le foglie, le radici, la corteccia e/o i frutti vengono usati nella medicina tradizionale."),
       new UsoLocale("Antivento", "Le foglie, le radici, la corteccia e/o i frutti vengono usati nella medicina tradizionale."),
       new UsoLocale("Biodiversità", "Le foglie, le radici, la corteccia e/o i frutti vengono usati nella medicina tradizionale."),
-      new UsoLocale("Consumo E Vendita", "Le foglie, le radici, la corteccia e/o i frutti vengono usati nella medicina tradizionale."),
+      new UsoLocale("Vendita", "Le foglie, le radici, la corteccia e/o i frutti vengono usati nella medicina tradizionale."),
       new UsoLocale("Cosmesi", "Le foglie, le radici, la corteccia e/o i frutti vengono usati nella medicina tradizionale."),
       new UsoLocale("Insetticida", "Le foglie, le radici, la corteccia e/o i frutti vengono usati nella medicina tradizionale."),
       new UsoLocale("Medicina", "Le foglie, le radici, la corteccia e/o i frutti vengono usati nella medicina tradizionale."),

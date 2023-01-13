@@ -170,6 +170,7 @@ import { CondividiWoodlotComponent } from './pagine/chiSiamo/componenti/condivid
 import { InclusoNelPrezzoComponent } from './pagine/prodotto/componenti/cardInfoProdotto.componenti/incluso-nel-prezzo/incluso-nel-prezzo.component';
 import { CardSuperpoteriComponent } from './pagine/prodotto/componenti/cardInfoProdotto.componenti/card-superpoteri/card-superpoteri.component';
 import { CardUsiLocaliComponent } from './pagine/prodotto/componenti/cardInfoProdotto.componenti/card-usi-locali/card-usi-locali.component';
+import { CardBeneficiComponent } from './pagine/prodotto/componenti/cardInfoProdotto.componenti/card-benefici/card-benefici.component';
 
 @NgModule({
   declarations: [
@@ -246,6 +247,7 @@ import { CardUsiLocaliComponent } from './pagine/prodotto/componenti/cardInfoPro
     InclusoNelPrezzoComponent,
     CardSuperpoteriComponent,
     CardUsiLocaliComponent,
+    CardBeneficiComponent,
 
 
   ],

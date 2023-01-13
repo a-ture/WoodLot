@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Beneficio} from "../../entita/beneficio/beneficio";
 
 @Injectable({
@@ -6,16 +6,16 @@ import {Beneficio} from "../../entita/beneficio/beneficio";
 })
 export class BeneficioService {
 
-  constructor() { }
+  constructor() {
+  }
 
   // restituisce tutti i benefici presenti nel DB
-  public getBenefici(){
-    return[
-      new Beneficio("beneficio1", "descrizione"),
-      new Beneficio("beneficio2", "descrizione"),
-      new Beneficio("beneficio3", "descrizione"),
-      new Beneficio("beneficio4", "descrizione"),
-      new Beneficio("beneficio5", "descrizione")
+  public getBenefici() {
+    return [
+      new Beneficio("Sicurezza alimentare", "descrizione"),
+      new Beneficio("Sviluppo economico", "descrizione"),
+      new Beneficio("Assorbimento di anidride carbonica", "descrizione"),
+      new Beneficio("Protezione ambientale", "descrizione"),
     ]
   }
 }

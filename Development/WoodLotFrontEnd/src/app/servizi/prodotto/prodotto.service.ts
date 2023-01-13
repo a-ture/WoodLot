@@ -55,11 +55,10 @@ export class ProdottoService {
       "congue nisi vitae suscipit. Nibh ipsum consequat nisl vel pretium.", 5, new Array<UsoLocale>(
         new UsoLocale("Allevamento", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut"),
         new UsoLocale("Antivento", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut"),
-        new UsoLocale("Consumo E Vendita", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut")
+        new UsoLocale("Vendita", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut")
       ), new Array<Beneficio>(
-        new Beneficio("beneficio 1", "descrizione"),
-        new Beneficio("beneficio 2", "descrizione"),
-        new Beneficio("beneficio 3", "descrizione"),
+        new Beneficio("Sicurezza alimentare", "descrizione"),
+        new Beneficio("Assorbimento di anidride carbonica", "descrizione"),
       ), new Categoria("categoria", "orem ipsum dolor sit amet, consectetur adipiscing elit, sed do " +
         "eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus purus in massa tempor nec feugiat nisl " +
         "pretium fusce. Eu lobortis elementum nibh tellus molestie."))
