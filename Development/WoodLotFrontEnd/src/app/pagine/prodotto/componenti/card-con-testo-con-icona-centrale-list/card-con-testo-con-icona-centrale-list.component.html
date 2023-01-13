@@ -1,10 +1,10 @@
-<div class="text-center">
+<div class="container text-center">
   <div class="mb-5">
     <h2>Cosa vuol dire piantare un albero con WoodLot</h2>
   </div>
-  <div class="row text-center mx-5">
+  <div class="row  d-flex justify-content-center g-2">
     <app-card-con-testo-con-icona-centrale *ngFor="let item of listaSource; index as i"
-                              class="col-sm"
+                              class="col-sm d-flex justify-content-center"
                               [sourceimage]="listaSource[i]" [titolo]="listaTitoli[i]" [testo]="listaTesto[i]"
                               [colore]="listaColore[i]"
     ></app-card-con-testo-con-icona-centrale>

@@ -171,6 +171,8 @@ import { InclusoNelPrezzoComponent } from './pagine/prodotto/componenti/cardInfo
 import { CardSuperpoteriComponent } from './pagine/prodotto/componenti/cardInfoProdotto.componenti/card-superpoteri/card-superpoteri.component';
 import { CardUsiLocaliComponent } from './pagine/prodotto/componenti/cardInfoProdotto.componenti/card-usi-locali/card-usi-locali.component';
 import { CardBeneficiComponent } from './pagine/prodotto/componenti/cardInfoProdotto.componenti/card-benefici/card-benefici.component';
+import { DoveVienePiantatoComponent } from './pagine/prodotto/componenti/dove-viene-piantato/dove-viene-piantato.component';
+import { PercheCategoriaComponent } from './pagine/prodotto/componenti/perche-categoria/perche-categoria.component';
 
 @NgModule({
   declarations: [
@@ -248,6 +250,8 @@ import { CardBeneficiComponent } from './pagine/prodotto/componenti/cardInfoProd
     CardSuperpoteriComponent,
     CardUsiLocaliComponent,
     CardBeneficiComponent,
+    DoveVienePiantatoComponent,
+    PercheCategoriaComponent,
 
 
   ],
