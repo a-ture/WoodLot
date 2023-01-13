@@ -168,6 +168,7 @@ import { MoltoPiuDiUnAlberoComponent } from './pagine/chiSiamo/componenti/molto-
 import { PaesiComponent } from './pagine/chiSiamo/componenti/paesi/paesi.component';
 import { CondividiWoodlotComponent } from './pagine/chiSiamo/componenti/condividi-woodlot/condividi-woodlot.component';
 import { InclusoNelPrezzoComponent } from './pagine/prodotto/componenti/cardInfoProdotto.componenti/incluso-nel-prezzo/incluso-nel-prezzo.component';
+import { CardSuperpoteriComponent } from './pagine/prodotto/componenti/cardInfoProdotto.componenti/card-superpoteri/card-superpoteri.component';
 
 @NgModule({
   declarations: [
@@ -242,6 +243,7 @@ import { InclusoNelPrezzoComponent } from './pagine/prodotto/componenti/cardInfo
     PaesiComponent,
     CondividiWoodlotComponent,
     InclusoNelPrezzoComponent,
+    CardSuperpoteriComponent,
 
 
   ],

@@ -39,7 +39,7 @@ export class ProdottoService {
 
   //restituisce un singolo prodotto
   public getProdottoInformazioni(nome: String) {
-    return new Albero(13.00, 34, "castagno", new Paese("Italia", "Lorem ipsum dolor " +
+    return new Albero(13.00, 340, "castagno", new Paese("Italia", "Lorem ipsum dolor " +
         "sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. " +
         "Faucibus purus in massa tempor nec feugiat nisl pretium fusce. Eu lobortis elementum nibh tellus molestie. " +
         "Quisque id diam vel quam elementum. In massa tempor nec feugiat. Porta lorem mollis aliquam ut. Quis ipsum " +
@@ -52,7 +52,7 @@ export class ProdottoService {
       "nisl pretium fusce. Eu lobortis elementum nibh tellus molestie. Quisque id diam vel quam elementum. In massa " +
       "tempor nec feugiat. Porta lorem mollis aliquam ut. Quis ipsum suspendisse ultrices gravida dictum fusce ut " +
       "placerat orci. A diam maecenas sed enim ut sem viverra aliquet eget. Sit amet volutpat consequat mauris nunc " +
-      "congue nisi vitae suscipit. Nibh ipsum consequat nisl vel pretium.", 15, new Array<UsoLocale>(
+      "congue nisi vitae suscipit. Nibh ipsum consequat nisl vel pretium.", 5, new Array<UsoLocale>(
         new UsoLocale("Uso Locale 1", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut"),
         new UsoLocale("Uso Locale 2", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut"),
         new UsoLocale("Uso Locale 3", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut")
