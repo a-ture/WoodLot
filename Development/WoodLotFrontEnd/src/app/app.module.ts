@@ -169,6 +169,7 @@ import { PaesiComponent } from './pagine/chiSiamo/componenti/paesi/paesi.compone
 import { CondividiWoodlotComponent } from './pagine/chiSiamo/componenti/condividi-woodlot/condividi-woodlot.component';
 import { InclusoNelPrezzoComponent } from './pagine/prodotto/componenti/cardInfoProdotto.componenti/incluso-nel-prezzo/incluso-nel-prezzo.component';
 import { CardSuperpoteriComponent } from './pagine/prodotto/componenti/cardInfoProdotto.componenti/card-superpoteri/card-superpoteri.component';
+import { CardUsiLocaliComponent } from './pagine/prodotto/componenti/cardInfoProdotto.componenti/card-usi-locali/card-usi-locali.component';
 
 @NgModule({
   declarations: [
@@ -244,6 +245,7 @@ import { CardSuperpoteriComponent } from './pagine/prodotto/componenti/cardInfoP
     CondividiWoodlotComponent,
     InclusoNelPrezzoComponent,
     CardSuperpoteriComponent,
+    CardUsiLocaliComponent,
 
 
   ],

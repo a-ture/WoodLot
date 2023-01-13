@@ -53,9 +53,9 @@ export class ProdottoService {
       "tempor nec feugiat. Porta lorem mollis aliquam ut. Quis ipsum suspendisse ultrices gravida dictum fusce ut " +
       "placerat orci. A diam maecenas sed enim ut sem viverra aliquet eget. Sit amet volutpat consequat mauris nunc " +
       "congue nisi vitae suscipit. Nibh ipsum consequat nisl vel pretium.", 5, new Array<UsoLocale>(
-        new UsoLocale("Uso Locale 1", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut"),
-        new UsoLocale("Uso Locale 2", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut"),
-        new UsoLocale("Uso Locale 3", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut")
+        new UsoLocale("Allevamento", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut"),
+        new UsoLocale("Antivento", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut"),
+        new UsoLocale("Consumo E Vendita", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut")
       ), new Array<Beneficio>(
         new Beneficio("beneficio 1", "descrizione"),
         new Beneficio("beneficio 2", "descrizione"),
