@@ -18,7 +18,8 @@
                    (activeTabPaneIdxChange)="onTabChange($event)"
                    [activeTabPaneIdx]="activePane">
       <c-tab-pane *ngFor="let pane of panes; index as i;" class="p-3">
-        <app-sezione-ordini></app-sezione-ordini>
+        <app-sezione-ordini *ngIf="activePane==0"></app-sezione-ordini>
+        <app-sezione-pagamenti *ngIf="activePane==1"></app-sezione-pagamenti>
       </c-tab-pane>
     </c-tab-content>
   </div>

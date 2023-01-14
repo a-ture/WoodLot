@@ -189,6 +189,8 @@ import {
   InterfacciaResponsabileOrdiniComponent
 } from './pagine/responsabileOrdini/interfaccia.responsabile-ordini/interfaccia.responsabile-ordini.component';
 import {SezioneOrdiniComponent} from './pagine/responsabileOrdini/componenti/sezione-ordini/sezione-ordini.component';
+import { SezionePagamentiComponent } from './pagine/responsabileOrdini/componenti/sezionePagamenti.componenti/sezione-pagamenti/sezione-pagamenti.component';
+import { CardPagamentoComponent } from './pagine/responsabileOrdini/componenti/sezionePagamenti.componenti/card-pagamento/card-pagamento.component';
 
 @NgModule({
   declarations: [
@@ -270,6 +272,8 @@ import {SezioneOrdiniComponent} from './pagine/responsabileOrdini/componenti/sez
     PercheCategoriaComponent,
     InterfacciaResponsabileOrdiniComponent,
     SezioneOrdiniComponent,
+    SezionePagamentiComponent,
+    CardPagamentoComponent,
 
 
   ],

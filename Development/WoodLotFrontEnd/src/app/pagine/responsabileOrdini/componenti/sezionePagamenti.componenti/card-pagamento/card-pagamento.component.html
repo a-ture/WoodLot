@@ -1,0 +1,29 @@
+<c-card class="mb-3 text-center">
+  <img cCardImg="top" src="{{sourceImage}}">
+  <c-card-body>
+    <h5 cCardTitle>{{prodottoOrdine.nome}}</h5>
+    <p cCardText>
+      <b>Id: </b> {{prodottoOrdine.codice}}
+    </p>
+    <p cCardText>
+      <b>Data modifica:</b> {{prodottoOrdine.dataAssegnazione | date: 'dd/MM/yy'}}
+    </p>
+    <a cCardLink (click)="toggleModal()">Effettuare il pagamento</a>
+  </c-card-body>
+</c-card>
+
+<c-modal [visible]="visible" (visibleChange)="handleModal($event)"
+         [backdrop]="false" scrollable id={{prodottoOrdine.codice}}>
+  <c-modal-header>
+    <h2 cModalTitle>{{prodottoOrdine.nome}}</h2>
+  </c-modal-header>
+  <c-modal-body>
+    <div class="row d-flex align-items-center m-4">
+      Sei sicuro di voler procedere?
+    </div>
+  </c-modal-body>
+  <c-modal-footer>
+    <button cButton color="secondary" (click)="toggleModal()">Annulla</button>
+    <button cButton color="primary">Confermo</button>
+  </c-modal-footer>
+</c-modal>
