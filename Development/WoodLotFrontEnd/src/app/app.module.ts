@@ -27,7 +27,7 @@ import {
   CardModule, CarouselModule,
   DropdownModule, FooterModule,
   FormModule, GridModule,
-  ModalModule, NavModule, OffcanvasModule, TabsModule, ToastModule,
+  ModalModule, NavModule, OffcanvasModule, PaginationModule, TableModule, TabsModule, ToastModule,
 } from '@coreui/angular';
 import {IconModule} from '@coreui/icons-angular';
 import {HttpClientModule} from '@angular/common/http';
@@ -161,18 +161,34 @@ import {
 import {
   CardAlberoContadinoComponent
 } from './pagine/contadino/componenti/card-albero-contadino/card-albero-contadino.component';
-import { OrdineEffettuatoComponent } from './pagine/checkout/componenti/ordine-effettuato/ordine-effettuato.component';
-import { IntestazioneComponent } from './pagine/chiSiamo/componenti/intestazione/intestazione.component';
-import { ValoriWoodlotComponent } from './pagine/chiSiamo/componenti/valori-woodlot/valori-woodlot.component';
-import { MoltoPiuDiUnAlberoComponent } from './pagine/chiSiamo/componenti/molto-piu-di-un-albero/molto-piu-di-un-albero.component';
-import { PaesiComponent } from './pagine/chiSiamo/componenti/paesi/paesi.component';
-import { CondividiWoodlotComponent } from './pagine/chiSiamo/componenti/condividi-woodlot/condividi-woodlot.component';
-import { InclusoNelPrezzoComponent } from './pagine/prodotto/componenti/cardInfoProdotto.componenti/incluso-nel-prezzo/incluso-nel-prezzo.component';
-import { CardSuperpoteriComponent } from './pagine/prodotto/componenti/cardInfoProdotto.componenti/card-superpoteri/card-superpoteri.component';
-import { CardUsiLocaliComponent } from './pagine/prodotto/componenti/cardInfoProdotto.componenti/card-usi-locali/card-usi-locali.component';
-import { CardBeneficiComponent } from './pagine/prodotto/componenti/cardInfoProdotto.componenti/card-benefici/card-benefici.component';
-import { DoveVienePiantatoComponent } from './pagine/prodotto/componenti/dove-viene-piantato/dove-viene-piantato.component';
-import { PercheCategoriaComponent } from './pagine/prodotto/componenti/perche-categoria/perche-categoria.component';
+import {OrdineEffettuatoComponent} from './pagine/checkout/componenti/ordine-effettuato/ordine-effettuato.component';
+import {IntestazioneComponent} from './pagine/chiSiamo/componenti/intestazione/intestazione.component';
+import {ValoriWoodlotComponent} from './pagine/chiSiamo/componenti/valori-woodlot/valori-woodlot.component';
+import {
+  MoltoPiuDiUnAlberoComponent
+} from './pagine/chiSiamo/componenti/molto-piu-di-un-albero/molto-piu-di-un-albero.component';
+import {PaesiComponent} from './pagine/chiSiamo/componenti/paesi/paesi.component';
+import {CondividiWoodlotComponent} from './pagine/chiSiamo/componenti/condividi-woodlot/condividi-woodlot.component';
+import {
+  InclusoNelPrezzoComponent
+} from './pagine/prodotto/componenti/cardInfoProdotto.componenti/incluso-nel-prezzo/incluso-nel-prezzo.component';
+import {
+  CardSuperpoteriComponent
+} from './pagine/prodotto/componenti/cardInfoProdotto.componenti/card-superpoteri/card-superpoteri.component';
+import {
+  CardUsiLocaliComponent
+} from './pagine/prodotto/componenti/cardInfoProdotto.componenti/card-usi-locali/card-usi-locali.component';
+import {
+  CardBeneficiComponent
+} from './pagine/prodotto/componenti/cardInfoProdotto.componenti/card-benefici/card-benefici.component';
+import {
+  DoveVienePiantatoComponent
+} from './pagine/prodotto/componenti/dove-viene-piantato/dove-viene-piantato.component';
+import {PercheCategoriaComponent} from './pagine/prodotto/componenti/perche-categoria/perche-categoria.component';
+import {
+  InterfacciaResponsabileOrdiniComponent
+} from './pagine/responsabileOrdini/interfaccia.responsabile-ordini/interfaccia.responsabile-ordini.component';
+import {SezioneOrdiniComponent} from './pagine/responsabileOrdini/componenti/sezione-ordini/sezione-ordini.component';
 
 @NgModule({
   declarations: [
@@ -252,6 +268,8 @@ import { PercheCategoriaComponent } from './pagine/prodotto/componenti/perche-ca
     CardBeneficiComponent,
     DoveVienePiantatoComponent,
     PercheCategoriaComponent,
+    InterfacciaResponsabileOrdiniComponent,
+    SezioneOrdiniComponent,
 
 
   ],
@@ -293,6 +311,8 @@ import { PercheCategoriaComponent } from './pagine/prodotto/componenti/perche-ca
     FormsModule,
     FooterModule,
     ToastModule,
+    TableModule,
+    PaginationModule,
 
   ],
   providers: [ProdottoService, CategoriaService, PaeseService, UsoLocaleService],

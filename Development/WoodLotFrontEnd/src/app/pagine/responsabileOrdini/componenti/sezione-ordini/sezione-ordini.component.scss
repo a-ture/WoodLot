@@ -1,0 +1,19 @@
+.page-link {
+  --cui-pagination-color: #93C572;
+  --cui-pagination-bg: trasparent;
+  --cui-pagination-border-color: #5E7250;
+  --cui-pagination-focus-color: #93C572;
+  --cui-pagination-active-color: rgba(255, 255, 255, 0.87);
+  --cui-pagination-active-bg: #93C572;
+  --cui-pagination-active-border-color: #93C572;
+}
+
+.page-link:hover {
+  color: brown;
+  background-color: #C4D89F;
+  border-color: brown;
+}
+
+table {
+  border-color: black;
+}

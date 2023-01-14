@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="col-md-12 mt-4">
+    <h3 class="text-center mb-4">Lista ordini</h3>
+    <table cTable hover>
+      <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Prodotti</th>
+        <th scope="col">Data</th>
+        <th scope="col">Totale</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of listaOrdini">
+        <th scope="row">{{item.codice}}</th>
+        <td>
+          <ul *ngFor="let prod of item!.listaProdottiOrdine" class="list-unstyled">
+            <li> Nome: {{prod.nome}}, Quantità: {{prod.quantita}}, Prezzo: {{prod.prezzo.toFixed(2)}}€,
+              Stato: {{prod.stato}}, Data Assegnazione: {{prod.dataAssegnazione| date: 'dd/MM/yy'}}
+            </li>
+          </ul>
+        </td>
+        <td>{{item.dataAcquisto | date: 'dd/MM/yy'}}</td>
+        <td>{{item.totale.toFixed(2)}}€</td>
+      </tr>
+      </tbody>
+    </table>
+    <c-pagination aria-label="Page navigation example" class="d-flex justify-content-end mt-4">
+      <li cPageItem>
+        <a cPageLink aria-label="Previous" [routerLink]><span aria-hidden="true">&laquo;</span></a>
+      </li>
+      <li cPageItem>
+        <a cPageLink [routerLink]>1</a>
+      </li>
+      <li cPageItem>
+        <a cPageLink [routerLink]>2</a>
+      </li>
+      <li cPageItem>
+        <a cPageLink [routerLink]>3</a>
+      </li>
+      <li cPageItem>
+        <a cPageLink aria-label="Next" [routerLink]><span aria-hidden="true">&raquo;</span></a>
+      </li>
+    </c-pagination>
+  </div>
+</div>

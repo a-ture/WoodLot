@@ -15,19 +15,19 @@ export class InterfacciaResponsabileCatalogoComponent implements OnInit {
   public listNomi = ["Alberi piantati", "Tonnellate di CO2 assorbite", "Contadini coinvolti", "Paesi"]
   public listaProdotti
 
-  constructor(private serviceResponsabileCatalogo: ResponsabileCatalogoService,
-              private serviceStatistiche: StatisticheService, private serviceProdotti: ProdottoService) {
-    this.responsabileCatalogo = serviceResponsabileCatalogo.getResponsabileCatalogo()
-    this.listaNumeri = serviceStatistiche.getStatistiche()
-    this.listaProdotti = serviceProdotti.getProdotti();
-  }
-
   public panes = [
     {name: 'Aggiungi', content: 'One'},
     {name: 'Elimina', content: 'Two'},
   ];
 
   activePane = 0;
+
+  constructor(private serviceResponsabileCatalogo: ResponsabileCatalogoService,
+              private serviceStatistiche: StatisticheService, private serviceProdotti: ProdottoService) {
+    this.responsabileCatalogo = serviceResponsabileCatalogo.getResponsabileCatalogo()
+    this.listaNumeri = serviceStatistiche.getStatistiche()
+    this.listaProdotti = serviceProdotti.getProdotti();
+  }
 
   onTabChange($event: number) {
     this.activePane = $event;

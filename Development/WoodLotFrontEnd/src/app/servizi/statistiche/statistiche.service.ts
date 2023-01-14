@@ -18,4 +18,9 @@ export class StatisticheService {
   public getStatischeContadino() {
     return ["45", "56", "33"]
   }
+
+  //restituisce le statistiche per la pagina del responsabile ordini
+  public getStatisticheResponsabileOrdini() {
+    return ["97", "98", "78", "54"]
+  }
 }
