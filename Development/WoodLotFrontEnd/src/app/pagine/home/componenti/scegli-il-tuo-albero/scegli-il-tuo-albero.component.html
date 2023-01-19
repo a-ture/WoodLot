@@ -1,0 +1,17 @@
+<div class="container my-5">
+  <h2 class="text-center">Scegli il tuo albero!</h2>
+  <p class="text-center">Puoi farlo per i benefici che è in grado di apportare, per la CO<sub>2</sub>che può assorbire o
+    per fare un regalo originale.
+    Un contadino lo pianterà nella sua terra. Il tuo albero sarà fotografato, geolocalizzato ed avrà la sua pagina
+    online dove seguirai la storia del progetto di cui farà parte.</p>
+  <div class="row d-flex justify-content-center mx-5 g-3">
+    <app-card-prodotto *ngFor="let item of listaAlberi; index as i"
+                       class="col-lg-3 col-md-6 col-xs-12
+                            col-xs-12 d-flex justify-content-center"
+                       [sourceImage]="urlBase+item.nome+endBase" [albero]="item"
+    ></app-card-prodotto>
+  </div>
+  <div class="my-4 d-flex justify-content-center">
+    <a cButton routerLink="/catalogo" style="background: #5E7250; border-color:#5E7250">Scopri tutti gli alberi!</a>
+  </div>
+</div>

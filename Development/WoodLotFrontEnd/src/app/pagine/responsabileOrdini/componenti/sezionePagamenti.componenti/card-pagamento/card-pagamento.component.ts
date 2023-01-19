@@ -13,7 +13,7 @@ export class CardPagamentoComponent implements OnInit {
 
   @Input()
   public sourceImage !: String
-  
+
   constructor() {
   }
 

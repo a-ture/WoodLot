@@ -194,6 +194,8 @@ import { CardPagamentoComponent } from './pagine/responsabileOrdini/componenti/s
 import { SezioneContadiniComponent } from './pagine/responsabileOrdini/componenti/sezioneContadini.componenti/sezione-contadini/sezione-contadini.component';
 import { ElencoContadiniComponent } from './pagine/responsabileOrdini/componenti/sezioneContadini.componenti/elenco-contadini/elenco-contadini.component';
 import { AssegnazioneAlberiComponent } from './pagine/responsabileOrdini/componenti/sezioneContadini.componenti/assegnazione-alberi/assegnazione-alberi.component';
+import { StoricoPagamentiComponent } from './pagine/contadino/componenti/storico-pagamenti/storico-pagamenti.component';
+import { ScegliIlTuoAlberoComponent } from './pagine/home/componenti/scegli-il-tuo-albero/scegli-il-tuo-albero.component';
 
 @NgModule({
   declarations: [
@@ -280,6 +282,8 @@ import { AssegnazioneAlberiComponent } from './pagine/responsabileOrdini/compone
     SezioneContadiniComponent,
     ElencoContadiniComponent,
     AssegnazioneAlberiComponent,
+    StoricoPagamentiComponent,
+    ScegliIlTuoAlberoComponent,
 
 
   ],

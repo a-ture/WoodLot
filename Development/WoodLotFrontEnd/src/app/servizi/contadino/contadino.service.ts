@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Contadino} from "../../entita/contadino/contadino";
 import {ProdottoOrdine} from "../../entita/prodottoOrdine/prodotto-ordine";
+import {Pagamento} from "../../entita/pagamento/pagamento";
 
 @Injectable({
   providedIn: 'root'
@@ -123,6 +124,21 @@ export class ContadinoService {
         new Date(), "Non Assegnato", "mandorlo", "Coordinate Geografiche", 59),
       new ProdottoOrdine(13.00, 34, 45,
         new Date(), "Non Assegnato", "mandorlo", "Coordinate Geografiche", 59)
+    ]
+  }
+
+  // restuisce tutti i pagamenti di un contadini
+  public getPagamenti() {
+    return [
+      new Pagamento(1, 20, new Date(), "Albero 1"),
+      new Pagamento(2, 30, new Date(), "Albero 2"),
+      new Pagamento(3, 40, new Date(), "Albero 3"),
+      new Pagamento(4, 20, new Date(), "Albero 4"),
+      new Pagamento(5, 50, new Date(), "Albero 5"),
+      new Pagamento(6, 10, new Date(), "Albero 6"),
+      new Pagamento(7, 20, new Date(), "Albero 7"),
+      new Pagamento(8, 30, new Date(), "Albero 8"),
+      new Pagamento(9, 220, new Date(), "Albero 9"),
     ]
   }
 }
