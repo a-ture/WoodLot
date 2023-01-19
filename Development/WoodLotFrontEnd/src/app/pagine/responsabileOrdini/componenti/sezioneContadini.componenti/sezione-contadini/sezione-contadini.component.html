@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-xl-2">
+    <div class="main-box">
+      <ul class="menu-item list-unstyled">
+        <li (click)="goTo('Elenco contadini')" [ngClass]="{'onActive':selectedMenu == 'Elenco contadini'}">
+          <i class="fa-solid fa-person-digging"></i> Elenco contadini
+        </li>
+        <li (click)="goTo('Assegna alberi')" [ngClass]="{'onActive':selectedMenu == 'Assegna alberi'}">
+          <i class="fa-sharp fa-solid fa-leaf"></i> Assegna alberi
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="col-xl-10">
+    <div *ngIf="selectedMenu == 'Elenco contadini'">
+      <app-elenco-contadini></app-elenco-contadini>
+    </div>
+    <div *ngIf="selectedMenu == 'Assegna alberi'">
+      <app-assegnazione-alberi></app-assegnazione-alberi>
+    </div>
+  </div>
+</div>
+

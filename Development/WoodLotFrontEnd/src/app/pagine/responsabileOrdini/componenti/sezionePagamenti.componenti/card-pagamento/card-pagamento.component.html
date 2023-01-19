@@ -5,25 +5,12 @@
     <p cCardText>
       <b>Id: </b> {{prodottoOrdine.codice}}
     </p>
-    <p cCardText>
-      <b>Data modifica:</b> {{prodottoOrdine.dataAssegnazione | date: 'dd/MM/yy'}}
-    </p>
-    <a cCardLink (click)="toggleModal()">Effettuare il pagamento</a>
+    <div class="row text-center ">
+      <div class="mt-1" cCardText><b>Data modifica:</b> {{prodottoOrdine.dataAssegnazione | date: 'dd/MM/yy'}}</div>
+      <a class="mt-3" cCardText>Effettuare il pagamento</a>
+      <br>
+      <a class="mt-3" cCardText>Foto non valida</a>
+    </div>
   </c-card-body>
 </c-card>
 
-<c-modal [visible]="visible" (visibleChange)="handleModal($event)"
-         [backdrop]="false" scrollable id={{prodottoOrdine.codice}}>
-  <c-modal-header>
-    <h2 cModalTitle>{{prodottoOrdine.nome}}</h2>
-  </c-modal-header>
-  <c-modal-body>
-    <div class="row d-flex align-items-center m-4">
-      Sei sicuro di voler procedere?
-    </div>
-  </c-modal-body>
-  <c-modal-footer>
-    <button cButton color="secondary" (click)="toggleModal()">Annulla</button>
-    <button cButton color="primary">Confermo</button>
-  </c-modal-footer>
-</c-modal>

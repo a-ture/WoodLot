@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * Interfaccia che fornisce i metodi per la logica di business della gestione del catalgo
+ * Interfaccia che fornisce i metodi per la logica di business della gestione del catalogo
  *
  * @author Alessia Ture
  */

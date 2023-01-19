@@ -191,6 +191,9 @@ import {
 import {SezioneOrdiniComponent} from './pagine/responsabileOrdini/componenti/sezione-ordini/sezione-ordini.component';
 import { SezionePagamentiComponent } from './pagine/responsabileOrdini/componenti/sezionePagamenti.componenti/sezione-pagamenti/sezione-pagamenti.component';
 import { CardPagamentoComponent } from './pagine/responsabileOrdini/componenti/sezionePagamenti.componenti/card-pagamento/card-pagamento.component';
+import { SezioneContadiniComponent } from './pagine/responsabileOrdini/componenti/sezioneContadini.componenti/sezione-contadini/sezione-contadini.component';
+import { ElencoContadiniComponent } from './pagine/responsabileOrdini/componenti/sezioneContadini.componenti/elenco-contadini/elenco-contadini.component';
+import { AssegnazioneAlberiComponent } from './pagine/responsabileOrdini/componenti/sezioneContadini.componenti/assegnazione-alberi/assegnazione-alberi.component';
 
 @NgModule({
   declarations: [
@@ -274,6 +277,9 @@ import { CardPagamentoComponent } from './pagine/responsabileOrdini/componenti/s
     SezioneOrdiniComponent,
     SezionePagamentiComponent,
     CardPagamentoComponent,
+    SezioneContadiniComponent,
+    ElencoContadiniComponent,
+    AssegnazioneAlberiComponent,
 
 
   ],

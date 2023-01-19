@@ -1,0 +1,31 @@
+.main-box {
+  background: #F4EBC7;
+  border-radius: 30px;
+  text-align: center;
+}
+
+.menu-item {
+  line-height: 60px;
+}
+
+.menu-item li {
+  font-size: 18px;
+  padding-left: 20px;
+  cursor: pointer;
+}
+
+.menu-item li:hover {
+  color: #5E7250;
+}
+
+.onActive {
+  color: #93C572;
+  background-color: #C4D89F;
+  border-radius: 30px;
+}
+
+.onActive:hover {
+  color: #93C572 !important;
+}
+
+

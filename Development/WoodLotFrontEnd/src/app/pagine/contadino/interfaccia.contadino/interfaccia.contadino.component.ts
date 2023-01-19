@@ -21,7 +21,7 @@ export class InterfacciaContadinoComponent implements OnInit {
   constructor(private contadinoService: ContadinoService, private statisticheService: StatisticheService) {
     this.contadino = contadinoService.getContadino()
     this.listaNumeri = statisticheService.getStatischeContadino()
-    this.listAlberiContadino = contadinoService.getAlberiContadino()
+    this.listAlberiContadino = this.contadino.listaAlberi
   }
 
   public panes = [

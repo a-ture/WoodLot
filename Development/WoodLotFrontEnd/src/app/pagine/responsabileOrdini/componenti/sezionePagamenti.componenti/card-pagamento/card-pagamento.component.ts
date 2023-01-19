@@ -13,17 +13,7 @@ export class CardPagamentoComponent implements OnInit {
 
   @Input()
   public sourceImage !: String
-
-  public visible = false;
-
-  toggleModal() {
-    this.visible = !this.visible;
-  }
-
-  handleModal(event: any) {
-    this.visible = event;
-  }
-
+  
   constructor() {
   }
 

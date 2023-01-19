@@ -1,0 +1,40 @@
+<div class="container text-center mt-4">
+  <h3>Assegna gli alberi hai contadini</h3>
+  <div class="row mt-3">
+    <p>Sono presenti {{listaAlberi.length}} alberi non ancora asseganti.</p>
+  </div>
+  <div class="row mt-1 d-flex justify-content-center">
+    La nostra IA ti suggerirà un assegnamento possibile di alberi ai contadini.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+    aliqua. Non pulvinar neque laoreet suspendisse interdum consectetur. Blandit cursus risus at ultrices. In hac
+    habitasse platea dictumst quisque sagittis purus sit amet. Congue nisi vitae suscipit tellus mauris.
+    <button (click)="goTo('alberi')" [ngClass]="{'onActive':selectedMenu == 'alberi'}"
+            class="btn btn-primary mt-3 col-5">Suggerisci assegnamento
+    </button>
+  </div>
+</div>
+
+<div class="container mt-5" *ngIf="selectedMenu == 'alberi'">
+  <h3 class="text-center mt-3">Assegnamento prodotto</h3>
+  <table class="row" cTable hover class="text-center mt-5">
+    <thead>
+    <tr>
+      <th scope="col">Contadino</th>
+      <th scope="col">Albero</th>
+      <th scope="col">Modifica</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of listaAlberi">
+      <th scope="row">Contadino: nomeContadino</th>
+      <td>
+        Albero: {{item.codice}}
+      </td>
+      <td><i class="fa-regular fa-pen-to-square"></i></td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="d-flex justify-content-center">
+    <button class="btn btn-primary mt-3 col-5">Conferma assegnamento</button>
+  </div>
+</div>

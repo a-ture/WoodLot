@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 /**
- * La classe fornisce i metodi per la logica di business della gestione del catalgo
+ * La classe fornisce i metodi per la logica di business della gestione del catalogo
  *
  * @author Alessia Ture
  */
@@ -47,9 +47,9 @@ public class GestioneCatalogoService implements CatalogoService {
     /**
      * Restituisce i prodotti ordinati in base al prezzo crescente o decrescente
      *
-     * @param parametro rappresenta il paramentro di filtraggio,
+     * @param parametro rappresenta il parametro di filtraggio,
      *                  può essere: prezzoCrescente, prezzoDecrescente
-     * @return i prodotti ordinati in base al prezzo crescete o descrecente
+     * @return i prodotti ordinati in base al prezzo
      */
     @Override
     public Set<Albero> getProdottiFiltratiByPrezzo(String parametro) {
@@ -62,9 +62,9 @@ public class GestioneCatalogoService implements CatalogoService {
     }
 
     /**
-     * Restituisce tutti i prodotti presenti nel catalogo ordinati  in base al valore dell'anidride carbonica
+     * Restituisce tutti i prodotti presenti nel catalogo ordinati in base al valore dell'anidride carbonica
      *
-     * @param parametro rappresenta il paramentro di filtraggio,
+     * @param parametro rappresenta il parametro di filtraggio,
      *                  può essere: anidrideCrescente, anidrideDecrescente
      * @return i prodotti ordinati in base al valore dell'anidride carbonica
      */
@@ -81,7 +81,7 @@ public class GestioneCatalogoService implements CatalogoService {
     /**
      * Restituisce tutti i prodotti presenti nel catalogo filtrati in base al paese in cui vengono piantati
      *
-     * @param nomePaese rappresenta il paramentro di filtraggio,
+     * @param nomePaese rappresenta il parametro di filtraggio,
      * @return un set degli alberi che vengono piantati nel paese indicato
      */
     @Override
@@ -117,7 +117,7 @@ public class GestioneCatalogoService implements CatalogoService {
      * Permette di aggiungere un prodotto nel catalogo
      *
      * @param albero è il prodotto da inserire
-     * @return albero il prdotto inserito nel database.
+     * @return albero il prodotto inserito nel database.
      */
     @Override
     public Albero aggiungiProdotto(Albero albero) {

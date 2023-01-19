@@ -23,7 +23,7 @@ public class ControllerCatalogo {
     /**
      * Metodo POST per inserire un prodotto nel catalogo
      *
-     * @param albero è il prodotto da inseire nel catalogo
+     * @param albero è il prodotto da inserire nel catalogo
      * @return true se l'inserimento ha avuto esito positivo, false altrimenti
      */
     @PostMapping("/inserimentoProdotto")
@@ -46,11 +46,11 @@ public class ControllerCatalogo {
      * Metodo GET che restituisce i prodotti ordinati in base al prezzo crescente o decrescente
      *
      * @param parametro indica come vogliamo effettuare l'ordinamento, specificare prezzoCrescente per ordinare per prezzo crescente,
-     *                  specificare prezzoDescrecente per ordinare per prezzo decrescente
-     * @return i prodotti ordinati in base al prezzo crescete o descrecente
+     *                  specificare prezzoDecrecente per ordinare per prezzo decrescente
+     * @return i prodotti ordinati in base al prezzo crescete o decrescente
      */
     @GetMapping("/filtroPrezzo/{prezzo}")
-    public Set<Albero> restituiciProdottiFiltratiByPrezzo(@PathVariable(value = "prezzo") String parametro) {
+    public Set<Albero> restituisciProdottiFiltratiByPrezzo(@PathVariable(value = "prezzo") String parametro) {
         return catalogoService.getProdottiFiltratiByPrezzo(parametro);
     }
 
@@ -61,7 +61,7 @@ public class ControllerCatalogo {
      * @return un set degli alberi che vengono piantati nel paese indicato
      */
     @GetMapping("/filtroPaese/{nomePaese}")
-    public Set<Albero> restituiciProdottiFiltratiByPaese(@PathVariable(value = "nomePaese") String parametro) {
+    public Set<Albero> restituisciProdottiFiltratiByPaese(@PathVariable(value = "nomePaese") String parametro) {
         return catalogoService.getProdottiFiltratiByPaese(parametro);
     }
 
@@ -72,7 +72,7 @@ public class ControllerCatalogo {
      * @return un set di alberi che ha l'uso locale specificato
      */
     @GetMapping("/filtroUsoLocale/{nomeUsoLocale}")
-    public Set<Albero> restituiciProdottiFiltratiByUsoLocale(@PathVariable(value = "nomeUsoLocale") String parametro) {
+    public Set<Albero> restituisciProdottiFiltratiByUsoLocale(@PathVariable(value = "nomeUsoLocale") String parametro) {
         return catalogoService.getProdottiFiltratiByUsoLocale(parametro);
     }
 
@@ -83,18 +83,18 @@ public class ControllerCatalogo {
      * @return un set di alberi che ha come categoria quella indicata
      */
     @GetMapping("/filtroCategoria/{nomeCategoria}")
-    public Set<Albero> restituiciProdottiByCategoria(@PathVariable(value = "nomeCategoria") String parametro) {
+    public Set<Albero> restituisciProdottiByCategoria(@PathVariable(value = "nomeCategoria") String parametro) {
         return catalogoService.getProdottiFiltratiByCategoria(parametro);
     }
 
     /**
      * Restituisce tutti i prodotti presenti nel catalogo ordinati in base all'anidride carbonica
      *
-     * @param parametro rappresenta il paramentro di filtraggio dell'anidride carbonica
+     * @param parametro rappresenta il parametro di filtraggio dell'anidride carbonica
      * @return tutti i prodotti presenti nel db ordinati in base al valore dell'anidride carboncica crescete o descrecente
      */
     @GetMapping("/filtroAndirideCarbonica/{anidrideCarbonica}")
-    public Set<Albero> restituiciProdottiByAnidrideCarbonica(@PathVariable(value = "anidrideCarbonica") String parametro) {
+    public Set<Albero> restituisciProdottiByAnidrideCarbonica(@PathVariable(value = "anidrideCarbonica") String parametro) {
         return catalogoService.getProdottiFiltratiByAnidrideCarbonica(parametro);
     }
 
@@ -104,7 +104,7 @@ public class ControllerCatalogo {
      * @return un set contenente tutti i prodotti
      */
     @GetMapping("/prodotti")
-    public Set<Albero> restituiciProdotti() {
+    public Set<Albero> restituisciProdotti() {
         return catalogoService.getProdotti();
     }
 }
