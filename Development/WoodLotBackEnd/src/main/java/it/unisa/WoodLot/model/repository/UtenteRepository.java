@@ -11,4 +11,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @see Utente
  */
 public interface UtenteRepository extends JpaRepository<Utente, Long> {
+    Utente findByEmailAndPassword(String email, String password);
+
+    boolean existsByEmail(String email);
 }

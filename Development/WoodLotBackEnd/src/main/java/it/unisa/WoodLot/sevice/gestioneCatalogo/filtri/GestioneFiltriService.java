@@ -1,4 +1,4 @@
-package it.unisa.WoodLot.sevice.gestioneCatalogo;
+package it.unisa.WoodLot.sevice.gestioneCatalogo.filtri;
 
 import it.unisa.WoodLot.model.entity.Albero;
 import it.unisa.WoodLot.model.repository.AlberoRepository;
@@ -8,18 +8,17 @@ import it.unisa.WoodLot.model.repository.UsoLocaleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Set;
 import java.util.Spliterator;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 /**
- * La classe fornisce i metodi per la logica di business della gestione del catalogo
+ * La classe fornisce i metodi per la logica di business della gestione dei filtri
  *
  * @author Alessia Ture
  */
 @Service
-public class GestioneCatalogoService implements CatalogoService {
+public class GestioneFiltriService implements FiltriService {
 
     @Autowired
     private AlberoRepository alberoRepository;
@@ -39,7 +38,7 @@ public class GestioneCatalogoService implements CatalogoService {
      * @return i prodotto presenti nel DB
      */
     @Override
-    public Set<Albero> getProdotti() {
+    public Iterable<Albero> getProdotti() {
         Spliterator<Albero> prodotti = alberoRepository.findAll().spliterator();
         return StreamSupport.stream(prodotti, false).collect(Collectors.toSet());
     }
@@ -51,8 +50,9 @@ public class GestioneCatalogoService implements CatalogoService {
      *                  può essere: prezzoCrescente, prezzoDecrescente
      * @return i prodotti ordinati in base al prezzo
      */
+
     @Override
-    public Set<Albero> getProdottiFiltratiByPrezzo(String parametro) {
+    public Iterable<Albero> getProdottiFiltratiByPrezzo(String parametro) {
         if (parametro.equalsIgnoreCase("prezzoCrescente")) {
             return alberoRepository.findAllByOrderByPrezzoAsc();
         } else if (parametro.equalsIgnoreCase("prezzoDecrescente")) {
@@ -69,7 +69,7 @@ public class GestioneCatalogoService implements CatalogoService {
      * @return i prodotti ordinati in base al valore dell'anidride carbonica
      */
     @Override
-    public Set<Albero> getProdottiFiltratiByAnidrideCarbonica(String parametro) {
+    public Iterable<Albero> getProdottiFiltratiByAnidrideCarbonica(String parametro) {
         if (parametro.equalsIgnoreCase("anidrideCrescente")) {
             return alberoRepository.findAllByOrderByAnidirdeCarbonicaAssorbitaAsc();
         } else if (parametro.equalsIgnoreCase("anidrideDecrescente")) {
@@ -85,7 +85,7 @@ public class GestioneCatalogoService implements CatalogoService {
      * @return un set degli alberi che vengono piantati nel paese indicato
      */
     @Override
-    public Set<Albero> getProdottiFiltratiByPaese(String nomePaese) {
+    public Iterable<Albero> getProdottiFiltratiByPaese(String nomePaese) {
 
         return alberoRepository.findAllByPaeseOrigine(paeseOrigineRepository.findById(nomePaese));
 
@@ -98,7 +98,7 @@ public class GestioneCatalogoService implements CatalogoService {
      * @return un set di alberi che ha l'uso locale specificato
      */
     @Override
-    public Set<Albero> getProdottiFiltratiByUsoLocale(String usoLocale) {
+    public Iterable<Albero> getProdottiFiltratiByUsoLocale(String usoLocale) {
         return alberoRepository.findAllByUsiLocali(usoLocaleRepository.findById(usoLocale));
     }
 
@@ -109,28 +109,7 @@ public class GestioneCatalogoService implements CatalogoService {
      * @return un set di alberi che ha come categoria quella indicata
      */
     @Override
-    public Set<Albero> getProdottiFiltratiByCategoria(String nomeCategoria) {
+    public Iterable<Albero> getProdottiFiltratiByCategoria(String nomeCategoria) {
         return alberoRepository.findAllByCategoria(categoriaRepository.findById(nomeCategoria));
-    }
-
-    /**
-     * Permette di aggiungere un prodotto nel catalogo
-     *
-     * @param albero è il prodotto da inserire
-     * @return albero il prodotto inserito nel database.
-     */
-    @Override
-    public Albero aggiungiProdotto(Albero albero) {
-        return alberoRepository.save(albero);
-    }
-
-    /**
-     * Permette di eliminare un albero dal catalogo
-     *
-     * @param albero l'albero da eliminare
-     */
-    @Override
-    public void eliminaProdotto(Albero albero) {
-        alberoRepository.delete(albero);
     }
 }
