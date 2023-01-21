@@ -5,15 +5,14 @@ import lombok.Data;
 import javax.persistence.*;
 import java.io.Serializable;
 
-
 /**
- * Classe che modella un responsabile del catalogo
+ * Classe che modella un responsabile ordini
  *
  * @author Alessia Ture
  */
 @Data
 @Entity
-@Table(name = "responsabile_catalogo")
-public class ResponsabileCatalogo extends UtenteRegistrato {
+@Table(name = "responsabile_ordini")
+public class ResponsabileOrdini extends UtenteRegistrato {
 
 }

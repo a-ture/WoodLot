@@ -36,7 +36,6 @@ public class GestioneOrdineService implements OrdineService {
      */
     @Override
     public Ordine effetuaOrdine(Ordine ordine) {
-        ordine.setDataOrdine(LocalDate.now());
         return this.ordineRepository.save(ordine);
     }
 

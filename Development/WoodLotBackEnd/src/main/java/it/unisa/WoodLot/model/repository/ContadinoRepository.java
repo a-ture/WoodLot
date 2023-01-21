@@ -11,4 +11,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @see Contadino
  */
 public interface ContadinoRepository extends JpaRepository<Contadino, Long> {
+    Contadino findContadinoByEmailAndPassword(String email, String password);
 }

@@ -23,7 +23,6 @@ public class Ordine implements Serializable {
     private Long id;
 
     @Column(name = "dataOrdine", nullable = false)
-    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataOrdine;
 
     @OneToMany

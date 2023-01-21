@@ -49,3 +49,5 @@ INSERT INTO albero_usi_locali (albero_nome, usi_locali_nome) VALUES ("Avocado", 
 INSERT INTO albero_usi_locali (albero_nome, usi_locali_nome) VALUES ("Avocado", "Consumo e vendita");
 INSERT INTO albero_usi_locali (albero_nome, usi_locali_nome) VALUES ("Avocado", "Biodiversità");
 INSERT INTO albero_benefici (albero_nome, benefici_nome) VALUES ("Avocado", "Sviluppo economico");
+
+INSERT INTO utente (id,nome, cognome, data_di_nascita, email, password)VALUES(1,"Alessia","Ture", '2001-02-23', "alessiature@gmail.com", "alessiature01" )

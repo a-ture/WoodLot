@@ -14,17 +14,7 @@ import java.util.Date;
 @Data
 @Entity
 @Table(name = "contadino")
-public class Contadino implements Serializable {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
-    @Column(name = "email", nullable = false)
-    private String email;
-
-    @Column(name = "password", nullable = false)
-    private String password;
+public class Contadino extends UtenteRegistrato {
 
     @Column(name = "nome", nullable = false)
     private String nome;

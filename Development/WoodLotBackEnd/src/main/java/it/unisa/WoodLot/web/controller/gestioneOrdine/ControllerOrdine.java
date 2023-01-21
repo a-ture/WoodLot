@@ -33,8 +33,9 @@ public class ControllerOrdine {
      * @return l'ordine appena creato
      */
     @PostMapping("ordine/checkout")
-    public Ordine effettuareOrdine(@RequestBody Ordine ordine) {
-        return ordineService.effetuaOrdine(ordine);
+    public boolean effettuareOrdine(@RequestBody Ordine ordine) {
+        Ordine o = ordineService.effetuaOrdine(ordine);
+        return o.getId() == null ? false : true;
     }
 
 
