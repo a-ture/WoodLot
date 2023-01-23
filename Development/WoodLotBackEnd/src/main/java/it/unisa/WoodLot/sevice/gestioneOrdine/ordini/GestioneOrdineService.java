@@ -1,11 +1,11 @@
-package it.unisa.WoodLot.sevice.gestioneOrdine;
+package it.unisa.WoodLot.sevice.gestioneOrdine.ordini;
 
-import it.unisa.WoodLot.model.entity.Ordine;
-import it.unisa.WoodLot.model.repository.OrdineRepository;
+import it.unisa.WoodLot.model.entity.*;
+import it.unisa.WoodLot.model.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
+import java.util.List;
 
 /**
  * La classe fornisce i metodi per la logica di business per la gestione degli ordini
@@ -28,19 +28,15 @@ public class GestioneOrdineService implements OrdineService {
         return this.ordineRepository.findAll();
     }
 
+
     /**
-     * Salva un nuovo ordine
+     * Permette di avere lo storico degli ordini di un utente
      *
-     * @param ordine
-     * @return il nuovo ordine
+     * @param idUtente l'id dell'utente di cui avere lo storico
+     * @return gli ordini dell'utente
      */
     @Override
-    public Ordine effetuaOrdine(Ordine ordine) {
-        return this.ordineRepository.save(ordine);
-    }
-
-    @Override
-    public void aggiornaOrdine(Ordine ordine) {
-        this.ordineRepository.save(ordine);
+    public List<Ordine> visualizzaOrdiniUtente(Long idUtente) {
+        return ordineRepository.findOrdineByUtente_Id(idUtente);
     }
 }

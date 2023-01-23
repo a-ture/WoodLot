@@ -11,7 +11,6 @@ import it.unisa.WoodLot.model.entity.Albero;
 public interface CatalogoService {
 
 
-
     Albero aggiungiProdotto(Albero albero);
 
     void eliminaProdotto(Albero albero);

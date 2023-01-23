@@ -1,7 +1,7 @@
 package it.unisa.WoodLot.sevice.gestioneUtente.eccezioni;
 
 /**
- * Eccezione generata in caso di utente non loggato
+ * Eccezione generata in caso di problemi nel login
  *
  * @author Alessia Ture
  */

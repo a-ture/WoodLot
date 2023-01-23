@@ -3,6 +3,7 @@ package it.unisa.WoodLot.web.controller.gestioneUtente.autenticazione;
 import it.unisa.WoodLot.model.entity.*;
 import it.unisa.WoodLot.sevice.gestioneUtente.autenticazione.AutenticazioneService;
 import it.unisa.WoodLot.sevice.gestioneUtente.eccezioni.LoginException;
+import it.unisa.WoodLot.sevice.gestioneUtente.eccezioni.PasswordException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,10 +35,16 @@ public class ControllerAutenticazione {
     }
 
     /**
-     * Metodo GET per effetuare il logout
+     * Metodo GET per effettuare il logout
      */
     @GetMapping("/logout")
     public void logout() {
         autenticazioneService.logout();
+    }
+
+
+    @PostMapping("/reimpostarePassword")
+    public void reimpostarePassword(@RequestBody UtenteRegistrato utenteRegistrato) throws PasswordException {
+        autenticazioneService.reimpostaPassword(utenteRegistrato.getEmail(), utenteRegistrato.getPassword());
     }
 }

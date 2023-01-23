@@ -1,0 +1,71 @@
+package it.unisa.WoodLot.sevice.gestioneOrdine.checkout;
+
+import it.unisa.WoodLot.model.entity.*;
+import it.unisa.WoodLot.model.repository.*;
+import it.unisa.WoodLot.sevice.gestioneOrdine.eccezioni.OrdineException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
+import java.time.LocalDate;
+import java.util.List;
+
+/**
+ * La classe fornisce i metodi per la logica di business per il checkout
+ *
+ * @author Alessia Ture
+ */
+@Service
+public class GestioneCheckoutService implements CheckoutService {
+    @Autowired
+    private OrdineRepository ordineRepository;
+    @Autowired
+    private ProdottoCarrelloRepository prodottoCarrelloRepository;
+    @Autowired
+    private CarrelloRepository carrelloRepository;
+    @Autowired
+    private ProdottoOrdineRepository prodottoOrdineRepository;
+    @Autowired
+    private UtenteRepository utenteRepository;
+
+    /**
+     * Permette di creare un nuovo
+     *
+     * @param idUtente l'id dell'utente che deve effettuare l'ordine
+     * @return il nuovo ordine
+     */
+    @Transactional
+    public Ordine effettuareOrdine(Long idUtente) {
+
+        Utente utente = utenteRepository.findById(idUtente).orElse(null);
+        if (utente == null)
+            throw new OrdineException("L'utente non è stato trovato");
+
+        Carrello carrello = carrelloRepository.findByUtente_Id(idUtente);
+        Ordine ordine = new Ordine();
+        if (carrello == null)
+            throw new OrdineException("Il tuo carrello è nullo");
+        if (carrello.getProdottiCarrello().size() == 0)
+            throw new OrdineException("Il tuo carrello è vuoto! Aggiungi degli alberi prima di continuare");
+
+        ordine.setDataOrdine(LocalDate.now());
+        ordine.setUtente(utente);
+
+        List<ProdottoCarrello> prodottiCarrello = carrello.getProdottiCarrello();
+        for (ProdottoCarrello prodottoCarrello : prodottiCarrello) {
+            ProdottoOrdine prodottoOrdine = new ProdottoOrdine();
+            prodottoOrdine.setAlbero(prodottoCarrello.getAlbero());
+            prodottoOrdine.setQuantita(prodottoCarrello.getQuantita());
+            prodottoOrdine.setPrezzoUnitario(prodottoCarrello.getAlbero().getPrezzo());
+            prodottoOrdine.setStato(ProdottoOrdine.Stato.NonAssegnato);
+            ordine.aggiungiProdotto(prodottoOrdine);
+        }
+
+        prodottoCarrelloRepository.deleteProdottoCarrellosByCarrello_Id(carrello.getId());
+        carrello.svuotareCarrello();
+        carrelloRepository.save(carrello);
+        prodottoOrdineRepository.saveAll(ordine.getProdottiOrdine());
+        ordine = ordineRepository.save(ordine);
+        return ordine;
+    }
+}

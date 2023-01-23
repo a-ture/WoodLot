@@ -1,9 +1,12 @@
-package it.unisa.WoodLot.web.controller.gestioneOrdine;
+package it.unisa.WoodLot.web.controller.gestioneOrdine.ordini;
 
 import it.unisa.WoodLot.model.entity.Ordine;
-import it.unisa.WoodLot.sevice.gestioneOrdine.OrdineService;
+import it.unisa.WoodLot.sevice.gestioneOrdine.ordini.OrdineService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
 
 /**
  * Controller per la gestione degli ordini
@@ -12,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("/api/ordine")
-public class ControllerOrdine {
+public class ControllerOrdini {
 
     @Autowired
     private OrdineService ordineService;
@@ -22,21 +25,13 @@ public class ControllerOrdine {
      *
      * @return la lista degli alberi
      */
-    @GetMapping("ordine/getOrdini")
+    @GetMapping("/getOrdini")
     public Iterable<Ordine> restituisciOrdini() {
         return ordineService.restituisciOrdini();
     }
 
-    /**
-     * Metodo POST per effettuare un ordine
-     *
-     * @return l'ordine appena creato
-     */
-    @PostMapping("ordine/checkout")
-    public boolean effettuareOrdine(@RequestBody Ordine ordine) {
-        Ordine o = ordineService.effetuaOrdine(ordine);
-        return o.getId() == null ? false : true;
+    @GetMapping("/storicoUtente/{idUtente}")
+    public List<Ordine> visualizzaOrdiniUtente(@PathVariable Long idUtente) {
+        return ordineService.visualizzaOrdiniUtente(idUtente);
     }
-
-
 }

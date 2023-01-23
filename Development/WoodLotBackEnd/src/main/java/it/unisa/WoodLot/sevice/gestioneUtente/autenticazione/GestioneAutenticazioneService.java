@@ -3,6 +3,7 @@ package it.unisa.WoodLot.sevice.gestioneUtente.autenticazione;
 import it.unisa.WoodLot.model.entity.*;
 import it.unisa.WoodLot.model.repository.*;
 import it.unisa.WoodLot.sevice.gestioneUtente.eccezioni.LoginException;
+import it.unisa.WoodLot.sevice.gestioneUtente.eccezioni.PasswordException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -47,6 +48,7 @@ public class GestioneAutenticazioneService implements AutenticazioneService {
             throw new LoginException("La password non può essere nulla");
         if (email == null)
             throw new LoginException("L'email non può essere nulla");
+
         Utente utente = utenteRepository.findByEmailAndPassword(email, password);
         Contadino contadino = contadinoRepository.findContadinoByEmailAndPassword(email, password);
         ResponsabileCatalogo responsabileCatalogo = responsabileCatalogoRepository.findResponsabileCatalogoByEmailAndPassword(email, password);
@@ -58,9 +60,9 @@ public class GestioneAutenticazioneService implements AutenticazioneService {
             return contadino;
         else if (responsabileCatalogo != null)
             return responsabileCatalogo;
-        else if(responsabileOrdini != null)
-            return  responsabileOrdini;
-            throw new LoginException("E-mail o password errata");
+        else if (responsabileOrdini != null)
+            return responsabileOrdini;
+        throw new LoginException("E-mail o password errata");
     }
 
     /**
@@ -72,5 +74,42 @@ public class GestioneAutenticazioneService implements AutenticazioneService {
 
     }
 
+    /**
+     * Permette di reimpostare la password di un utente
+     *
+     * @param email    l'email dell'utente
+     * @param password la nuova password
+     */
+    @Override
+    public void reimpostaPassword(String email, String password) throws PasswordException {
+
+        if (email == null)
+            throw new PasswordException("L'email non può essere nulla");
+        if (password == null)
+            throw new PasswordException("La password non può essere nulla");
+
+        //controlla se l'email esiste nel database
+        Utente utente = utenteRepository.findByEmailAndPassword(email, password);
+        Contadino contadino = contadinoRepository.findContadinoByEmailAndPassword(email, password);
+        ResponsabileCatalogo responsabileCatalogo = responsabileCatalogoRepository.findResponsabileCatalogoByEmailAndPassword(email, password);
+        ResponsabileOrdini responsabileOrdini = responsabileOrdiniRepository.findByEmailAndPassword(email, password);
+
+        if (utente == null && contadino == null && responsabileCatalogo == null && responsabileOrdini == null)
+            throw new PasswordException("L' email inserita non è associata a nessun utente");
+
+        if (utente != null) {
+            utente.setPassword(password);
+            utenteRepository.save(utente);
+        } else if (contadino != null) {
+            contadino.setPassword(password);
+            contadinoRepository.save(contadino);
+        } else if (responsabileOrdini != null) {
+            responsabileOrdini.setPassword(password);
+            responsabileOrdiniRepository.save(responsabileOrdini);
+        } else {
+            responsabileCatalogo.setPassword(password);
+            responsabileCatalogoRepository.save(responsabileCatalogo);
+        }
+    }
 
 }

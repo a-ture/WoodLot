@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Classe che modella un prodotto di un carrello
@@ -24,7 +25,7 @@ public class ProdottoCarrello implements Serializable {
     @ManyToOne()
     private Albero albero;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "carrello")
     private Carrello carrello;
 }

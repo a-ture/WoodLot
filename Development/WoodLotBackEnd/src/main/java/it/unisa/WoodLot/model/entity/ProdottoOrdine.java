@@ -23,7 +23,7 @@ public class ProdottoOrdine implements Serializable {
         Bocciolo,
         Fiore,
         Frutto,
-        Dormineza,
+        Dormienza,
         Senescenza
     }
 
@@ -54,7 +54,7 @@ public class ProdottoOrdine implements Serializable {
     /**
      * Calcola il prezzo del prodotto ordine
      *
-     * @return restuisce il prezzo totale del prodotto ordine
+     * @return restituisce il prezzo totale del prodotto ordine
      */
     public double getPrezzoTotale() {
         return prezzoUnitario * quantita;

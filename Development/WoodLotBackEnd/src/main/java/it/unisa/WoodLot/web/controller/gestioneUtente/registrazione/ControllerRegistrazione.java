@@ -25,7 +25,7 @@ public class ControllerRegistrazione {
      * @param utente l'utente da registrare
      * @return l'utente registrato
      */
-    @PostMapping("/registrazione")
+    @PostMapping("/registrazioneUtente")
     public ResponseEntity<Utente> registrazione(@RequestBody Utente utente) {
         Utente nuovoUtente = registrazioneService.registrazione(utente);
         return new ResponseEntity<>(nuovoUtente, HttpStatus.CREATED);
