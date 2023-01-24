@@ -26,12 +26,12 @@ public class ControllerAutenticazione {
      * Metodo POST per effettuare il login
      *
      * @param utenteRegistrato un utente registrato al sistema
+     * @return l'utente
      * @throws LoginException se le credenziali sono errate
      */
     @PostMapping("/login")
-    public void login(@RequestBody UtenteRegistrato utenteRegistrato) throws LoginException {
-        autenticazioneService.login(utenteRegistrato.getEmail(), utenteRegistrato.getPassword());
-
+    public UtenteRegistrato login(@RequestBody UtenteRegistrato utenteRegistrato) throws LoginException {
+        return autenticazioneService.login(utenteRegistrato.getEmail(), utenteRegistrato.getPassword());
     }
 
     /**

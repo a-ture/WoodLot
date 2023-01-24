@@ -71,9 +71,9 @@ public class GestioneFiltriService implements FiltriService {
     @Override
     public Iterable<Albero> getProdottiFiltratiByAnidrideCarbonica(String parametro) {
         if (parametro.equalsIgnoreCase("anidrideCrescente")) {
-            return alberoRepository.findAllByOrderByAnidirdeCarbonicaAssorbitaAsc();
+            return alberoRepository.findAllByOrderByAnidrideCarbonicaAssorbitaAsc();
         } else if (parametro.equalsIgnoreCase("anidrideDecrescente")) {
-            return alberoRepository.findAllByOrderByAnidirdeCarbonicaAssorbitaDesc();
+            return alberoRepository.findAllByOrderByAnidrideCarbonicaAssorbitaDesc();
         }
         return null;  // restituisce null nel caso il parametro sia sbagliato
     }

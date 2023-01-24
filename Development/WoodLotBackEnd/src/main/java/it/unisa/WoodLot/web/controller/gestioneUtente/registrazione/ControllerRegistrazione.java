@@ -1,6 +1,7 @@
 package it.unisa.WoodLot.web.controller.gestioneUtente.registrazione;
 
 import it.unisa.WoodLot.model.entity.Utente;
+import it.unisa.WoodLot.sevice.gestioneUtente.eccezioni.RegistazioneException;
 import it.unisa.WoodLot.sevice.gestioneUtente.registrazione.RegistrazioneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,7 +27,7 @@ public class ControllerRegistrazione {
      * @return l'utente registrato
      */
     @PostMapping("/registrazioneUtente")
-    public ResponseEntity<Utente> registrazione(@RequestBody Utente utente) {
+    public ResponseEntity<Utente> registrazione(@RequestBody Utente utente) throws RegistazioneException {
         Utente nuovoUtente = registrazioneService.registrazione(utente);
         return new ResponseEntity<>(nuovoUtente, HttpStatus.CREATED);
 

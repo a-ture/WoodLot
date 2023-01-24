@@ -4,6 +4,7 @@ import it.unisa.WoodLot.model.entity.*;
 import it.unisa.WoodLot.model.repository.*;
 import it.unisa.WoodLot.sevice.gestioneUtente.eccezioni.LoginException;
 import it.unisa.WoodLot.sevice.gestioneUtente.eccezioni.PasswordException;
+import it.unisa.WoodLot.sevice.gestioneUtente.eccezioni.RegistazioneException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -71,7 +72,6 @@ public class GestioneAutenticazioneService implements AutenticazioneService {
     @Override
     public void logout() {
         request.getSession().invalidate();
-
     }
 
     /**
@@ -88,14 +88,19 @@ public class GestioneAutenticazioneService implements AutenticazioneService {
         if (password == null)
             throw new PasswordException("La password non può essere nulla");
 
-        //controlla se l'email esiste nel database
-        Utente utente = utenteRepository.findByEmailAndPassword(email, password);
-        Contadino contadino = contadinoRepository.findContadinoByEmailAndPassword(email, password);
-        ResponsabileCatalogo responsabileCatalogo = responsabileCatalogoRepository.findResponsabileCatalogoByEmailAndPassword(email, password);
-        ResponsabileOrdini responsabileOrdini = responsabileOrdiniRepository.findByEmailAndPassword(email, password);
+        Utente utente = utenteRepository.findByEmail(email);
+        Contadino contadino = contadinoRepository.findContadinoByEmail(email);
+        ResponsabileCatalogo responsabileCatalogo = responsabileCatalogoRepository.findResponsabileCatalogoByEmail(email);
+        ResponsabileOrdini responsabileOrdini = responsabileOrdiniRepository.findByEmail(email);
 
         if (utente == null && contadino == null && responsabileCatalogo == null && responsabileOrdini == null)
             throw new PasswordException("L' email inserita non è associata a nessun utente");
+
+        if (password.length() < 8)
+            throw new PasswordException("La password deve essere lunga almeno 8 caratteri");
+
+        if (!password.matches(".*[@!#$].*"))
+            throw new IllegalArgumentException("La password deve contenere almeno un carattere tra: @, !, #, $");
 
         if (utente != null) {
             utente.setPassword(password);

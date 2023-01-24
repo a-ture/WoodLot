@@ -2,6 +2,7 @@ package it.unisa.WoodLot.sevice.gestioneCatalogo.prodotti;
 
 import it.unisa.WoodLot.model.entity.Albero;
 import it.unisa.WoodLot.model.repository.AlberoRepository;
+import it.unisa.WoodLot.sevice.gestioneCatalogo.eccezioni.AlberoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,17 +29,21 @@ public class GestioneCatalogoService implements CatalogoService {
      * @return albero il prodotto inserito nel database.
      */
     @Override
-    public Albero aggiungiProdotto(Albero albero) {
+    public Albero aggiungiProdotto(Albero albero) throws AlberoException {
+
+        if (alberoRepository.existsById(albero.getNome()))
+            throw new AlberoException("Questo nome è già presente nel catalogo! Scegline un altro");
         return alberoRepository.save(albero);
     }
 
     /**
      * Permette di eliminare un albero dal catalogo
      *
-     * @param albero l'albero da eliminare
+     * @param idAlbero l'id dell'albero da eliminare
      */
     @Override
-    public void eliminaProdotto(Albero albero) {
-        alberoRepository.delete(albero);
+    public void eliminaProdotto(String idAlbero) {
+
+        alberoRepository.deleteById(idAlbero);
     }
 }

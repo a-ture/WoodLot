@@ -11,7 +11,7 @@ import java.util.Set;
 
 /**
  * Interfaccia che definisce le operazioni per la modellazione e l'accesso
- * alle informazioni persistenti relative ad un albero
+ * alle informazioni persistenti relative a un albero
  *
  * @author Alessia Ture
  * @see Albero
@@ -34,7 +34,7 @@ public interface AlberoRepository extends JpaRepository<Albero, String> {
     Set<Albero> findAllByUsiLocali(Optional<UsoLocale> usoLocale);
 
     /**
-     * Restuisce tutti gli alberi che hanno come categoria quello indicata
+     * Restituisce tutti gli alberi che hanno come categoria quello indicata
      *
      * @param categoria la categoria ricercata
      * @return un set degli alberi che hanno come categoria quella indicata
@@ -42,30 +42,31 @@ public interface AlberoRepository extends JpaRepository<Albero, String> {
     Set<Albero> findAllByCategoria(Optional<Categoria> categoria);
 
     /**
-     * Restuisce gli alberi del catalogo ordinati per prezzo crescente
+     * Restituisce gli alberi del catalogo ordinati per prezzo crescente
      *
      * @return un set contente gli alberi del catalogo ordinati per prezzo crescente
      */
     Set<Albero> findAllByOrderByPrezzoAsc();
 
     /**
-     * Restuisce gli alberi del catalogo ordinati per prezzo decrescente
+     * Restituisce gli alberi del catalogo ordinati per prezzo decrescente
      *
      * @return un set contente gli alberi del catalogo ordinati per prezzo decrescente
      */
     Set<Albero> findAllByOrderByPrezzoDesc();
 
     /**
-     * Restuisce gli alberi del catalogo ordinati per anidrice carbonica crescente
+     * Restituisce gli alberi del catalogo ordinati per anidride carbonica crescente
      *
-     * @return un set contente gli alberi del catalogo ordinati per anidrice carbonica crescente
+     * @return un set contente gli alberi del catalogo ordinati per anidride carbonica crescente
      */
-    Set<Albero> findAllByOrderByAnidirdeCarbonicaAssorbitaAsc();
+    Set<Albero> findAllByOrderByAnidrideCarbonicaAssorbitaAsc();
 
     /**
-     * Restuisce gli alberi del catalogo ordinati per anidrice carbonica decrescente
+     * Restituisce gli alberi del catalogo ordinati per anidride carbonica decrescente
      *
-     * @return un set contente gli alberi del catalogo ordinati per anidrice carbonica decrescente
+     * @return un set contente gli alberi del catalogo ordinati per anidride carbonica decrescente
      */
-    Set<Albero> findAllByOrderByAnidirdeCarbonicaAssorbitaDesc();
+    Set<Albero> findAllByOrderByAnidrideCarbonicaAssorbitaDesc();
+
 }

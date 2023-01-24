@@ -33,16 +33,16 @@ public class Albero implements Serializable {
     private double prezzo;
 
     @Column(name = "CO2", nullable = false)
-    private int anidirdeCarbonicaAssorbita;
+    private int anidrideCarbonicaAssorbita;
 
     @Column(name = "salvaguardia", nullable = false)
     private int salvaguardia;
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "categoria", referencedColumnName = "nome")
     private Categoria categoria;
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "paese_origine", referencedColumnName = "nome")
     private PaeseOrigine paeseOrigine;
 

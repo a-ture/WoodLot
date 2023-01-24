@@ -1,6 +1,7 @@
 package it.unisa.WoodLot.web.controller.gestioneCatalogo.prodotti;
 
 import it.unisa.WoodLot.model.entity.Albero;
+import it.unisa.WoodLot.sevice.gestioneCatalogo.eccezioni.AlberoException;
 import it.unisa.WoodLot.sevice.gestioneCatalogo.prodotti.CatalogoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -26,7 +27,7 @@ public class ControllerCatalogo {
      * @return true se l'inserimento ha avuto esito positivo, false altrimenti
      */
     @PostMapping("/inserimentoProdotto")
-    public boolean inserimentoCatalogo(@RequestBody Albero albero) {
+    public boolean inserimentoCatalogo(@RequestBody Albero albero) throws AlberoException {
         Albero a = catalogoService.aggiungiProdotto(albero);
         return a.getNome() == null ? false : true;
     }
@@ -34,11 +35,11 @@ public class ControllerCatalogo {
     /**
      * Metodo POST per eliminare un prodotto dal catalogo
      *
-     * @param albero è il prodotto da eliminare dal catalogo
+     * @param idAlbero è l'id del albero da eliminare dal catalogo
      */
-    @PostMapping("/eliminaProdotto")
-    public void eliminaProdottoCatalgo(@RequestBody Albero albero) {
-        catalogoService.eliminaProdotto(albero);
+    @GetMapping("/eliminaProdotto/{idAlbero}")
+    public void eliminaProdottoCatalgo(@PathVariable String idAlbero) {
+        catalogoService.eliminaProdotto(idAlbero);
     }
 
 }

@@ -1,17 +1,19 @@
-<div class="text-center">
+<div class="text-center my-5">
   <h2>Benefici</h2>
 </div>
 <div>
   <h4 class="text-center mt-4">Benefici ambientali</h4>
-  <div class="row text-center px-5">
+  <div class="row d-flex justify-content-center gy-3 my-3 text-center">
     <app-card-rettangolare-con-testo *ngFor="let item of listaSourceBeneficiAmbientali; index as i"
-                                     class="col-sm py-3"
-                                     [sourceimage]="listaSourceBeneficiAmbientali[i]" [titolo]="listaTitoliBeneficiAmbientali[i]"
+                                     class="col-sm  d-flex justify-content-center"
+                                     [sourceimage]="listaSourceBeneficiAmbientali[i]"
+                                     [titolo]="listaTitoliBeneficiAmbientali[i]"
     ></app-card-rettangolare-con-testo>
   </div>
 </div>
 <div>
-  <p class="text-center px-5">La realizzazione di piccoli sistemi agroforestali permette di operare scelte puntuali in relazione alle specifiche
+  <p class="text-center px-5">La realizzazione di piccoli sistemi agroforestali permette di operare scelte puntuali in
+    relazione alle specifiche
     caratteristiche e necessità di ogni area di progetto. Le specie arboree piantate sono native o in rispetto dalla
     biodiversità dei diversi territori. La pratica agroforestale integra inoltre la piantumazione di alberi in un
     sistema agricolo, favorendo l'interazione virtuosa tra le diverse specie ed un uso sostenibile delle risorse e dei
@@ -21,15 +23,17 @@
 </div>
 <div>
   <h4 class="text-center mt-4">Benefici economici e sociali</h4>
-  <div class="row text-center px-5">
+  <div class="row d-flex justify-content-center gy-3 my-3 text-center">
     <app-card-rettangolare-con-testo *ngFor="let item of listaSourceBeneficiEconomiciESociali; index as i"
-                                     class="col-sm py-3"
-                                     [sourceimage]="listaSourceBeneficiEconomiciESociali[i]" [titolo]="listaTitoliBeneficiEconomiciESociali[i]"
+                                     class="col-sm d-flex justify-content-center"
+                                     [sourceimage]="listaSourceBeneficiEconomiciESociali[i]"
+                                     [titolo]="listaTitoliBeneficiEconomiciESociali[i]"
     ></app-card-rettangolare-con-testo>
   </div>
 </div>
-<div>
-  <p class="text-center px-5">WoodLot finanzia direttamente piccoli progetti agroforestali, diffusi sul territorio. La filosofia è quella di
-    realizzare ecosistemi sostenibili  epermettere a migliaia di contadini di far fronte ai costi iniziali della
+<div class="mb-5">
+  <p class="text-center px-5">WoodLot finanzia direttamente piccoli progetti agroforestali, diffusi sul territorio. La
+    filosofia è quella di
+    realizzare ecosistemi sostenibili epermettere a migliaia di contadini di far fronte ai costi iniziali della
     piantumazione di nuovi alberi, garantendo nel tempo sovranità alimentare ed opportunità di reddito.</p>
 </div>
