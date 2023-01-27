@@ -38,11 +38,11 @@ public class Albero implements Serializable {
     @Column(name = "salvaguardia", nullable = false)
     private int salvaguardia;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne()
     @JoinColumn(name = "categoria", referencedColumnName = "nome")
     private Categoria categoria;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne()
     @JoinColumn(name = "paese_origine", referencedColumnName = "nome")
     private PaeseOrigine paeseOrigine;
 
@@ -53,6 +53,4 @@ public class Albero implements Serializable {
     @ManyToMany
     @JoinColumn(name = "beneficio", referencedColumnName = "nome")
     private List<Beneficio> benefici;
-
-
 }
