@@ -4,6 +4,8 @@ import {Paese} from "../../entita/paese/paese";
 import {UsoLocale} from "../../entita/usoLocale/uso-locale";
 import {Beneficio} from "../../entita/beneficio/beneficio";
 import {Categoria} from "../../entita/categoria/categoria";
+import {Observable} from "rxjs";
+import {HttpClient} from "@angular/common/http";
 
 //TODO collegamento con il back-end
 @Injectable({
@@ -11,30 +13,13 @@ import {Categoria} from "../../entita/categoria/categoria";
 })
 export class ProdottoService {
 
-  constructor() {
+  constructor(private http: HttpClient) {
   }
 
-
   //restituisce tutti i prodotti presenti nel DB
-  public getProdotti() {
-    return [
-      new Albero(13.00, 34, "castagno"),
-      new Albero(12.00, 434, "mandorlo"),
-      new Albero(34.00, 434, "melograno"),
-      new Albero(12.50, 43, "vite"),
-      new Albero(13.00, 34, "castagno"),
-      new Albero(12.00, 434, "mandorlo"),
-      new Albero(34.00, 434, "melograno"),
-      new Albero(12.50, 43, "vite"),
-      new Albero(13.00, 34, "castagno"),
-      new Albero(12.00, 434, "mandorlo"),
-      new Albero(34.00, 434, "melograno"),
-      new Albero(13.00, 34, "castagno"),
-      new Albero(12.00, 434, "mandorlo"),
-      new Albero(12.50, 43, "vite"),
-      new Albero(34.00, 434, "melograno"),
-      new Albero(12.50, 43, "vite"),
-    ]
+  public getProdotti(): Observable<Albero[]> {
+    let url = 'http://localhost:8090/api/filtri/prodotti';
+    return this.http.get<Albero[]>(url);
   }
 
   //restituisce un singolo prodotto
@@ -62,6 +47,5 @@ export class ProdottoService {
       ), new Categoria("categoria", "orem ipsum dolor sit amet, consectetur adipiscing elit, sed do " +
         "eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus purus in massa tempor nec feugiat nisl " +
         "pretium fusce. Eu lobortis elementum nibh tellus molestie."))
-
   }
 }

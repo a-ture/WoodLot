@@ -9,7 +9,7 @@ import {Component, Input, OnInit} from '@angular/core';
         {{nomeFiltro}}
       </button>
       <ul cDropdownMenu>
-        <li><a [routerLink]="[]" *ngFor="let element of elementi" cDropdownItem>{{element}}</a></li>
+        <li><a *ngFor="let element of elementi" cDropdownItem>{{element}}</a></li>
       </ul>
     </c-dropdown>
   `
@@ -22,6 +22,7 @@ export class FiltroComponent implements OnInit {
   @Input()
   public elementi !: String[]
 
+  
   constructor() {
   }
 

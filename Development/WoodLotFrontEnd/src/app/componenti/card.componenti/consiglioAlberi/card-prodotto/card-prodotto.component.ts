@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
       <img src="{{sourceImage}}" class="card-img-top"/>
       <div class="card-body">
         <h5 class="card-title">{{albero.nome}}</h5>
-        <p class="card-text"><strong>CO<sub>2</sub></strong>: -{{albero.co2}} kg</p>
+        <p class="card-text"><strong>CO<sub>2</sub></strong>: -{{albero.anidrideCarbonicaAssorbita}} kg</p>
       </div>
       <ul class="list-group list-group-light list-group-small">
         <li class="list-group-item px-4"><strong>Prezzo:</strong> {{albero.prezzo.toFixed(2)}} €</li>

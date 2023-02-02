@@ -56,7 +56,7 @@ export class CardSuperpoteriComponent implements OnInit {
 
   calcolaStelleAnidrideCarbonica() {
     let array = new Array<String>()
-    let stelleColorate = this.albero.co2 % 6
+    let stelleColorate = this.albero.anidrideCarbonicaAssorbita % 6
     let stelleNonColorate = 5 - stelleColorate
     for (let i = 0; i < stelleColorate; i++) {
       array.push("stellaColorata")

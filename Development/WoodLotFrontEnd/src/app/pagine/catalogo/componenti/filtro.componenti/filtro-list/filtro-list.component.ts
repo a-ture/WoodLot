@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CategoriaService} from "../../../../../servizi/categoria/categoria.service";
 import {UsoLocaleService} from "../../../../../servizi/usoLocale/uso-locale.service";
 import {PaeseService} from "../../../../../servizi/paese/paese.service";
@@ -11,20 +11,20 @@ import {PaeseService} from "../../../../../servizi/paese/paese.service";
 export class FiltroListComponent implements OnInit {
 
   public listNomiFiltri = [
-    "Prezzo", "CO2","Categorie", "Paesi", "Usi Locali"
+    "Prezzo", "Anidride Carbonica", "Categorie", "Paesi", "Usi Locali"
   ]
 
   public listPrezzo = [
-    "Prezzo crescente", "Prezzo descrescente"
+    "Prezzo crescente", "Prezzo decrescente"
   ]
 
   public listCO2 = [
-    "Meno CO2 assorbita", "Meno CO2 assorbita"
+    "Meno anidride carbonica assorbita", "Più anidride carbonica assorbita"
   ]
 
   public listFiltri
 
-  constructor(private serviceCategorie:CategoriaService, private serviceUsiLocali:UsoLocaleService, private servicePaese:PaeseService) {
+  constructor(private serviceCategorie: CategoriaService, private serviceUsiLocali: UsoLocaleService, private servicePaese: PaeseService) {
     let listUsiLocali = new Array<String>()
     let listCategorie = new Array<String>()
     let listPaesi = new Array<String>()
@@ -41,12 +41,11 @@ export class FiltroListComponent implements OnInit {
       listUsiLocali.push(e.nome)
     })
 
-     this.listFiltri= [this.listPrezzo, this.listCO2, listCategorie, listPaesi, listUsiLocali]
+    this.listFiltri = [this.listPrezzo, this.listCO2, listCategorie, listPaesi, listUsiLocali]
   }
 
   ngOnInit(): void {
   }
-
 
 
 }

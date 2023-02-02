@@ -6,7 +6,7 @@ import {Categoria} from "../categoria/categoria";
 export class Albero {
 
   public prezzo : number
-  public co2: number
+  public anidrideCarbonicaAssorbita: number
   public nome: String
   public paese: Paese | undefined
   public nomeScientifico: String | undefined
@@ -23,7 +23,7 @@ export class Albero {
               nomeScientifico?: String, breveDescrizione?: String, descrizione?:String, salvaguardiaAmbientale?: number,
               usiLocali?: Array<UsoLocale>, benefici?: Array<Beneficio>, categoria?:Categoria) {
     this.prezzo = prezzo;
-    this.co2 = co2;
+    this.anidrideCarbonicaAssorbita = co2;
     this.nome = nome;
     this.paese = paese;
     this.nomeScientifico = nomeScientifico;
@@ -33,7 +33,6 @@ export class Albero {
     this.usiLocali = usiLocali;
     this.benefici = benefici;
     this.categoria = categoria;
-
 
   }
 

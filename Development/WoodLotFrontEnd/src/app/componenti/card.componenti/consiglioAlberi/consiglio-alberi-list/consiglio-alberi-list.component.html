@@ -6,8 +6,9 @@
     <app-card-prodotto *ngFor="let item of listaAlberi; index as i"
                        class="col-lg-3 col-md-4 col-xs-12 col-sm-6
                             col-xs-12 d-flex justify-content-center"
-                       [sourceImage]="urlBase+item.nome+endBase" [albero]="item"
+                       [sourceImage]="urlBase+item.nome.toLowerCase().replace(' ','')+endBase" [albero]="item"
     ></app-card-prodotto>
+
   </div>
   <div class="mt-4">
     <a cButton routerLink="/catalogo" style="background: #5E7250; border-color:#5E7250">Scopri tutti gli alberi!</a>

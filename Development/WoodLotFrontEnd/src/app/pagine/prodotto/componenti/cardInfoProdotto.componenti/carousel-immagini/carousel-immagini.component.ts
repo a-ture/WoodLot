@@ -19,9 +19,9 @@ export class CarouselImmaginiComponent implements OnInit {
 
   ngOnInit(): void {
     this.sourceImage = [
-      {id: 1, src: this.path+this.albero.nome+"/1.jpg", title: this.albero.nome},
-      {id: 2, src: this.path+this.albero.nome+"/2.jpg", title: this.albero.nome},
-      {id: 3, src: this.path+this.albero.nome+"/3.jpg", title: this.albero.nome},
+      {id: 1, src: this.path+this.albero.nome.toLowerCase()+"/1.webp", title: this.albero.nome},
+      {id: 2, src: this.path+this.albero.nome.toLowerCase()+"/2.webp", title: this.albero.nome},
+      {id: 3, src: this.path+this.albero.nome.toLowerCase()+"/3.webp", title: this.albero.nome},
 
     ]
   }

@@ -8,7 +8,7 @@
     <app-card-prodotto *ngFor="let item of listaAlberi; index as i"
                        class="col-lg-3 col-md-6 col-xs-12
                             col-xs-12 d-flex justify-content-center"
-                       [sourceImage]="urlBase+item.nome+endBase" [albero]="item"
+                       [sourceImage]="urlBase+item.nome.toLowerCase().replace(' ','')+endBase" [albero]="item"
     ></app-card-prodotto>
   </div>
   <div class="my-4 d-flex justify-content-center">

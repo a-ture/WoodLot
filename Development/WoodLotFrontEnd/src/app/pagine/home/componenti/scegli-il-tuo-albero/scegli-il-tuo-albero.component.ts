@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ProdottoService} from "../../../../servizi/prodotto/prodotto.service";
+import {Albero} from "../../../../entita/albero/albero";
 
 @Component({
   selector: 'app-scegli-il-tuo-albero',
@@ -9,12 +10,14 @@ import {ProdottoService} from "../../../../servizi/prodotto/prodotto.service";
 export class ScegliIlTuoAlberoComponent implements OnInit {
 
   public urlBase = "assets/img/alberi/"
-  public endBase = "/catalogo.png"
+  public endBase = "/catalogo.webp"
 
-  public listaAlberi
+  public listaAlberi !:Albero[];
 
   constructor(private serviceProdotto: ProdottoService) {
-    this.listaAlberi = serviceProdotto.getProdotti().slice(0, 4);
+    this.serviceProdotto.getProdotti().subscribe(alberi => {
+      this.listaAlberi = alberi.slice(0, 4);
+    })
   }
 
   ngOnInit(): void {
