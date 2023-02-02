@@ -12,6 +12,11 @@
   align-items: center;
 }
 
+.list-group {
+  --cui-list-group-bg: trasparent;
+  --cui-list-group-border-color: trasparent;
+}
+
 i:hover {
   color: #5E7250;
 }

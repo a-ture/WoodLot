@@ -10,16 +10,14 @@ import {BeneficioService} from "../../../../../servizi/beneficio/beneficio.servi
       <c-card-body class="mx-4">
         <h5 cCardTitle class="fs-4 mb-4">Benefici <i
           class="fa-solid fa-circle-info" [cModalToggle]="scrollableLongContentModal.id"></i></h5>
-        <div class="row d-flex justify-content-center">
-
-          <ul class="d-grid list-unstyled" *ngFor="let item of albero.benefici">
-            <li class="d-flex gap-4"><img
+        <div class="row d-flex justify-content-center mt-3">
+          <ul class="list-group list-group-horizontal-sm d-flex justify-content-center">
+            <li class="list-group-item" *ngFor="let item of albero.benefici"><img
               class="text-muted flex-shrink-0 rounded-circle" width="68"
               height="68"
               src="assets/img/paginaProdotto/benefici/{{getSourceImage(item.nome)}}">
               <div>
                 <h6 class="mb-0">{{item.nome}}</h6>
-                <p class="fw-lighter fs-6">{{item.descrizione}}</p>
               </div>
             </li>
           </ul>
@@ -48,7 +46,7 @@ import {BeneficioService} from "../../../../../servizi/beneficio/beneficio.servi
           src="assets/img/paginaProdotto/benefici/{{getSourceImage(item.nome)}}">
           <div>
             <h6 class="mb-0">{{item.nome}}</h6>
-            <p class="fw-lighter fs-6">{{item.descrizione}}</p>
+            <p class="fw-lighter">{{item.descrizione}}</p>
           </div>
         </li>
       </ul>

@@ -1,17 +1,7 @@
-.d-grid {
-  display: grid !important;
-  align-items: center;
-  align-content: center;
-  justify-content: center;
-  justify-items: stretch;
+.list-group {
+  --cui-list-group-bg: trasparent;
+  --cui-list-group-border-color: trasparent;
 }
-
-.d-flex {
-  display: flex !important;
-  justify-content: center;
-  align-items: center;
-}
-
 i:hover {
   color: #5E7250;
 }
