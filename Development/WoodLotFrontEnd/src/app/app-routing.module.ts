@@ -18,7 +18,7 @@ const routes: Routes = [
   {path: 'chiSiamo', component: InterfacciaChiSiamoComponent},
   {path: 'diventaUnContadino', component: InterfacciaDiventaContadinoComponent},
   {path: 'checkout', component: InterfacciaCheckoutComponent},
-  {path: 'paginaProdotto', component: InterfacciaProdottoComponent}
+  {path: 'paginaProdotto/:nomeProdotto', component: InterfacciaProdottoComponent}
 ];
 
 @NgModule({

@@ -9,7 +9,7 @@ import {Albero} from "../../../../../entita/albero/albero";
 export class CarouselImmaginiComponent implements OnInit {
 
 
-  @Input() public albero!:Albero
+  @Input() public nome !: String
   public path ="assets/img/alberi/"
   public sourceImage!:any[]
 
@@ -19,9 +19,9 @@ export class CarouselImmaginiComponent implements OnInit {
 
   ngOnInit(): void {
     this.sourceImage = [
-      {id: 1, src: this.path+this.albero.nome.toLowerCase()+"/1.webp", title: this.albero.nome},
-      {id: 2, src: this.path+this.albero.nome.toLowerCase()+"/2.webp", title: this.albero.nome},
-      {id: 3, src: this.path+this.albero.nome.toLowerCase()+"/3.webp", title: this.albero.nome},
+      {id: 1, src: this.path+this.nome.toLowerCase().replace(' ','')+"/1.webp", title: this.nome},
+      {id: 2, src: this.path+this.nome.toLowerCase().replace(' ','')+"/2.webp", title: this.nome},
+      {id: 3, src: this.path+this.nome.toLowerCase().replace(' ','')+"/3.webp", title: this.nome},
 
     ]
   }

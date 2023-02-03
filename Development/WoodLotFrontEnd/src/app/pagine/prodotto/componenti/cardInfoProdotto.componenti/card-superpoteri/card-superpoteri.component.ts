@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ProdottoService} from "../../../../../servizi/prodotto/prodotto.service";
+import {Albero} from "../../../../../entita/albero/albero";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-card-superpoteri',
@@ -48,10 +50,10 @@ import {ProdottoService} from "../../../../../servizi/prodotto/prodotto.service"
 })
 export class CardSuperpoteriComponent implements OnInit {
 
-  public albero
+  public albero !: Albero
 
-  constructor(private serviceProdotto: ProdottoService) {
-    this.albero = serviceProdotto.getProdottoInformazioni("castagno");
+  constructor(private serviceProdotto: ProdottoService,private route: ActivatedRoute) {
+
   }
 
   calcolaStelleAnidrideCarbonica() {
@@ -69,7 +71,7 @@ export class CardSuperpoteriComponent implements OnInit {
 
   calcolaStelleSalvaguardia() {
     let array = new Array<String>()
-    let stelleColorate = this.albero.salvaguardiaAmbientale
+    let stelleColorate = this.albero.salvaguardia
     // @ts-ignore
     let stelleNonColorate = 5 - stelleColorate
     // @ts-ignore
@@ -83,6 +85,12 @@ export class CardSuperpoteriComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      const nome = params['nomeProdotto'];
+      this.serviceProdotto.getProdottoInformazioni(nome).subscribe(data => {
+        this.albero = data;
+      });
+    });
   }
 
 }

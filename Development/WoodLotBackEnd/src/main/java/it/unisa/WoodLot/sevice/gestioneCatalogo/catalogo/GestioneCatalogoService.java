@@ -1,14 +1,10 @@
-package it.unisa.WoodLot.sevice.gestioneCatalogo.prodotti;
+package it.unisa.WoodLot.sevice.gestioneCatalogo.catalogo;
 
 import it.unisa.WoodLot.model.entity.Albero;
 import it.unisa.WoodLot.model.repository.AlberoRepository;
 import it.unisa.WoodLot.sevice.gestioneCatalogo.eccezioni.AlberoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Spliterator;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 /**
  * La classe fornisce i metodi per la logica di business della gestione del catalogo

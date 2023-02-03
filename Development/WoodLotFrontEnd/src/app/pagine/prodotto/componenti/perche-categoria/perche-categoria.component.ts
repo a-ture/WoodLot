@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ProdottoService} from "../../../../servizi/prodotto/prodotto.service";
+import {Albero} from "../../../../entita/albero/albero";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-perche-categoria',
@@ -10,12 +12,12 @@ import {ProdottoService} from "../../../../servizi/prodotto/prodotto.service";
         <c-row class="g-0 d-flex justify-content-center ">
 
           <c-card-body cCol [md]="8">
-            <h5 cCardTitle class="ms-5 " >Perchè  {{albero.categoria!.nome}}?</h5>
-            <p cCardText   class="ms-5">
+            <h5 cCardTitle class="ms-5 ">Perchè  {{albero.categoria!.nome}}?</h5>
+            <p cCardText class="ms-5">
               {{albero.categoria!.descrizione}}
             </p>
           </c-card-body>
-          <c-col [md]="4"  >
+          <c-col [md]="4">
             <img [cCardImg] src="assets/img/paginaProdotto/categorie/01.jpg">
           </c-col>
         </c-row>
@@ -25,13 +27,19 @@ import {ProdottoService} from "../../../../servizi/prodotto/prodotto.service";
 })
 export class PercheCategoriaComponent implements OnInit {
 
-  public albero
+  public albero!: Albero
 
-  constructor(private serviceProdotto: ProdottoService) {
-    this.albero = serviceProdotto.getProdottoInformazioni("castagno");
+  constructor(private serviceProdotto: ProdottoService, private route: ActivatedRoute) {
+
   }
 
   ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      const nome = params['nomeProdotto'];
+      this.serviceProdotto.getProdottoInformazioni(nome).subscribe(data => {
+        this.albero = data;
+      });
+    });
   }
 
 }

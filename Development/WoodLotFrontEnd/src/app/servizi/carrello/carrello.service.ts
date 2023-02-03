@@ -11,7 +11,7 @@ export class CarrelloService {
   // restituisce il carrello di un utente
   public getCarrello(){
     return [
-      new ProdottoCarrello(1, "mandorlo", false, 45),
+
       new ProdottoCarrello(3, "castagno", false, 90)
     ]
   }

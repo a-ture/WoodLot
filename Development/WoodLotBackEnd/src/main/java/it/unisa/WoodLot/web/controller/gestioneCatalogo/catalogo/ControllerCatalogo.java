@@ -1,8 +1,8 @@
-package it.unisa.WoodLot.web.controller.gestioneCatalogo.prodotti;
+package it.unisa.WoodLot.web.controller.gestioneCatalogo.catalogo;
 
 import it.unisa.WoodLot.model.entity.Albero;
 import it.unisa.WoodLot.sevice.gestioneCatalogo.eccezioni.AlberoException;
-import it.unisa.WoodLot.sevice.gestioneCatalogo.prodotti.CatalogoService;
+import it.unisa.WoodLot.sevice.gestioneCatalogo.catalogo.CatalogoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
