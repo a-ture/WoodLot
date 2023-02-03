@@ -1,4 +1,4 @@
-package it.unisa.WoodLot.sevice.gestioneCatalogo.prodotti;
+package it.unisa.WoodLot.sevice.gestioneCatalogo.catalogo;
 
 import it.unisa.WoodLot.model.entity.Albero;
 import it.unisa.WoodLot.sevice.gestioneCatalogo.eccezioni.AlberoException;

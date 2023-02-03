@@ -10,8 +10,8 @@
             <h6>Numero pezzi: {{getTotalePezzi()}}</h6>
           </div>
           <app-prodotto-carrello *ngFor="let item of listProdotti; index as i;"
-                             [sourceImage]="urlBase+item.nome+endBase"
-                             [prodottoCarrello]=listProdotti[i]
+                                 [sourceImage]="urlBase+item.nome.toLowerCase().replace(' ','')+endBase"
+                                 [prodottoCarrello]=listProdotti[i]
           ></app-prodotto-carrello>
           <div class="d-flex justify-content-between align-items-center mb-5">
             <h6>
@@ -42,7 +42,9 @@
               </p>
             </div>
             <div class="d-flex justify-content-between">
-              <button class="btn btn-block btn-lg " style="background-color:#94AD6E; color:white" routerLink="/checkout">Checkout</button>
+              <button class="btn btn-block btn-lg " style="background-color:#94AD6E; color:white"
+                      routerLink="/checkout">Checkout
+              </button>
             </div>
           </div>
         </div>

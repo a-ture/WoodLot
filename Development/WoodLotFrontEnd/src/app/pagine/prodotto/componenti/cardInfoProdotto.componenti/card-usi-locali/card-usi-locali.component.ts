@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ProdottoService} from "../../../../../servizi/prodotto/prodotto.service";
 import {UsoLocaleService} from "../../../../../servizi/usoLocale/uso-locale.service";
+import {Albero} from "../../../../../entita/albero/albero";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-card-usi-locali',
@@ -15,7 +17,7 @@ import {UsoLocaleService} from "../../../../../servizi/usoLocale/uso-locale.serv
             <li class="list-group-item" *ngFor="let item of albero.usiLocali"><img
               class="text-muted flex-shrink-0 rounded-circle" width="98"
               height="98"
-              src="assets/img/paginaProdotto/usiLocali/{{item.nome}}.png">
+              src="assets/img/paginaProdotto/usiLocali/{{item.nome.replace(' ','')}}.png">
               <div>
                 <h6 class="mb-0">{{item.nome}}</h6>
               </div>
@@ -55,15 +57,21 @@ import {UsoLocaleService} from "../../../../../servizi/usoLocale/uso-locale.serv
 })
 export class CardUsiLocaliComponent implements OnInit {
 
-  public albero;
+  public albero !: Albero;
   public usiLocali;
 
-  constructor(private serviceProdotto: ProdottoService, private serviceUsiLocali: UsoLocaleService) {
-    this.albero = serviceProdotto.getProdottoInformazioni("castagno");
+  constructor(private serviceProdotto: ProdottoService, private serviceUsiLocali: UsoLocaleService,private route: ActivatedRoute) {
+
     this.usiLocali = serviceUsiLocali.getUsiLocali()
   }
 
   ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      const nome = params['nomeProdotto'];
+      this.serviceProdotto.getProdottoInformazioni(nome).subscribe(data => {
+        this.albero = data;
+      });
+    });
   }
 
 

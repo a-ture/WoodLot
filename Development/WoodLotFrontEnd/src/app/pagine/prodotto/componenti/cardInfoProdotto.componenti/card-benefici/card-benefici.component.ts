@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ProdottoService} from "../../../../../servizi/prodotto/prodotto.service";
 import {BeneficioService} from "../../../../../servizi/beneficio/beneficio.service";
+import {Albero} from "../../../../../entita/albero/albero";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-card-benefici',
@@ -56,11 +58,10 @@ import {BeneficioService} from "../../../../../servizi/beneficio/beneficio.servi
 })
 export class CardBeneficiComponent implements OnInit {
 
-  public albero;
+  public albero !: Albero;
   public benefici;
 
-  constructor(private serviceProdotto: ProdottoService, private serviceBenefici: BeneficioService) {
-    this.albero = serviceProdotto.getProdottoInformazioni("castagno");
+  constructor(private serviceProdotto: ProdottoService, private serviceBenefici: BeneficioService, private route: ActivatedRoute) {
     this.benefici = serviceBenefici.getBenefici()
   }
 
@@ -75,6 +76,12 @@ export class CardBeneficiComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      const nome = params['nomeProdotto'];
+      this.serviceProdotto.getProdottoInformazioni(nome).subscribe(data => {
+        this.albero = data;
+      });
+    });
   }
 
 }

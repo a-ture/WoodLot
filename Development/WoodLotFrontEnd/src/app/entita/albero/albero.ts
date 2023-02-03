@@ -5,36 +5,34 @@ import {Categoria} from "../categoria/categoria";
 
 export class Albero {
 
-  public prezzo : number
+  public prezzo: number
   public anidrideCarbonicaAssorbita: number
   public nome: String
   public paese: Paese | undefined
-  public nomeScientifico: String | undefined
-  public breveDescrizione: String | undefined
+  public specieScientifica: String | undefined
+  public descrizioneBreve: String | undefined
   public descrizione: String | undefined
-  public salvaguardiaAmbientale: number | undefined
+  public salvaguardia: number | undefined
   public usiLocali: Array<UsoLocale> | undefined
   public benefici: Array<Beneficio> | undefined
   public categoria: Categoria | undefined
-
-
+  public paeseOrigine: Paese | undefined
 
   constructor(prezzo: number, co2: number, nome: String, paese?: Paese,
-              nomeScientifico?: String, breveDescrizione?: String, descrizione?:String, salvaguardiaAmbientale?: number,
-              usiLocali?: Array<UsoLocale>, benefici?: Array<Beneficio>, categoria?:Categoria) {
+              nomeScientifico?: String, breveDescrizione?: String, descrizione?: String, salvaguardiaAmbientale?: number,
+              usiLocali?: Array<UsoLocale>, benefici?: Array<Beneficio>, categoria?: Categoria, paeseOrigine?: Paese) {
     this.prezzo = prezzo;
     this.anidrideCarbonicaAssorbita = co2;
     this.nome = nome;
     this.paese = paese;
-    this.nomeScientifico = nomeScientifico;
-    this.breveDescrizione = breveDescrizione;
+    this.specieScientifica = nomeScientifico;
+    this.descrizioneBreve = breveDescrizione;
     this.descrizione = descrizione;
-    this.salvaguardiaAmbientale = salvaguardiaAmbientale;
+    this.salvaguardia = salvaguardiaAmbientale;
     this.usiLocali = usiLocali;
     this.benefici = benefici;
     this.categoria = categoria;
-
+    this.paeseOrigine = paeseOrigine;
   }
-
 
 }

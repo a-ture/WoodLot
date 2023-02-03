@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ProdottoService} from "../../../../../servizi/prodotto/prodotto.service";
+import {Albero} from "../../../../../entita/albero/albero";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-card-descrizione-prodotto',
@@ -9,7 +11,7 @@ import {ProdottoService} from "../../../../../servizi/prodotto/prodotto.service"
       <c-card-body class="mx-4">
         <h5 cCardTitle>Descrizione</h5>
         <p cCardText>
-          {{albero.descrizione}}
+          {{albero!.descrizione}}
         </p>
       </c-card-body>
     </c-card>
@@ -17,13 +19,19 @@ import {ProdottoService} from "../../../../../servizi/prodotto/prodotto.service"
 })
 export class CardDescrizioneProdottoComponent implements OnInit {
 
-  public albero
+  public albero !: Albero
 
-  constructor(private serviceProdotto: ProdottoService) {
-    this.albero = serviceProdotto.getProdottoInformazioni("castagno");
+  constructor(private serviceProdotto: ProdottoService, private route: ActivatedRoute) {
+    this.route.params.subscribe(params => {
+      const nome = params['nomeProdotto'];
+      this.serviceProdotto.getProdottoInformazioni(nome).subscribe(data => {
+        this.albero = data;
+      });
+    });
   }
 
   ngOnInit(): void {
+
   }
 
 }

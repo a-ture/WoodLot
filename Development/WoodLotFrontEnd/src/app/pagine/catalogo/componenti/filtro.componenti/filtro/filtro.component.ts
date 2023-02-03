@@ -22,7 +22,7 @@ export class FiltroComponent implements OnInit {
   @Input()
   public elementi !: String[]
 
-  
+
   constructor() {
   }
 

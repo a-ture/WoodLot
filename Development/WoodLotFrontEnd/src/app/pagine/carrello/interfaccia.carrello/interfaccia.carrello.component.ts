@@ -10,7 +10,7 @@ import {CarrelloService} from "../../../servizi/carrello/carrello.service";
 export class InterfacciaCarrelloComponent implements OnInit {
 
   public urlBase= "assets/img/alberi/"
-  public endBase = "/catalogo.png"
+  public endBase = "/catalogo.webp"
 
   public listProdotti
 
