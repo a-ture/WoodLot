@@ -9,9 +9,17 @@
     <app-filtro *ngFor="let item of listNomiFiltri; index as i"
                 [nomeFiltro]="listNomiFiltri[i]" [elementi]="listFiltri[i]"
                 class="col mt-1"
+                (filterApplied)="onFilterApplied($event)"
     ></app-filtro>
   </div>
 </div>
 
+<div class="row  d-flex justify-content-center mx-5 mt-3 g-5">
+  <app-card-prodotto
+    *ngFor="let item of listaAlberi; index as i"
+    class="col-lg-3 col-md-4 col-xs-12 col-sm-6
+                            col-xs-12 d-flex justify-content-center"
+    [sourceImage]="urlBase+item.nome.toLowerCase().replace(' ','')+endBase" [albero]="item"
 
-
+  ></app-card-prodotto>
+</div>

@@ -9,16 +9,17 @@ import {ActivatedRoute} from "@angular/router";
   template: `
     <div class="container text-center mt-1 mb-5">
       <h2>Dove viene piantato</h2>
-      <p>{{albero.paeseOrigine!.descrizione}}</p>
+      <p>{{albero?.paeseOrigine?.descrizione}}</p>
       <img class="img-fluid"
-           src="assets/img/paginaProdotto/paeseOrigine/{{albero.paeseOrigine!.nome}}.png">
+           src="assets/img/paginaProdotto/paeseOrigine/{{albero?.paeseOrigine?.nome}}.png">
     </div>
 
   `
 })
 export class DoveVienePiantatoComponent implements OnInit {
 
-  public albero!: Albero
+
+  public albero !: Albero
 
   constructor(private serviceProdotto: ProdottoService,private route: ActivatedRoute) {
   }

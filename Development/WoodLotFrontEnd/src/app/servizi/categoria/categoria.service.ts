@@ -1,5 +1,8 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Categoria} from "../../entita/categoria/categoria";
+import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
+
 
 @Injectable({
   providedIn: 'root'
@@ -7,17 +10,14 @@ import {Categoria} from "../../entita/categoria/categoria";
 //TODO collegamento con il back-end
 export class CategoriaService {
 
-  constructor() { }
-
-  //restituisce tutte le categorie presenti nel DB
-  public getCategorie(){
-    return[
-      new Categoria("categoria1", "descrizione"),
-      new Categoria("categoria2", "descrizione"),
-      new Categoria("categoria3", "descrizione"),
-      new Categoria("categoria4", "descrizione"),
-      new Categoria("categoria5", "descrizione")
-    ]
+  constructor(private http: HttpClient) {
   }
 
+  //restituisce tutte le categorie presenti nel DB
+  public getCategorie(): Observable<Categoria[]> {
+    let url = 'http://localhost:8090/api/prodotto/categorie';
+    return this.http.get<Categoria[]>(url);
+  }
 }
+
+

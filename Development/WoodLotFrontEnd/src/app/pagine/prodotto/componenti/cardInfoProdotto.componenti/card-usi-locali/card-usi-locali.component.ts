@@ -3,6 +3,7 @@ import {ProdottoService} from "../../../../../servizi/prodotto/prodotto.service"
 import {UsoLocaleService} from "../../../../../servizi/usoLocale/uso-locale.service";
 import {Albero} from "../../../../../entita/albero/albero";
 import {ActivatedRoute} from "@angular/router";
+import {UsoLocale} from "../../../../../entita/usoLocale/uso-locale";
 
 @Component({
   selector: 'app-card-usi-locali',
@@ -14,7 +15,7 @@ import {ActivatedRoute} from "@angular/router";
           class="fa-solid fa-circle-info" [cModalToggle]="scrollableLongContentModal.id"></i></h5>
         <div class="row d-flex justify-content-center">
           <ul class="list-group list-group-horizontal-sm d-flex justify-content-center">
-            <li class="list-group-item" *ngFor="let item of albero.usiLocali"><img
+            <li class="list-group-item" *ngFor="let item of albero?.usiLocali"><img
               class="text-muted flex-shrink-0 rounded-circle" width="98"
               height="98"
               src="assets/img/paginaProdotto/usiLocali/{{item.nome.replace(' ','')}}.png">
@@ -58,11 +59,10 @@ import {ActivatedRoute} from "@angular/router";
 export class CardUsiLocaliComponent implements OnInit {
 
   public albero !: Albero;
-  public usiLocali;
+  public usiLocali !: UsoLocale[];
 
   constructor(private serviceProdotto: ProdottoService, private serviceUsiLocali: UsoLocaleService,private route: ActivatedRoute) {
 
-    this.usiLocali = serviceUsiLocali.getUsiLocali()
   }
 
   ngOnInit(): void {
@@ -72,6 +72,9 @@ export class CardUsiLocaliComponent implements OnInit {
         this.albero = data;
       });
     });
+    this.serviceUsiLocali.getUsiLocali().subscribe(alberi => {
+      this.usiLocali = alberi;
+    })
   }
 
 

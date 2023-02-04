@@ -12,9 +12,9 @@ import {ActivatedRoute} from "@angular/router";
         <c-row class="g-0 d-flex justify-content-center ">
 
           <c-card-body cCol [md]="8">
-            <h5 cCardTitle class="ms-5 ">Perchè  {{albero.categoria!.nome}}?</h5>
+            <h5 cCardTitle class="ms-5 ">Perchè  {{albero?.categoria?.nome}}?</h5>
             <p cCardText class="ms-5">
-              {{albero.categoria!.descrizione}}
+              {{albero?.categoria?.descrizione}}
             </p>
           </c-card-body>
           <c-col [md]="4">

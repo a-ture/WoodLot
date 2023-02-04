@@ -3,6 +3,7 @@ import {ProdottoService} from "../../../../../servizi/prodotto/prodotto.service"
 import {BeneficioService} from "../../../../../servizi/beneficio/beneficio.service";
 import {Albero} from "../../../../../entita/albero/albero";
 import {ActivatedRoute} from "@angular/router";
+import {Beneficio} from "../../../../../entita/beneficio/beneficio";
 
 @Component({
   selector: 'app-card-benefici',
@@ -14,7 +15,7 @@ import {ActivatedRoute} from "@angular/router";
           class="fa-solid fa-circle-info" [cModalToggle]="scrollableLongContentModal.id"></i></h5>
         <div class="row d-flex justify-content-center mt-3">
           <ul class="list-group list-group-horizontal-sm d-flex justify-content-center">
-            <li class="list-group-item" *ngFor="let item of albero.benefici"><img
+            <li class="list-group-item" *ngFor="let item of albero?.benefici"><img
               class="text-muted flex-shrink-0 rounded-circle" width="68"
               height="68"
               src="assets/img/paginaProdotto/benefici/{{getSourceImage(item.nome)}}">
@@ -59,10 +60,10 @@ import {ActivatedRoute} from "@angular/router";
 export class CardBeneficiComponent implements OnInit {
 
   public albero !: Albero;
-  public benefici;
+  public benefici !: Beneficio[];
 
   constructor(private serviceProdotto: ProdottoService, private serviceBenefici: BeneficioService, private route: ActivatedRoute) {
-    this.benefici = serviceBenefici.getBenefici()
+
   }
 
   getSourceImage(nomeBenificio: String) {
@@ -81,6 +82,9 @@ export class CardBeneficiComponent implements OnInit {
       this.serviceProdotto.getProdottoInformazioni(nome).subscribe(data => {
         this.albero = data;
       });
+    });
+    this.serviceBenefici.getBenefici().subscribe(data => {
+      this.benefici = data;
     });
   }
 

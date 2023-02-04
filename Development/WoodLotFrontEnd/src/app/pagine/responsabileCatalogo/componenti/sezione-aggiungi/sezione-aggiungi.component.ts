@@ -6,6 +6,9 @@ import {PaeseService} from "../../../../servizi/paese/paese.service";
 import {
   ValidazioneFormProdottoService
 } from "../../../../servizi/validazioneFormProdotto/validazione-form-prodotto.service";
+import {Beneficio} from "../../../../entita/beneficio/beneficio";
+import {UsoLocale} from "../../../../entita/usoLocale/uso-locale";
+import {Paese} from "../../../../entita/paese/paese";
 
 //TODO vedere il paese, usi locali e benefici
 @Component({
@@ -19,9 +22,9 @@ export class SezioneAggiungiComponent implements OnInit {
   submitted = false;
   formErrori: any;
 
-  public listaBenfici
-  public listaUsiLocali
-  public listaPaesi
+  public listaBenfici !: Beneficio[]
+  public listaUsiLocali !: UsoLocale[]
+  public listaPaesi !: Paese[]
 
   constructor(private serviceValidazioneFormProdotto: ValidazioneFormProdottoService,
               private serviceBeneficio: BeneficioService,
@@ -50,13 +53,19 @@ export class SezioneAggiungiComponent implements OnInit {
       }
     )
     this.formErrori = serviceValidazioneFormProdotto.errori
-    this.listaBenfici = serviceBeneficio.getBenefici()
-    this.listaUsiLocali = serviceUsiLocali.getUsiLocali()
-    this.listaPaesi = servicePaese.getPaesi()
   }
 
 
   ngOnInit(): void {
+    this.servicePaese.getPaesi().subscribe(data => {
+      this.listaPaesi = data;
+    });
+    this.serviceUsiLocali.getUsiLocali().subscribe(data => {
+      this.listaUsiLocali = data;
+    });
+    this.serviceBeneficio.getBenefici().subscribe(data => {
+      this.listaBenfici = data;
+    });
   }
 
   onValidate() {

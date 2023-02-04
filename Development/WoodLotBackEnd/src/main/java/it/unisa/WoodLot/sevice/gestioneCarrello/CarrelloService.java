@@ -18,5 +18,4 @@ public interface CarrelloService {
 
     void svuotareCarrello(Long idCarrello) throws CarrelloException;
 
-
 }

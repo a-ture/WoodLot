@@ -11,7 +11,7 @@ import {ActivatedRoute} from "@angular/router";
       <c-card-body class="mx-4">
         <h5 cCardTitle>Descrizione</h5>
         <p cCardText>
-          {{albero!.descrizione}}
+          {{albero?.descrizione}}
         </p>
       </c-card-body>
     </c-card>
@@ -19,7 +19,7 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class CardDescrizioneProdottoComponent implements OnInit {
 
-  public albero !: Albero
+  public albero : Albero |undefined
 
   constructor(private serviceProdotto: ProdottoService, private route: ActivatedRoute) {
     this.route.params.subscribe(params => {

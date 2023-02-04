@@ -47,7 +47,6 @@ import {
 import {
   CardProdottoComponent
 } from './componenti/card.componenti/consiglioAlberi/card-prodotto/card-prodotto.component';
-import {CardProdottoListComponent} from './pagine/catalogo/componenti/card-prodotto-list/card-prodotto-list.component';
 import {ProdottoService} from "./servizi/prodotto/prodotto.service";
 import {FiltroComponent} from './pagine/catalogo/componenti/filtro.componenti/filtro/filtro.component';
 import {FiltroListComponent} from './pagine/catalogo/componenti/filtro.componenti/filtro-list/filtro-list.component';
@@ -207,7 +206,6 @@ import { ScegliIlTuoAlberoComponent } from './pagine/home/componenti/scegli-il-t
     CardRettangolareConTestoComponent,
     CardRettangolareConTestoListComponent,
     CardProdottoComponent,
-    CardProdottoListComponent,
     FiltroComponent,
     FiltroListComponent,
     CardRegaloComponent,

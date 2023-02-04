@@ -1,6 +1,6 @@
 package it.unisa.WoodLot.sevice.gestioneCatalogo.prodotto;
 
-import it.unisa.WoodLot.model.entity.Albero;
+import it.unisa.WoodLot.model.entity.*;
 import it.unisa.WoodLot.sevice.gestioneCatalogo.eccezioni.AlberoException;
 
 /**
@@ -12,4 +12,11 @@ public interface ProdottoService {
 
     Albero getProdotto(String nomeAlbero) throws AlberoException;
 
+    Iterable<Categoria> getCategorie();
+
+    Iterable<UsoLocale> getUsiLocali();
+
+    Iterable<Beneficio> getBenefici();
+
+    Iterable<PaeseOrigine> getPaesiDiOrigine();
 }

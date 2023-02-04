@@ -13,7 +13,7 @@ import {Albero} from "../../../../../entita/albero/albero";
 })
 export class CardInfoProdottoComponent implements OnInit {
 
-  public albero!: Albero
+  public albero : Albero | undefined
   modalInclusoNelPrezzo: MdbModalRef<InclusoNelPrezzoComponent> | null = null;
 
   constructor(private serviceProdotto: ProdottoService, private modalService: MdbModalService, private route: ActivatedRoute) {
