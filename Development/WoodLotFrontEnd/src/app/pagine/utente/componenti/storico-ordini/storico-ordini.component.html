@@ -13,7 +13,7 @@
         </thead>
 
         <tbody>
-        <tr *ngFor="let item of listaOrdini.slice(0,3)">
+        <tr *ngFor="let item of listaOrdini?.slice(0,3)">
           <th scope="row">{{item.codice}}</th>
           <td>{{item.totale.toFixed(2)}}€</td>
           <td>{{item.listaProdottiOrdine.length}}</td>

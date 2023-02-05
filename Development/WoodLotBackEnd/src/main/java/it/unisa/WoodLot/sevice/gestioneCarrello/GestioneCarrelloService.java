@@ -94,26 +94,6 @@ public class GestioneCarrelloService implements CarrelloService {
 
     }
 
-    /**
-     * Permette di modificare la quantità di un prodotto in un carrello
-     *
-     * @param idCarrello         l'id del carrello in cui effettuare la modifica
-     * @param idProdottoCarrello l'id del prodotto su cui effettuare la modifica
-     * @param quantita           la nuova quantità del prodotto (può essere sia un numero positivo che negativo)
-     * @throws CarrelloException nel caso in cui la nuova quantità del prodotto sia pari a zero
-     */
-    @Override
-    public void modificareQuantitaProdotto(Long idCarrello, Long idProdottoCarrello, int quantita) throws CarrelloException {
-        ProdottoCarrello prodottoCarrello = prodottoCarrelloRepository.findById(idProdottoCarrello).orElseThrow(() -> new CarrelloException("Prodotto non presente nel carrello"));
-        int quantitaAttuale = prodottoCarrello.getQuantita();
-        int nuovaQuantita = quantitaAttuale + quantita;
-        if (nuovaQuantita < 0) {
-            throw new CarrelloException("Non è possibile avere una quantità negativa");
-        } else {
-            prodottoCarrello.setQuantita(nuovaQuantita);
-            prodottoCarrelloRepository.save(prodottoCarrello);
-        }
-    }
 
     /**
      * Permette di svuotare un carrello

@@ -52,18 +52,11 @@ export class FormPagamentoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public getTotalePezzi() {
-    let conta = 0
-    this.listProdotti.forEach(e => {
-      conta += e.quantita
-    })
-    return conta
-  }
 
   public getTotale() {
     let conta = 0
     this.listProdotti.forEach(e => {
-      conta += (e.prezzo * e.quantita)
+      conta += (e.prezzo)
     })
     return conta
   }

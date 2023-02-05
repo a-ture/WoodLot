@@ -7,7 +7,7 @@
         <div class="col-xl-8 col-lg-12 p-5">
           <div class="d-flex justify-content-between align-items-center mb-5">
             <h1 class="fw-bold mb-0 text-black">Carrello</h1>
-            <h6>Numero pezzi: {{getTotalePezzi()}}</h6>
+            <h6>Numero pezzi: {{listProdotti.length}}</h6>
           </div>
           <app-prodotto-carrello *ngFor="let item of listProdotti; index as i;"
                                  [sourceImage]="urlBase+item.nome.toLowerCase().replace(' ','')+endBase"

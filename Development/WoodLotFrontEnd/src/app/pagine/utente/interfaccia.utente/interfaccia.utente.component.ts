@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UtenteService} from "../../../servizi/utente/utente.service";
 import {ProdottoOrdine} from "../../../entita/prodottoOrdine/prodotto-ordine";
+import {AutenticazioneService} from "../../../servizi/autenticazione/autenticazione.service";
 
 @Component({
   selector: 'app-interfaccia-utente',
@@ -16,17 +17,15 @@ export class InterfacciaUtenteComponent implements OnInit {
   public listaNumeri
 
 
-
   constructor(private serviceUtente: UtenteService) {
     this.utente = serviceUtente.getUtente()
     this.listaNumeri = serviceUtente.getStatisticheUtente()
-
   }
 
   //restituisce tutti gli alberi di un utente
   public getAlberiUtente() {
     let alberi = new Array<ProdottoOrdine>()
-    this.utente.listaOrdini.forEach(e => {
+    this.utente?.listaOrdini?.forEach(e => {
       e.listaProdottiOrdine.forEach(i => {
         alberi.push(i)
       })

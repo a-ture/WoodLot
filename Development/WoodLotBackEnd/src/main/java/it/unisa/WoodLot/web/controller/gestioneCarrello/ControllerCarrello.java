@@ -26,16 +26,7 @@ public class ControllerCarrello {
         carrelloService.aggiungiProdotto(prodottoCarrello.getCarrello().getId(), prodottoCarrello.getCarrello().getUtente().getId(), prodottoCarrello.getAlbero().getNome());
     }
 
-    /**
-     * Metodo PUT per modificare la quantità di un prodotto
-     *
-     * @param prodottoCarrello l'id del prodotto da modificare
-     * @throws CarrelloException
-     */
-    @PutMapping("/modificareQuantitaProdotto")
-    public void modificareQuantitaProdotto(@RequestBody ProdottoCarrello prodottoCarrello) throws CarrelloException {
-        carrelloService.modificareQuantitaProdotto(prodottoCarrello.getCarrello().getId(), prodottoCarrello.getId(), prodottoCarrello.getQuantita());
-    }
+
 
     /**
      * Metodo DELETE per svuotare il carrello

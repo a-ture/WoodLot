@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ProdottoCarrello} from "../../../../entita/prodottoCarrello/prodotto-carrello";
+
 //TODO aggiungere collegamento ai bottone
 @Component({
   selector: 'app-prodotto-carrello',
@@ -14,13 +15,10 @@ export class ProdottoCarrelloComponent implements OnInit {
   @Input()
   public prodottoCarrello !: ProdottoCarrello
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor() {
   }
 
-  public getPrezzoTotale(){
-    return this.prodottoCarrello.quantita * this.prodottoCarrello.prezzo
+  ngOnInit(): void {
   }
 
 }

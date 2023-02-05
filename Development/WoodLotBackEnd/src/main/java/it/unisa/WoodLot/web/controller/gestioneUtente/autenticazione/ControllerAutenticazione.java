@@ -4,7 +4,10 @@ import it.unisa.WoodLot.model.entity.*;
 import it.unisa.WoodLot.sevice.gestioneUtente.autenticazione.AutenticazioneService;
 import it.unisa.WoodLot.sevice.gestioneUtente.eccezioni.LoginException;
 import it.unisa.WoodLot.sevice.gestioneUtente.eccezioni.PasswordException;
+import it.unisa.WoodLot.web.controller.ResponseHandler;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -30,8 +33,21 @@ public class ControllerAutenticazione {
      * @throws LoginException se le credenziali sono errate
      */
     @PostMapping("/login")
-    public UtenteRegistrato login(@RequestBody UtenteRegistrato utenteRegistrato) throws LoginException {
-        return autenticazioneService.login(utenteRegistrato.getEmail(), utenteRegistrato.getPassword());
+    public ResponseEntity<Object> login(@RequestBody UtenteRegistrato utenteRegistrato) {
+        try {
+            UtenteRegistrato u = autenticazioneService.login(utenteRegistrato.getEmail(), utenteRegistrato.getPassword());
+            if (u instanceof Utente)
+                return ResponseHandler.generateResponse(HttpStatus.ACCEPTED, "utente", u);
+            else if (u instanceof Contadino)
+                return ResponseHandler.generateResponse(HttpStatus.ACCEPTED, "contadino", u);
+            else if (u instanceof ResponsabileOrdini)
+                return ResponseHandler.generateResponse(HttpStatus.ACCEPTED, "responsabileOrdini", u);
+            else
+                return ResponseHandler.generateResponse(HttpStatus.ACCEPTED, "responsabileCatalogo", u);
+        } catch (LoginException e) {
+            return ResponseHandler.generateResponse(HttpStatus.BAD_REQUEST,
+                    e.getMessage());
+        }
     }
 
     /**
@@ -42,9 +58,20 @@ public class ControllerAutenticazione {
         autenticazioneService.logout();
     }
 
-
+    /**
+     * Metodo POST per reimpostare la password di un utente registrato
+     *
+     * @param utenteRegistrato
+     * @throws PasswordException
+     */
     @PostMapping("/reimpostarePassword")
-    public void reimpostarePassword(@RequestBody UtenteRegistrato utenteRegistrato) throws PasswordException {
-        autenticazioneService.reimpostaPassword(utenteRegistrato.getEmail(), utenteRegistrato.getPassword());
+    public ResponseEntity<Object> reimpostarePassword(@RequestBody UtenteRegistrato utenteRegistrato) {
+        try {
+            autenticazioneService.reimpostaPassword(utenteRegistrato.getEmail(), utenteRegistrato.getPassword());
+            return ResponseHandler.generateResponse(HttpStatus.ACCEPTED, "La password è stata cambiata con successo");
+        } catch (PasswordException e) {
+            return ResponseHandler.generateResponse(HttpStatus.BAD_REQUEST,
+                    e.getMessage());
+        }
     }
 }

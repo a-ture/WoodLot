@@ -14,8 +14,6 @@ public interface CarrelloService {
 
     void rimuoviProdotto(Long idCarrello, Long idProdottoCarrello) throws CarrelloException;
 
-    void modificareQuantitaProdotto(Long idCarrello, Long idProdottoCarrello, int quantita) throws CarrelloException;
-
     void svuotareCarrello(Long idCarrello) throws CarrelloException;
 
 }

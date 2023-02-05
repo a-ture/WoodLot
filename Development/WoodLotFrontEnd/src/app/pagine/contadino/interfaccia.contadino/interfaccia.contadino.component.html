@@ -3,7 +3,7 @@
 <div class="container-fluid" style="background:linear-gradient(180deg, #F4EBC7 5.73%, #FBD5B2 100%);">
   <div class="row d-flex align-items-stretch">
     <app-benvenuto class="col-lg-6 col-md-12 align-self-center"
-                   [nome]="contadino.nome" [cognome]="contadino.cognome"
+                   [nome]=contadino.nome [cognome]=contadino.cognome
                    [listaNomi]="listNomi" [listaNumeri]="listaNumeri"
     ></app-benvenuto>
     <app-storico-pagamenti class="col-lg-6"></app-storico-pagamenti>

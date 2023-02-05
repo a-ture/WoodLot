@@ -10,11 +10,11 @@ export class ValidazioneFormUtenteService {
 
   //qui vanno messe le regole
   regoleForm = {
-    nonVuota: '^[a-zA-Z0-9]+([_ -]?[a-zA-Z0-9])*$',
+    nonVuota: '^[a-zA-Z]+',
     nomeUtenteMax: 25,
     cognomeUtenteMax: 25,
     passwordMin: 8,
-    passwordPattern: '(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,}'
+    passwordPattern: '.*[@!#$].*'
   };
 
 

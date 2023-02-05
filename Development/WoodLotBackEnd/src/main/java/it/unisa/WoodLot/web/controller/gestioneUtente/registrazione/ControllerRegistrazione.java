@@ -3,6 +3,7 @@ package it.unisa.WoodLot.web.controller.gestioneUtente.registrazione;
 import it.unisa.WoodLot.model.entity.Utente;
 import it.unisa.WoodLot.sevice.gestioneUtente.eccezioni.RegistazioneException;
 import it.unisa.WoodLot.sevice.gestioneUtente.registrazione.RegistrazioneService;
+import it.unisa.WoodLot.web.controller.ResponseHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,10 +28,14 @@ public class ControllerRegistrazione {
      * @return l'utente registrato
      */
     @PostMapping("/registrazioneUtente")
-    public ResponseEntity<Utente> registrazione(@RequestBody Utente utente) throws RegistazioneException {
-        Utente nuovoUtente = registrazioneService.registrazione(utente);
-        return new ResponseEntity<>(nuovoUtente, HttpStatus.CREATED);
-
+    public ResponseEntity<Object> registrazione(@RequestBody Utente utente) {
+        try {
+            Utente nuovoUtente = registrazioneService.registrazione(utente);
+            return new ResponseEntity<>(nuovoUtente, HttpStatus.CREATED);
+        } catch (RegistazioneException e) {
+            return ResponseHandler.generateResponse(HttpStatus.BAD_REQUEST,
+                    e.getMessage());
+        }
     }
 
 }

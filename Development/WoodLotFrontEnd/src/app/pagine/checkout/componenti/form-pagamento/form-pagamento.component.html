@@ -4,16 +4,15 @@
     <div class="col-md-5 col-lg-4 order-md-last">
       <h4 class="d-flex justify-content-between align-items-center mb-3">
         <span class="text-primary">Il tuo carrello</span>
-        <span class="badge bg-primary rounded-pill">{{getTotalePezzi()}}</span>
+        <span class="badge bg-primary rounded-pill">{{listProdotti.length}}</span>
       </h4>
       <ul class="list-group mb-3">
         <li class="list-group-item d-flex justify-content-between lh-sm"
             *ngFor="let item of listProdotti; index as i;">
           <div>
             <h6 class="my-0">{{item.nome}}</h6>
-            <small>Quantità: {{item.quantita}}, prezzo unitario {{item.prezzo.toFixed(2)}}€</small>
           </div>
-          <span class="fw-lighter">{{(item.prezzo * item.quantita).toFixed(2)}}€</span>
+          <span class="fw-lighter">{{(item.prezzo).toFixed(2)}}€</span>
         </li>
         <li class="list-group-item d-flex justify-content-between">
           <span class="fw-semibold">Totale: </span>
@@ -32,8 +31,8 @@
             class="needs-validation">
 
         <div class="my-3">
-          <div class="form-check"*ngFor="let item of metodoPagamento">
-            <input  cFormCheckInput id="pagamento" type="radio"
+          <div class="form-check" *ngFor="let item of metodoPagamento">
+            <input cFormCheckInput id="pagamento" type="radio"
                    formControlName="metodoPagamento"
                    class="form-check-input" value="{{item}}" [ngClass]="{'is-invalid':(submitted || f['metodoPagamento'].touched) && f['metodoPagamento'].invalid,
             'is-valid': (submitted ||f['metodoPagamento'].touched) && f['metodoPagamento'].valid }">

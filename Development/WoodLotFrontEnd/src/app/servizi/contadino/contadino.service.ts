@@ -13,21 +13,12 @@ export class ContadinoService {
 
   // restituisce un contadino
   public getContadino() {
-    return new Contadino("Briciola", "Bricioloso", [
-      new ProdottoOrdine(13.00, 3, 45, new Date(), "fiore",
-        "castagno", "Coordinate Geografiche", 45),
-      new ProdottoOrdine(13.00, 3, 45, new Date(), "frutto",
-        "castagno", "Coordinate Geografiche", 45),
-      new ProdottoOrdine(13.00, 3, 45, new Date(), "fiore",
-        "castagno", "Coordinate Geografiche", 45),
-      new ProdottoOrdine(13.00, 4, 45, new Date(), "bocciolo", "mandorlo",
-        "Coordinate Geografiche", 59),
-      new ProdottoOrdine(13.00, 34, 45,
-        new Date(), "piantato", "castagno", "Coordinate Geografiche",
-        59),
-      new ProdottoOrdine(13.00, 34, 45,
-        new Date(), "dormineza", "mandorlo", "Coordinate Geografiche", 59)
-    ], 1)
+    let contadino !: Contadino
+    const storedContadino = sessionStorage.getItem('contadino');
+    if (storedContadino) {
+      contadino = JSON.parse(storedContadino);
+    }
+    return contadino;
   }
 
   //restuituisce l'elenco di tutti i contadini presenti

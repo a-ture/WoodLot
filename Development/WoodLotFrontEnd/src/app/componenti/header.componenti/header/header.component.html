@@ -23,13 +23,14 @@
       mdbCollapse
     >
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        <li class="nav-item" *ngIf="utente != null">
-          <button type="button" class="btn btn-link px-3 me-2">
+        <li class="nav-item" *ngIf="attivo != false">
+          <button type="button" class="btn btn-link px-3 me-2" (click)="logout()">
             Logout
           </button>
         </li>
         <li class="nav-item">
-          <button type="button" class="btn btn-primary me-3" *ngIf="utente != null; else accedi">
+          <button type="button" class="btn btn-primary me-3" *ngIf="attivo != false; else accedi"
+                  routerLink="/profiloUtente">
             Profilo
           </button>
           <ng-template #accedi>
@@ -72,13 +73,13 @@
       <li class="my-2"><a routerLink="/catalogo">Catalogo</a></li>
       <li class="my-2"><a routerLink="/diventaUnContadino">Diventa un contadino</a></li>
       <li class="my-2"><a routerLink="/chiSiamo">Chi Siamo</a></li>
-      <li class="d-lg-none my-2" *ngIf="utente != null">
+      <li class="d-lg-none my-2" *ngIf="attivo != false">
         <button type="button" class="btn btn-link px-3 me-2">
           Logout
         </button>
       </li>
       <li class="d-lg-none my-2">
-        <button type="button" class="btn btn-primary me-3" *ngIf="utente != null; else accedi">
+        <button type="button" class="btn btn-primary me-3" *ngIf="attivo != false; else accedi">
           Profilo
         </button>
         <ng-template #accedi>

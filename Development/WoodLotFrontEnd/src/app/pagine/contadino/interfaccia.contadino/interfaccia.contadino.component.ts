@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ContadinoService} from "../../../servizi/contadino/contadino.service";
 import {StatisticheService} from "../../../servizi/statistiche/statistiche.service";
 import {ProdottoOrdine} from "../../../entita/prodottoOrdine/prodotto-ordine";
+import {Contadino} from "../../../entita/contadino/contadino";
 
 class ArrayList<T> {
 }
@@ -13,15 +14,16 @@ class ArrayList<T> {
 })
 export class InterfacciaContadinoComponent implements OnInit {
 
-  public contadino
+  public contadino !: Contadino
   public listaNumeri
   public listNomi = ["Alberi piantati", "Frutti raccolti", "Anidride Carbonica"]
   public listAlberiContadino
 
   constructor(private contadinoService: ContadinoService, private statisticheService: StatisticheService) {
     this.contadino = contadinoService.getContadino()
+    console.log(this.contadino)
     this.listaNumeri = statisticheService.getStatischeContadino()
-    this.listAlberiContadino = this.contadino.listaAlberi
+    this.listAlberiContadino = this.contadino?.listaAlberi
   }
 
   public panes = [
@@ -41,7 +43,7 @@ export class InterfacciaContadinoComponent implements OnInit {
 
   getAlberiPerStato(stato: String) {
     let lista = new Array<ProdottoOrdine>()
-    this.listAlberiContadino.forEach(e => {
+    this?.listAlberiContadino?.forEach(e => {
       if (e.stato == stato)
         lista.push(e)
     })
