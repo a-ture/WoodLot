@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
@@ -29,6 +30,9 @@ public class Carrello implements Serializable {
     @OneToMany(cascade = CascadeType.MERGE)
     private List<ProdottoCarrello> prodottiCarrello;
 
+    public Carrello() {
+        prodottiCarrello = new ArrayList<>();
+    }
 
     /**
      * Permette di aggiungere un prodotto al carrello
@@ -55,16 +59,4 @@ public class Carrello implements Serializable {
         prodottiCarrello.clear();
     }
 
-    /**
-     * Permette di calcolare il totale del carrello
-     *
-     * @return il totale del carrello
-     */
-    public double getTotale() {
-        double totale = 0;
-        for (ProdottoCarrello prodotto : this.prodottiCarrello) {
-            totale += prodotto.getQuantita() * prodotto.getAlbero().getPrezzo();
-        }
-        return totale;
-    }
 }

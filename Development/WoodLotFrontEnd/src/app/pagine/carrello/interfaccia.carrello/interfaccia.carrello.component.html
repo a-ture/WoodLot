@@ -7,19 +7,28 @@
         <div class="col-xl-8 col-lg-12 p-5">
           <div class="d-flex justify-content-between align-items-center mb-5">
             <h1 class="fw-bold mb-0 text-black">Carrello</h1>
-            <h6>Numero pezzi: {{listProdotti.length}}</h6>
+            <h6>Numero pezzi: {{carrello.prodottiCarrello.length}}</h6>
           </div>
-          <app-prodotto-carrello *ngFor="let item of listProdotti; index as i;"
-                                 [sourceImage]="urlBase+item.nome.toLowerCase().replace(' ','')+endBase"
-                                 [prodottoCarrello]=listProdotti[i]
-          ></app-prodotto-carrello>
+          <div class="p-4" *ngIf="carrello.prodottiCarrello.length === 0; else prodottiCarrello">
+            <h3>OPS! il tuo carrello è vuoto</h3>
+          </div>
+          <ng-template #prodottiCarrello>
+            <app-prodotto-carrello *ngFor="let item of carrello.prodottiCarrello; index as i;"
+                                   [sourceImage]="urlBase+item.albero.nome.toLowerCase().replace(' ','')+endBase"
+                                   [prodottoCarrello]=carrello.prodottiCarrello[i]
+            ></app-prodotto-carrello>
+          </ng-template>
+
           <div class="d-flex justify-content-between align-items-center mb-5">
             <h6>
-              <i class="fas fa-long-arrow-alt-left me-2"></i>Continua con lo
-              shopping
+              <a style="color: #5B9348; text-decoration: none" routerLink="/catalogo"><i
+                class="fas fa-long-arrow-alt-left me-2"></i>Continua con lo
+                shopping</a>
             </h6>
             <h6>
-              <i class="fa-solid fa-trash-can"></i> Svuota il carrello
+              <a style="color: #5B9348; text-decoration: none" (click)="svuotaCarrello()">
+                <i class="fa-solid fa-trash-can"></i> Svuota il carrello
+              </a>
             </h6>
           </div>
         </div>

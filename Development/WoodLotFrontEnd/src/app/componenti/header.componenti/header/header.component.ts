@@ -13,14 +13,16 @@ import {Router} from "@angular/router";
 })
 export class HeaderComponent implements OnInit {
   public attivo: boolean
-  public elementiInCarrello
+  public elementiInCarrello: boolean = false
 
   //controlliamo se l'utente è loggato -> cosi possiamo cambiare dinamicamente i btn (logout/accedi)
   //controlliamo se l'utente ha almeno un articolo nel carrello per cambiare l'icon del carrello
   constructor(private router: Router, private autenticazioneService: AutenticazioneService, private serviceCarrello: CarrelloService) {
     this.attivo = autenticazioneService.eAttivo() //l' ho lasciato per vedere come si comporta se non è presente un utente
-    // this.utente= serviceUtente.getUtente()
-    this.elementiInCarrello = serviceCarrello.getCarrello().length
+    const storedCarrello = sessionStorage.getItem('carrello');
+    if (storedCarrello != null) {
+      this.elementiInCarrello = true
+    }
   }
 
   ngOnInit(): void {

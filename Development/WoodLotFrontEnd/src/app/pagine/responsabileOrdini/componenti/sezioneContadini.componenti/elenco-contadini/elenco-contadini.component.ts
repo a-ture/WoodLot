@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ContadinoService} from "../../../../../servizi/contadino/contadino.service";
+import {Contadino} from "../../../../../entita/contadino/contadino";
 
 @Component({
   selector: 'app-elenco-contadini',
@@ -8,10 +9,14 @@ import {ContadinoService} from "../../../../../servizi/contadino/contadino.servi
 })
 export class ElencoContadiniComponent implements OnInit {
 
-  public listaContadini
+  public listaContadini !: Contadino[]
 
   constructor(private serviceContadini: ContadinoService) {
-    this.listaContadini = serviceContadini.getContadini()
+    serviceContadini.getContadini().subscribe(
+      (data) => {
+        this.listaContadini = data
+      }
+    )
   }
 
   ngOnInit(): void {

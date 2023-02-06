@@ -8,9 +8,10 @@ export class Utente extends UtenteRegistrato {
   public cognome: String
   public listaOrdini: Ordine[]
   public dataDiNascita: Date
+  public id ?: number
 
 
-  constructor(nome: String, cognome: String, listaOrdini: Ordine[], email: String, password: String, dataNascita: Date) {
+  constructor(nome: String, cognome: String, listaOrdini: Ordine[], email: String, password: String, dataNascita: Date, id?: number) {
     super(email, password)
     this.nome = nome
     this.cognome = cognome
@@ -18,5 +19,6 @@ export class Utente extends UtenteRegistrato {
     this.email = email
     this.password = password
     this.dataDiNascita = dataNascita
+    this.id = id
   }
 }

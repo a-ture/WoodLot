@@ -19,13 +19,7 @@ public class ProdottoCarrello implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "quantita", nullable = false)
-    private int quantita;
-
     @ManyToOne()
     private Albero albero;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "carrello")
-    private Carrello carrello;
 }

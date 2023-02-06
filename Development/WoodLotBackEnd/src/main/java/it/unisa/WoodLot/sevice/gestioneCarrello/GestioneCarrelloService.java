@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
 
 /**
  * La classe fornisce i metodi per la logica di business per la gestione del carrello
@@ -36,41 +35,51 @@ public class GestioneCarrelloService implements CarrelloService {
     private AlberoRepository alberoRepository;
 
     /**
+     * Permette di recuperare il carrello di un utente
+     * Se non esiste nessun carrello associato all'utente  lo crea
+     *
+     * @param idUtente
+     * @return
+     */
+    @Override
+    public Carrello getCarrello(Long idUtente) throws CarrelloException {
+        Utente utente = utenteRepository.findById(idUtente).orElse(null);
+        if (utente == null)
+            throw new CarrelloException("L'idUtente fornito non risulta associato a nessun utente");
+        Carrello carrello = carrelloRepository.findByUtente_Id(idUtente);
+        if (carrello == null) {
+            carrello = new Carrello();
+            carrello.setUtente(utente);
+            carrelloRepository.save(carrello);
+        }
+        return carrello;
+    }
+
+    /**
      * Permette di aggiungere un prodotto a un carrello
      *
      * @param idCarrello l'id del carrello a cui aggiungere il prodotto
-     * @param idUtente   l' id dell' utente proprietario del carrello
      * @param nomeAlbero il nome dell'albero che si intende aggiungere
      * @throws CarrelloException lanciata nel caso in cui l'utente o l'albero in input non siano validi
      */
     @Override
-    public void aggiungiProdotto(Long idCarrello, Long idUtente, String nomeAlbero) throws CarrelloException {
-        Utente utente = utenteRepository.findById(idUtente).orElse(null);
+    public Carrello aggiungiProdotto(Long idCarrello, String nomeAlbero) throws CarrelloException {
+
         Albero albero = alberoRepository.findById(nomeAlbero).orElse(null);
 
-        if (utente == null) throw new CarrelloException("L'utente non è stato trovato");
         if (albero == null) throw new CarrelloException("L'albero non è stato trovato");
 
-        Carrello carrello = carrelloRepository.findByUtente_Id(utente.getId());
-        if (carrello == null) {
-            carrello = new Carrello();
-            carrello.setUtente(utente);
-            carrello.setProdottiCarrello(new ArrayList<>());
-            carrelloRepository.save(carrello);
-        }
+        Carrello carrello = carrelloRepository.findById(idCarrello).orElse(null);
 
-        ProdottoCarrello prodottoCarrello = prodottoCarrelloRepository.findByCarrelloAndAlbero(carrello, albero);
-        if (prodottoCarrello == null) {
-            prodottoCarrello = new ProdottoCarrello();
-            prodottoCarrello.setAlbero(albero);
-            prodottoCarrello.setCarrello(carrello);
-            prodottoCarrello.setQuantita(1);
-            carrello.aggiungiProdottoCarrello(prodottoCarrello);
-        } else {
-            prodottoCarrello.setQuantita(prodottoCarrello.getQuantita() + 1);
-        }
+        if (carrello == null)
+            throw new CarrelloException("Il carrello non  è stato trovato");
+
+        ProdottoCarrello prodottoCarrello = new ProdottoCarrello();
+        prodottoCarrello.setAlbero(albero);
+        carrello.aggiungiProdottoCarrello(prodottoCarrello);
+
         prodottoCarrelloRepository.save(prodottoCarrello);
-        carrelloRepository.save(carrello);
+        return carrelloRepository.save(carrello);
     }
 
     /**
@@ -81,17 +90,17 @@ public class GestioneCarrelloService implements CarrelloService {
      * @throws CarrelloException viene lanciata nel caso in cui l'idProdottoCarrello sia nullo
      */
     @Override
-    public void rimuoviProdotto(Long idCarrello, Long idProdottoCarrello) throws CarrelloException {
+    public Carrello rimuoviProdotto(Long idCarrello, Long idProdottoCarrello) throws CarrelloException {
         Carrello carrello = carrelloRepository.findById(idCarrello).orElse(null);
         if (idProdottoCarrello == null)
             throw new CarrelloException("L'id fornito non è valido");
 
         ProdottoCarrello prodottoCarrello = prodottoCarrelloRepository.findById(idProdottoCarrello).orElse(null);
 
-        if (prodottoCarrello != null)
-            carrello.rimuoviProdotto(prodottoCarrello);
+        carrello.rimuoviProdotto(prodottoCarrello);
+        carrelloRepository.save(carrello);
         prodottoCarrelloRepository.deleteById(idProdottoCarrello);
-
+        return carrelloRepository.findById(idCarrello).orElse(null);
     }
 
 
@@ -104,12 +113,11 @@ public class GestioneCarrelloService implements CarrelloService {
 
     @Override
     @Transactional
-    public void svuotareCarrello(Long idCarrello) throws CarrelloException {
+    public Carrello svuotareCarrello(Long idCarrello) throws CarrelloException {
         Carrello carrello = carrelloRepository.findById(idCarrello).orElseThrow(() -> new CarrelloException("Carrello non trovato"));
-        if (carrello != null) {
-            carrello.svuotareCarrello();
-        }
-        carrelloRepository.save(carrello);
-        prodottoCarrelloRepository.deleteProdottoCarrellosByCarrello_Id(idCarrello);
+        carrelloRepository.deleteById(idCarrello);
+        Carrello carrello1 = new Carrello();
+        carrello1.setUtente(carrello.getUtente());
+        return carrelloRepository.save(carrello1);
     }
 }

@@ -38,7 +38,7 @@
           </ng-template>
         </li>
         <li class="nav-item">
-          <a routerLink="/carrello" *ngIf="elementiInCarrello == 0; else carrelloPieno"
+          <a routerLink="/carrello" *ngIf="elementiInCarrello == false; else carrelloPieno"
              class="btn px-3 carrello"
           ><img src="../../../../assets/img/header/carriola.svg" height="20"></a>
           <ng-template #carrelloPieno>
@@ -87,7 +87,7 @@
         </ng-template>
       </li>
       <li class="d-lg-none my-2">
-        <a *ngIf="elementiInCarrello == 0; else carrelloPieno"
+        <a *ngIf="elementiInCarrello == false; else carrelloPieno"
            class="btn px-3 carrello"
            routerLink="/carrello"
         ><img src="../../../../assets/img/header/carriola.svg" height="20"></a>

@@ -7,6 +7,9 @@ import {
 
 import {MdbModalRef, MdbModalService} from "mdb-angular-ui-kit/modal";
 import {OrdineEffettuatoComponent} from "../ordine-effettuato/ordine-effettuato.component";
+import {UtenteService} from "../../../../servizi/utente/utente.service";
+import {Carrello} from "../../../../entita/carrello/carrello";
+import {OrdineService} from "../../../../servizi/ordine/ordine.service";
 
 @Component({
   selector: 'app-form-pagamento',
@@ -15,11 +18,12 @@ import {OrdineEffettuatoComponent} from "../ordine-effettuato/ordine-effettuato.
 })
 export class FormPagamentoComponent implements OnInit {
 
-  public listProdotti
+  public carrello !: Carrello
 
   formPagamento: FormGroup
   submitted = false;
   formErrori: any;
+  errrorMessage: string = ''
 
   modalOrdineEffettuato: MdbModalRef<OrdineEffettuatoComponent> | null = null;
 
@@ -31,8 +35,14 @@ export class FormPagamentoComponent implements OnInit {
 
   constructor(private serviceCarrelloProdotto: CarrelloService,
               private serviceValidazioneFomrPagamento: ValidazioneFormPagamentoService,
-              private modalService: MdbModalService) {
-    this.listProdotti = serviceCarrelloProdotto.getCarrello()
+              private modalService: MdbModalService,
+              private serviceOrdini: OrdineService) {
+    const storedCarrello = sessionStorage.getItem('carrello');
+    if (storedCarrello != null) {
+      this.carrello = JSON.parse(storedCarrello)
+      console.log(this.carrello)
+    }
+
     this.formPagamento = new FormGroup(
       {
         metodoPagamento: new FormControl('Visa'),
@@ -55,29 +65,26 @@ export class FormPagamentoComponent implements OnInit {
 
   public getTotale() {
     let conta = 0
-    this.listProdotti.forEach(e => {
-      conta += (e.prezzo)
+    this.carrello.prodottiCarrello.forEach(e => {
+      conta += (e.albero.prezzo)
     })
     return conta
   }
 
   onValidate() {
     this.submitted = true;
-    //fermati qui se il modulo non è valido
     return this.formPagamento.status === 'VALID';
   }
 
   onSubmit(): void {
-
     if (this.onValidate()) {
-      // TODO: Submit form value
-      console.warn(this.formPagamento.value);
-      alert('SUCCESS!');
-      this.openModalOrdine();
-    } else {
-      alert('Form non valido')
+      if (this.carrello.utente.id) {
+        this.serviceOrdini.effettuaOrdine(this.carrello.utente.id)
+        this.openModalOrdine();
+      }
     }
   }
+
 
   //getter per un facile accesso ai campi del modulo
   get f() {

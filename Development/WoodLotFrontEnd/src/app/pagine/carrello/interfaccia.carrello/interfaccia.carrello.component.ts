@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CarrelloService} from "../../../servizi/carrello/carrello.service";
+import {Carrello} from "../../../entita/carrello/carrello";
 
 //TODO aggiungere logica pulsanti
 @Component({
@@ -12,18 +13,23 @@ export class InterfacciaCarrelloComponent implements OnInit {
   public urlBase = "assets/img/alberi/"
   public endBase = "/catalogo.webp"
 
-  public listProdotti
+  public carrello !: Carrello
 
-  constructor(private serviceCarrelloProdotto: CarrelloService) {
-    this.listProdotti = serviceCarrelloProdotto.getCarrello()
+  constructor(private serviceCarrello: CarrelloService) {
+    const storedCarrello = sessionStorage.getItem('carrello');
+    if (storedCarrello != null) {
+      this.carrello = JSON.parse(storedCarrello)
+      console.log(this.carrello)
+    }
+
   }
 
 
   public getTotale() {
     let conta = 0
-    this.listProdotti.forEach(e => {
-      conta += e.prezzo
-    })
+    this.carrello.prodottiCarrello.forEach(e => {
+      conta += e.albero.prezzo
+    });
     return conta
   }
 
@@ -35,7 +41,21 @@ export class InterfacciaCarrelloComponent implements OnInit {
     return this.getTotale() - this.getTasse()
   }
 
+  public svuotaCarrello() {
+    sessionStorage.removeItem('carrello')
+    this.serviceCarrello.svuotareCarrello(this.carrello.id).subscribe(
+      (data: Carrello) => {
+        this.carrello = data
+        console.log(data)
+        sessionStorage.setItem('carrello', JSON.stringify(this.carrello));
+
+      })
+  }
+
+
+
   ngOnInit(): void {
+
   }
 
 }

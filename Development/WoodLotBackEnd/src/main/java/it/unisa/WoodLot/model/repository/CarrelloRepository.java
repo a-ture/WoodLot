@@ -1,8 +1,12 @@
 package it.unisa.WoodLot.model.repository;
 
 import it.unisa.WoodLot.model.entity.Carrello;
+import it.unisa.WoodLot.model.entity.ProdottoCarrello;
 import it.unisa.WoodLot.model.entity.Utente;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import java.util.List;
 
 /**
  * Interfaccia che definisce le operazioni per la modellazione e l'accesso
@@ -20,4 +24,5 @@ public interface CarrelloRepository extends JpaRepository<Carrello, Long> {
      */
     Carrello findByUtente_Id(Long id);
 
+    void deleteByProdottiCarrelloAndId(Long idProdotto, Long idCarrello);
 }

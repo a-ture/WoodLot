@@ -71,7 +71,7 @@ export class CardBeneficiComponent implements OnInit {
       return "apple.svg"
     else if (nomeBenificio == "Sviluppo economico")
       return "money.svg"
-    else if (nomeBenificio == "Assorbimento di anidride carbonica")
+    else if (nomeBenificio == "Assorbimento di Anidride Carbonica")
       return "cloud.svg"
     return "plant.svg"
   }

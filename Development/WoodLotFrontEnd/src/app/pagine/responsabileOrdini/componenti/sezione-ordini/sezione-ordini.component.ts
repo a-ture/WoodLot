@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {OrdineService} from "../../../../servizi/ordine/ordine.service";
+import {Ordine} from "../../../../entita/ordine/ordine";
 
 @Component({
   selector: 'app-sezione-ordini',
@@ -8,10 +9,14 @@ import {OrdineService} from "../../../../servizi/ordine/ordine.service";
 })
 export class SezioneOrdiniComponent implements OnInit {
 
-  public listaOrdini
+  public listaOrdini !: Ordine[]
 
-  constructor(private serviceOrdini: OrdineService ) {
-    this.listaOrdini = serviceOrdini.getOrdini()
+  constructor(private serviceOrdini: OrdineService) {
+    serviceOrdini.getOrdini().subscribe(
+      (data) => {
+        this.listaOrdini = data
+      }
+    )
   }
 
 

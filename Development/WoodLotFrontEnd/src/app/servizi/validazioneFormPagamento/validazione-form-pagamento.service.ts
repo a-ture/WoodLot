@@ -12,7 +12,7 @@ export class ValidazioneFormPagamentoService {
   regoleForm = {
     nomeTitolareCarta: '^[a-zA-Z ]+$',
     nomeTitolareCartaMax: 50,
-    numeroCartaDiCredito: '^4[0-9]{15}$|^4[0-9]{3}[ -]?[0-9]{4}[ -]?[0-9]{4}[ -]?[0-9]{4}$',
+    numeroCartaDiCredito: '^[0-9]$',
     numeroCartaDiCreditoMax: 16,
     cvv: '^[0-9]{3,4}$'
   };

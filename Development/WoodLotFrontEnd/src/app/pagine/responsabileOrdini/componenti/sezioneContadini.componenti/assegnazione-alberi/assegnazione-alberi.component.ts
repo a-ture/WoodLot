@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ContadinoService} from "../../../../../servizi/contadino/contadino.service";
+import {ProdottoOrdine} from "../../../../../entita/prodottoOrdine/prodotto-ordine";
 
 @Component({
   selector: 'app-assegnazione-alberi',
@@ -15,10 +16,14 @@ export class AssegnazioneAlberiComponent implements OnInit {
     this.selectedMenu = paramText
   }
 
-  public listaAlberi
+  public listaAlberi !: ProdottoOrdine[]
 
   constructor(private serviceContadino: ContadinoService) {
-    this.listaAlberi = serviceContadino.getAlberiNonAssegnati()
+    serviceContadino.getAlberiNonAssegnati().subscribe(
+      (data) => {
+        this.listaAlberi = data
+      }
+    )
   }
 
   ngOnInit(): void {

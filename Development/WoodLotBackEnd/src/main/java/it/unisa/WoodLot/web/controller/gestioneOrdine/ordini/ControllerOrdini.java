@@ -2,7 +2,10 @@ package it.unisa.WoodLot.web.controller.gestioneOrdine.ordini;
 
 import it.unisa.WoodLot.model.entity.Ordine;
 import it.unisa.WoodLot.sevice.gestioneOrdine.ordini.OrdineService;
+import it.unisa.WoodLot.web.controller.ResponseHandler;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,8 +29,8 @@ public class ControllerOrdini {
      * @return la lista degli alberi
      */
     @GetMapping("/getOrdini")
-    public Iterable<Ordine> restituisciOrdini() {
-        return ordineService.restituisciOrdini();
+    public ResponseEntity<Object> restituisciOrdini() {
+        return ResponseHandler.generateResponse(HttpStatus.ACCEPTED, ordineService.restituisciOrdini());
     }
 
     @GetMapping("/storicoUtente/{idUtente}")

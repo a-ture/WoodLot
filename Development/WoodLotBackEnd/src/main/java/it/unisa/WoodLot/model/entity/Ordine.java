@@ -48,13 +48,13 @@ public class Ordine implements Serializable {
     public double setTotale() {
         double somma = 0;
         for (ProdottoOrdine prodottoOrdine : prodottiOrdine) {
-            somma += prodottoOrdine.getPrezzoTotale();
+            somma += prodottoOrdine.getPrezzoUnitario();
         }
         return somma;
     }
 
     public void aggiungiProdotto(ProdottoOrdine prodottoOrdine) {
         prodottiOrdine.add(prodottoOrdine);
-        totale += prodottoOrdine.getPrezzoTotale();
+        totale += prodottoOrdine.getPrezzoUnitario();
     }
 }

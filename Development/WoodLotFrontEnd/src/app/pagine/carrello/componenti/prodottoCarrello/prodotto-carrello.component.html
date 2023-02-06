@@ -7,15 +7,15 @@
   </div>
 
   <div class="col-md-5">
-    <h5>{{prodottoCarrello.nome}}</h5>
+    <h5>{{prodottoCarrello.albero.nome}}</h5>
   </div>
 
   <div class="col-md-4">
-    <h6>Prezzo: {{prodottoCarrello.prezzo.toFixed(2)}}€</h6>
+    <h6>Prezzo: {{prodottoCarrello.albero.prezzo.toFixed(2)}}€</h6>
   </div>
 
   <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-    <a><i class="fas fa-times"></i></a>
+    <a style="color: red" (click)="rimuoviProdotto(prodottoCarrello.id)"><i class="fas fa-times"></i></a>
   </div>
 </div>
 

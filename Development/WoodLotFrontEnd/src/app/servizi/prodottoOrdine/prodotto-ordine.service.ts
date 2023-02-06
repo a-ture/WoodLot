@@ -12,12 +12,7 @@ export class ProdottoOrdineService {
   // restituisce tutti i prodotti ordine che devono essere revisionati dal responsabile ordine
   getProdottiDaRevisionare() {
     return [
-      new ProdottoOrdine(3, 3, 34, new Date(), "Assegnato", "mandorlo",
-        "Perù", 4),
-      new ProdottoOrdine(3, 3, 34, new Date(), "Assegnato", "castagno",
-        "Perù", 4),
-      new ProdottoOrdine(3, 3, 34, new Date(), "Assegnato", "pesco",
-        "Perù", 4)
+
     ]
   }
 }

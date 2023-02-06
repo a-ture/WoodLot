@@ -31,9 +31,6 @@ public class ProdottoOrdine implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "quantita", nullable = false)
-    private int quantita;
-
     @Column(name = "prezzo_unitario", nullable = false)
     private double prezzoUnitario;
 
@@ -51,12 +48,8 @@ public class ProdottoOrdine implements Serializable {
     @JoinColumn(name = "contadino")
     private Contadino contadino;
 
-    /**
-     * Calcola il prezzo del prodotto ordine
-     *
-     * @return restituisce il prezzo totale del prodotto ordine
-     */
-    public double getPrezzoTotale() {
-        return prezzoUnitario * quantita;
-    }
+    private String descrizione;
+
+    private double frutta;
+
 }

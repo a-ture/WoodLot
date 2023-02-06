@@ -19,12 +19,15 @@ import java.util.List;
 public class GestioneCheckoutService implements CheckoutService {
     @Autowired
     private OrdineRepository ordineRepository;
-    @Autowired
-    private ProdottoCarrelloRepository prodottoCarrelloRepository;
+
     @Autowired
     private CarrelloRepository carrelloRepository;
     @Autowired
     private ProdottoOrdineRepository prodottoOrdineRepository;
+
+    @Autowired
+    private ProdottoCarrelloRepository prodottoCarrelloRepository;
+
     @Autowired
     private UtenteRepository utenteRepository;
 
@@ -55,17 +58,18 @@ public class GestioneCheckoutService implements CheckoutService {
         for (ProdottoCarrello prodottoCarrello : prodottiCarrello) {
             ProdottoOrdine prodottoOrdine = new ProdottoOrdine();
             prodottoOrdine.setAlbero(prodottoCarrello.getAlbero());
-            prodottoOrdine.setQuantita(prodottoCarrello.getQuantita());
             prodottoOrdine.setPrezzoUnitario(prodottoCarrello.getAlbero().getPrezzo());
             prodottoOrdine.setStato(ProdottoOrdine.Stato.NonAssegnato);
             ordine.aggiungiProdotto(prodottoOrdine);
+            prodottoCarrelloRepository.deleteById(prodottoCarrello.getId());
         }
 
-        prodottoCarrelloRepository.deleteProdottoCarrellosByCarrello_Id(carrello.getId());
         carrello.svuotareCarrello();
         carrelloRepository.save(carrello);
         prodottoOrdineRepository.saveAll(ordine.getProdottiOrdine());
         ordine = ordineRepository.save(ordine);
         return ordine;
+
     }
+
 }

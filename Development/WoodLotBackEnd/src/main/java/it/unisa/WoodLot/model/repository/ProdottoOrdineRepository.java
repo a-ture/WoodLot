@@ -11,4 +11,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @see ProdottoOrdine
  */
 public interface ProdottoOrdineRepository extends JpaRepository<ProdottoOrdine, Long> {
+
+    Iterable<ProdottoOrdine> findAllByStatoIs(ProdottoOrdine.Stato stato);
 }

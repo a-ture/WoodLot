@@ -6,6 +6,8 @@ import {ReimpostaPasswordComponent} from "../reimposta-password/reimposta-passwo
 import {AutenticazioneService} from "../../../servizi/autenticazione/autenticazione.service";
 import {UtenteRegistrato} from "../../../entita/utenteRegistrato/utente-registrato";
 import {Router} from "@angular/router";
+import {Carrello} from "../../../entita/carrello/carrello";
+import {CarrelloService} from "../../../servizi/carrello/carrello.service";
 
 
 @Component({
@@ -28,7 +30,7 @@ export class LoginComponent implements OnInit {
   }
 
 
-  constructor(private router: Router, private modalService: MdbModalService, private autenticazioneService: AutenticazioneService) {
+  constructor(private serviceCarrello: CarrelloService, private router: Router, private modalService: MdbModalService, private autenticazioneService: AutenticazioneService) {
     this.formLogin = new FormGroup({
       emailUtenteLogin: new FormControl('', Validators.required),
       passwordLogin: new FormControl('', Validators.required)
@@ -51,6 +53,14 @@ export class LoginComponent implements OnInit {
           // salva i dati dell'utente in sessione
           sessionStorage.setItem('utente', JSON.stringify(data.data.utente));
           sessionStorage.setItem('utenteRegistrato', JSON.stringify(data.data.utente));
+          //recuperiamo i dati del suo carrello
+          this.serviceCarrello.getCarrello(data.data.utente.id).subscribe(
+            (data: Carrello) => {
+              console.log(data)
+              let carrello = data
+              sessionStorage.setItem("carrello", JSON.stringify(carrello))
+            });
+
           // reindirizza alla pagina del profilo dell'utente
           this.router.navigate(['/profiloUtente']);
         } else if (data.data.contadino != null) {

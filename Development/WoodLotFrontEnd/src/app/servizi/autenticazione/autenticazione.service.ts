@@ -15,9 +15,11 @@ export class AutenticazioneService {
   //effettua il logout
   logout() {
     const storedUtente = sessionStorage.getItem('utente');
-    if (storedUtente != null)
+    if (storedUtente != null) {
       sessionStorage.removeItem('utente');
-
+      //eliminiamo il suo carrello dalla sessione e lo salviamo nel db
+      sessionStorage.removeItem('carrello')
+    }
     const storedContadino = sessionStorage.getItem('contadino');
     if (storedContadino != null)
       sessionStorage.removeItem('contadino');

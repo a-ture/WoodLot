@@ -78,4 +78,5 @@ public final class ResponseHandler {
         map.put("status", "error");
         return new ResponseEntity<>(map, status);
     }
+
 }

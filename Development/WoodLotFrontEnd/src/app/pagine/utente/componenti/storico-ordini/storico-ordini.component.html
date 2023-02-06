@@ -45,7 +45,7 @@
         <p>Alberi che hai acquistato in questo ordine: </p>
         <ul class="mx-5">
           <li *ngFor="let i of item.listaProdottiOrdine">
-            <em>{{i.nome}}</em> (Quantità: {{i.quantita}}, Prezzo: {{i.prezzo.toFixed(2)}}€)
+            <em>{{i.nome}}</em> (Prezzo: {{i.prezzo.toFixed(2)}}€)
           </li>
         </ul>
 

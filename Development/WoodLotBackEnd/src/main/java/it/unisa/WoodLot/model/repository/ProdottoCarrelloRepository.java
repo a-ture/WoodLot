@@ -16,19 +16,5 @@ import java.util.List;
  */
 public interface ProdottoCarrelloRepository extends JpaRepository<ProdottoCarrello, Long> {
 
-    /**
-     * Permette di cercare un prodotto in un carrello in base al carrello e all'albero associato al prodotto
-     *
-     * @param carrello
-     * @param albero
-     * @return il prodotto cercato
-     */
-    ProdottoCarrello findByCarrelloAndAlbero(Carrello carrello, Albero albero);
 
-    /**
-     * Permette di eliminare i prodotti carrello associati a un carrello
-     *
-     * @param id l'identificativo del carrello
-     */
-    void deleteProdottoCarrellosByCarrello_Id(Long id);
 }
