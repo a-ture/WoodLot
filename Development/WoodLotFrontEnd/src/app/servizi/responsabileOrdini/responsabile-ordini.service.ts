@@ -11,7 +11,12 @@ export class ResponsabileOrdiniService {
 
   // restituisce un responsabile ordini
   public getResponsabileOrdini() {
-    return new ResponsabileOrdini("Brici", "Ture")
+    let utente !: ResponsabileOrdini
+    const storedUtente = sessionStorage.getItem('responsabileOrdini');
+    if (storedUtente) {
+      utente = JSON.parse(storedUtente);
+    }
+    return utente;
   }
 
 }

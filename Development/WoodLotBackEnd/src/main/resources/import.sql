@@ -35,10 +35,10 @@ INSERT INTO utente (id,nome, cognome, data_di_nascita, email, password) VALUES(2
 INSERT INTO contadino (id, nome, cognome, data_di_nascita, email, password, coordinate_geografiche) VALUES(1, "Pedro", "Garica", "2001-02-23", "pedrogarcia@gmail.com", "alessiature01", "Guatemala");
 
 /*Responsabile Catalogo*/
-INSERT INTO responsabile_catalogo(id,email, password) VALUES (1,"catalogo@gmail.com","catalogo");
+INSERT INTO responsabile_catalogo(id,email, password,nome, cognome) VALUES (1,"catalogo@gmail.com","catalogo","Mario","Rossi");
 
 /*Responsabile Ordini*/
-INSERT INTO responsabile_ordini(id,email, password) VALUES (1,"ordini@gmail.com","ordini");
+INSERT INTO responsabile_ordini(id,email, password,nome, cognome) VALUES (1,"ordini@gmail.com","ordini","Stefano","Bianchi");
 
 /*Alberi*/
 /*Albero dinamite*/

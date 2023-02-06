@@ -15,4 +15,9 @@ import java.io.Serializable;
 @Table(name = "responsabile_ordini")
 public class ResponsabileOrdini extends UtenteRegistrato {
 
+    @Column()
+    private String nome;
+
+    @Column()
+    private String cognome;
 }

@@ -4,8 +4,11 @@ import it.unisa.WoodLot.model.entity.Contadino;
 import it.unisa.WoodLot.model.entity.ProdottoOrdine;
 import it.unisa.WoodLot.model.repository.ContadinoRepository;
 import it.unisa.WoodLot.model.repository.ProdottoOrdineRepository;
+import it.unisa.WoodLot.sevice.gestioneContadino.eccezioni.ContadinoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Date;
 
 /**
  * La classe fornisce i metodi per la logica di business per la gestione dei contadini
@@ -40,4 +43,17 @@ public class GestioneContadinoService implements ContadinoService {
     public Iterable<ProdottoOrdine> getAlberiNonAssegnati() {
         return prodottoOrdineRepository.findAllByStatoIs(ProdottoOrdine.Stato.NonAssegnato);
     }
+
+    @Override
+    public ProdottoOrdine aggiornaStato(ProdottoOrdine prodottoOrdine) throws ContadinoException {
+        ProdottoOrdine p = prodottoOrdineRepository.findById(prodottoOrdine.getId()).orElse(null);
+        if (p == null)
+            throw new ContadinoException("Non è stato trovato il prodotto ordine");
+        p.setStato(prodottoOrdine.getStato());
+        p.setDescrizione(prodottoOrdine.getDescrizione());
+        p.setFrutta(prodottoOrdine.getFrutta());
+        return prodottoOrdineRepository.save(prodottoOrdine);
+    }
+
+
 }

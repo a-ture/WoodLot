@@ -1,13 +1,14 @@
 package it.unisa.WoodLot.web.controller.gestioneContadino;
 
+import it.unisa.WoodLot.model.entity.Contadino;
+import it.unisa.WoodLot.model.entity.ProdottoOrdine;
 import it.unisa.WoodLot.sevice.gestioneContadino.ContadinoService;
+import it.unisa.WoodLot.sevice.gestioneContadino.eccezioni.ContadinoException;
 import it.unisa.WoodLot.web.controller.ResponseHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Controller per la gestione dei contadini
@@ -26,7 +27,7 @@ public class ControllerContadino {
      */
     @GetMapping("")
     public ResponseEntity<Object> visualizzaElencoContadini() {
-        return ResponseHandler.generateResponse(HttpStatus.ACCEPTED, contadinoService.getElencoContadini());
+        return new ResponseEntity<>(contadinoService.getElencoContadini(), HttpStatus.ACCEPTED);
     }
 
     /**
@@ -36,6 +37,15 @@ public class ControllerContadino {
      */
     @GetMapping("/alberiNonAssegnati")
     public ResponseEntity<Object> elencoAlberiNonAssegnati() {
-        return ResponseHandler.generateResponse(HttpStatus.ACCEPTED, contadinoService.getAlberiNonAssegnati());
+        return new ResponseEntity<>(contadinoService.getAlberiNonAssegnati(), HttpStatus.ACCEPTED);
+    }
+
+    @PostMapping("/aggiornaStato")
+    public ResponseEntity<Object> aggiornaStato(@RequestBody ProdottoOrdine prodottoOrdine) {
+        try {
+            return new ResponseEntity<>(contadinoService.aggiornaStato(prodottoOrdine), HttpStatus.CREATED);
+        } catch (ContadinoException e) {
+            return ResponseHandler.generateResponse(HttpStatus.BAD_REQUEST, e.getMessage());
+        }
     }
 }

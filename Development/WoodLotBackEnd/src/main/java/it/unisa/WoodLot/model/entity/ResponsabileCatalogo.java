@@ -15,5 +15,9 @@ import java.io.Serializable;
 @Entity
 @Table(name = "responsabile_catalogo")
 public class ResponsabileCatalogo extends UtenteRegistrato {
+    @Column()
+    private String nome;
 
+    @Column()
+    private String cognome;
 }
