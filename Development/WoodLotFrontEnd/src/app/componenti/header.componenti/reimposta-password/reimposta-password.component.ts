@@ -7,7 +7,6 @@ import {
 import {UtenteRegistrato} from "../../../entita/utenteRegistrato/utente-registrato";
 import {AutenticazioneService} from "../../../servizi/autenticazione/autenticazione.service";
 import {LoginComponent} from "../login/login.component";
-import {RegistrazioneUtenteComponent} from "../registrazione-utente/registrazione-utente.component";
 
 @Component({
   selector: 'app-reimposta-password',
@@ -20,9 +19,13 @@ export class ReimpostaPasswordComponent implements OnInit {
   submitted = false;
   formErrori: any;
   errorMessage: string = '';
+  modalLoginRef: MdbModalRef<LoginComponent> | null = null
+  config = {
+    backdrop: false,
+    ignoreBackdropClick: true
+  }
 
-
-  constructor(private serviceAutenticazione: AutenticazioneService, private sericeValidazione: ValidazioneFormUtenteService, public modalRef: MdbModalRef<ReimpostaPasswordComponent>) {
+  constructor(private modalService: MdbModalService, private serviceAutenticazione: AutenticazioneService, private sericeValidazione: ValidazioneFormUtenteService, public modalRef: MdbModalRef<ReimpostaPasswordComponent>) {
     this.reimpostaPassword = new FormGroup({
       emailUtente: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required,
@@ -48,6 +51,7 @@ export class ReimpostaPasswordComponent implements OnInit {
       this.serviceAutenticazione.reimpostaPassword(utenteRegistrato).subscribe(
         (data) => {
           this.modalRef.close()
+          this.openModalLogin()
         },
         (error) => {
           // visualizza l'errore sotto al form
@@ -65,4 +69,7 @@ export class ReimpostaPasswordComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  openModalLogin() {
+    this.modalLoginRef = this.modalService.open(LoginComponent, this.config)
+  }
 }

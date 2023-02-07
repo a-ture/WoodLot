@@ -195,6 +195,7 @@ import { ElencoContadiniComponent } from './pagine/responsabileOrdini/componenti
 import { AssegnazioneAlberiComponent } from './pagine/responsabileOrdini/componenti/sezioneContadini.componenti/assegnazione-alberi/assegnazione-alberi.component';
 import { StoricoPagamentiComponent } from './pagine/contadino/componenti/storico-pagamenti/storico-pagamenti.component';
 import { ScegliIlTuoAlberoComponent } from './pagine/home/componenti/scegli-il-tuo-albero/scegli-il-tuo-albero.component';
+import { AccessoNegatoComponent } from './pagine/errori/accesso-negato/accesso-negato.component';
 
 @NgModule({
   declarations: [
@@ -282,6 +283,7 @@ import { ScegliIlTuoAlberoComponent } from './pagine/home/componenti/scegli-il-t
     AssegnazioneAlberiComponent,
     StoricoPagamentiComponent,
     ScegliIlTuoAlberoComponent,
+    AccessoNegatoComponent,
 
 
   ],

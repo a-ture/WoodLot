@@ -20,8 +20,6 @@ export class LoginComponent implements OnInit {
   modalRefRegistrazioneUtente: MdbModalRef<RegistrazioneUtenteComponent> | null = null;
   modalRefReimpostaPassword: MdbModalRef<ReimpostaPasswordComponent> | null = null;
 
-  public visibleLogin = false;
-
   errorMessage: string = '';
 
   config = {
@@ -30,7 +28,7 @@ export class LoginComponent implements OnInit {
   }
 
 
-  constructor(private serviceCarrello: CarrelloService, private router: Router, private modalService: MdbModalService, private autenticazioneService: AutenticazioneService) {
+  constructor(public modalRef: MdbModalRef<LoginComponent>, private serviceCarrello: CarrelloService, private router: Router, private modalService: MdbModalService, private autenticazioneService: AutenticazioneService) {
     this.formLogin = new FormGroup({
       emailUtenteLogin: new FormControl('', Validators.required),
       passwordLogin: new FormControl('', Validators.required)
@@ -62,24 +60,28 @@ export class LoginComponent implements OnInit {
             });
 
           // reindirizza alla pagina del profilo dell'utente
+          this.modalRef.close()
           this.router.navigate(['/profiloUtente']);
         } else if (data.data.contadino != null) {
           // salva i dati del contadino in sessione
           sessionStorage.setItem('contadino', JSON.stringify(data.data.contadino));
           sessionStorage.setItem('utenteRegistrato', JSON.stringify(data.data.contadino));
           // reindirizza alla pagina del profilo del contadino
+          this.modalRef.close()
           this.router.navigate(['/profiloContadino']);
         } else if (data.data.responsabileOrdini != null) {
           // salva i dati del responsabile ordini in sessione
           sessionStorage.setItem('responsabileOrdini', JSON.stringify(data.data.responsabileOrdini));
           sessionStorage.setItem('utenteRegistrato', JSON.stringify(data.data.responsabileOrdini));
           // reindirizza alla pagina del profilo del responsabile ordini
+          this.modalRef.close()
           this.router.navigate(['/profiloResponsabileOrdini']);
         } else {
           // salva i dati del responsabile catalogo
           sessionStorage.setItem('responsabileCatalogo', JSON.stringify(data.data.responsabileCatalogo));
           sessionStorage.setItem('utenteRegistrato', JSON.stringify(data.data.responsabileCatalogo));
           // reindirizza alla pagina del profilo del responsabile catalogo
+          this.modalRef.close()
           this.router.navigate(['/profiloResponsabileCatalogo']);
         }
       },
@@ -92,20 +94,12 @@ export class LoginComponent implements OnInit {
 
   openModalRegistrazione() {
     this.modalRefRegistrazioneUtente = this.modalService.open(RegistrazioneUtenteComponent, this.config)
-    this.toggleLogin()
-  }
-
-  toggleLogin() {
-    this.visibleLogin = !this.visibleLogin;
-  }
-
-  handleLogin(event: any) {
-    this.visibleLogin = event;
+    this.modalRef.close()
   }
 
   openModalReimpostaPassword() {
     this.modalRefReimpostaPassword = this.modalService.open(ReimpostaPasswordComponent, this.config)
-    this.toggleLogin()
+    this.modalRef.close()
   }
 
 }

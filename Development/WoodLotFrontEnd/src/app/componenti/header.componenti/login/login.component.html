@@ -1,21 +1,16 @@
-<button (click)="toggleLogin()" id="loginButton" cButton>
-  Accedi
-</button>
-<c-modal [visible]="visibleLogin" (visibleChange)="handleLogin($event)"
-         [backdrop]="false" scrollable>
-  <c-modal-header>
-    <c-col>
-      <h5 class="text-center mt-3" cModalTitle>Entra su WoodLot!</h5>
-      <h6 class="text-center mt-3">Sei già registrato in WoodLot o sei un utente
-        nuovo?
-        <br/> In entrambi i casi sei nel posto giusto!</h6>
-    </c-col>
-    <button (click)="toggleLogin()" cButtonClose></button>
-  </c-modal-header>
-  <c-modal-body>
-    <ng-container *ngTemplateOutlet="form"></ng-container>
-  </c-modal-body>
-</c-modal>
+<div class="modal-header">
+  <c-col>
+    <h5 class="text-center mt-3" cModalTitle>Entra su WoodLot!</h5>
+    <h6 class="text-center mt-3">Sei già registrato in WoodLot o sei un utente
+      nuovo?
+      <br/> In entrambi i casi sei nel posto giusto!</h6>
+  </c-col>
+  <button (click)="modalRef.close()" cButtonClose></button>
+</div>
+<c-modal-body>
+  <ng-container *ngTemplateOutlet="form"></ng-container>
+</c-modal-body>
+
 
 <ng-template #form>
   <form cRow [formGroup]="formLogin"
@@ -30,7 +25,8 @@
     <c-col class="mb-3" [sm]="12">
       <label cLabel for="passwordLogin">Password</label>
       <input cFormControl
-             id="passwordLogin" formControlName="passwordLogin" type="password" placeholder="Inserisci la tua password"
+             id="passwordLogin" formControlName="passwordLogin" type="password"
+             placeholder="Inserisci la tua password"
       />
       <div class="text-center my-3" *ngIf="errorMessage!= ''" style="color: red">{{errorMessage}}</div>
       <div class="row justify-content-center mt-3">

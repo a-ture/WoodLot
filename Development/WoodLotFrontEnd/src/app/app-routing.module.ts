@@ -18,19 +18,30 @@ import {
 } from "./pagine/responsabileCatalogo/interfaccia.responsabile-catalogo/interfaccia.responsabile-catalogo.component";
 import {InterfacciaContadinoComponent} from "./pagine/contadino/interfaccia.contadino/interfaccia.contadino.component";
 
+import {AccessoNegatoComponent} from "./pagine/errori/accesso-negato/accesso-negato.component";
+import {AuthGuardUtente} from "./servizi/autenticazione/guardUtente/guardUtente.service";
+import {
+  GuardResponsabileOrdiniService
+} from "./servizi/autenticazione/guardResponsabileOrdini/guard-responsabile-ordini.service";
+import {
+  GuardResponsabileCatalogoService
+} from "./servizi/autenticazione/guardResponsabileCatalogo/guard-responsabile-catalogo.service";
+import {GuardContadinoService} from "./servizi/autenticazione/guardContadino/guard-contadino.service";
+
 
 const routes: Routes = [
   {path: '', component: InterfacciaHomeComponent},
   {path: 'catalogo', component: InterfacciaCatalogoComponent},
-  {path: 'carrello', component: InterfacciaCarrelloComponent},
+  {path: 'carrello', component: InterfacciaCarrelloComponent, canActivate: [AuthGuardUtente]},
   {path: 'chiSiamo', component: InterfacciaChiSiamoComponent},
   {path: 'diventaUnContadino', component: InterfacciaDiventaContadinoComponent},
-  {path: 'checkout', component: InterfacciaCheckoutComponent},
+  {path: 'checkout', component: InterfacciaCheckoutComponent, canActivate: [AuthGuardUtente]},
   {path: 'paginaProdotto/:nomeProdotto', component: InterfacciaProdottoComponent},
-  {path: 'profiloUtente', component: InterfacciaUtenteComponent},
-  {path: 'profiloResponsabileOrdini', component: InterfacciaResponsabileOrdiniComponent},
-  {path: 'profiloResponsabileCatalogo', component: InterfacciaResponsabileCatalogoComponent},
-  {path: 'profiloContadino', component: InterfacciaContadinoComponent}
+  {path: 'profiloUtente', component: InterfacciaUtenteComponent, canActivate: [AuthGuardUtente]},
+  {path: 'profiloResponsabileOrdini', component: InterfacciaResponsabileOrdiniComponent, canActivate: [GuardResponsabileOrdiniService]},
+  {path: 'profiloResponsabileCatalogo', component: InterfacciaResponsabileCatalogoComponent, canActivate: [GuardResponsabileCatalogoService]},
+  {path: 'profiloContadino', component: InterfacciaContadinoComponent, canActivate: [GuardContadinoService]},
+  {path: 'accessoNegato', component: AccessoNegatoComponent}
 ];
 
 @NgModule({
