@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UtenteService} from "../../../servizi/utente/utente.service";
 import {ProdottoOrdine} from "../../../entita/prodottoOrdine/prodotto-ordine";
-import {AutenticazioneService} from "../../../servizi/autenticazione/autenticazione.service";
+
 
 @Component({
   selector: 'app-interfaccia-utente',
@@ -13,20 +13,24 @@ import {AutenticazioneService} from "../../../servizi/autenticazione/autenticazi
 export class InterfacciaUtenteComponent implements OnInit {
 
   public utente
-  public listaNomi = ["Alberi", "Regali", "- Anidride Carbonica"]
-  public listaNumeri
+  public listaNomi = ["Alberi", "- Anidride Carbonica"]
+  public listaNumeri !: string[]
 
 
   constructor(private serviceUtente: UtenteService) {
     this.utente = serviceUtente.getUtente()
-    this.listaNumeri = serviceUtente.getStatisticheUtente()
+    if (this.utente.id)
+      serviceUtente.getStatisticheUtente(this.utente.id).subscribe((data: string[]) => {
+        this.listaNumeri = data
+      })
+    console.log(this.utente.listaOrdini)
   }
 
   //restituisce tutti gli alberi di un utente
   public getAlberiUtente() {
     let alberi = new Array<ProdottoOrdine>()
     this.utente?.listaOrdini?.forEach(e => {
-      e.listaProdottiOrdine.forEach(i => {
+      e.prodottiOrdine?.forEach(i => {
         alberi.push(i)
       })
     })

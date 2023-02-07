@@ -5,7 +5,7 @@
     <app-benvenuto class="col-md-6 col-sm-12 h-100 align-self-center" [nome]=utente.nome [cognome]=utente.cognome
                    [listaNomi]="listaNomi" [listaNumeri]="listaNumeri"
     ></app-benvenuto>
-    <app-storico-ordini class="col-md-6" [listaOrdini]=utente.listaOrdini></app-storico-ordini>
+    <app-storico-ordini class="col-md-6 d-flex align-self-center" [listaOrdini]=utente.listaOrdini></app-storico-ordini>
   </div>
   <div class="mt-3 container-fluid">
     <app-menu-laterale [listaAlberi]="getAlberiUtente()"

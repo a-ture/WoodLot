@@ -30,11 +30,11 @@ public class ControllerOrdini {
      */
     @GetMapping("/getOrdini")
     public ResponseEntity<Object> restituisciOrdini() {
-        return ResponseHandler.generateResponse(HttpStatus.ACCEPTED, ordineService.restituisciOrdini());
+        return new ResponseEntity<>(ordineService.restituisciOrdini(), HttpStatus.ACCEPTED);
     }
 
     @GetMapping("/storicoUtente/{idUtente}")
-    public List<Ordine> visualizzaOrdiniUtente(@PathVariable Long idUtente) {
-        return ordineService.visualizzaOrdiniUtente(idUtente);
+    public ResponseEntity<Object> visualizzaOrdiniUtente(@PathVariable Long idUtente) {
+        return new ResponseEntity<>(ordineService.visualizzaOrdiniUtente(idUtente), HttpStatus.ACCEPTED);
     }
 }

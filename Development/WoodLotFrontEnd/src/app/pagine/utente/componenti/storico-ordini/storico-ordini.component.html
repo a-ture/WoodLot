@@ -1,7 +1,7 @@
 <div class="text-center mx-5 my-4" style="border-radius: 20px; background-color:#C4D89F">
   <div class="row">
     <h3 class="my-4">Storico Ordini</h3>
-    <div class="row px-5">
+    <div class="row px-5" *ngIf="listaOrdini?.length!=0; else listaVuota">
       <table class="table table-borderless">
         <thead>
         <tr>
@@ -14,10 +14,10 @@
 
         <tbody>
         <tr *ngFor="let item of listaOrdini?.slice(0,3)">
-          <th scope="row">{{item.codice}}</th>
+          <th scope="row">{{item.id}}</th>
           <td>{{item.totale.toFixed(2)}}€</td>
-          <td>{{item.listaProdottiOrdine.length}}</td>
-          <td>{{item.dataAcquisto | date: 'dd/MM/yy'}}</td>
+          <td>{{ item.prodottiOrdine ? item.prodottiOrdine.length : 'N/A' }}</td>
+          <td>{{item.dataOrdine}}</td>
         </tr>
         </tbody>
       </table>
@@ -26,6 +26,12 @@
         tutti!</a>
 
     </div>
+    <ng-template #listaVuota>
+      <div class="row px-5">
+        <h6 class="text-center"> Non hai ancora effettuato un ordine!
+          <a style="color: #5B9348" routerLink="/catalogo">Rimedia subito!</a></h6>
+      </div>
+    </ng-template>
   </div>
 </div>
 
@@ -39,13 +45,13 @@
 
       <div class="row m-3" *ngFor="let item of listaOrdini">
         <hr>
-        <h3>Dettaglio ordine n.{{item.codice}}</h3>
-        <p>Ordine effettuato il:{{item.dataAcquisto |date: 'dd/MM/yy' }}</p>
-        <p>Hai speso: </p>
+        <h3>Dettaglio ordine n.{{item.id}}</h3>
+        <p>Ordine effettuato il:{{item.dataOrdine}}</p>
+        <p>Hai speso: {{item.totale.toFixed(2)}}</p>
         <p>Alberi che hai acquistato in questo ordine: </p>
         <ul class="mx-5">
-          <li *ngFor="let i of item.listaProdottiOrdine">
-            <em>{{i.nome}}</em> (Prezzo: {{i.prezzo.toFixed(2)}}€)
+          <li *ngFor="let i of item.prodottiOrdine">
+            <em>{{i.albero.nome}}</em> (Prezzo: {{i.prezzoUnitario.toFixed(2)}}€)
           </li>
         </ul>
 

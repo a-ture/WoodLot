@@ -11,6 +11,7 @@
                  (activeTabPaneIdxChange)="onTabChange($event)"
                  [activeTabPaneIdx]="activePane">
     <c-tab-pane *ngFor="let pane of panes; index as i;" class="p-3">
+      <div *ngIf="listaAlberi.length == 0"><h3 class="text-center my-5 py-5">Non hai ancora piantato un albero!</h3></div>
       <app-card-albero-list *ngIf="activePane == 0" [listaAlberi]="listaAlberi">
       </app-card-albero-list>
     </c-tab-pane>

@@ -13,7 +13,7 @@ export class CardAlberoListComponent implements OnInit {
   public listaAlberi !: ProdottoOrdine[]
 
   public listaNomi = [
-    "Stato", "Dove è piantato",
+    "Stato"
   ]
 
   public listaSourceImage = [
@@ -29,9 +29,20 @@ export class CardAlberoListComponent implements OnInit {
   ]
 
   public getDescrizioneCard(position: number) {
-    let prodotto = this.listaAlberi[position]
-    return [prodotto.stato, prodotto.coordinateGeografiche]
+    let prodotto = this.listaAlberi[position];
+    if (prodotto.stato == "NonAssegnato")
+      prodotto.stato = 'Non Assegnato'
+
+    let descrizione = [prodotto.stato];
+
+    if (prodotto.contadino && prodotto.contadino.coordinateGeografiche) {
+      descrizione.push(prodotto.contadino.coordinateGeografiche);
+      this.listaNomi.push("Dove è piantato:")
+    }
+
+    return descrizione.filter(x => x !== undefined);
   }
+
   constructor() {}
 
   ngOnInit(): void {

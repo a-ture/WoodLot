@@ -16,7 +16,7 @@ import {Router} from "@angular/router";
         <li class="list-group-item px-4"><strong>Prezzo:</strong> {{albero.prezzo.toFixed(2)}} €</li>
       </ul>
       <div class="card-body">
-        <a [routerLink]="['/paginaProdotto', albero.nome]" class="btn btn-rounded"
+        <a (click)="navigateToProductPage(albero.nome)" class="btn btn-rounded"
            style="background-color:#5E7250; color:white">Scopri di più!</a>
       </div>
     </div>
@@ -30,11 +30,15 @@ export class CardProdottoComponent implements OnInit {
   @Input()
   public sourceImage!: String
 
-  constructor() {
+
+  constructor( private router: Router,) {
   }
 
   ngOnInit(): void {
   }
 
+  navigateToProductPage(nome: String) {
+    this.router.navigate(['/paginaProdotto', nome]);
+  }
 
 }

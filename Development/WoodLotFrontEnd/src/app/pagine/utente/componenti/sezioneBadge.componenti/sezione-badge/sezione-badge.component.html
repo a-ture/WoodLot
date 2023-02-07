@@ -1,9 +1,10 @@
 <div class="container">
-  <c-row [gutter]="2" [lg]="3" [md]="2"  [xs]="2" >
+  <c-row [gutter]="2" [lg]="4" [md]="2" [xs]="2">
     <c-col *ngFor="let item of listaBadge; index as i" class="mb-2">
       <app-badge
         [nome]="item" [sourceImage]="listaSourceImage[i]"
-        [descrizione]="listaDescrizioneBadge[i]"></app-badge>
+        [descrizione]="listaDescrizioneBadge[i]"
+        [bloccato]="bloccato(item)"></app-badge>
     </c-col>
   </c-row>
 </div>

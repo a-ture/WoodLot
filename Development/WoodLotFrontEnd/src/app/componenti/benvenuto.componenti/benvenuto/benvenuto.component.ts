@@ -12,7 +12,7 @@ export class BenvenutoComponent implements OnInit {
   public listaNomi !: String[]
 
   @Input()
-  public listaNumeri !: String[]
+  public listaNumeri !: string[]
 
   @Input()
   public nome !: String
@@ -20,7 +20,8 @@ export class BenvenutoComponent implements OnInit {
   @Input()
   public cognome !: String
 
-  constructor() {}
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

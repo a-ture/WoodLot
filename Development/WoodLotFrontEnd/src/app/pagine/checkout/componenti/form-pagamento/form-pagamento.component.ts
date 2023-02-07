@@ -4,12 +4,12 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {
   ValidazioneFormPagamentoService
 } from "../../../../servizi/validazioneFormPagamento/validazione-form-pagamento.service";
-
 import {MdbModalRef, MdbModalService} from "mdb-angular-ui-kit/modal";
 import {OrdineEffettuatoComponent} from "../ordine-effettuato/ordine-effettuato.component";
-import {UtenteService} from "../../../../servizi/utente/utente.service";
 import {Carrello} from "../../../../entita/carrello/carrello";
 import {OrdineService} from "../../../../servizi/ordine/ordine.service";
+import {Ordine} from "../../../../entita/ordine/ordine";
+
 
 @Component({
   selector: 'app-form-pagamento',
@@ -78,9 +78,26 @@ export class FormPagamentoComponent implements OnInit {
 
   onSubmit(): void {
     if (this.onValidate()) {
+      this.errrorMessage = ''
       if (this.carrello.utente.id) {
-        this.serviceOrdini.effettuaOrdine(this.carrello.utente.id)
-        this.openModalOrdine();
+        this.serviceOrdini.effettuaOrdine(this.carrello.utente.id).subscribe(
+          (data: Ordine) => {
+
+            sessionStorage.removeItem('carrello')
+            if (this.carrello.utente.id) {
+              this.serviceCarrelloProdotto.getCarrello(this.carrello.utente.id).subscribe(
+                (data: Carrello) => {
+                  console.log(data)
+                  let carrello = data
+                  sessionStorage.setItem("carrello", JSON.stringify(carrello))
+                  this.openModalOrdine();
+                });
+            }
+          }, (error) => {
+            this.errrorMessage = JSON.stringify(error.data)
+          }
+        );
+
       }
     }
   }

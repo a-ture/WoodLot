@@ -15,7 +15,7 @@ export class MenuLateraleComponent implements OnInit {
   public listaAlberi !: ProdottoOrdine[]
 
 
-  selectedMenu: String = "Alberi"
+  selectedMenu: String = "Badge"
 
   goTo(paramText: String) {
     this.selectedMenu = paramText

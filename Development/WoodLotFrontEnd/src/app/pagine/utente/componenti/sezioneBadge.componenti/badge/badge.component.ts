@@ -5,10 +5,10 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./badge.component.scss'],
   template: `
     <c-card class="text-center" style="border-color: black;">
-      <img cCardImg="top" src="{{sourceImage}}" class="sblocca"  >
+      <img cCardImg="top" src="{{sourceImage}}" [ngClass]="{'sblocca': bloccato}">
       <c-card-body>
         <h5 cCardTitle>{{nome}}</h5>
-        <button [cModalToggle]="verticallyCenteredModal.id" cButton>Sblocca</button>
+        <button [cModalToggle]="verticallyCenteredModal.id" cButton> {{bloccato ? 'Sblocca' : 'Ottenuto'}}</button>
       </c-card-body>
     </c-card>
 
@@ -19,7 +19,7 @@ import {Component, Input, OnInit} from '@angular/core';
       <c-modal-body>
         <div class="row d-flex align-items-center">
           <div class="col-4">
-            <img src="{{sourceImage}}" cCardImg="top" >
+            <img src="{{sourceImage}}" cCardImg="top">
           </div>
           <div class="col-8">
             <p>{{descrizione}}</p>
@@ -44,6 +44,8 @@ export class BadgeComponent implements OnInit {
 
   @Input()
   public sourceImage !: String
+
+  @Input() bloccato!: boolean;
 
   constructor() {
   }

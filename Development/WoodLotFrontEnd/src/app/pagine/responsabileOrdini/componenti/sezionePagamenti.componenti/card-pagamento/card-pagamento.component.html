@@ -1,9 +1,9 @@
 <c-card class="mb-3 text-center">
   <img cCardImg="top" src="{{sourceImage}}">
   <c-card-body>
-    <h5 cCardTitle>{{prodottoOrdine.nome}}</h5>
+    <h5 cCardTitle>{{prodottoOrdine.albero.nome}}</h5>
     <p cCardText>
-      <b>Id: </b> {{prodottoOrdine.codice}}
+      <b>Id: </b> {{prodottoOrdine.id}}
     </p>
     <div class="row text-center ">
       <div class="mt-1" cCardText><b>Data modifica:</b> {{prodottoOrdine.dataAssegnazione | date: 'dd/MM/yy'}}</div>

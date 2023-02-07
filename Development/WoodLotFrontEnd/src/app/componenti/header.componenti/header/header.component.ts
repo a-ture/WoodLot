@@ -32,6 +32,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
   }
 
   logout() {
@@ -58,7 +59,7 @@ export class HeaderComponent implements OnInit {
       this.router.navigate(["/profiloResponsabileCatalogo"])
 
     const storedContadino = sessionStorage.getItem('contadino');
-    
+
     if (storedContadino)
       this.router.navigate(["/profiloContadino"])
   }

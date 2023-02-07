@@ -2,16 +2,16 @@ import {Albero} from "../albero/albero";
 import {ProdottoOrdine} from "../prodottoOrdine/prodotto-ordine";
 
 export class Ordine {
-  public listaProdottiOrdine : Array<ProdottoOrdine>
-  public codice : number
+  public prodottiOrdine : Array<ProdottoOrdine>
+  public id : number
   public totale : number
-  public dataAcquisto : Date
+  public dataOrdine : Date
 
-  constructor(codice:number, listaProdottoOrdini:Array<ProdottoOrdine>, totale:number, dataAcquisto:Date) {
-    this.codice = codice
+  constructor(id:number, listaProdottoOrdini:Array<ProdottoOrdine>, totale:number, dataAcquisto:Date) {
+    this.id = id
     this.totale = totale
-    this.listaProdottiOrdine = listaProdottoOrdini
-    this.dataAcquisto = dataAcquisto
+    this.prodottiOrdine = listaProdottoOrdini
+    this.dataOrdine = dataAcquisto
   }
 
 }

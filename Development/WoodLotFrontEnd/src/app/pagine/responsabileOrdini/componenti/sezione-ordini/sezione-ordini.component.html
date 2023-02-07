@@ -12,15 +12,15 @@
       </thead>
       <tbody>
       <tr *ngFor="let item of listaOrdini">
-        <th scope="row">{{item.codice}}</th>
+        <th scope="row">{{item.id}}</th>
         <td>
-          <ul *ngFor="let prod of item!.listaProdottiOrdine" class="list-unstyled">
-            <li> Nome: {{prod.nome}}, Prezzo: {{prod.prezzo.toFixed(2)}}€,
-              Stato: {{prod.stato}}, Data Assegnazione: {{prod.dataAssegnazione| date: 'dd/MM/yy'}}
+          <ul *ngFor="let prod of item!.prodottiOrdine" class="list-unstyled">
+            <li> Nome: {{prod.albero.nome}}, Prezzo: {{prod.prezzoUnitario.toFixed(2)}}€,
+              Stato: {{prod.stato}}, Data Assegnazione: {{prod.dataAssegnazione}}
             </li>
           </ul>
         </td>
-        <td>{{item.dataAcquisto | date: 'dd/MM/yy'}}</td>
+        <td>{{item.dataOrdine}}</td>
         <td>{{item.totale.toFixed(2)}}€</td>
       </tr>
       </tbody>
