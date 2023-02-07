@@ -21,8 +21,29 @@ public class ControllerStatistiche {
     @Autowired
     private StatisticheService statisticheService;
 
+    /**
+     * Metodo GET per visualizzare le statistiche della pagina dell'utente
+     *
+     * @param idUtente l'id dell'utente di cuii si vogliono visualizzare le statistiche
+     */
     @GetMapping("/utente/{idUtente}")
     public ResponseEntity<Object> visualizzaStatisticheUtente(@PathVariable Long idUtente) {
         return new ResponseEntity<>(statisticheService.statistichePaginaUtente(idUtente), HttpStatus.ACCEPTED);
+    }
+
+    /**
+     * Metodo GET per visualizzare le statistiche della pagina del responsabile catalogo e della pagina diventa un contadino
+     */
+    @GetMapping("/responsabileCatalogo")
+    public ResponseEntity<Object> visualizzaStatisticheResponsabile() {
+        return new ResponseEntity<>(statisticheService.statistichePaginaResponsabileCatalogo(), HttpStatus.ACCEPTED);
+    }
+
+    /**
+     * Metodo GET per visualizzare le statistiche della pagina del contadino
+     */
+    @GetMapping("/contadino/{idContadino}")
+    public ResponseEntity<Object> visualizzaStatisticheContadino(@PathVariable Long idContadino) {
+        return new ResponseEntity<>(statisticheService.statistichePaginaContadino(idContadino), HttpStatus.ACCEPTED);
     }
 }

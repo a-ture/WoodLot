@@ -16,7 +16,7 @@ import {Carrello} from "../../../../../entita/carrello/carrello";
 })
 export class CardInfoProdottoComponent implements OnInit {
 
-  public albero: Albero | undefined
+  public albero!: Albero
   errorMessage: string = ''
   modalInclusoNelPrezzo: MdbModalRef<InclusoNelPrezzoComponent> | null = null;
 
@@ -24,7 +24,7 @@ export class CardInfoProdottoComponent implements OnInit {
 
     this.route.params.subscribe(params => {
       const nome = params['nomeProdotto'];
-      this.serviceProdotto.getProdottoInformazioni(nome).subscribe(data => {
+      this.serviceProdotto.getProdottoInformazioni(nome).subscribe((data) => {
         this.albero = data;
       });
     });

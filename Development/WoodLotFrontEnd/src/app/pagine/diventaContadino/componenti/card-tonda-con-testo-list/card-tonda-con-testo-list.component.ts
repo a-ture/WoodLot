@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {StatisticheService} from "../../../../servizi/statistiche/statistiche.service";
 
 @Component({
@@ -9,17 +9,19 @@ import {StatisticheService} from "../../../../servizi/statistiche/statistiche.se
 export class CardTondaConTestoListComponent implements OnInit {
 
   public listaColori = ["#cddba4", "#bddfd2", "#fbf0a2", "#e8ebfa"]
-  public listaNomi = ["Alberi piantati", "Tonnellate di CO2 assorbite","Contadini coinvolti","Paesi"]
-  public listaNumeri
+  public listaNomi = ["Alberi piantati", "Tonnellate di anidride carbonica assorbite", "Contadini coinvolti", "Paesi"]
+  public listaNumeri !: string[]
   public listaSource = [
     "assets/img/diventaUnContadino/16.svg",
     "assets/img/diventaUnContadino/14.svg",
     "assets/img/diventaUnContadino/15.svg",
     "assets/img/diventaUnContadino/13.svg",
-    ]
+  ]
 
-  constructor(private serviceStatistiche:StatisticheService) {
-    this.listaNumeri = serviceStatistiche.getStatistiche()
+  constructor(private serviceStatistiche: StatisticheService) {
+    serviceStatistiche.getStatistiche().subscribe((data: string[]) => {
+      this.listaNumeri = data
+    })
   }
 
   ngOnInit(): void {

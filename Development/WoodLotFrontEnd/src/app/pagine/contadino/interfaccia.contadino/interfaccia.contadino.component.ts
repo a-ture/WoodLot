@@ -15,14 +15,16 @@ class ArrayList<T> {
 export class InterfacciaContadinoComponent implements OnInit {
 
   public contadino !: Contadino
-  public listaNumeri
-  public listNomi = ["Alberi piantati", "Frutti raccolti", "Anidride Carbonica"]
+  public listaNumeri !: string[]
+  public listNomi = ["Alberi piantati", "Frutti raccolti", "-Anidride Carbonica Assorbita"]
   public listAlberiContadino
 
   constructor(private contadinoService: ContadinoService, private statisticheService: StatisticheService) {
     this.contadino = contadinoService.getContadino()
     console.log(this.contadino)
-    this.listaNumeri = statisticheService.getStatischeContadino()
+    statisticheService.getStatischeContadino(this.contadino.id).subscribe((data: string[]) => {
+      this.listaNumeri = data
+    })
     this.listAlberiContadino = this.contadino?.listaAlberi
   }
 

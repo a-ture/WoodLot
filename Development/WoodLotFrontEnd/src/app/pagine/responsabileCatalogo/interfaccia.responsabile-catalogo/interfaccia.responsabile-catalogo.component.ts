@@ -12,8 +12,8 @@ import {Albero} from "../../../entita/albero/albero";
 export class InterfacciaResponsabileCatalogoComponent implements OnInit {
 
   public responsabileCatalogo
-  public listaNumeri
-  public listNomi = ["Alberi piantati", "Tonnellate di CO2 assorbite", "Contadini coinvolti", "Paesi"]
+  public listaNumeri !: string[]
+  public listNomi = ["Alberi piantati", "Tonnellate di anidride carbonica assorbite", "Contadini coinvolti", "Paesi"]
   public listaProdotti !: Albero[]
 
   public panes = [
@@ -26,7 +26,9 @@ export class InterfacciaResponsabileCatalogoComponent implements OnInit {
   constructor(private serviceResponsabileCatalogo: ResponsabileCatalogoService,
               private serviceStatistiche: StatisticheService, private serviceProdotto: ProdottoService) {
     this.responsabileCatalogo = serviceResponsabileCatalogo.getResponsabileCatalogo()
-    this.listaNumeri = serviceStatistiche.getStatistiche()
+    serviceStatistiche.getStatistiche().subscribe((data: string[]) => {
+      this.listaNumeri = data
+    })
     this.serviceProdotto.getProdotti().subscribe(alberi => {
       this.listaProdotti = alberi;
     })

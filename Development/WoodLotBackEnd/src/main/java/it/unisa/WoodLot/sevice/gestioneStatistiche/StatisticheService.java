@@ -8,4 +8,8 @@ package it.unisa.WoodLot.sevice.gestioneStatistiche;
 public interface StatisticheService {
 
     Iterable<Double> statistichePaginaUtente(Long idUtente);
+
+    Iterable<Double> statistichePaginaResponsabileCatalogo();
+
+    Iterable<Double> statistichePaginaContadino(Long idContadino);
 }
