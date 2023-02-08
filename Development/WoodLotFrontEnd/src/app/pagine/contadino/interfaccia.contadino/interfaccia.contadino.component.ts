@@ -16,12 +16,12 @@ export class InterfacciaContadinoComponent implements OnInit {
 
   public contadino !: Contadino
   public listaNumeri !: string[]
-  public listNomi = ["Alberi piantati", "Frutti raccolti", "-Anidride Carbonica Assorbita"]
+  public listNomi = ["Alberi piantati", "Frutti raccolti", "kg di anidride carbonica assorbita"]
   public listAlberiContadino
 
   constructor(private contadinoService: ContadinoService, private statisticheService: StatisticheService) {
     this.contadino = contadinoService.getContadino()
-    console.log(this.contadino)
+    console.log(this.contadino.id)
     statisticheService.getStatischeContadino(this.contadino.id).subscribe((data: string[]) => {
       this.listaNumeri = data
     })
@@ -29,11 +29,12 @@ export class InterfacciaContadinoComponent implements OnInit {
   }
 
   public panes = [
-    {name: 'Piantato', content: 'One'},
-    {name: 'Bocciolo', content: 'Two'},
-    {name: 'Fiore', content: 'Three'},
-    {name: 'Frutto', content: 'Four'},
-    {name: 'Dormienza', content: 'Five'},
+    {name: 'Assegnati', content: 'One'},
+    {name: 'Piantato', content: 'Two'},
+    {name: 'Bocciolo', content: 'Three'},
+    {name: 'Fiore', content: 'Four'},
+    {name: 'Frutto', content: 'Five'},
+    {name: 'Dormienza', content: 'Sixe'},
   ];
 
   activePane = 0;

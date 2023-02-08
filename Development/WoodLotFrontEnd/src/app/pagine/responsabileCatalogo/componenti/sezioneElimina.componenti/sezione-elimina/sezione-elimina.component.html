@@ -1,8 +1,8 @@
 <div class="container">
   <c-row [gutter]="2" [xl]="4" [lg]="3" [md]="2" [xs]="2">
-    <c-col *ngFor="let item of listaAlberi; index as i">
-      <app-card-elimina [titolo]="item.nome" [sourceImage]="urlBase+item.nome+endBase"
-                        [prezzo]="item.prezzo"
+    <c-col *ngFor="let item of listaProdotti; index as i">
+      <app-card-elimina [titolo]="item.nome" [sourceImage]="urlBase+item.nome.toLowerCase().replace(' ','')+endBase"
+                        [prezzo]="item.prezzo" (productDeleted)="handleProductDeleted()"
                         class="text-center"
       ></app-card-elimina>
     </c-col>

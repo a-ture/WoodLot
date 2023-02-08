@@ -20,7 +20,8 @@
       <c-tab-pane *ngFor="let pane of panes; index as i;" class="p-3">
         <app-sezione-ordini *ngIf="activePane==0"></app-sezione-ordini>
         <app-sezione-pagamenti *ngIf="activePane==1"></app-sezione-pagamenti>
-        <app-sezione-contadini *ngIf="activePane==2"></app-sezione-contadini>
+        <app-elenco-contadini *ngIf="activePane==2"></app-elenco-contadini>
+        <app-sezione-assegnazione *ngIf="activePane==3"></app-sezione-assegnazione>
       </c-tab-pane>
     </c-tab-content>
   </div>

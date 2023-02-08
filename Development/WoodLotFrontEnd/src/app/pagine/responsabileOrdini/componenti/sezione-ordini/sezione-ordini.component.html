@@ -6,7 +6,7 @@
       <tr>
         <th scope="col">ID</th>
         <th scope="col">Prodotti</th>
-        <th scope="col">Data</th>
+        <th scope="col">Data Ordine</th>
         <th scope="col">Totale</th>
       </tr>
       </thead>
@@ -15,8 +15,8 @@
         <th scope="row">{{item.id}}</th>
         <td>
           <ul *ngFor="let prod of item!.prodottiOrdine" class="list-unstyled">
-            <li> Nome: {{prod.albero.nome}}, Prezzo: {{prod.prezzoUnitario.toFixed(2)}}€,
-              Stato: {{prod.stato}}, Data Assegnazione: {{prod.dataAssegnazione}}
+            <li> Nome: {{prod.nomeAlbero}}, Prezzo: {{prod.prezzoUnitario.toFixed(2)}}€,
+              Stato: {{prod.stato}}<ng-template *nfIf="prod.stato != 'NonAssegnato'"> , Data Assegnazione: {{prod.dataAssegnazione}}</ng-template>
             </li>
           </ul>
         </td>

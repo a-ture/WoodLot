@@ -27,7 +27,9 @@ export class HeaderComponent implements OnInit {
     this.attivo = autenticazioneService.eAttivo() //l' ho lasciato per vedere come si comporta se non è presente un utente
     const storedCarrello = sessionStorage.getItem('carrello');
     if (storedCarrello != null) {
-      this.elementiInCarrello = true
+      let carrello = JSON.parse(storedCarrello)
+      if (carrello.prodottiCarrello?.length > 0)
+        this.elementiInCarrello = true
     }
   }
 

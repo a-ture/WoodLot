@@ -20,6 +20,7 @@ export class ContadinoService {
     if (storedContadino) {
       contadino = JSON.parse(storedContadino);
     }
+    console.log(contadino)
     return contadino;
   }
 
@@ -36,17 +37,8 @@ export class ContadinoService {
   }
 
   // restuisce tutti i pagamenti di un contadini
-  public getPagamenti() {
-    return [
-      new Pagamento(1, 20, new Date(), "Albero 1"),
-      new Pagamento(2, 30, new Date(), "Albero 2"),
-      new Pagamento(3, 40, new Date(), "Albero 3"),
-      new Pagamento(4, 20, new Date(), "Albero 4"),
-      new Pagamento(5, 50, new Date(), "Albero 5"),
-      new Pagamento(6, 10, new Date(), "Albero 6"),
-      new Pagamento(7, 20, new Date(), "Albero 7"),
-      new Pagamento(8, 30, new Date(), "Albero 8"),
-      new Pagamento(9, 220, new Date(), "Albero 9"),
-    ]
+  public getPagamenti(idContadino: number): Observable<any> {
+    let url = 'http://localhost:8090/api/pagamento/elencoPagamenti/' + idContadino
+    return this.http.get(url)
   }
 }

@@ -1,5 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Albero} from "../../../../../entita/albero/albero";
+import {ProdottoService} from "../../../../../servizi/prodotto/prodotto.service";
 
 @Component({
   selector: 'app-sezione-elimina',
@@ -8,16 +9,25 @@ import {Albero} from "../../../../../entita/albero/albero";
 })
 export class SezioneEliminaComponent implements OnInit {
 
-  @Input()
-  public listaAlberi !: Albero[]
+
+  public listaProdotti !: Albero[]
 
   public urlBase = "assets/img/alberi/"
-  public endBase = "/catalogo.png"
+  public endBase = "/catalogo.webp"
 
-  constructor() {
+  constructor(private serviceProdotto: ProdottoService) {
+    this.serviceProdotto.getProdotti().subscribe(alberi => {
+      this.listaProdotti = alberi;
+    })
   }
 
   ngOnInit(): void {
+  }
+
+  public handleProductDeleted() {
+    this.serviceProdotto.getProdotti().subscribe(alberi => {
+      this.listaProdotti = alberi;
+    });
   }
 
 }

@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-sezione-contadini',
-  templateUrl: './sezione-contadini.component.html',
-  styleUrls: ['./sezione-contadini.component.scss']
+  selector: 'app-sezione-assegnazione',
+  templateUrl: './sezione-assegnazione.component.html',
+  styleUrls: ['./sezione-assegnazione.component.scss']
 })
-export class SezioneContadiniComponent implements OnInit {
+export class SezioneAssegnazioneComponent implements OnInit {
   selectedMenu: String = "Elenco contadini"
 
   goTo(paramText: String) {

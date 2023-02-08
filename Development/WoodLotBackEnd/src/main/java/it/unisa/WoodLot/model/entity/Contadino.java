@@ -27,4 +27,11 @@ public class Contadino extends UtenteRegistrato {
 
     @Column(name = "coordinate_geografiche", nullable = false)
     private String coordinateGeografiche;
+
+    @Column(name = "swift")
+    private String swift;
+
+    @Column(name = "titolare_conto")
+    private String titolareConto;
+
 }

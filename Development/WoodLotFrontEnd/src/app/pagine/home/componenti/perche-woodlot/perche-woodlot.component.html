@@ -13,12 +13,12 @@
       ></app-card-con-testo-con-icona-centrale>
     </c-row>
     <div class="row justify-content-center mt-3">
-      <button class="btn btn-primary col-3">Scopri di più!</button>
+      <button class="btn btn-primary col-3" routerLink="/chiSiamo">Scopri di più!</button>
     </div>
     <div class="row justify-content-center mt-5">
       <h3 class="fw-bold">Paesi</h3>
       <p class="fs-5">
-        I nostri alberi nascono in tutto il mondo! <a href="#!">Scopri!</a>
+        I nostri alberi nascono in tutto il mondo! <a [routerLink]="['/chiSiamo']" fragment="section-paesi">Scopri!</a>
       </p>
     </div>
   </div>

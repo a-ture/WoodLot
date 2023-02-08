@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Ordine} from "../../../../../entita/ordine/ordine";
 import {ProdottoOrdine} from "../../../../../entita/prodottoOrdine/prodotto-ordine";
 
 //TODO aggiungere logica per sblocco badge
@@ -47,13 +46,13 @@ export class SezioneBadgeComponent implements OnInit {
     } else if (nome == 'Giramondo') {
       let a = 0, p = 0, g = 0, i = 0
       this.lista.forEach((e) => {
-        if (e.albero.paeseOrigine?.nome == 'Italia')
+        if (e.contadino?.coordinateGeografiche == 'Italia')
           i++
-        else if (e.albero.paeseOrigine?.nome == 'Guatemala')
+        else if (e.contadino?.coordinateGeografiche == 'Guatemala')
           g++
-        else if (e.albero.paeseOrigine?.nome == 'Perù')
+        else if (e.contadino?.coordinateGeografiche == 'Perù')
           p++
-        else if (e.albero.paeseOrigine?.nome == 'Argentina')
+        else if (e.contadino?.coordinateGeografiche == 'Argentina')
           a++
       })
       if (a != 0 && p != 0 && g != 0 && i != 0)
@@ -61,7 +60,7 @@ export class SezioneBadgeComponent implements OnInit {
     } else if (nome == 'Multitasking') {
       let trovato = false
       this.lista.forEach((e) => {
-        if (e.albero.benefici && e.albero.usiLocali && (e.albero.benefici.length + e.albero.usiLocali.length) > 6) {
+        if (e.benefici && e.usiLocali && (e.benefici.length + e.usiLocali.length) > 6) {
           trovato = true
           return
         }

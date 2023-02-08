@@ -14,7 +14,6 @@ export class InterfacciaResponsabileCatalogoComponent implements OnInit {
   public responsabileCatalogo
   public listaNumeri !: string[]
   public listNomi = ["Alberi piantati", "Tonnellate di anidride carbonica assorbite", "Contadini coinvolti", "Paesi"]
-  public listaProdotti !: Albero[]
 
   public panes = [
     {name: 'Aggiungi', content: 'One'},
@@ -24,14 +23,12 @@ export class InterfacciaResponsabileCatalogoComponent implements OnInit {
   activePane = 0;
 
   constructor(private serviceResponsabileCatalogo: ResponsabileCatalogoService,
-              private serviceStatistiche: StatisticheService, private serviceProdotto: ProdottoService) {
+              private serviceStatistiche: StatisticheService) {
     this.responsabileCatalogo = serviceResponsabileCatalogo.getResponsabileCatalogo()
     serviceStatistiche.getStatistiche().subscribe((data: string[]) => {
       this.listaNumeri = data
     })
-    this.serviceProdotto.getProdotti().subscribe(alberi => {
-      this.listaProdotti = alberi;
-    })
+
   }
 
   onTabChange($event: number) {

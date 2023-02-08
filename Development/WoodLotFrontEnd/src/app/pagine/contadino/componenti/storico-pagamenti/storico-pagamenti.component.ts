@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ContadinoService} from "../../../../servizi/contadino/contadino.service";
+import {Pagamento} from "../../../../entita/pagamento/pagamento";
 
 @Component({
   selector: 'app-storico-pagamenti',
@@ -8,10 +9,15 @@ import {ContadinoService} from "../../../../servizi/contadino/contadino.service"
 })
 export class StoricoPagamentiComponent implements OnInit {
 
-  public listaPagamenti
+
+
+  public listaPagamenti !: Pagamento[]
 
   constructor(private servicePagamento: ContadinoService) {
-    this.listaPagamenti = servicePagamento.getPagamenti()
+
+    servicePagamento.getPagamenti(servicePagamento.getContadino().id).subscribe((data: Pagamento[]) => {
+      this.listaPagamenti = data
+    })
   }
 
   ngOnInit(): void {

@@ -18,7 +18,7 @@ import {Component, OnInit} from '@angular/core';
             storia del progetto che contribuirà a realizzare. Piantando i
             tuoi alberi sosterrai comunità di contadini locali e renderai più
             verde il nostro pianeta.</h4>
-          <a class="btn btn-outline-light btn-lg" href="#!" role="button">
+          <a class="btn btn-outline-light btn-lg" routerLink="/catalogo" role="button">
             Scegli</a>
         </div>
       </div>

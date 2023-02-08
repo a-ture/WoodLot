@@ -24,7 +24,8 @@ export class StatisticheService {
   }
 
   //restituisce le statistiche per la pagina del responsabile ordini
-  public getStatisticheResponsabileOrdini() {
-    return ["97", "98", "78", "54"]
+  public getStatisticheResponsabileOrdini(): Observable<any> {
+    let url = 'http://localhost:8090/api/statistiche/responsabileOrdini'
+    return this.http.get(url)
   }
 }

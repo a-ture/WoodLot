@@ -6,6 +6,7 @@ import lombok.Data;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Classe che modella un prodotto di un ordine
@@ -40,16 +41,30 @@ public class ProdottoOrdine implements Serializable {
     @Column(name = "data_assegnazione")
     private Date dataAssegnazione;
 
-    @ManyToOne(cascade = {CascadeType.ALL})
-    @JoinColumn(name = "albero")
-    private Albero albero;
+    @Column(name = "data_modifica")
+    private Date dataModifica;
 
     @ManyToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "contadino")
     private Contadino contadino;
 
+    @Column(name = "descrizione")
     private String descrizione;
 
-    private double frutta;
+    @Column(name = "frutta")
+    private Double frutta;
 
+    @Column(name = "CO2", nullable = false)
+    private int anidrideCarbonicaAssorbita;
+
+    @Column(name = "nome_albero")
+    private String nomeAlbero;
+
+    @ManyToMany
+    @JoinColumn(name = "uso_locale", referencedColumnName = "nome")
+    private List<UsoLocale> usiLocali;
+
+    @ManyToMany
+    @JoinColumn(name = "beneficio", referencedColumnName = "nome")
+    private List<Beneficio> benefici;
 }

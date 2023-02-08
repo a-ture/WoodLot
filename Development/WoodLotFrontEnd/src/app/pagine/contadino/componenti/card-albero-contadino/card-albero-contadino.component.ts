@@ -24,7 +24,7 @@ export class CardAlberoContadinoComponent implements OnInit {
   public stato !: String
 
   @Input()
-  public dataModifica !: Date
+  public dataModifica !: Date | undefined
 
   public visible = false;
 

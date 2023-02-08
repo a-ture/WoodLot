@@ -27,6 +27,7 @@ import {
   GuardResponsabileCatalogoService
 } from "./servizi/autenticazione/guardResponsabileCatalogo/guard-responsabile-catalogo.service";
 import {GuardContadinoService} from "./servizi/autenticazione/guardContadino/guard-contadino.service";
+import {PaesiComponent} from "./pagine/chiSiamo/componenti/paesi/paesi.component";
 
 
 const routes: Routes = [
@@ -41,7 +42,7 @@ const routes: Routes = [
   {path: 'profiloResponsabileOrdini', component: InterfacciaResponsabileOrdiniComponent, canActivate: [GuardResponsabileOrdiniService]},
   {path: 'profiloResponsabileCatalogo', component: InterfacciaResponsabileCatalogoComponent, canActivate: [GuardResponsabileCatalogoService]},
   {path: 'profiloContadino', component: InterfacciaContadinoComponent, canActivate: [GuardContadinoService]},
-  {path: 'accessoNegato', component: AccessoNegatoComponent}
+  {path: 'accessoNegato', component: AccessoNegatoComponent},
 ];
 
 @NgModule({

@@ -27,19 +27,6 @@ INSERT INTO paese_origine (nome, descrizione) VALUES ("Guatemala","Il nostro lav
 INSERT INTO paese_origine (nome, descrizione) VALUES ("Argentina","Il territorio dell'Argentina corre per 3.700 Km da nord a sud e per 1.400 da est a ovest. Al centro del paese sta la grande distesa pianeggiante della Pampa, intorno alla quale si trovano: la regione subtropicale del Gran Chaco a nord, il plateau della Patagonia a sud, mentre a ovest s'innalzano le maestose vette delle Ande. A tanta varietà d'ambienti corrisponde altrettanta varietà di fauna, che va dal caimano (o yacaré) al celebre condor delle Ande. L'avventura in Argentina si è svolta nelle foreste del Gran Chaco. Le risorse naturali di questa regione sono state seriamente danneggiate dalla deforestazione e abbiamo contribuito al loro ripristino, piantando alberi utili per la popolazione locale, come ad esempio l'Algarrobo.");
 INSERT INTO paese_origine (nome, descrizione) VALUES ("Perù","Il Perù è un grande paese, con un enorme patrimonio naturale ed una popolazione in crescita. Crediamo che uno sviluppo sostenibile del paese non possa che passare attraverso una diffusa sensibilità verso l'ambiente ed un giusto equilibrio con l'utilizzo delle risorse che questo può offrire alle popolazioni locali.Per questo abbiamo deciso di puntare con decisione sul Perù per lo sviluppo dei nostri progetti, mirati a sviluppare tanto il lavoro di preservazione di ambienti naturali, quanto l'integrazione degli alberi nei sistemi agricoli locali.");
 
-/*Utenti*/
-INSERT INTO utente (id,nome, cognome, data_di_nascita, email, password) VALUES(1,"Alessia","Ture", '2001-02-23', "alessiature@gmail.com", "briciola");
-INSERT INTO utente (id,nome, cognome, data_di_nascita, email, password) VALUES(2,"Raffaella","Spagnuolo", '2001-02-23', "raffaellaspaguonolo@gmail.com", "frida");
-
-/*Contadini*/
-INSERT INTO contadino (id, nome, cognome, data_di_nascita, email, password, coordinate_geografiche) VALUES(1, "Pedro", "Garica", "2001-02-23", "pedrogarcia@gmail.com", "alessiature01", "Guatemala");
-
-/*Responsabile Catalogo*/
-INSERT INTO responsabile_catalogo(id,email, password,nome, cognome) VALUES (1,"catalogo@gmail.com","catalogo","Mario","Rossi");
-
-/*Responsabile Ordini*/
-INSERT INTO responsabile_ordini(id,email, password,nome, cognome) VALUES (1,"ordini@gmail.com","ordini","Stefano","Bianchi");
-
 /*Alberi*/
 /*Albero dinamite*/
 INSERT INTO albero (nome, specie_scientifica, descrizione, descrizione_breve, paese_origine, prezzo, co2,salvaguardia, categoria) VALUES ("Albero Dinamite", "Hura crepitans", "Il nome scientifico di questa specie è Hura Crepitans. Crepitans è un termine latino che si riferisce tanto a qualcosa che si rompe, che al rumore che questa rottura genera. Il motivo per cui questa parola è riferita al nostro albero è per via dei suoi frutti, che quando sono maturi esplodono, letteralmente, facendo schizzare i semi a gran velocità fino a 15-20 metri di distanza (alcuni dicono fino a 50 metri, ma a noi pare troppo). Ecco perché questo albero è detto anche Albero Dinamite.","A giusta distanza! Ad un albero che spara i propri semi come proiettili, è opportuno stare a distanza. Ma conviene ancora di più perché l'Albero Dinamite ha il tronco coperto di spine e tutte le sue parti contengono una sostanza altamente tossica, capace di causare la cecità se viene a contatto con gli occhi. Ecco che stare a giusta distanza diventa un consiglio da seguire con attenzione!", "Argentina", 67.90, 45, 4,"Rischio estinzione");
@@ -211,3 +198,135 @@ INSERT INTO albero (nome, specie_scientifica, descrizione, descrizione_breve, pa
 INSERT INTO albero_usi_locali (albero_nome, usi_locali_nome) VALUES ("Vite", "Cosmesi");
 INSERT INTO albero_usi_locali (albero_nome, usi_locali_nome) VALUES ("Vite", "Vendita");
 INSERT INTO albero_benefici (albero_nome, benefici_nome) VALUES ("Vite", "Sviluppo economico");
+
+/*Utenti*/
+INSERT INTO utente (id,nome, cognome, data_di_nascita, email, password) VALUES(1,"Alessia","Ture", '2001-02-23', "alessiature@gmail.com", "briciola");
+INSERT INTO utente (id,nome, cognome, data_di_nascita, email, password) VALUES(2,"Raffaella","Spagnuolo", '2000-04-23', "raffaellaspaguonolo@gmail.com", "frida");
+INSERT INTO utente (id,nome, cognome, data_di_nascita, email, password) VALUES(3,"Salvatore","Di Sanza", '1998-10-23', "salvatoredisanza@gmail.com", "salvatore");
+INSERT INTO utente (id,nome, cognome, data_di_nascita, email, password) VALUES(4,"Antonio","Avino", '2000-07-04', "antonioavino@gmail.com", "brici");
+INSERT INTO utente (id,nome, cognome, data_di_nascita, email, password) VALUES(5,"Elpidio","Mazza", '1998-02-23', "elpidiomazza@gmail.com", "raffy");
+INSERT INTO utente (id,nome, cognome, data_di_nascita, email, password) VALUES(6,"Mario","Rossi", '1963-04-23', "mariorossi@gmail.com", "password");
+
+/*Contadini*/
+INSERT INTO contadino (id, nome, cognome, data_di_nascita, email, password, coordinate_geografiche, swift, titolare_conto) VALUES(1, "Pedro", "Garica", "1984-05-03", "pedrogarcia@gmail.com", "alessiature01", "Guatemala", "UNCRITMM789", "Pedro Garcia");
+INSERT INTO contadino (id, nome, cognome, data_di_nascita, email, password, coordinate_geografiche, swift, titolare_conto) VALUES(2, "Carlos", "Lopez", "1975-03-02", "carloslopez@gmail.com", "alessiature01", "Guatemala", "UNCRITMM749", "Carolos Lopez");
+INSERT INTO contadino (id, nome, cognome, data_di_nascita, email, password, coordinate_geografiche, swift, titolare_conto) VALUES(3, "Maria", "Santos", "1998-07-23", "mariasantos@gmail.com", "alessiature01", "Guatemala", "UNCRITMM779", "Maria Santos");
+INSERT INTO contadino (id, nome, cognome, data_di_nascita, email, password, coordinate_geografiche, swift, titolare_conto) VALUES(4, "Manuel", "Perez", "1999-10-23", "manuelperez@gmail.com", "alessiature01", "Guatemala", "UNCRITMZ689", "Manuel Perez");
+INSERT INTO contadino (id, nome, cognome, data_di_nascita, email, password, coordinate_geografiche, swift, titolare_conto) VALUES(5, "Carmen", "Castillo ", "1964-02-23", "carmencastillo@gmail.com", "alessiature01", "Guatemala", "UNCRITTT789", "Carmen Castillo");
+INSERT INTO contadino (id, nome, cognome, data_di_nascita, email, password, coordinate_geografiche, swift, titolare_conto) VALUES(6, "Gloria", "Diaz", "1954-02-23", "gloriadiaz@gmail.com", "alessiature01", "Guatemala", "UNCRITMM789", "Gloria Diaz");
+INSERT INTO contadino (id, nome, cognome, data_di_nascita, email, password, coordinate_geografiche, swift, titolare_conto) VALUES(7, "Alejandro", "Escobar", "2002-02-23", "alejandroescobar@gmail.com", "alessiature01", "Guatemala", "UNCRITRZ789", "Alejandro Escobar");
+INSERT INTO contadino (id, nome, cognome, data_di_nascita, email, password, coordinate_geografiche, swift, titolare_conto) VALUES(8, "Felipe", "Rivera", "1999-04-03", "feliperivera@gmail.com", "alessiature01", "Guatemala", "UNCRITMM666", "Felipe Rivera");
+INSERT INTO contadino (id, nome, cognome, data_di_nascita, email, password, coordinate_geografiche, swift, titolare_conto) VALUES(9, "Diego", "Santos", "2001-06-02", "diegosantos@gmail.com", "alessiature01", "Guatemala", "UNCRITMM889", "Diego Santos");
+INSERT INTO contadino (id, nome, cognome, data_di_nascita, email, password, coordinate_geografiche, swift, titolare_conto) VALUES(10, "Catarina", "Hernandez", "1985-07-23", "catarinahernandez@gmail.com", "alessiature01", "Guatemala", "UNCRIMMM999", "Catarina Hernandez");
+
+INSERT INTO contadino (id, nome, cognome, data_di_nascita, email, password, coordinate_geografiche, swift, titolare_conto) VALUES(11, "Jose", "Gonzalez", "1984-05-03", "josegonzalez@gmail.com", "alessiature01", "Argentina", "UNCRATMM789", "Jose Gonzalez");
+INSERT INTO contadino (id, nome, cognome, data_di_nascita, email, password, coordinate_geografiche, swift, titolare_conto) VALUES(12, "Jorge", "Martinez", "1975-03-02", "jorgemartinez@gmail.com", "alessiature01", "Argentina", "UNCRADMM749", "Jorge Martinez");
+INSERT INTO contadino (id, nome, cognome, data_di_nascita, email, password, coordinate_geografiche, swift, titolare_conto) VALUES(13, "Ricardo ", "Perez", "1998-07-23", "ricardoperez@gmail.com", "alessiature01", "Argentina", "UNCRITEM779", "Ricardo Perez");
+INSERT INTO contadino (id, nome, cognome, data_di_nascita, email, password, coordinate_geografiche, swift, titolare_conto) VALUES(14, "Raul", "Fernandez", "1999-10-23", "raulfernandez@gmail.com", "alessiature01", "Argentina", "UNERITMZ689", "Raul Fernandez");
+INSERT INTO contadino (id, nome, cognome, data_di_nascita, email, password, coordinate_geografiche, swift, titolare_conto) VALUES(15, "Hugo", "Alvarez ", "1964-02-23", "hugoalvarez@gmail.com", "alessiature01", "Argentina", "UNCEITTT789", "Hugo Alvarez");
+INSERT INTO contadino (id, nome, cognome, data_di_nascita, email, password, coordinate_geografiche, swift, titolare_conto) VALUES(16, "Sergio", "Diaz", "1954-02-23", "sergiodiaz@gmail.com", "alessiature01", "Argentina", "UNCRITEM789", "Sergio Diaz");
+INSERT INTO contadino (id, nome, cognome, data_di_nascita, email, password, coordinate_geografiche, swift, titolare_conto) VALUES(17, "Alicia", "Alonso", "2002-02-23", "aliciaalonso@gmail.com", "alessiature01", "Argentina", "UNERITRZ789", "Alicia Alonso");
+INSERT INTO contadino (id, nome, cognome, data_di_nascita, email, password, coordinate_geografiche, swift, titolare_conto) VALUES(18, "Ramona ", "Torres", "1999-04-03", "romonatorres@gmail.com", "alessiature01", "Argentina", "UNERITMM666", "Ramona Torres");
+INSERT INTO contadino (id, nome, cognome, data_di_nascita, email, password, coordinate_geografiche, swift, titolare_conto) VALUES(19, "Enrique ", "Santos", "2001-06-02", "enriquesantos@gmail.com", "alessiature01", "Argentina", "UTCRITMM889", "Enrique Santos");
+INSERT INTO contadino (id, nome, cognome, data_di_nascita, email, password, coordinate_geografiche, swift, titolare_conto) VALUES(20, "Osvaldo", "Ramirez", "1985-07-23", "osvaldoramirez@gmail.com", "alessiature01", "Argentina", "URCRIMMM999", "Ovalodo Ramirez");
+
+INSERT INTO contadino (id, nome, cognome, data_di_nascita, email, password, coordinate_geografiche, swift, titolare_conto) VALUES(21, "Leonardo", "Monaco", "1984-05-03", "leonardomonaco@gmail.com", "alessiature01", "Italia", "UNCRITMM789", "Leonardo Monaco");
+INSERT INTO contadino (id, nome, cognome, data_di_nascita, email, password, coordinate_geografiche, swift, titolare_conto) VALUES(22, "Francesco", "De Felice", "1975-03-02", "francescoannunziata@gmail.com", "alessiature01", "Italia", "UNCRITMM749", "Franscesco Annunziata");
+INSERT INTO contadino (id, nome, cognome, data_di_nascita, email, password, coordinate_geografiche, swift, titolare_conto) VALUES(23, "Lorenzo", "Esposito", "1998-07-23", "lorenzoesposito@gmail.com", "alessiature01", "Italia", "UNCRITMM779", "Lorenzo Esposito");
+INSERT INTO contadino (id, nome, cognome, data_di_nascita, email, password, coordinate_geografiche, swift, titolare_conto) VALUES(24, "Samuele", "Verdone", "1999-10-23", "samueleverdone@gmail.com", "alessiature01", "Italia", "UNCRITMZ689", "Samuele Verdone");
+INSERT INTO contadino (id, nome, cognome, data_di_nascita, email, password, coordinate_geografiche, swift, titolare_conto) VALUES(25, "Isabella", "Rossi", "1964-02-23", "isabellarossi@gmail.com", "alessiature01", "Italia", "UNCRITTT789", "Isabella Rossi");
+INSERT INTO contadino (id, nome, cognome, data_di_nascita, email, password, coordinate_geografiche, swift, titolare_conto) VALUES(26, "Sofia", "Matrone", "1954-02-23", "sofiamatrone@gmail.com", "alessiature01", "Italia", "UNCRITMM789", "Sofia Matrone");
+INSERT INTO contadino (id, nome, cognome, data_di_nascita, email, password, coordinate_geografiche, swift, titolare_conto) VALUES(27, "Assunta", "De Vivo", "2002-02-23", "assuntadevivvo@gmail.com", "alessiature01", "Italia", "UNCRITRZ789", "Assunta De Vivo");
+INSERT INTO contadino (id, nome, cognome, data_di_nascita, email, password, coordinate_geografiche, swift, titolare_conto) VALUES(28, "Maria", "Bianchi", "1999-04-03", "mariabianchi@gmail.com", "alessiature01", "Italia", "UNCRITMM666", "Maria Bianchi");
+INSERT INTO contadino (id, nome, cognome, data_di_nascita, email, password, coordinate_geografiche, swift, titolare_conto) VALUES(29, "Annalisa", "Alfano", "2001-06-02", "annalisaalfano@gmail.com", "alessiature01", "Italia", "UNCRITMM889", "Annalisa Alfano");
+INSERT INTO contadino (id, nome, cognome, data_di_nascita, email, password, coordinate_geografiche, swift, titolare_conto) VALUES(30, "Anna", "Casa", "1985-07-23", "annacasa@gmail.com", "alessiature01", "Italia", "UNCRIMMM999", "Anna Casa");
+
+INSERT INTO contadino (id, nome, cognome, data_di_nascita, email, password, coordinate_geografiche, swift, titolare_conto) VALUES(31, "Guillermo ", "Sanchez ", "1984-05-03", "gugllermosanchez@gmail.com", "alessiature01", "Perù", "UNCRITMM789", "Guillermo Sanchez");
+INSERT INTO contadino (id, nome, cognome, data_di_nascita, email, password, coordinate_geografiche, swift, titolare_conto) VALUES(32, "Maximo", "Lopez", "1975-03-02", "carloslopez@gmail.com", "alessiature01", "Perù", "UNCRITMM749", "Maximo Lopez");
+INSERT INTO contadino (id, nome, cognome, data_di_nascita, email, password, coordinate_geografiche, swift, titolare_conto) VALUES(33, "Marina", "Gutierrez ", "1998-07-23", "mariasantos@gmail.com", "alessiature01", "Perù", "UNCRITMM779", "Marina Gutierrez");
+INSERT INTO contadino (id, nome, cognome, data_di_nascita, email, password, coordinate_geografiche, swift, titolare_conto) VALUES(34, "Blanca", "Perez", "1999-10-23", "manuelperez@gmail.com", "alessiature01", "Perù", "UNCRITMZ689", "Blanca Perez");
+INSERT INTO contadino (id, nome, cognome, data_di_nascita, email, password, coordinate_geografiche, swift, titolare_conto) VALUES(35, "Karina", "Cruz ", "1964-02-23", "carmencastillo@gmail.com", "alessiature01", "Perù", "UNCRITTT789", "Karina Cruz");
+INSERT INTO contadino (id, nome, cognome, data_di_nascita, email, password, coordinate_geografiche, swift, titolare_conto) VALUES(36, "Judith", "Mendoza", "1954-02-23", "gloriadiaz@gmail.com", "alessiature01", "Argentina", "UNCRITMM789", "Judith Mendoza");
+INSERT INTO contadino (id, nome, cognome, data_di_nascita, email, password, coordinate_geografiche, swift, titolare_conto) VALUES(37, "Reyna", "Delgado ", "2002-02-23", "reynadelga@gmail.com", "alessiature01", "Perù", "UNCRITRZ789", "Reyna Delgado");
+INSERT INTO contadino (id, nome, cognome, data_di_nascita, email, password, coordinate_geografiche, swift, titolare_conto) VALUES(38, "Alexander", "Alvarez", "1999-04-03", "feliperivera@gmail.com", "alessiature01", "Perù", "UNCRITMM666", "Alexander Alvarez");
+INSERT INTO contadino (id, nome, cognome, data_di_nascita, email, password, coordinate_geografiche, swift, titolare_conto) VALUES(39, "Diego", "Santos", "2001-06-02", "diegosantos@gmail.com", "alessiature01", "Perù", "UNCRITMM889", "Diego Santos");
+INSERT INTO contadino (id, nome, cognome, data_di_nascita, email, password, coordinate_geografiche, swift, titolare_conto) VALUES(40, "Ines", "Ortega", "1985-07-23", "catarinahernandez@gmail.com", "alessiature01", "Perù", "UNCRIMMM999", "Ines Ortega");
+
+/*Responsabile Catalogo*/
+INSERT INTO responsabile_catalogo(id,email, password,nome, cognome) VALUES (1,"catalogo@gmail.com","catalogo","Mario","Rossi");
+
+/*Responsabile Ordini*/
+INSERT INTO responsabile_ordini(id,email, password,nome, cognome) VALUES (1,"ordini@gmail.com","ordini","Stefano","Bianchi");
+
+/*Ordini*/
+/*Ordine 1*/
+INSERT INTO ordine (id,totale,data_ordine,utente_id) VALUES  (1, 94.90, "2022-09-21", 1);
+
+INSERT INTO prodotto_ordine(id,nome_albero,co2,stato,prezzo_unitario) VALUES (1,"Arancio",45,1,35);
+INSERT INTO prodotto_ordine_benefici(prodotto_ordine_id, benefici_nome) VALUES (1,"Sicurezza alimentare");
+INSERT INTO prodotto_ordine_benefici(prodotto_ordine_id, benefici_nome) VALUES (1,"Sviluppo economico");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(1,"Suolo");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(1,"Recinzione");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(1,"Suolo");
+
+INSERT INTO prodotto_ordine(id,nome_albero,co2,stato,prezzo_unitario)VALUES (2,"Banano",34,1,24.90);
+INSERT INTO prodotto_ordine_benefici(prodotto_ordine_id, benefici_nome) VALUES (2,"Sicurezza alimentare");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(2,"Allevamento");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(2,"Antivento");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(2,"Insetticida");
+
+INSERT INTO prodotto_ordine(id,nome_albero,co2,stato,prezzo_unitario)VALUES (3,"Anacardo",34,1,35.90);
+INSERT INTO prodotto_ordine_benefici(prodotto_ordine_id, benefici_nome) VALUES (3,"Sicurezza alimentare");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(3,"Insetticida");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(3,"Antivento");
+
+INSERT INTO ordine_prodotti_ordine(ordine_id, prodotti_ordine_id) VALUES (1,1);
+INSERT INTO ordine_prodotti_ordine(ordine_id, prodotti_ordine_id) VALUES (1,2);
+INSERT INTO ordine_prodotti_ordine(ordine_id, prodotti_ordine_id) VALUES (1,3);
+
+/*Ordine 2*/
+INSERT INTO ordine (id,totale,data_ordine,utente_id) VALUES  (2, 94.90, "2022-10-21", 2);
+INSERT INTO prodotto_ordine(id,nome_albero,co2,stato,prezzo_unitario)VALUES (4,"Vite",24,1,35);
+INSERT INTO prodotto_ordine_benefici(prodotto_ordine_id, benefici_nome) VALUES (4,"Sviluppo economico");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(4,"Cosmesi");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(4,"Vendita");
+
+INSERT INTO prodotto_ordine(id,nome_albero,co2,stato,prezzo_unitario)VALUES (5,"Quercia",34,1,24.90);
+INSERT INTO prodotto_ordine_benefici(prodotto_ordine_id, benefici_nome) VALUES (5,"Sviluppo economico");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(5,"Suolo");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(5,"Medicina");
+
+INSERT INTO prodotto_ordine(id,nome_albero,co2,stato,prezzo_unitario)VALUES (6,"Pomelo",34,1,35.90);
+INSERT INTO prodotto_ordine_benefici(prodotto_ordine_id, benefici_nome) VALUES (6,"Sicurezza alimentare");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(6,"Suolo");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(6,"Cosmesi");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(6,"Vendita");
+
+INSERT INTO ordine_prodotti_ordine(ordine_id, prodotti_ordine_id) VALUES (2,5);
+INSERT INTO ordine_prodotti_ordine(ordine_id, prodotti_ordine_id) VALUES (2,4);
+INSERT INTO ordine_prodotti_ordine(ordine_id, prodotti_ordine_id) VALUES (2,6);
+
+/*Ordine 3*/
+INSERT INTO ordine (id,totale,data_ordine,utente_id) VALUES  (3, 94.90, "2022-10-21", 3);
+
+INSERT INTO prodotto_ordine(id,nome_albero,co2,stato,prezzo_unitario)VALUES (7,"Avocado",34,1,35);
+INSERT INTO prodotto_ordine_benefici(prodotto_ordine_id, benefici_nome) VALUES (7,"Sicurezza alimentare");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(7,"Suolo");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(7,"Cosmesi");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(7,"Vendita");
+
+INSERT INTO prodotto_ordine(id,nome_albero,co2,stato,prezzo_unitario)VALUES (8,"Castagno",90,1,24.90);
+INSERT INTO prodotto_ordine_benefici(prodotto_ordine_id, benefici_nome) VALUES (8,"Sicurezza alimentare");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(8,"Suolo");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(8,"Cosmesi");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(8,"Vendita");
+
+INSERT INTO prodotto_ordine(id,nome_albero,co2,stato,prezzo_unitario)VALUES (9,"Limone",98,1,35.90);
+INSERT INTO prodotto_ordine_benefici(prodotto_ordine_id, benefici_nome) VALUES (9,"Sicurezza alimentare");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(9,"Suolo");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(9,"Cosmesi");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(9,"Vendita");
+
+INSERT INTO ordine_prodotti_ordine(ordine_id, prodotti_ordine_id) VALUES (3,7);
+INSERT INTO ordine_prodotti_ordine(ordine_id, prodotti_ordine_id) VALUES (3,8);
+INSERT INTO ordine_prodotti_ordine(ordine_id, prodotti_ordine_id) VALUES (3,9);

@@ -13,7 +13,7 @@ import {ProdottoOrdine} from "../../../entita/prodottoOrdine/prodotto-ordine";
 export class InterfacciaUtenteComponent implements OnInit {
 
   public utente
-  public listaNomi = ["Alberi", "- Anidride Carbonica"]
+  public listaNomi = ["Alberi", "Kg di anidride carbonica assorbita"]
   public listaNumeri !: string[]
 
 

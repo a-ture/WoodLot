@@ -12,4 +12,6 @@ public interface StatisticheService {
     Iterable<Double> statistichePaginaResponsabileCatalogo();
 
     Iterable<Double> statistichePaginaContadino(Long idContadino);
+
+    Iterable<Double> statistichePaginaResponsabileOrdini();
 }

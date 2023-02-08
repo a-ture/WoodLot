@@ -1,9 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Albero} from "../../entita/albero/albero";
 import {Observable} from "rxjs";
-import {HttpClient, HttpParams} from "@angular/common/http";
+import {HttpClient, HttpParams, HttpRequest} from "@angular/common/http";
 
-//TODO collegamento con il back-end
 @Injectable({
   providedIn: 'root'
 })
@@ -56,5 +55,28 @@ export class ProdottoService {
         break
     }
     return this.http.get<Albero[]>(url, {params});
+  }
+
+  //elimina un prodotto
+  public elimina(idProdotto: String) {
+    let url = 'http://localhost:8090/api/catalogo/eliminaProdotto/' + idProdotto
+    return this.http.get(url)
+  }
+
+  //salva le foto del prodotto
+  public salvaFoto(idNome: string, foto: File) {
+    const formData = new FormData();
+    formData.append(idNome, foto);
+    const req = new HttpRequest('POST', 'http://localhost:8090/api/catalogo/upload', formData, {
+      reportProgress: true
+    });
+
+    return this.http.request(req);
+  }
+
+  //salva il prodotto
+  public salvaAlbero(albero: Albero): Observable<any> {
+    let url = 'http://localhost:8090/api/catalogo/inserimentoProdotto/'
+    return this.http.post(url, albero)
   }
 }

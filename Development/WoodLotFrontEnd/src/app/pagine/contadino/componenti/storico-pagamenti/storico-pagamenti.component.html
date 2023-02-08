@@ -1,8 +1,8 @@
 <div class="text-center mx-5 my-4" style="border-radius: 20px; background-color:#C4D89F">
   <div class="row">
-    <h3 class="my-4">Storico Ordini</h3>
+    <h3 class="my-4">Storico Contributo Economico</h3>
     <div class="row px-5">
-      <table class="table table-borderless">
+      <table *ngIf="listaPagamenti?.length != 0 else listaVuota" class="table table-borderless">
         <thead>
         <tr>
           <th scope="col">Codice</th>
@@ -13,7 +13,7 @@
         </thead>
 
         <tbody>
-        <tr *ngFor="let item of listaPagamenti.slice(0,3)">
+        <tr *ngFor="let item of listaPagamenti?.slice(0,3)">
           <th scope="row">{{item.id}}</th>
           <td>{{item.importo.toFixed(2)}}€</td>
           <td>{{item.motivazione}}</td>
@@ -22,7 +22,8 @@
         </tbody>
       </table>
 
-      <a [cModalToggle]="staticBackdropModal.id" class="mb-3" cButton style="background: #93C572; border-color:#93C572">Scopri
+      <a *ngIf="listaPagamenti?.length !=0 " [cModalToggle]="staticBackdropModal.id" class="mb-3" cButton
+         style="background: #93C572; border-color:#93C572">Scopri
         tutti!</a>
     </div>
   </div>
@@ -54,3 +55,4 @@
     </button>
   </c-modal-footer>
 </c-modal>
+<ng-template #listaVuota><h6 class="text-center">Non hai ancora ricevuto nessun pagamento</h6></ng-template>

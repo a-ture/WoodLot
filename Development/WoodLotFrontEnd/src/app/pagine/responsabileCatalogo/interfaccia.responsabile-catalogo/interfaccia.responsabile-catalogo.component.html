@@ -20,7 +20,7 @@
                    [activeTabPaneIdx]="activePane">
       <c-tab-pane *ngFor="let pane of panes; index as i;" class="p-3">
         <app-sezione-aggiungi *ngIf="activePane==0"></app-sezione-aggiungi>
-        <app-sezione-elimina *ngIf="activePane==1" [listaAlberi]="listaProdotti"></app-sezione-elimina>
+        <app-sezione-elimina *ngIf="activePane==1"></app-sezione-elimina>
       </c-tab-pane>
     </c-tab-content>
   </div>

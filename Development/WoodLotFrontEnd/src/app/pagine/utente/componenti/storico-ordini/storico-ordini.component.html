@@ -47,11 +47,11 @@
         <hr>
         <h3>Dettaglio ordine n.{{item.id}}</h3>
         <p>Ordine effettuato il:{{item.dataOrdine}}</p>
-        <p>Hai speso: {{item.totale.toFixed(2)}}</p>
+        <p>Hai speso: {{item.totale.toFixed(2)}}€</p>
         <p>Alberi che hai acquistato in questo ordine: </p>
         <ul class="mx-5">
           <li *ngFor="let i of item.prodottiOrdine">
-            <em>{{i.albero.nome}}</em> (Prezzo: {{i.prezzoUnitario.toFixed(2)}}€)
+            <em>{{i.nomeAlbero}}</em> (Prezzo: {{i.prezzoUnitario.toFixed(2)}}€)
           </li>
         </ul>
 

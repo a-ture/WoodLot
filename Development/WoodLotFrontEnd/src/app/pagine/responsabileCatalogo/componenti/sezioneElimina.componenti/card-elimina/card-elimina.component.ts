@@ -1,4 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {ProdottoService} from "../../../../../servizi/prodotto/prodotto.service";
 
 @Component({
   selector: 'app-card-elimina',
@@ -29,7 +30,19 @@ export class CardEliminaComponent implements OnInit {
     this.visible = event;
   }
 
-  constructor() {
+  @Output()
+  productDeleted = new EventEmitter<any>();
+
+  handleConfirmClick(idProdotto: String) {
+    this.serviceProdotto.elimina(idProdotto)
+      .subscribe(() => {
+        this.productDeleted.emit();
+      });
+    this.toggleModal();
+  }
+
+
+  constructor(private serviceProdotto: ProdottoService) {
   }
 
   ngOnInit(): void {

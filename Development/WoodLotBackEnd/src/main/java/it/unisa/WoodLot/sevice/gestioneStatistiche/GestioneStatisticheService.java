@@ -33,7 +33,7 @@ public class GestioneStatisticheService implements StatisticheService {
     private ProdottoOrdineRepository prodottoOrdineRepository;
 
     /**
-     * La lista delle statistiche (alberi acquistati utente, anidride carbonica assorbita utente) per la pagina del profilo utente
+     * Calcala la lista delle statistiche (alberi acquistati utente, anidride carbonica assorbita utente) per la pagina del profilo utente
      */
     @Override
     public Iterable<Double> statistichePaginaUtente(Long idUtente) {
@@ -45,7 +45,7 @@ public class GestioneStatisticheService implements StatisticheService {
         for (Ordine o : list) {
             alberiPiantati += o.getProdottiOrdine().size();
             for (ProdottoOrdine p : o.getProdottiOrdine())
-                anidride += p.getAlbero().getAnidrideCarbonicaAssorbita();
+                anidride += p.getAnidrideCarbonicaAssorbita();
         }
         statistiche.add(alberiPiantati);
         statistiche.add(anidride);
@@ -54,7 +54,7 @@ public class GestioneStatisticheService implements StatisticheService {
     }
 
     /**
-     * La lista delle statistiche (alberi acquistati, anidride carbonica assorbita) per la pagina diventa un contadino
+     * Calcala la lista delle statistiche (alberi acquistati, anidride carbonica assorbita) per la pagina diventa un contadino
      * e per il profilo del responsabile catalogo
      */
     @Override
@@ -66,23 +66,25 @@ public class GestioneStatisticheService implements StatisticheService {
         for (Ordine o : list) {
             alberi += o.getProdottiOrdine().size();
             for (ProdottoOrdine p : o.getProdottiOrdine())
-                anidride += p.getAlbero().getAnidrideCarbonicaAssorbita();
+                anidride += p.getAnidrideCarbonicaAssorbita();
         }
 
         statistiche.add(alberi);
         statistiche.add(anidride);
 
+        contadini = contadinoRepository.findAll().size();
+        statistiche.add(contadini);
+
         paesi = paeseOrigineRepository.findAll().size();
         statistiche.add(paesi);
 
-        contadini = contadinoRepository.findAll().size();
-        statistiche.add(contadini);
+
 
         return statistiche;
     }
 
     /**
-     * La lista delle statistiche di un contadino (alberi curati, frutti raccolti, anidride carbonica)
+     * Calcola la lista delle statistiche di un contadino (alberi curati, frutti raccolti, anidride carbonica)
      *
      * @param idContadino l'id del contadino di cui si vogliono visualizzare le statistiche
      * @return
@@ -97,13 +99,37 @@ public class GestioneStatisticheService implements StatisticheService {
 
         for (ProdottoOrdine p : prodotti) {
             frutta += p.getFrutta();
-            anidride += p.getAlbero().getAnidrideCarbonicaAssorbita();
+            anidride += p.getAnidrideCarbonicaAssorbita();
         }
         alberi = prodotti.size();
 
         statistiche.add(anidride);
         statistiche.add(frutta);
         statistiche.add(alberi);
+        return statistiche;
+    }
+
+    /**
+     * Calcola la lista delle statistiche per la pagina del responsabile degli ordini
+     * (alberi piantati, ordini effettuati, contadini coinvolti, paesi)
+     */
+    @Override
+    public Iterable<Double> statistichePaginaResponsabileOrdini() {
+        ArrayList<Double> statistiche = new ArrayList<>(3);
+        double ordini, contadini, paesi, alberi = 0;
+
+        ordini = ordineRepository.findAll().size();
+        paesi = paeseOrigineRepository.findAll().size();
+        contadini = contadinoRepository.findAll().size();
+
+        for (Ordine p : ordineRepository.findAll())
+            alberi += p.getProdottiOrdine().size();
+
+        statistiche.add(alberi);
+        statistiche.add(contadini);
+        statistiche.add(ordini);
+        statistiche.add(paesi);
+
         return statistiche;
     }
 }

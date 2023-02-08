@@ -46,4 +46,9 @@ public class ControllerStatistiche {
     public ResponseEntity<Object> visualizzaStatisticheContadino(@PathVariable Long idContadino) {
         return new ResponseEntity<>(statisticheService.statistichePaginaContadino(idContadino), HttpStatus.ACCEPTED);
     }
+
+    @GetMapping("/responsabileOrdini")
+    public ResponseEntity<Object> visualizzaStatisticheOrdini() {
+        return new ResponseEntity<>(statisticheService.statistichePaginaResponsabileOrdini(), HttpStatus.ACCEPTED);
+    }
 }

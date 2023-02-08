@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ProdottoCarrello} from "../../../../entita/prodottoCarrello/prodotto-carrello";
 import {CarrelloService} from "../../../../servizi/carrello/carrello.service";
 
@@ -19,6 +19,9 @@ export class ProdottoCarrelloComponent implements OnInit {
   constructor(private serviceCarrello: CarrelloService) {
   }
 
+  @Output()
+  productDeletedCart = new EventEmitter<any>();
+
   ngOnInit(): void {
   }
 
@@ -32,6 +35,7 @@ export class ProdottoCarrelloComponent implements OnInit {
           carrello = data
           console.log(data)
           sessionStorage.setItem('carrello', JSON.stringify(carrello));
+          this.productDeletedCart.emit()
         })
     }
   }

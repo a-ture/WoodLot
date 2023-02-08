@@ -11,19 +11,22 @@ export class InterfacciaResponsabileOrdiniComponent implements OnInit {
 
   public responsabileOrdini
   public listaNomi = ["Alberi piantati", "Contadini coinvolti", "Ordini Effettuati", "Paesi"]
-  public listaNumeri
+  public listaNumeri!: string[]
 
   public panes = [
     {name: 'Ordini', content: 'One'},
     {name: 'Pagamenti', content: 'Two'},
     {name: 'Contadini', content: 'Three'},
+    {name: 'Assegnazione', content: 'Four'}
   ];
 
   activePane = 0;
 
   constructor(private serviceResponsabileOrdini: ResponsabileOrdiniService, private serviceStatistiche: StatisticheService) {
     this.responsabileOrdini = serviceResponsabileOrdini.getResponsabileOrdini()
-    this.listaNumeri = serviceStatistiche.getStatisticheResponsabileOrdini()
+    serviceStatistiche.getStatisticheResponsabileOrdini().subscribe((data: string[]) => {
+      this.listaNumeri = data
+    })
   }
 
   ngOnInit(): void {

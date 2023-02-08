@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {CarrelloService} from "../../../servizi/carrello/carrello.service";
 import {Carrello} from "../../../entita/carrello/carrello";
+import {Router} from "@angular/router";
 
-//TODO aggiungere logica pulsanti
+
 @Component({
   selector: 'app-interfaccia-carrello',
   templateUrl: './interfaccia.carrello.component.html',
@@ -10,18 +11,18 @@ import {Carrello} from "../../../entita/carrello/carrello";
 })
 export class InterfacciaCarrelloComponent implements OnInit {
 
+  public error: string = ''
   public urlBase = "assets/img/alberi/"
   public endBase = "/catalogo.webp"
 
   public carrello !: Carrello
 
-  constructor(private serviceCarrello: CarrelloService) {
+  constructor(private serviceCarrello: CarrelloService, private router: Router) {
     const storedCarrello = sessionStorage.getItem('carrello');
     if (storedCarrello != null) {
       this.carrello = JSON.parse(storedCarrello)
       console.log(this.carrello)
     }
-
   }
 
 
@@ -52,7 +53,18 @@ export class InterfacciaCarrelloComponent implements OnInit {
       })
   }
 
+  handleProductDeletedCart() {
+    const storedCarrello = sessionStorage.getItem('carrello');
+    if (storedCarrello != null) {
+      this.carrello = JSON.parse(storedCarrello)
+      console.log(this.carrello)
+    }
+  }
 
+  vaiAlPagamento() {
+    if (this.carrello.prodottiCarrello.length == 0)
+      this.error = 'Il tuo carrello è vuoto! Aggiungi almeno un prodotto prima di continuare'
+  }
 
   ngOnInit(): void {
 

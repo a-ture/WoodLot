@@ -190,12 +190,12 @@ import {
 import {SezioneOrdiniComponent} from './pagine/responsabileOrdini/componenti/sezione-ordini/sezione-ordini.component';
 import { SezionePagamentiComponent } from './pagine/responsabileOrdini/componenti/sezionePagamenti.componenti/sezione-pagamenti/sezione-pagamenti.component';
 import { CardPagamentoComponent } from './pagine/responsabileOrdini/componenti/sezionePagamenti.componenti/card-pagamento/card-pagamento.component';
-import { SezioneContadiniComponent } from './pagine/responsabileOrdini/componenti/sezioneContadini.componenti/sezione-contadini/sezione-contadini.component';
 import { ElencoContadiniComponent } from './pagine/responsabileOrdini/componenti/sezioneContadini.componenti/elenco-contadini/elenco-contadini.component';
 import { AssegnazioneAlberiComponent } from './pagine/responsabileOrdini/componenti/sezioneContadini.componenti/assegnazione-alberi/assegnazione-alberi.component';
 import { StoricoPagamentiComponent } from './pagine/contadino/componenti/storico-pagamenti/storico-pagamenti.component';
 import { ScegliIlTuoAlberoComponent } from './pagine/home/componenti/scegli-il-tuo-albero/scegli-il-tuo-albero.component';
 import { AccessoNegatoComponent } from './pagine/errori/accesso-negato/accesso-negato.component';
+import { SezioneAssegnazioneComponent } from './pagine/responsabileOrdini/componenti/sezioneAssegnazione.componenti/sezione-assegnazione/sezione-assegnazione.component';
 
 @NgModule({
   declarations: [
@@ -278,14 +278,12 @@ import { AccessoNegatoComponent } from './pagine/errori/accesso-negato/accesso-n
     SezioneOrdiniComponent,
     SezionePagamentiComponent,
     CardPagamentoComponent,
-    SezioneContadiniComponent,
     ElencoContadiniComponent,
     AssegnazioneAlberiComponent,
     StoricoPagamentiComponent,
     ScegliIlTuoAlberoComponent,
     AccessoNegatoComponent,
-
-
+    SezioneAssegnazioneComponent,
   ],
   imports: [
     BrowserModule,

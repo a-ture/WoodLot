@@ -8,7 +8,6 @@ export class Albero {
   public prezzo: number
   public anidrideCarbonicaAssorbita: number
   public nome: String
-  public paese: Paese | undefined
   public specieScientifica: String | undefined
   public descrizioneBreve: String | undefined
   public descrizione: String | undefined
@@ -18,13 +17,12 @@ export class Albero {
   public categoria: Categoria | undefined
   public paeseOrigine: Paese | undefined
 
-  constructor(prezzo: number, co2: number, nome: String, paese?: Paese,
+  constructor(prezzo: number, co2: number, nome: String,
               nomeScientifico?: String, breveDescrizione?: String, descrizione?: String, salvaguardiaAmbientale?: number,
               usiLocali?: Array<UsoLocale>, benefici?: Array<Beneficio>, categoria?: Categoria, paeseOrigine?: Paese) {
     this.prezzo = prezzo;
     this.anidrideCarbonicaAssorbita = co2;
     this.nome = nome;
-    this.paese = paese;
     this.specieScientifica = nomeScientifico;
     this.descrizioneBreve = breveDescrizione;
     this.descrizione = descrizione;

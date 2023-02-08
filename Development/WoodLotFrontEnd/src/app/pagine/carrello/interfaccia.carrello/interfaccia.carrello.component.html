@@ -16,6 +16,7 @@
             <app-prodotto-carrello *ngFor="let item of carrello.prodottiCarrello; index as i;"
                                    [sourceImage]="urlBase+item.albero.nome.toLowerCase().replace(' ','')+endBase"
                                    [prodottoCarrello]=carrello.prodottiCarrello[i]
+                                   (productDeletedCart)="handleProductDeletedCart()"
             ></app-prodotto-carrello>
           </ng-template>
 
@@ -50,9 +51,10 @@
               <p class="mb-2">{{getTotale().toFixed(2)}}€
               </p>
             </div>
+            <div class="text-center text-danger my-5" *ngIf="error">{{error}}</div>
             <div class="d-flex justify-content-between">
               <button class="btn btn-block btn-lg " style="background-color:#94AD6E; color:white"
-                      routerLink="/checkout">Checkout
+                      (click)="vaiAlPagamento()">Checkout
               </button>
             </div>
           </div>

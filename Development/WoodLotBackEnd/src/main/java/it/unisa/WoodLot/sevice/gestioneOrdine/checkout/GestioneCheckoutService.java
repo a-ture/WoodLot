@@ -57,7 +57,10 @@ public class GestioneCheckoutService implements CheckoutService {
         List<ProdottoCarrello> prodottiCarrello = carrello.getProdottiCarrello();
         for (ProdottoCarrello prodottoCarrello : prodottiCarrello) {
             ProdottoOrdine prodottoOrdine = new ProdottoOrdine();
-            prodottoOrdine.setAlbero(prodottoCarrello.getAlbero());
+            prodottoOrdine.setAnidrideCarbonicaAssorbita(prodottoCarrello.getAlbero().getAnidrideCarbonicaAssorbita());
+            prodottoOrdine.setBenefici(prodottoCarrello.getAlbero().getBenefici());
+            prodottoOrdine.setUsiLocali(prodottoCarrello.getAlbero().getUsiLocali());
+            prodottoOrdine.setNomeAlbero(prodottoCarrello.getAlbero().getNome());
             prodottoOrdine.setPrezzoUnitario(prodottoCarrello.getAlbero().getPrezzo());
             prodottoOrdine.setStato(ProdottoOrdine.Stato.NonAssegnato);
             ordine.aggiungiProdotto(prodottoOrdine);
