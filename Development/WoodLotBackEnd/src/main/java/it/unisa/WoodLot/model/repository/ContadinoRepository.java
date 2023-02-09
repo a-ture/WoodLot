@@ -26,6 +26,6 @@ public interface ContadinoRepository extends JpaRepository<Contadino, Long> {
      * @param email
      * @return
      */
-    Contadino findContadinoByEmail(String email);
+    Contadino findByEmail(String email);
 
 }

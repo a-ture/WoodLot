@@ -20,4 +20,11 @@ public class ResponsabileCatalogo extends UtenteRegistrato {
 
     @Column()
     private String cognome;
+
+    public ResponsabileCatalogo(Long id, String email, String password) {
+        super(id, email, password);
+    }
+
+    public ResponsabileCatalogo() {
+    }
 }

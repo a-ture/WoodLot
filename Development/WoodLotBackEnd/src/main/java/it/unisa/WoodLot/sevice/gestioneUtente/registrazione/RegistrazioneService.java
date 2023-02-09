@@ -1,7 +1,7 @@
 package it.unisa.WoodLot.sevice.gestioneUtente.registrazione;
 
 import it.unisa.WoodLot.model.entity.Utente;
-import it.unisa.WoodLot.sevice.gestioneUtente.eccezioni.RegistazioneException;
+import it.unisa.WoodLot.sevice.gestioneUtente.eccezioni.RegistrazioneException;
 
 /**
  * Interfaccia che fornisce i metodi per la logica di registrazione degli utenti
@@ -10,5 +10,5 @@ import it.unisa.WoodLot.sevice.gestioneUtente.eccezioni.RegistazioneException;
  */
 public interface RegistrazioneService {
 
-    Utente registrazione(Utente utente) throws RegistazioneException;
+    Utente registrazione(Utente utente) throws RegistrazioneException;
 }

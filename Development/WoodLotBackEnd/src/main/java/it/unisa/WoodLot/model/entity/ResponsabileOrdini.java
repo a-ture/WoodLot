@@ -20,4 +20,11 @@ public class ResponsabileOrdini extends UtenteRegistrato {
 
     @Column()
     private String cognome;
+
+    public ResponsabileOrdini(Long id, String email, String password) {
+        super(id, email, password);
+    }
+
+    public ResponsabileOrdini() {
+    }
 }
