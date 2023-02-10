@@ -24,5 +24,4 @@ public interface CarrelloRepository extends JpaRepository<Carrello, Long> {
      */
     Carrello findByUtente_Id(Long id);
 
-    void deleteByProdottiCarrelloAndId(Long idProdotto, Long idCarrello);
 }

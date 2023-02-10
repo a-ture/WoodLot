@@ -4,7 +4,6 @@ import it.unisa.WoodLot.model.entity.*;
 import it.unisa.WoodLot.model.repository.*;
 import it.unisa.WoodLot.sevice.gestioneUtente.eccezioni.LoginException;
 import it.unisa.WoodLot.sevice.gestioneUtente.eccezioni.PasswordException;
-import it.unisa.WoodLot.sevice.gestioneUtente.eccezioni.RegistazioneException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +15,6 @@ import javax.servlet.http.HttpServletRequest;
  * @author Alessia Ture
  */
 @Service
-//TODO migliorare il login se possibile
 public class GestioneAutenticazioneService implements AutenticazioneService {
 
 
@@ -89,7 +87,7 @@ public class GestioneAutenticazioneService implements AutenticazioneService {
             throw new PasswordException("La password non può essere nulla");
 
         Utente utente = utenteRepository.findByEmail(email);
-        Contadino contadino = contadinoRepository.findContadinoByEmail(email);
+        Contadino contadino = contadinoRepository.findByEmail(email);
         ResponsabileCatalogo responsabileCatalogo = responsabileCatalogoRepository.findResponsabileCatalogoByEmail(email);
         ResponsabileOrdini responsabileOrdini = responsabileOrdiniRepository.findByEmail(email);
 

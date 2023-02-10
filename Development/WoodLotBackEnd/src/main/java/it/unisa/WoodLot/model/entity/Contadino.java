@@ -34,4 +34,8 @@ public class Contadino extends UtenteRegistrato {
     @Column(name = "titolare_conto")
     private String titolareConto;
 
+    public Contadino(){}
+    public Contadino(Long id, String email, String password) {
+        super(id, email, password);
+    }
 }

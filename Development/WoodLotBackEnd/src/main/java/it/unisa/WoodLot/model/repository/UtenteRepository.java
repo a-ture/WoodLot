@@ -11,6 +11,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @see Utente
  */
 public interface UtenteRepository extends JpaRepository<Utente, Long> {
+
     /**
      * Permette di trovare un utente in base all'email e alla password
      *
@@ -34,5 +35,5 @@ public interface UtenteRepository extends JpaRepository<Utente, Long> {
      * @param email l'email dell'utente
      * @return l'utente
      */
-    Utente findByEmail(String email);
+    Utente findByEmail (String email);
 }

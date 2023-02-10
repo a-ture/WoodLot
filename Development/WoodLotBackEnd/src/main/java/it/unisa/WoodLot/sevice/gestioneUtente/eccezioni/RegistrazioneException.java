@@ -5,8 +5,8 @@ package it.unisa.WoodLot.sevice.gestioneUtente.eccezioni;
  *
  * @author Alessia Ture
  */
-public class RegistazioneException extends Exception {
-    public RegistazioneException(String errore) {
+public class RegistrazioneException extends Exception {
+    public RegistrazioneException(String errore) {
         super(errore);
     }
 }
