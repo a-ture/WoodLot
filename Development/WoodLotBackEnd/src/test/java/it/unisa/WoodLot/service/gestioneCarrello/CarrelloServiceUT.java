@@ -10,7 +10,6 @@ import it.unisa.WoodLot.model.repository.ProdottoCarrelloRepository;
 import it.unisa.WoodLot.model.repository.UtenteRepository;
 import it.unisa.WoodLot.sevice.gestioneCarrello.GestioneCarrelloService;
 import it.unisa.WoodLot.sevice.gestioneCarrello.eccezzioni.CarrelloException;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -18,8 +17,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 
-
-import java.util.Date;
 
 import java.util.Optional;
 
@@ -100,7 +97,7 @@ public class CarrelloServiceUT {
         Long idUtente = 1L;
         Utente utente = new Utente();
         carrello.setUtente(utente);
-        
+
         when(utenteRepository.findById(idUtente)).thenReturn(Optional.of(utente));
         when(carrelloRepository.findByUtente_Id(idUtente)).thenReturn(null);
         when(carrelloRepository.save(carrello)).thenReturn(carrello);

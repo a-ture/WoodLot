@@ -101,16 +101,12 @@ public class GestioneCatalogoService implements CatalogoService {
     }
 
     /**
-     * Permette di salvare le immagini del albero
-     */
-    /**
      * Permette di eliminare un albero dal catalogo
      *
      * @param idAlbero l'id dell'albero da eliminare
      */
     @Override
     public void eliminaProdotto(String idAlbero) {
-
         alberoRepository.deleteById(idAlbero);
     }
 }
