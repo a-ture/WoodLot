@@ -106,7 +106,10 @@ public class GestioneCatalogoService implements CatalogoService {
      * @param idAlbero l'id dell'albero da eliminare
      */
     @Override
-    public void eliminaProdotto(String idAlbero) {
+    public void eliminaProdotto(String idAlbero) throws AlberoException {
+        Albero albero = alberoRepository.findById(idAlbero).orElse(null);
+        if (albero == null)
+            throw new AlberoException("L'id fornito non è associato a nessun albero");
         alberoRepository.deleteById(idAlbero);
     }
 }

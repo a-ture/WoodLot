@@ -66,7 +66,7 @@ public class ControllerCatalogo {
      * @param idAlbero è l'id del albero da eliminare dal catalogo
      */
     @GetMapping("/eliminaProdotto/{idAlbero}")
-    public void eliminaProdottoCatalogo(@PathVariable String idAlbero) {
+    public void eliminaProdottoCatalogo(@PathVariable String idAlbero) throws AlberoException {
         catalogoService.eliminaProdotto(idAlbero);
     }
 

@@ -17,5 +17,5 @@ public interface CatalogoService {
 
     Albero aggiungiProdotto(Albero albero) throws AlberoException;
 
-    void eliminaProdotto(String idAlbero);
+    void eliminaProdotto(String idAlbero) throws AlberoException;
 }

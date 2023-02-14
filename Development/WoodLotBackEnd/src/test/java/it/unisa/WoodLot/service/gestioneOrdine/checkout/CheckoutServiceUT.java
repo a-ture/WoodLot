@@ -43,6 +43,7 @@ public class CheckoutServiceUT {
 
     /**
      * Testa il caso in cui l'ordine viene effettuato con successo
+     * Il test risulta superato se l'ordine viene creato
      */
     @Test
     public void effettuaOrdineSuccesso() {
@@ -115,8 +116,8 @@ public class CheckoutServiceUT {
 
     /**
      * Testa il caso in cui l'id dell utente non corrisponde a nessun utente
-     *
-     * @result Il test è superato se il messaggio generato dal sistema è uguale a quello
+     * <p>
+     * Il test è superato se il messaggio generato dal sistema è uguale a quello
      * previsto dall'oracolo.
      */
     @Test
@@ -133,8 +134,8 @@ public class CheckoutServiceUT {
 
     /**
      * Testa il caso in cui l'id dell carrello non corrisponde a nessun carrello
-     *
-     * @result Il test è superato se il messaggio generato dal sistema è uguale a quello
+     * <p>
+     * Il test è superato se il messaggio generato dal sistema è uguale a quello
      * previsto dall'oracolo.
      */
     @Test
@@ -153,8 +154,8 @@ public class CheckoutServiceUT {
 
     /**
      * Testa il caso in cui il carrello è vuoto
-     *
-     * @result Il test è superato se il messaggio generato dal sistema è uguale a quello
+     * <p>
+     * Il test è superato se il messaggio generato dal sistema è uguale a quello
      * previsto dall'oracolo.
      */
     @Test

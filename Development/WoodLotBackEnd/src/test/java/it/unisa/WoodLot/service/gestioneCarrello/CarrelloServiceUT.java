@@ -34,24 +34,20 @@ import static org.mockito.Mockito.*;
 public class CarrelloServiceUT {
     @Mock
     private UtenteRepository utenteRepository;
-
     @Mock
-
     private CarrelloRepository carrelloRepository;
     @Mock
-
-    AlberoRepository alberoRepository;
+    private AlberoRepository alberoRepository;
     @Mock
-    ProdottoCarrelloRepository prodottoCarrelloRepository;
-
+    private ProdottoCarrelloRepository prodottoCarrelloRepository;
     @InjectMocks
     private GestioneCarrelloService gestioneCarrelloService;
 
 
     /**
      * Testa il caso in cui il recupero del carrello di un utente avviene con successo
-     *
-     * @result Il test è superato se il carrello viene visualizzato con successo
+     * <p>
+     * Il test è superato se il carrello viene visualizzato con successo
      */
     @Test
     public void getCarrelloConSuccesso() {
@@ -76,8 +72,8 @@ public class CarrelloServiceUT {
     /**
      * Testa il caso in cui il recupero del carrello di un utente avviene con successo
      * (in questo caso il carrello esiste)
-     *
-     * @result Il test è superato se il carrello viene visualizzato con successo
+     * <p>
+     * Il test è superato se il carrello viene visualizzato con successo
      */
     @Test
     public void getCarrelloConInsuccesso() {
@@ -89,9 +85,13 @@ public class CarrelloServiceUT {
         }
     }
 
+    /**
+     * Testa il caso in cui l'utente non ha un carrello e ne viene creato uno
+     * <p>
+     * Il test è superato se il carrello viene creato correttamente
+     */
     @Test
     public void testGetCarrelloCarrelloNotFound() {
-        // arrange
         Carrello carrello = new Carrello();
 
         Long idUtente = 1L;
@@ -116,8 +116,8 @@ public class CarrelloServiceUT {
 
     /**
      * Testa il caso in cui viene aggiunto un prodotto al carrello con successo
-     *
-     * @result Il test è superato se il prodotto viene aggiunto con successo
+     * <p>
+     * Il test è superato se il prodotto viene aggiunto con successo
      */
     @Test
     public void aggiungiProdottoCarrelloSuccesso() {
@@ -141,8 +141,8 @@ public class CarrelloServiceUT {
 
     /**
      * Testa il caso in cui il prodotto da aggiungere al carrello non viene trovato
-     *
-     * @result Il test è superato se il messaggio generato dal sistema è uguale a quello
+     * <p>
+     * Il test è superato se il messaggio generato dal sistema è uguale a quello
      * previsto dall'oracolo.
      */
     @Test
@@ -160,8 +160,8 @@ public class CarrelloServiceUT {
 
     /**
      * Testa il caso in cui il carrello non viene trovato
-     *
-     * @result Il test è superato se il messaggio generato dal sistema è uguale a quello
+     * <p>
+     * Il test è superato se il messaggio generato dal sistema è uguale a quello
      * previsto dall'oracolo.
      */
     @Test
@@ -179,8 +179,8 @@ public class CarrelloServiceUT {
 
     /**
      * Testa il caso in cui il prodotto che si vuole aggiungere è già presente nel carrello
-     *
-     * @result Il test è superato se il messaggio generato dal sistema è uguale a quello
+     * <p>
+     * Il test è superato se il messaggio generato dal sistema è uguale a quello
      * previsto dall'oracolo.
      */
     @Test
@@ -203,8 +203,8 @@ public class CarrelloServiceUT {
 
     /**
      * Testa il caso in cui il carrello viene svuotato con successo
-     *
-     * @result Il test è superato se il carrello viene svuotato con successo
+     * <p>
+     * Il test è superato se il carrello viene svuotato con successo
      */
     @Test
     public void svuotaCarrelloSuccesso() {
@@ -224,8 +224,8 @@ public class CarrelloServiceUT {
 
     /**
      * Testa il caso in cui l'id del carrello non è valido
-     *
-     * @result Il test è superato se il messaggio generato dal sistema è uguale a quello
+     * <p>
+     * Il test è superato se il messaggio generato dal sistema è uguale a quello
      * previsto dall'oracolo.
      */
     @Test
@@ -244,8 +244,8 @@ public class CarrelloServiceUT {
 
     /**
      * Testa il caso in cui un prodotto viene rimosso con un successo
-     *
-     * @result Il prodotto viene eliminato
+     * <p>
+     * Il prodotto viene eliminato
      */
     @Test
     public void testRimuoviProdottoSuccesso() {
@@ -254,17 +254,22 @@ public class CarrelloServiceUT {
 
         Carrello carrello = new Carrello();
         carrello.setId(idCarrello);
+        Albero albero = new Albero();
+
+        albero.setNome("Castagno");
 
         ProdottoCarrello prodottoCarrello = new ProdottoCarrello();
+        prodottoCarrello.setAlbero(albero);
+        carrello.aggiungiProdottoCarrello(prodottoCarrello);
 
         when(carrelloRepository.findById(idCarrello)).thenReturn(Optional.of(carrello));
+        when(carrelloRepository.save(carrello)).thenReturn(carrello);
         when(prodottoCarrelloRepository.findById(idProdottoCarrello)).thenReturn(Optional.of(prodottoCarrello));
 
         try {
             Carrello result = gestioneCarrelloService.rimuoviProdotto(idCarrello, idProdottoCarrello);
 
             verify(carrelloRepository, times(1)).save(carrello);
-            verify(prodottoCarrelloRepository, times(1)).deleteById(idProdottoCarrello);
             assertNotNull(result);
         } catch (CarrelloException e) {
             fail(e.getMessage());
@@ -273,8 +278,8 @@ public class CarrelloServiceUT {
 
     /**
      * Testa il caso in cui l'id del prodotto fornito non è valido
-     *
-     * @result Il test è superato se il messaggio generato dal sistema è uguale a quello
+     * <p>
+     * Il test è superato se il messaggio generato dal sistema è uguale a quello
      * previsto dall'oracolo.
      */
     @Test

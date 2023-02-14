@@ -60,7 +60,7 @@ public class GestioneCarrelloService implements CarrelloService {
      *
      * @param idCarrello l'id del carrello a cui aggiungere il prodotto
      * @param nomeAlbero il nome dell'albero che si intende aggiungere
-     * @throws CarrelloException lanciata nel caso in cui l'utente o l'albero in input non siano validi
+     * @throws CarrelloException lanciata nel caso in cui l'utente o l'albero in ingresso non siano validi
      */
     @Override
     @Transactional
@@ -99,15 +99,14 @@ public class GestioneCarrelloService implements CarrelloService {
         if (carrello == null)
             throw new CarrelloException("Il carrello non  è stato trovato");
 
-        if (idProdottoCarrello == null)
+        ProdottoCarrello prodottoCarrello = prodottoCarrelloRepository.findById(idProdottoCarrello).orElse(null);
+        if (prodottoCarrello == null)
             throw new CarrelloException("L'id del prodotto fornito non è valido");
 
-        ProdottoCarrello prodottoCarrello = prodottoCarrelloRepository.findById(idProdottoCarrello).orElse(null);
-
         carrello.rimuoviProdotto(prodottoCarrello);
-        carrelloRepository.save(carrello);
-        prodottoCarrelloRepository.deleteById(idProdottoCarrello);
-        return carrelloRepository.findById(idCarrello).orElse(null);
+        carrello = carrelloRepository.save(carrello);
+        prodottoCarrelloRepository.delete(prodottoCarrello);
+        return carrello;
     }
 
     /**

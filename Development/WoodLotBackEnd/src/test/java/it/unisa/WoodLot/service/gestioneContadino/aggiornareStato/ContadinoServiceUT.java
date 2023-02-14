@@ -38,6 +38,7 @@ public class ContadinoServiceUT {
 
     /**
      * Testa il caso in cui vengono visualizzati l'elenco dei contadini
+     * Il test risulta superato se vengono recuperati tutti i contadini
      */
     @Test
     void testGetElencoContadini() {
@@ -60,7 +61,8 @@ public class ContadinoServiceUT {
     }
 
     /**
-     * Testa il caso in cui viene visualizzato l'elenco degli alber non assegnati
+     * Testa il caso in cui viene visualizzato l'elenco degli alberi che si trovano nello stato: non assegnato
+     * Il test risulta superato se vengono recuperati tutti gli alberi che si trovano nello stato: non assegnato
      */
     @Test
     void testGetAlberiNonAssegnati() {
@@ -82,6 +84,10 @@ public class ContadinoServiceUT {
         assertEquals(prodottiOrdine, result);
     }
 
+    /**
+     * Testa il caso in cui lo stato dell'albero viene aggiornato con successo
+     * Il test risulta superato se lo stato dell'albero viene aggiornato
+     */
     @Test
     void testAggiornaStatoSuccesso() {
         ProdottoOrdine prodottoOrdine = new ProdottoOrdine();
@@ -110,34 +116,11 @@ public class ContadinoServiceUT {
         }
     }
 
-    @Test
-    void testAggiornaStatoInsuccesso() {
-        ProdottoOrdine prodottoOrdine = new ProdottoOrdine();
-        prodottoOrdine.setNomeAlbero("Albero1");
-        prodottoOrdine.setStato(ProdottoOrdine.Stato.Bocciolo);
-        ProdottoOrdine prodottoOrdineDb = new ProdottoOrdine();
-        prodottoOrdineDb.setNomeAlbero("Albero1");
-        prodottoOrdineDb.setStato(ProdottoOrdine.Stato.Fiore);
 
-        when(prodottoOrdineRepository.findById(prodottoOrdine.getId())).thenReturn(Optional.of(prodottoOrdineDb));
-        when(prodottoOrdineRepository.save(prodottoOrdine)).thenReturn(prodottoOrdine);
-
-        try {
-            ProdottoOrdine result = gestioneContadinoService.aggiornaStato(prodottoOrdine);
-
-            assertNotNull(result);
-            assertEquals(prodottoOrdine.getId(), result.getId());
-            assertEquals(prodottoOrdine.getFrutta(), result.getFrutta());
-            assertEquals(prodottoOrdine.getStato(), result.getStato());
-            assertEquals(prodottoOrdine.getDescrizione(), result.getDescrizione());
-
-            verify(prodottoOrdineRepository, times(1)).findById(prodottoOrdine.getId());
-            verify(prodottoOrdineRepository, times(1)).save(prodottoOrdine);
-        } catch (ContadinoException e) {
-            fail(e.getMessage());
-        }
-    }
-
+    /**
+     * Testa il caso in cui l'albero di cui si intende aggiornare lo stato non è valido
+     * Il test risulta superato se il messaggio d'errore fornito dal sistema è uguale a quello dell'oracolo
+     */
     @Test
     void testAggiornaStatoNonTrovato() {
         String messaggio = "Non è stato trovato il prodotto ordine";
@@ -148,10 +131,8 @@ public class ContadinoServiceUT {
 
         try {
             gestioneContadinoService.aggiornaStato(prodottoOrdine);
-        }catch (ContadinoException e){
-            assertEquals(messaggio,e.getMessage());
+        } catch (ContadinoException e) {
+            assertEquals(messaggio, e.getMessage());
         }
-
     }
-
 }

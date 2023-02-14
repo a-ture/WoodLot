@@ -43,6 +43,8 @@ public class CatalogoServiceUT {
 
     /**
      * Testa il caso in cui l'albero viene aggiunto con successo al catalogo
+     * <p>
+     * Il test risulta superato se il prodotto viene aggiunto con successo al catalogo
      */
     @Test
     public void testAggiungiProdotto_Successo() {
@@ -95,6 +97,7 @@ public class CatalogoServiceUT {
 
     /**
      * Testa il caso in cui il nome dell'albero è già presente
+     * Il test è superato se il messaggio d'errore generato dal sistema è uguale a quello previsto dall'oracolo
      */
     @Test
     void testAggiungiProdotto_nomeEsistente() {
@@ -113,6 +116,8 @@ public class CatalogoServiceUT {
 
     /**
      * Testa il caso in cui la categoria non è valida
+     * <p>
+     * Il test è superato se il messaggio d'errore generato dal sistema è uguale a quello previsto dall'oracolo
      */
     @Test
     void aggiungiProdotto_categoriaInvalida() {
@@ -133,6 +138,7 @@ public class CatalogoServiceUT {
 
     /**
      * Testa il caso in cui l'uso locale non è valido
+     * Il test è superato se il messaggio d'errore generato dal sistema è uguale a quello previsto dall'oracolo
      */
     @Test
     void aggiungiProdotto_usoLocaleInvalido() {
@@ -158,6 +164,8 @@ public class CatalogoServiceUT {
 
     /**
      * Testa il caso in cui il beneficio non è valido
+     * <p>
+     * Il test è superato se il messaggio d'errore generato dal sistema è uguale a quello previsto dall'oracolo
      */
     @Test
     public void testAggiungiProdotto_beneficioInvalido() {
@@ -187,7 +195,9 @@ public class CatalogoServiceUT {
     }
 
     /**
-     * Testa il caso in cui l'uso locale non è valido
+     * Testa il caso in cui il paese non è valido
+     * <p>
+     * Il test è superato se il messaggio d'errore generato dal sistema è uguale a quello previsto dall'oracolo
      */
     @Test
     public void testAggiungiProdotto_PaeseInvalido() {
@@ -223,49 +233,39 @@ public class CatalogoServiceUT {
 
     /**
      * Testa il caso in cui il prodotto viene eliminato correttamente
+     * Il test risulta superato se il prodotto viene eliminato correttamente
      */
     @Test
-    public void testEliminaProdotto() {
+    public void testEliminaProdottoSuccesso() {
         Albero albero = new Albero();
-
         albero.setNome("Albero 1");
 
-        Categoria categoria = new Categoria();
-        categoria.setNome("Categoria 1");
-        albero.setCategoria(categoria);
-        when(categoriaRepository.findById("Categoria 1")).thenReturn(Optional.of(categoria));
+        when(alberoRepository.findById("Albero 1")).thenReturn(Optional.of(albero));
 
-        UsoLocale usoLocale = new UsoLocale();
-        usoLocale.setNome("Uso Locale 1");
-        List<UsoLocale> usoLocaleList = new ArrayList<>();
-        usoLocaleList.add(usoLocale);
-        albero.setUsiLocali(usoLocaleList);
-        when(usoLocaleRepository.findById("Uso Locale 1")).thenReturn(Optional.of(usoLocale));
-
-        Beneficio beneficio = new Beneficio();
-        beneficio.setNome("Beneficio 1");
-        List<Beneficio> beneficioList = new ArrayList<>();
-        beneficioList.add(beneficio);
-        albero.setBenefici(beneficioList);
-        when(beneficioRepository.findById("Beneficio 1")).thenReturn(Optional.of(beneficio));
-
-        PaeseOrigine paeseOrigine = new PaeseOrigine();
-        paeseOrigine.setNome("Paese Origine 1");
-        albero.setPaeseOrigine(paeseOrigine);
-        when(paeseOrigineRepository.findById("Paese Origine 1")).thenReturn(Optional.of(paeseOrigine));
-
-        when(alberoRepository.existsById("Albero 1")).thenReturn(false);
-        when(alberoRepository.save(albero)).thenReturn(albero);
+        String idAlbero = albero.getNome();
         try {
-            albero = gestioneCatalogoService.aggiungiProdotto(albero);
+            gestioneCatalogoService.eliminaProdotto(idAlbero);
+            assertFalse(alberoRepository.existsById(albero.getNome()));
         } catch (AlberoException e) {
             fail(e.getMessage());
         }
+    }
 
-        String idAlbero = albero.getNome();
-
-        gestioneCatalogoService.eliminaProdotto(idAlbero);
-        Optional<Albero> result = alberoRepository.findById(idAlbero);
-        assertFalse(result.isPresent());
+    /**
+     * Testa il caso in cui viene fornito un id non valido
+     * Il test è superato se il messaggio d'errore generato dal sistema è uguale a quello previsto dall'oracolo
+     */
+    @Test
+    public void testEliminaProdottoInsuccesso() {
+        String messaggio = "L'id fornito non è associato a nessun albero";
+        Albero albero = new Albero();
+        albero.setNome("Albero 1");
+        try {
+            gestioneCatalogoService.eliminaProdotto(albero.getNome());
+            Optional<Albero> result = alberoRepository.findById(albero.getNome());
+            assertFalse(result.isPresent());
+        } catch (AlberoException e) {
+            assertEquals(messaggio, e.getMessage());
+        }
     }
 }

@@ -32,6 +32,7 @@ public class PagamentoServiceUT {
 
     /**
      * Testa il caso in cui vengono visualizzati tutti i pagamenti presenti
+     * Il test risulta superato se vengono recuperati tutti i pagamenti
      */
     @Test
     public void testVisualizzaElencoPagamenti() {

@@ -43,15 +43,14 @@ public class ProdottoServiceUT {
 
     /**
      * Testa il caso in cui il prodotto viene trovato con successo
-     *
-     * @result il test è superato se è possibile trovare il prodotto
+     * <p>
+     * Il test è superato se è possibile trovare il prodotto
      */
     @Test
     public void testGetProdottoSuccesso() {
         Albero albero = new Albero();
         albero.setNome("Albero di pino");
         when(alberoRepository.findById("Albero di pino")).thenReturn(Optional.of(albero));
-
         try {
             Albero result = gestioneProdottoService.getProdotto("Albero di pino");
             assertEquals("Albero di pino", result.getNome());
@@ -62,9 +61,9 @@ public class ProdottoServiceUT {
 
     /**
      * Testa il caso im cui il prodotto non viene trovato
-     *
-     * @@result Il test è superato se il messaggio generato dal sistema è uguale a quello
-     * *previsto dall'oracolo.
+     * <p>
+     * Il test è superato se il messaggio generato dal sistema è uguale a quello
+     * previsto dall'oracolo.
      */
     @Test
     public void testGetProdottoInsuccesso() {
@@ -72,7 +71,6 @@ public class ProdottoServiceUT {
         albero.setNome("Albero di pino");
         String messaggio = "L'albero non è stato trovato";
         when(alberoRepository.findById("Albero di pino")).thenReturn(Optional.empty());
-
         try {
             gestioneProdottoService.getProdotto("Albero di pino");
         } catch (AlberoException e) {
@@ -82,6 +80,7 @@ public class ProdottoServiceUT {
 
     /**
      * Testa il recupero con successo delle categorie
+     * Il test è superato se vengono recuperate tutte le categorie
      */
     @Test
     void testGetCategorie() {
@@ -106,6 +105,7 @@ public class ProdottoServiceUT {
 
     /**
      * Testa il caso in cui i benefici sono visualizzati con successo
+     * Il test è superato se vengono recuperati tutti i benefici
      */
     @Test
     void testGetBenefici() {
@@ -129,6 +129,7 @@ public class ProdottoServiceUT {
 
     /**
      * Testa il caso in cui gli usi locali sono visualizzati con successo
+     * Il test è superato se vengono recuperati tutti gli usi locali
      */
     @Test
     void testGetUsiLocali() {
@@ -152,6 +153,7 @@ public class ProdottoServiceUT {
 
     /**
      * Testa il caso in cui i paesi sono visualizzati con successo
+     * Il test è superato se tutti i paesi vengono visualizzati con successo
      */
     @Test
     void testGetPaesi() {

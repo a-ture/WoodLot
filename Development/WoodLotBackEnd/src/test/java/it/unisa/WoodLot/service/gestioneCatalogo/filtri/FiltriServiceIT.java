@@ -1,23 +1,17 @@
 package it.unisa.WoodLot.service.gestioneCatalogo.filtri;
 
-import it.unisa.WoodLot.model.entity.Albero;
-import it.unisa.WoodLot.model.entity.Categoria;
-import it.unisa.WoodLot.model.entity.PaeseOrigine;
-import it.unisa.WoodLot.model.entity.UsoLocale;
-import it.unisa.WoodLot.model.repository.AlberoRepository;
-import it.unisa.WoodLot.model.repository.CategoriaRepository;
-import it.unisa.WoodLot.model.repository.PaeseOrigineRepository;
-import it.unisa.WoodLot.model.repository.UsoLocaleRepository;
+import it.unisa.WoodLot.model.entity.*;
+import it.unisa.WoodLot.model.repository.*;
 import it.unisa.WoodLot.sevice.gestioneCatalogo.filtri.GestioneFiltriService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import java.util.ArrayList;
+import javax.transaction.Transactional;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,127 +19,157 @@ import java.util.stream.StreamSupport;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-
 /**
- * Test di unità per la classe GestioneFiltriService
+ * Test d'integrazione fra la classe GestioneFiltriService e la repository.
  *
  * @author Alessia Ture
  */
 @SpringBootTest
-@ExtendWith(MockitoExtension.class)
-public class FiltriServiceUT {
+@Transactional
+@Rollback
+@ExtendWith(SpringExtension.class)
+public class FiltriServiceIT {
 
-    @Mock
+    @Autowired
     private AlberoRepository alberoRepository;
-    @Mock
+    @Autowired
     private PaeseOrigineRepository paeseOrigineRepository;
-    @Mock
+    @Autowired
     private UsoLocaleRepository usoLocaleRepository;
-    @InjectMocks
-    private GestioneFiltriService gestioneFiltriService;
-    @Mock
+    @Autowired
+    private BeneficioRepository beneficioRepository;
+    @Autowired
     private CategoriaRepository categoriaRepository;
+    @Autowired
+    private GestioneFiltriService gestioneFiltriService;
 
-    private List<Albero> alberi;
+    private Albero albero1;
+    private Albero albero2;
+    private Albero albero3;
 
     @BeforeEach()
     void setUp() {
-        Categoria c1 = new Categoria();
-        c1.setNome("Categoria1");
+        PaeseOrigine paeseOrigine = new PaeseOrigine();
+        paeseOrigine.setNome("Paese 1");
+        paeseOrigine.setDescrizione("string");
+        paeseOrigineRepository.save(paeseOrigine);
 
-        Categoria c2 = new Categoria();
-        c2.setNome("Categoria2");
+        Categoria categoria = new Categoria();
+        categoria.setNome("Categoria 1");
+        categoria.setDescrizione("string");
+        categoriaRepository.save(categoria);
 
-        Categoria c3 = new Categoria();
-        c3.setNome("Categoria4");
+        UsoLocale usoLocale = new UsoLocale();
+        usoLocale.setNome("Uso locale 1");
+        usoLocale.setDescrizione("string");
+        usoLocaleRepository.save(usoLocale);
 
-        UsoLocale u1 = new UsoLocale();
-        u1.setNome("Uso locale 1");
+        Beneficio beneficio = new Beneficio();
+        beneficio.setNome("Beneficio");
+        beneficio.setDescrizione("string");
+        beneficioRepository.save(beneficio);
 
-        UsoLocale u2 = new UsoLocale();
-        u2.setNome("Uso locale 2");
+        albero1 = new Albero();
+        albero1.setNome("Albero 1");
+        albero1.setPrezzo(56);
+        albero1.setSalvaguardia(3);
+        albero1.setDescrizione("String string");
+        albero1.setDescrizioneBreve("string");
+        albero1.setPaeseOrigine(paeseOrigine);
+        albero1.setCategoria(categoria);
+        albero1.setAnidrideCarbonicaAssorbita(78);
+        albero1.setSpecieScientifica("Specie");
+        albero1.setUsiLocali(Arrays.asList(usoLocale));
+        albero1.setBenefici(Arrays.asList(beneficio));
 
-        UsoLocale u3 = new UsoLocale();
-        u3.setNome("Uso locale 3");
+        alberoRepository.save(albero1);
 
-        UsoLocale u4 = new UsoLocale();
-        u4.setNome("Uso locale 4");
+        paeseOrigine = new PaeseOrigine();
+        paeseOrigine.setNome("Paese 2");
+        paeseOrigine.setDescrizione("string");
+        paeseOrigineRepository.save(paeseOrigine);
 
-        UsoLocale u5 = new UsoLocale();
-        u5.setNome("Uso locale 5");
+        categoria = new Categoria();
+        categoria.setNome("Categoria 2");
+        categoria.setDescrizione("string");
+        categoriaRepository.save(categoria);
 
-        PaeseOrigine p = new PaeseOrigine();
-        p.setNome("Paese1");
+        usoLocale = new UsoLocale();
+        usoLocale.setNome("Uso locale 2");
+        usoLocale.setDescrizione("string");
+        usoLocaleRepository.save(usoLocale);
 
-        PaeseOrigine p1 = new PaeseOrigine();
-        p1.setNome("Paese2");
+        beneficio = new Beneficio();
+        beneficio.setNome("Beneficio 2");
+        beneficio.setDescrizione("string");
+        beneficioRepository.save(beneficio);
 
-        PaeseOrigine p2 = new PaeseOrigine();
-        p2.setNome("Paese2");
+        albero2 = new Albero();
+        albero2.setNome("Albero 2");
+        albero2.setPrezzo(6);
+        albero2.setSalvaguardia(3);
+        albero2.setDescrizione("String string");
+        albero2.setDescrizioneBreve("string");
+        albero2.setPaeseOrigine(paeseOrigine);
+        albero2.setCategoria(categoria);
+        albero2.setAnidrideCarbonicaAssorbita(8);
+        albero2.setSpecieScientifica("Specie");
+        albero2.setUsiLocali(Arrays.asList(usoLocale));
+        albero2.setBenefici(Arrays.asList(beneficio));
 
-        PaeseOrigine p3 = new PaeseOrigine();
-        p3.setNome("Paese3");
+        alberoRepository.save(albero2);
 
-        alberi = new ArrayList<>();
-        Albero albero = new Albero();
-        albero.setNome("1");
-        albero.setPrezzo(56);
-        albero.setPaeseOrigine(p);
-        albero.setUsiLocali(Arrays.asList(u5, u2, u1));
-        albero.setAnidrideCarbonicaAssorbita(67);
-        albero.setCategoria(c1);
-        alberi.add(albero);
+        paeseOrigine = new PaeseOrigine();
+        paeseOrigine.setNome("Paese 3");
+        paeseOrigine.setDescrizione("string");
+        paeseOrigineRepository.save(paeseOrigine);
 
-        albero = new Albero();
-        albero.setNome("2");
-        albero.setPrezzo(89);
-        albero.setPaeseOrigine(p1);
-        albero.setUsiLocali(Arrays.asList(u5, u4, u3));
-        albero.setAnidrideCarbonicaAssorbita(6);
-        albero.setCategoria(c2);
-        alberi.add(albero);
+        categoria = new Categoria();
+        categoria.setNome("Categoria 3");
+        categoria.setDescrizione("string");
+        categoriaRepository.save(categoria);
 
-        albero = new Albero();
-        albero.setNome("3");
-        albero.setPrezzo(9);
-        albero.setPaeseOrigine(p2);
-        albero.setPaeseOrigine(p1);
-        albero.setUsiLocali(Arrays.asList(u2));
-        albero.setAnidrideCarbonicaAssorbita(77);
-        albero.setCategoria(c3);
-        alberi.add(albero);
+        usoLocale = new UsoLocale();
+        usoLocale.setNome("Uso locale 3");
+        usoLocale.setDescrizione("string");
+        usoLocaleRepository.save(usoLocale);
 
-        albero = new Albero();
-        albero.setNome("3");
-        albero.setPrezzo(9);
-        albero.setPaeseOrigine(p2);
-        albero.setPaeseOrigine(p1);
-        albero.setUsiLocali(Arrays.asList(u1));
-        albero.setAnidrideCarbonicaAssorbita(678);
-        albero.setCategoria(c2);
-        alberi.add(albero);
+        beneficio = new Beneficio();
+        beneficio.setNome("Beneficio 3");
+        beneficio.setDescrizione("string");
+        beneficioRepository.save(beneficio);
 
-        albero = new Albero();
-        albero.setNome("4");
-        albero.setPrezzo(97);
-        albero.setPaeseOrigine(p2);
-        albero.setPaeseOrigine(p1);
-        albero.setUsiLocali(Arrays.asList(u5, u4));
-        albero.setAnidrideCarbonicaAssorbita(83);
-        albero.setCategoria(c1);
-        alberi.add(albero);
+        albero3 = new Albero();
+        albero3.setNome("Albero 3");
+        albero3.setPrezzo(586);
+        albero3.setSalvaguardia(3);
+        albero3.setDescrizione("String string");
+        albero3.setDescrizioneBreve("string");
+        albero3.setPaeseOrigine(paeseOrigine);
+        albero3.setCategoria(categoria);
+        albero3.setAnidrideCarbonicaAssorbita(798);
+        albero3.setSpecieScientifica("Specie");
+        albero3.setUsiLocali(Arrays.asList(usoLocale));
+        albero3.setBenefici(Arrays.asList(beneficio));
 
-        albero = new Albero();
-        albero.setNome("5");
-        albero.setPrezzo(67);
-        albero.setPaeseOrigine(p3);
-        albero.setPaeseOrigine(p1);
-        albero.setUsiLocali(Arrays.asList(u3, u2, u1));
-        albero.setAnidrideCarbonicaAssorbita(56);
-        albero.setCategoria(c3);
-        alberi.add(albero);
+        alberoRepository.save(albero3);
+    }
 
-        alberoRepository.saveAll(alberi);
+    /**
+     * Testa il caso in viene recuperato il catalogo prodotti
+     * <p>
+     * Il test è superato se vengono restituiti tutti i prodotti
+     */
+    @Test
+    public void testGetProdotti() {
+        Iterable<Albero> prodotti = gestioneFiltriService.getProdotti();
+
+        List<Albero> resultList = StreamSupport.stream(prodotti.spliterator(), false)
+                .collect(Collectors.toList());
+
+        assertTrue(resultList.contains(albero1));
+        assertTrue(resultList.contains(albero2));
+        assertTrue(resultList.contains(albero3));
     }
 
     /**
@@ -223,7 +247,7 @@ public class FiltriServiceUT {
     }
 
     /**
-     * Testa il caso in viene applicato il filtro: Prezzo decrescente
+     * Testa il caso in viene applicato il filtro: Prezzo crescente
      * <p>
      * Il test è superato se i prodotti vengono ordinati correttamente
      */
@@ -278,6 +302,7 @@ public class FiltriServiceUT {
     public void testGetProdottiFiltratiByUsiLocali() {
         UsoLocale u1 = new UsoLocale();
         u1.setNome("Uso locale 1");
+        u1.setDescrizione("string");
 
         Iterable<Albero> result = gestioneFiltriService.getProdottiFiltratiByUsoLocale("Uso locale 1");
         assertNotNull(result);
@@ -295,7 +320,7 @@ public class FiltriServiceUT {
     @Test
     public void testGetProdottiFiltratiByCategoria() {
         Categoria c1 = new Categoria();
-        c1.setNome("Categoria1");
+        c1.setNome("Categoria 1");
 
         Iterable<Albero> result = gestioneFiltriService.getProdottiFiltratiByCategoria("Categoria1");
         assertNotNull(result);

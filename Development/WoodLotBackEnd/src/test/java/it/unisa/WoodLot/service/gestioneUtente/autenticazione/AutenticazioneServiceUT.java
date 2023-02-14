@@ -57,17 +57,12 @@ public class AutenticazioneServiceUT {
         contadino = new Contadino(1L, "pedrogarcia@gmail.com", "alessiature01");
         responsabileCatalogo = new ResponsabileCatalogo(1L, "catalogo@gmail.com", "catalogo");
         responsabileOrdini = new ResponsabileOrdini(1L, "ordini@gmail.com", "ordini");
-
-        utenteRepository.save(utente);
-        contadinoRepository.save(contadino);
-        responsabileOrdiniRepository.save(responsabileOrdini);
-        responsabileCatalogoRepository.save(responsabileCatalogo);
     }
 
     /**
      * Testa il caso in cui l'utente riesce a effettuare il login
-     *
-     * @result Il test è superato se la classe prodotta dal servizio di login è coincide con il ruolo dell'utente
+     * <p>
+     * Il test è superato se la classe prodotta dal servizio di login è coincide con il ruolo dell'utente
      */
     @Test
     public void testLoginSuccesso() {
@@ -113,8 +108,8 @@ public class AutenticazioneServiceUT {
 
     /**
      * Controlla validità nel caso in cui l'email è null
-     *
-     * @result Il test è superato se il messaggio generato dal sistema è uguale a quello
+     * <p>
+     * Il test è superato se il messaggio generato dal sistema è uguale a quello
      * previsto dall'oracolo.
      */
     @Test
@@ -130,8 +125,8 @@ public class AutenticazioneServiceUT {
 
     /**
      * Controlla validità nel caso in cui l'email è null
-     *
-     * @result Il test è superato se il messaggio generato dal sistema è uguale a quello
+     * <p>
+     * Il test è superato se il messaggio generato dal sistema è uguale a quello
      * previsto dall'oracolo.
      */
     @Test
@@ -146,9 +141,9 @@ public class AutenticazioneServiceUT {
     }
 
     /**
-     * Testa il caso in cui l'utente riesce a effettuare il login
-     *
-     * @result Il test è superato se il messaggio generato dal sistema è uguale a quello
+     * Testa il caso in cui l'utente non riesce a effettuare il login
+     * <p>
+     * Il test è superato se il messaggio generato dal sistema è uguale a quello
      * previsto dall'oracolo.
      */
     @Test
@@ -165,22 +160,19 @@ public class AutenticazioneServiceUT {
 
     /**
      * Testa il caso in cui l'utente effettua la reimpostazione della password con successo
-     *
-     * @result Il test è superato se la password viene modificata correttamente
+     * <p>
+     * Il test è superato se la password viene modificata correttamente
      */
     @Test
     public void testReimpostaPasswordSuccesso() {
         //Test Case: utente reimposta la password con successo
         try {
-            // Preparazione
             Utente utente = new Utente();
             utente.setEmail("email@email.com");
             when(utenteRepository.findByEmail("email@email.com")).thenReturn(utente);
 
-            // Chiamata
             gestioneAutenticazioneService.reimpostaPassword("email@email.com", "Password1@");
 
-            // Verifica
             verify(utenteRepository, times(1)).save(utente);
             assertEquals("Password1@", utente.getPassword());
         } catch (PasswordException e) {
@@ -191,8 +183,8 @@ public class AutenticazioneServiceUT {
 
     /**
      * Controlla validità nel caso in cui l'email è null
-     *
-     * @result Il test è superato se il messaggio generato dal sistema è uguale a quello
+     * <p>
+     * Il test è superato se il messaggio generato dal sistema è uguale a quello
      * previsto dall'oracolo.
      */
     @Test
@@ -208,8 +200,8 @@ public class AutenticazioneServiceUT {
 
     /**
      * Controlla validità nel caso in cui l'email è null
-     *
-     * @result Il test è superato se il messaggio generato dal sistema è uguale a quello
+     * <p>
+     * Il test è superato se il messaggio generato dal sistema è uguale a quello
      * previsto dall'oracolo.
      */
     @Test
@@ -225,8 +217,8 @@ public class AutenticazioneServiceUT {
 
     /**
      * Testa il caso in cui l'utente inserisce una e-mail non presente nel DB
-     *
-     * @result Il test è superato se il messaggio generato dal sistema è uguale a quello
+     * <p>
+     * Il test è superato se il messaggio generato dal sistema è uguale a quello
      * previsto dall'oracolo.
      */
     @Test
@@ -242,8 +234,8 @@ public class AutenticazioneServiceUT {
 
     /**
      * Testa il caso in cui l'utente inserisce una password con lunghezza non valida (<8)
-     *
-     * @result Il test è superato se il messaggio generato dal sistema è uguale a quello
+     * <p>
+     * Il test è superato se il messaggio generato dal sistema è uguale a quello
      * previsto dall'oracolo.
      */
     @Test
@@ -251,13 +243,11 @@ public class AutenticazioneServiceUT {
         String messaggio = "La password deve essere lunga almeno 8 caratteri";
         String password = "er@4";
         try {
-            // Preparazione
             Utente utente = new Utente();
             utente.setEmail("email@email.com");
             utente.setPassword(password);
             when(utenteRepository.findByEmail("email@email.com")).thenReturn(utente);
 
-            // Chiamata
             gestioneAutenticazioneService.reimpostaPassword("email@email.com", "Password1@");
         } catch (PasswordException e) {
             assertEquals(messaggio, e.getMessage());
@@ -267,8 +257,8 @@ public class AutenticazioneServiceUT {
     /**
      * Testa il caso in cui l'utente inserisce una password con formato non valido
      * (non è presente almeno un carattere tra @, !, #, $)
-     *
-     * @result Il test è superato se il messaggio generato dal sistema è uguale a quello
+     * <p>
+     * Il test è superato se il messaggio generato dal sistema è uguale a quello
      * previsto dall'oracolo.
      */
     @Test
@@ -282,7 +272,6 @@ public class AutenticazioneServiceUT {
             utente.setPassword(password);
             when(utenteRepository.findByEmail("email@email.com")).thenReturn(utente);
 
-            // Chiamata
             gestioneAutenticazioneService.reimpostaPassword("email@email.com", "Password1@");
         } catch (PasswordException e) {
             assertEquals(messaggio, e.getMessage());

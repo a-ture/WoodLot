@@ -17,7 +17,7 @@ import java.util.Date;
 public class Pagamento implements Serializable {
 
     @Id
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "importo")

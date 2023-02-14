@@ -59,7 +59,7 @@ public class GestioneStatisticheService implements StatisticheService {
      */
     @Override
     public Iterable<Double> statistichePaginaResponsabileCatalogo() {
-        ArrayList<Double> statistiche = new ArrayList<>(4);
+        List<Double> statistiche = new ArrayList<>(4);
 
         List<Ordine> list = ordineRepository.findAll();
         double alberi = 0, anidride = 0, paesi = 0, contadini = 0;
@@ -78,8 +78,6 @@ public class GestioneStatisticheService implements StatisticheService {
         paesi = paeseOrigineRepository.findAll().size();
         statistiche.add(paesi);
 
-
-
         return statistiche;
     }
 
@@ -92,7 +90,7 @@ public class GestioneStatisticheService implements StatisticheService {
 
     @Override
     public Iterable<Double> statistichePaginaContadino(Long idContadino) {
-        ArrayList<Double> statistiche = new ArrayList<>(3);
+        List<Double> statistiche = new ArrayList<>(3);
 
         ArrayList<ProdottoOrdine> prodotti = prodottoOrdineRepository.findAllByContadino_Id(idContadino);
         double alberi, frutta = 0, anidride = 0;
@@ -115,7 +113,7 @@ public class GestioneStatisticheService implements StatisticheService {
      */
     @Override
     public Iterable<Double> statistichePaginaResponsabileOrdini() {
-        ArrayList<Double> statistiche = new ArrayList<>(3);
+        List<Double> statistiche = new ArrayList<>(3);
         double ordini, contadini, paesi, alberi = 0;
 
         ordini = ordineRepository.findAll().size();

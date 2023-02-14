@@ -7,26 +7,29 @@ import it.unisa.WoodLot.sevice.gestioneUtente.registrazione.GestioneRegistrazion
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import javax.transaction.Transactional;
 import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * Test di unità per la classe GestioneRegistrazioneService
+ * Test d'integrazione fra la classe GestioneRegistrazioneService e la repository.
  *
  * @author Alessia Ture
  */
 @SpringBootTest
-@ExtendWith(MockitoExtension.class)
-public class RegistrazioneServiceUT {
-
-    @Mock
+@Transactional
+@Rollback
+@ExtendWith(SpringExtension.class)
+public class RegistrazioneServiceIT {
+    @Autowired
     private UtenteRepository utenteRepository;
+
     @Autowired
     private GestioneRegistrazioneService gestioneRegistrazioneService;
     private Utente utente;
@@ -38,8 +41,8 @@ public class RegistrazioneServiceUT {
 
     /**
      * Testa il caso in cui un utente si registra con successo
-     *
-     * @result Il test è superato se l'utente viene salvato con successo
+     * <p>
+     * Il test è superato se l'utente viene salvato con successo
      */
     @Test
     public void testRegistrazioneSuccesso() {
@@ -54,12 +57,12 @@ public class RegistrazioneServiceUT {
 
     /**
      * Testa il caso in cui l'utente è nullo
-     *
-     * @result Il test è superato se il messaggio generato dal sistema è uguale a quello
+     * <p>
+     * Il test è superato se il messaggio generato dal sistema è uguale a quello
      * previsto dall'oracolo.
      */
     @Test
-    public void testRegistrazioneUtenteNullo() {
+    public void testRegistrazioneUtentelNullo() {
         String messaggio = "Utente non valido";
         Utente utente = null;
         try {
@@ -71,8 +74,8 @@ public class RegistrazioneServiceUT {
 
     /**
      * Testa il caso in cui email è nulla
-     *
-     * @result Il test è superato se il messaggio generato dal sistema è uguale a quello
+     * <p>
+     * Il test è superato se il messaggio generato dal sistema è uguale a quello
      * previsto dall'oracolo.
      */
     @Test
@@ -89,8 +92,8 @@ public class RegistrazioneServiceUT {
 
     /**
      * Testa il caso in cui la password è nulla
-     *
-     * @result Il test è superato se il messaggio generato dal sistema è uguale a quello
+     * <p>
+     * Il test è superato se il messaggio generato dal sistema è uguale a quello
      * previsto dall'oracolo.
      */
     @Test
@@ -107,8 +110,8 @@ public class RegistrazioneServiceUT {
 
     /**
      * Testa il caso in cui il nome è nullo
-     *
-     * @result Il test è superato se il messaggio generato dal sistema è uguale a quello
+     * <p>
+     * Il test è superato se il messaggio generato dal sistema è uguale a quello
      * previsto dall'oracolo.
      */
     @Test
@@ -125,8 +128,8 @@ public class RegistrazioneServiceUT {
 
     /**
      * Testa il caso in cui il nome è nullo
-     *
-     * @result Il test è superato se il messaggio generato dal sistema è uguale a quello
+     * <p>
+     * Il test è superato se il messaggio generato dal sistema è uguale a quello
      * previsto dall'oracolo.
      */
     @Test
@@ -143,8 +146,8 @@ public class RegistrazioneServiceUT {
 
     /**
      * Testa il caso in cui la data di nascita è nulla
-     *
-     * @result Il test è superato se il messaggio generato dal sistema è uguale a quello
+     * <p>
+     * Il test è superato se il messaggio generato dal sistema è uguale a quello
      * previsto dall'oracolo.
      */
     @Test
@@ -161,8 +164,8 @@ public class RegistrazioneServiceUT {
 
     /**
      * Testa il caso in cui il formato della email non è valida
-     *
-     * @result Il test è superato se il messaggio generato dal sistema è uguale a quello
+     * <p>
+     * Il test è superato se il messaggio generato dal sistema è uguale a quello
      * previsto dall'oracolo.
      */
     @Test
@@ -179,8 +182,8 @@ public class RegistrazioneServiceUT {
 
     /**
      * Testa il caso in cui il formato della password non è valida
-     *
-     * @result Il test è superato se il messaggio generato dal sistema è uguale a quello
+     * <p>
+     * Il test è superato se il messaggio generato dal sistema è uguale a quello
      * previsto dall'oracolo.
      */
     @Test
@@ -224,6 +227,7 @@ public class RegistrazioneServiceUT {
         String messaggio = "E-mail già presente nel database";
         String email = "alessiature@gmail.com";
         utente.setEmail(email);
+        utenteRepository.save(utente);
         try {
             gestioneRegistrazioneService.registrazione(utente);
         } catch (RegistrazioneException e) {

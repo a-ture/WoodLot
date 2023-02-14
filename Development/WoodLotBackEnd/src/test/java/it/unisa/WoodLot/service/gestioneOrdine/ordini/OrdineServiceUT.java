@@ -34,7 +34,8 @@ public class OrdineServiceUT {
     private GestioneOrdineService gestioneOrdineService;
 
     /**
-     * Testa il caso in cui vengono visualizzati tutti gli ordini presenti
+     * Testa il caso in cui vengono visualizzati tutti gli ordini
+     * Il test risulta superato se tutti gli ordini vengono visualizzati con successo
      */
     @Test
     public void testRestituisciOrdini() {
@@ -51,7 +52,8 @@ public class OrdineServiceUT {
     }
 
     /**
-     * Testa il caso in cui vengono visualizzati gli ordini di un utente
+     * Testa il caso in cui viene visualizzato lo storico degli ordini di un utente
+     * Il test risulta superato se tutti gli ordini vengono visualizzati con successo
      */
     @Test
     public void testVisualizzaOrdiniUtente() {

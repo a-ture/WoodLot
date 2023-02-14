@@ -8,7 +8,6 @@ import it.unisa.WoodLot.sevice.gestioneContadino.eccezioni.ContadinoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 
 /**
  * La classe fornisce i metodi per la logica di business per la gestione dei contadini
@@ -26,7 +25,7 @@ public class GestioneContadinoService implements ContadinoService {
     /**
      * Restituisce l'elenco dei contadini presenti nel database
      *
-     * @return
+     * @return l'elenco dei contadini
      */
     @Override
     public Iterable<Contadino> getElencoContadini() {
@@ -54,6 +53,4 @@ public class GestioneContadinoService implements ContadinoService {
         p.setFrutta(prodottoOrdine.getFrutta());
         return prodottoOrdineRepository.save(prodottoOrdine);
     }
-
-
 }

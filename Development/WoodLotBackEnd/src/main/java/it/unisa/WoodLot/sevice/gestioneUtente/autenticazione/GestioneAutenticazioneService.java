@@ -26,7 +26,7 @@ public class GestioneAutenticazioneService implements AutenticazioneService {
     @Autowired
     private ContadinoRepository contadinoRepository;
     @Autowired
-    ResponsabileOrdiniRepository responsabileOrdiniRepository;
+    private ResponsabileOrdiniRepository responsabileOrdiniRepository;
     @Autowired
     private ResponsabileCatalogoRepository responsabileCatalogoRepository;
 
@@ -98,7 +98,7 @@ public class GestioneAutenticazioneService implements AutenticazioneService {
             throw new PasswordException("La password deve essere lunga almeno 8 caratteri");
 
         if (!password.matches(".*[@!#$].*"))
-            throw new IllegalArgumentException("La password deve contenere almeno un carattere tra: @, !, #, $");
+            throw new PasswordException("La password deve contenere almeno un carattere tra: @, !, #, $");
 
         if (utente != null) {
             utente.setPassword(password);
