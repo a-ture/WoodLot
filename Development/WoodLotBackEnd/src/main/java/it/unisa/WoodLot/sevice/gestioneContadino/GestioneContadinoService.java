@@ -8,6 +8,8 @@ import it.unisa.WoodLot.sevice.gestioneContadino.eccezioni.ContadinoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
 
 /**
  * La classe fornisce i metodi per la logica di business per la gestione dei contadini
@@ -44,6 +46,7 @@ public class GestioneContadinoService implements ContadinoService {
     }
 
     @Override
+    @Transactional
     public ProdottoOrdine aggiornaStato(ProdottoOrdine prodottoOrdine) throws ContadinoException {
         ProdottoOrdine p = prodottoOrdineRepository.findById(prodottoOrdine.getId()).orElse(null);
         if (p == null)

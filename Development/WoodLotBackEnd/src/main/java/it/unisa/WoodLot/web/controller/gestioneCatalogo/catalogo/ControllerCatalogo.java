@@ -5,7 +5,6 @@ import it.unisa.WoodLot.sevice.gestioneCatalogo.eccezioni.AlberoException;
 import it.unisa.WoodLot.sevice.gestioneCatalogo.catalogo.CatalogoService;
 import it.unisa.WoodLot.web.controller.ResponseHandler;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -38,7 +37,7 @@ public class ControllerCatalogo {
         try {
             Albero a = catalogoService.aggiungiProdotto(albero);
             return new ResponseEntity<>(a, HttpStatus.CREATED);
-        } catch (AlberoException e){
+        } catch (AlberoException e) {
             return ResponseHandler.generateResponse(HttpStatus.BAD_REQUEST,
                     e.getMessage());
         }
@@ -46,6 +45,7 @@ public class ControllerCatalogo {
 
     /**
      * Permette di salvare le foto nella loro posizione
+     *
      * @param img
      * @return
      */

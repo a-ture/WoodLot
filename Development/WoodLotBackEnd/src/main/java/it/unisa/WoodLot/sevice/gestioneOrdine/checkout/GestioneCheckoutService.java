@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -58,8 +59,12 @@ public class GestioneCheckoutService implements CheckoutService {
         for (ProdottoCarrello prodottoCarrello : prodottiCarrello) {
             ProdottoOrdine prodottoOrdine = new ProdottoOrdine();
             prodottoOrdine.setAnidrideCarbonicaAssorbita(prodottoCarrello.getAlbero().getAnidrideCarbonicaAssorbita());
-            prodottoOrdine.setBenefici(prodottoCarrello.getAlbero().getBenefici());
-            prodottoOrdine.setUsiLocali(prodottoCarrello.getAlbero().getUsiLocali());
+            // facciamo una nuova lista per evitare la condivisione della lista
+            List<Beneficio> benefici = new ArrayList<>(prodottoCarrello.getAlbero().getBenefici());
+            prodottoOrdine.setBenefici(benefici);
+            // facciamo una nuova lista per evitare la condivisione della lista
+            List<UsoLocale> usi = new ArrayList<>(prodottoCarrello.getAlbero().getUsiLocali());
+            prodottoOrdine.setUsiLocali(usi);
             prodottoOrdine.setNomeAlbero(prodottoCarrello.getAlbero().getNome());
             prodottoOrdine.setPrezzoUnitario(prodottoCarrello.getAlbero().getPrezzo());
             prodottoOrdine.setStato(ProdottoOrdine.Stato.NonAssegnato);

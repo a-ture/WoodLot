@@ -24,7 +24,7 @@ public class ControllerStatistiche {
     /**
      * Metodo GET per visualizzare le statistiche della pagina dell'utente
      *
-     * @param idUtente l'id dell'utente di cuii si vogliono visualizzare le statistiche
+     * @param idUtente l'id dell'utente di cui si vogliono visualizzare le statistiche
      */
     @GetMapping("/utente/{idUtente}")
     public ResponseEntity<Object> visualizzaStatisticheUtente(@PathVariable Long idUtente) {
