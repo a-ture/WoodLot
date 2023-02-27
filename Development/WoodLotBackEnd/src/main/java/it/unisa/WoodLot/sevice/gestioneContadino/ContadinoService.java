@@ -16,4 +16,6 @@ public interface ContadinoService {
     Iterable<ProdottoOrdine> getAlberiNonAssegnati();
 
     ProdottoOrdine aggiornaStato(ProdottoOrdine prodottoOrdine) throws ContadinoException;
+
+    Iterable<ProdottoOrdine> elencoAlberiContadino(Long idContadino);
 }

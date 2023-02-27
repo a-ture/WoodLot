@@ -67,4 +67,14 @@ public class ProdottoOrdine implements Serializable {
     @ManyToMany
     @JoinColumn(name = "beneficio", referencedColumnName = "nome")
     private List<Beneficio> benefici;
+
+    public ProdottoOrdine() {
+        frutta = (double) 0;
+    }
+
+    public double getFrutta() {
+        if (frutta == null)
+            return 0;
+        else return frutta;
+    }
 }

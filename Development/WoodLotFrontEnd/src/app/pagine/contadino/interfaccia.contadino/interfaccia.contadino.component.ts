@@ -4,9 +4,6 @@ import {StatisticheService} from "../../../servizi/statistiche/statistiche.servi
 import {ProdottoOrdine} from "../../../entita/prodottoOrdine/prodotto-ordine";
 import {Contadino} from "../../../entita/contadino/contadino";
 
-class ArrayList<T> {
-}
-
 @Component({
   selector: 'app-interfaccia-contadino',
   templateUrl: './interfaccia.contadino.component.html',
@@ -17,15 +14,16 @@ export class InterfacciaContadinoComponent implements OnInit {
   public contadino !: Contadino
   public listaNumeri !: string[]
   public listNomi = ["Alberi piantati", "Frutti raccolti", "kg di anidride carbonica assorbita"]
-  public listAlberiContadino
+  public listAlberiContadino !: ProdottoOrdine[]
 
   constructor(private contadinoService: ContadinoService, private statisticheService: StatisticheService) {
     this.contadino = contadinoService.getContadino()
-    console.log(this.contadino.id)
     statisticheService.getStatischeContadino(this.contadino.id).subscribe((data: string[]) => {
       this.listaNumeri = data
     })
-    this.listAlberiContadino = this.contadino?.listaAlberi
+    contadinoService.getAlberiContadini(this.contadino.id).subscribe((data: ProdottoOrdine[]) => {
+      this.listAlberiContadino = data
+    })
   }
 
   public panes = [
@@ -47,10 +45,9 @@ export class InterfacciaContadinoComponent implements OnInit {
   getAlberiPerStato(stato: String) {
     let lista = new Array<ProdottoOrdine>()
     this?.listAlberiContadino?.forEach(e => {
-      if (e.stato == stato)
+      if (e.stato === stato)
         lista.push(e)
     })
-
     return lista
   }
 

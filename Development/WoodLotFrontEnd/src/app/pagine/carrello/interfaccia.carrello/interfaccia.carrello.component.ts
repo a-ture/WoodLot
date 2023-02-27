@@ -64,6 +64,9 @@ export class InterfacciaCarrelloComponent implements OnInit {
   vaiAlPagamento() {
     if (this.carrello.prodottiCarrello.length == 0)
       this.error = 'Il tuo carrello è vuoto! Aggiungi almeno un prodotto prima di continuare'
+    else {
+      this.router.navigate(["/checkout"])
+    }
   }
 
   ngOnInit(): void {

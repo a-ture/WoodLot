@@ -9,9 +9,9 @@ import org.springframework.stereotype.Service;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+
+import org.apache.commons.io.FilenameUtils;
+
 import java.util.ArrayList;
 
 /**
@@ -36,26 +36,6 @@ public class GestioneCatalogoService implements CatalogoService {
 
     @Autowired
     private PaeseOrigineRepository paeseOrigineRepository;
-
-    /**
-     * Permette di salvare le immagini del albero
-     *
-     * @param imageData i byte che compongono la foto
-     * @param fileName  il nome della foto che si intende salvare
-     * @throws IOException
-     */
-    @Override
-    public void salvaImmagine(byte[] imageData, String fileName) throws IOException {
-        File directory = new File("/Users/alessiature/Desktop/WoodLot/Development/WoodLotFrontEnd/src/assets/img/alberi/");
-        if (!directory.exists()) {
-            directory.mkdirs();
-        }
-        File imageFile = new File(directory, fileName);
-        FileOutputStream fos = new FileOutputStream(imageFile);
-        fos.write(imageData);
-        fos.close();
-    }
-
 
     /**
      * Permette di aggiungere un prodotto nel catalogo

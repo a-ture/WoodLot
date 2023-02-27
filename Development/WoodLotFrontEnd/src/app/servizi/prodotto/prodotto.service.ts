@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Albero} from "../../entita/albero/albero";
 import {Observable} from "rxjs";
-import {HttpClient, HttpParams, HttpRequest} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams, HttpRequest} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
@@ -63,16 +63,13 @@ export class ProdottoService {
     return this.http.get(url)
   }
 
-  //salva le foto del prodotto
-  public salvaFoto(idNome: string, foto: File) {
-    const formData = new FormData();
-    formData.append(idNome, foto);
-    const req = new HttpRequest('POST', 'http://localhost:8090/api/catalogo/upload', formData, {
-      reportProgress: true
-    });
-
-    return this.http.request(req);
+  public salvaFoto(treeName: string,foto: File): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append('file', foto, foto.name);
+    formData.append('treeName', treeName);
+    return this.http.post<any>('http://localhost:8090/api/catalogo/upload', formData);
   }
+
 
   //salva il prodotto
   public salvaAlbero(albero: Albero): Observable<any> {

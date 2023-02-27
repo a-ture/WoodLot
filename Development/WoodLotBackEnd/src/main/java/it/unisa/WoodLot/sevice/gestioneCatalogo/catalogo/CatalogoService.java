@@ -13,7 +13,6 @@ import java.io.IOException;
  * @author Alessia Ture
  */
 public interface CatalogoService {
-    void salvaImmagine(byte[] imageData, String fileName) throws IOException;
 
     Albero aggiungiProdotto(Albero albero) throws AlberoException;
 

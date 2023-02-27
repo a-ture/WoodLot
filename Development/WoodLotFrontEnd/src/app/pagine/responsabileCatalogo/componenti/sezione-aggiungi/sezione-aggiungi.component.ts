@@ -13,8 +13,8 @@ import {Categoria} from "../../../../entita/categoria/categoria";
 import {CategoriaService} from "../../../../servizi/categoria/categoria.service";
 import {ProdottoService} from "../../../../servizi/prodotto/prodotto.service";
 import {Albero} from "../../../../entita/albero/albero";
-import {dateTimestampProvider} from "rxjs/internal/scheduler/dateTimestampProvider";
 import {Router} from "@angular/router";
+import {forkJoin} from "rxjs";
 
 
 @Component({
@@ -28,6 +28,11 @@ export class SezioneAggiungiComponent implements OnInit {
   submitted = false;
   formErrori: any;
   errorMessage: string = '';
+  fileToUpload1!: File;
+  fileToUpload2!: File;
+  fileToUpload3!: File;
+  fileToUpload4!: File;
+
 
   public listaBenefici !: Beneficio[]
   public listaUsiLocali !: UsoLocale[]
@@ -69,6 +74,22 @@ export class SezioneAggiungiComponent implements OnInit {
     this.formErrori = serviceValidazioneFormProdotto.errori
   }
 
+  onFileSelected1(event: any) {
+    this.fileToUpload1 = event.target.files[0];
+  }
+
+  onFileSelected2(event: any) {
+    this.fileToUpload2 = event.target.files[0];
+  }
+
+  onFileSelected3(event: any) {
+    this.fileToUpload3 = event.target.files[0];
+  }
+
+  onFileSelected4(event: any) {
+    this.fileToUpload4 = event.target.files[0];
+  }
+
   ngOnInit(): void {
     this.servicePaese.getPaesi().subscribe(data => {
       this.listaPaesi = data;
@@ -102,11 +123,6 @@ export class SezioneAggiungiComponent implements OnInit {
       let anidrideCarbonica = this.formInserimento.get('anidrideCarbonica')?.value
       let salvaguardia = this.formInserimento.get('salvaguardia')?.value
 
-      let foto4 = this.formInserimento.get('foto4')?.value
-      let foto3 = this.formInserimento.get('foto3')?.value
-      let foto2 = this.formInserimento.get('foto2')?.value
-      let foto1 = this.formInserimento.get('foto1')?.value
-
       let usiLocali = this.formInserimento.get('usiLocali')?.value
       let usiLocaliArray = new Array<UsoLocale>()
       usiLocali.forEach((e: string) => {
@@ -135,10 +151,20 @@ export class SezioneAggiungiComponent implements OnInit {
       this.serviceProdotto.salvaAlbero(albero).subscribe(
         (data: Albero) => {
 
-          this.serviceProdotto.salvaFoto("catalogo.webp", foto4)
-          this.serviceProdotto.salvaFoto("01.webp", foto3)
-          this.serviceProdotto.salvaFoto("02.webp", foto2)
-          this.serviceProdotto.salvaFoto("03.webp", foto1)
+          const saveFoto1$ = this.serviceProdotto.salvaFoto(nomeAlbero, this.fileToUpload1);
+          const saveFoto2$ = this.serviceProdotto.salvaFoto(nomeAlbero, this.fileToUpload2);
+          const saveFoto3$ = this.serviceProdotto.salvaFoto(nomeAlbero, this.fileToUpload3);
+          const saveFoto4$ = this.serviceProdotto.salvaFoto(nomeAlbero, this.fileToUpload4);
+
+          forkJoin([saveFoto1$, saveFoto2$, saveFoto3$, saveFoto4$]).subscribe(
+            () => {
+              this.router.navigate(['/paginaProdotto', albero.nome]);
+            },
+            (error) => {
+              this.errorMessage = JSON.stringify(error.data);
+              console.log(this.errorMessage)
+            }
+          );
           this.router.navigate(['/paginaProdotto', albero.nome])
         },
         (error) => {

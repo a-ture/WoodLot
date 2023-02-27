@@ -48,4 +48,9 @@ public class ControllerContadino {
             return ResponseHandler.generateResponse(HttpStatus.BAD_REQUEST, e.getMessage());
         }
     }
+
+    @GetMapping("/alberiContadino/{idContadino}")
+    public ResponseEntity<Object> restituisceAlberiContadino(@PathVariable Long idContadino) {
+        return new ResponseEntity<>(contadinoService.elencoAlberiContadino(idContadino), HttpStatus.ACCEPTED);
+    }
 }

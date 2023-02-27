@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Contadino} from "../../entita/contadino/contadino";
 import {ProdottoOrdine} from "../../entita/prodottoOrdine/prodotto-ordine";
-import {Pagamento} from "../../entita/pagamento/pagamento";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 
@@ -21,6 +20,10 @@ export class ContadinoService {
       contadino = JSON.parse(storedContadino);
     }
     console.log(contadino)
+    this.getAlberiContadini(contadino.id).subscribe((data:ProdottoOrdine[]) => {
+        contadino.listaAlberi = data;
+      }
+    )
     return contadino;
   }
 
@@ -36,9 +39,14 @@ export class ContadinoService {
     return this.http.get<ProdottoOrdine[]>(url)
   }
 
-  // restuisce tutti i pagamenti di un contadini
+  // restituisce tutti i pagamenti di un contadini
   public getPagamenti(idContadino: number): Observable<any> {
     let url = 'http://localhost:8090/api/pagamento/elencoPagamenti/' + idContadino
+    return this.http.get(url)
+  }
+
+  public getAlberiContadini(idContadino: number): Observable<any> {
+    let url = 'http://localhost:8090/api/contadino/alberiContadino/' + idContadino
     return this.http.get(url)
   }
 }

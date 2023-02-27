@@ -23,12 +23,12 @@
       <c-tab-pane *ngFor="let pane of panes; index as i;" class="p-3">
 
         <c-row *ngIf="activePane==0">
-          <div class="row" *ngIf="getAlberiPerStato('assegnato').length == 0">
-            <h3 class="text-center my-5 py-5">Non hai nessun alberi assegnati!</h3>
+          <div class="row" *ngIf="getAlberiPerStato('Assegnato').length == 0">
+            <h3 class="text-center my-5 py-5">Non hai nuovi alberi!</h3>
           </div>
           <c-row class="container" [gutter]="2" [xl]="4" [lg]="3" [md]="2" [xs]="2">
 
-            <c-col *ngFor="let item of getAlberiPerStato('assegnato'); index as i">
+            <c-col *ngFor="let item of getAlberiPerStato('Assegnato'); index as i">
               <app-card-albero-contadino [titolo]="item.nomeAlbero"
                                          [dataModifica]="item?.dataModifica" [id]="item.id"
                                          [stato]="item.stato"
@@ -39,12 +39,12 @@
         </c-row>
 
         <c-row *ngIf="activePane==1">
-          <div class="row" *ngIf="getAlberiPerStato('piantato').length == 0">
+          <div class="row" *ngIf="getAlberiPerStato('Piantato').length == 0">
             <h3 class="text-center my-5 py-5">Non hai nessun albero nello stato piantato</h3>
           </div>
           <c-row class="container" [gutter]="2" [xl]="4" [lg]="3" [md]="2" [xs]="2">
 
-            <c-col *ngFor="let item of getAlberiPerStato('piantato'); index as i">
+            <c-col *ngFor="let item of getAlberiPerStato('Piantato'); index as i">
               <app-card-albero-contadino [titolo]="item.nomeAlbero"
                                          [dataModifica]="item?.dataModifica" [id]="item.id"
                                          [stato]="item.stato"
@@ -55,11 +55,11 @@
         </c-row>
 
         <c-row *ngIf="activePane==2">
-          <div class="row" *ngIf="getAlberiPerStato('bocciolo').length == 0">
+          <div class="row" *ngIf="getAlberiPerStato('Bocciolo').length == 0">
             <h3 class="text-center my-5 py-5">Non hai nessun albero nello stato bocciolo</h3>
           </div>
           <c-row class="container" [gutter]="2" [xl]="4" [lg]="3" [md]="2" [xs]="2">
-            <c-col *ngFor="let item of getAlberiPerStato('bocciolo'); index as i">
+            <c-col *ngFor="let item of getAlberiPerStato('Bocciolo'); index as i">
               <app-card-albero-contadino [titolo]="item.nomeAlbero"
                                          [sourceImage]="'assets/img/profiloUtente/alberiUtente/01.jpeg'"
                                          [dataModifica]="item?.dataModifica" [id]="item.id"
@@ -70,11 +70,11 @@
         </c-row>
 
         <c-row *ngIf="activePane==3">
-          <div class="row" *ngIf="getAlberiPerStato('fiore').length == 0">
+          <div class="row" *ngIf="getAlberiPerStato('Fiore').length == 0">
             <h3 class="text-center my-5 py-5">Non hai nessun albero nello stato fiore</h3>
           </div>
           <c-row class="container" [gutter]="2" [xl]="4" [lg]="3" [md]="2" [xs]="2">
-            <c-col *ngFor="let item of getAlberiPerStato('fiore'); index as i">
+            <c-col *ngFor="let item of getAlberiPerStato('Fiore'); index as i">
               <app-card-albero-contadino [titolo]="item.nomeAlbero"
                                          [sourceImage]="'assets/img/profiloUtente/alberiUtente/01.jpeg'"
                                          [dataModifica]="item?.dataModifica" [id]="item.id"
@@ -85,11 +85,11 @@
         </c-row>
 
         <c-row *ngIf="activePane==4">
-          <div class="row" *ngIf="getAlberiPerStato('frutto').length == 0">
+          <div class="row" *ngIf="getAlberiPerStato('Frutto').length == 0">
             <h3 class="text-center my-5 py-5">Non hai nessun albero nello stato frutto</h3>
           </div>
           <c-row class="container" [gutter]="2" [xl]="4" [lg]="3" [md]="2" [xs]="2">
-            <c-col *ngFor="let item of getAlberiPerStato('frutto'); index as i">
+            <c-col *ngFor="let item of getAlberiPerStato('Frutto'); index as i">
               <app-card-albero-contadino [titolo]="item.nomeAlbero"
                                          [sourceImage]="'assets/img/profiloUtente/alberiUtente/01.jpeg'"
                                          [dataModifica]="item?.dataModifica" [id]="item.id"
@@ -100,11 +100,11 @@
         </c-row>
 
         <c-row *ngIf="activePane==5">
-          <div class="row" *ngIf="getAlberiPerStato('dormienza').length == 0">
+          <div class="row" *ngIf="getAlberiPerStato('Dormienza').length == 0">
             <h3 class="text-center my-5 py-5">Non hai nessun albero nello stato dormienza</h3>
           </div>
           <c-row class="container" [gutter]="2" [xl]="4" [lg]="3" [md]="2" [xs]="2">
-            <c-col *ngFor="let item of getAlberiPerStato('dormienza'); index as i">
+            <c-col *ngFor="let item of getAlberiPerStato('Dormienza'); index as i">
               <app-card-albero-contadino [titolo]="item.nomeAlbero"
                                          [sourceImage]="'assets/img/profiloUtente/alberiUtente/01.jpeg'"
                                          [dataModifica]="item?.dataModifica" [id]="item.id"

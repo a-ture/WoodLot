@@ -101,9 +101,10 @@ public class GestioneStatisticheService implements StatisticheService {
         }
         alberi = prodotti.size();
 
-        statistiche.add(anidride);
-        statistiche.add(frutta);
         statistiche.add(alberi);
+        statistiche.add(frutta);
+        statistiche.add(anidride);
+
         return statistiche;
     }
 

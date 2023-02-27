@@ -16,7 +16,7 @@
         <tr *ngFor="let item of listaPagamenti?.slice(0,3)">
           <th scope="row">{{item.id}}</th>
           <td>{{item.importo.toFixed(2)}}€</td>
-          <td>{{item.motivazione}}</td>
+          <td>{{item.motivazioni}}</td>
           <td>{{item.dataPagamento | date: 'dd/MM/yy'}}</td>
         </tr>
         </tbody>
@@ -42,7 +42,7 @@
         <h3>Dettaglio pagamento n.{{item.id}}</h3>
         <p>Pagamento effettuato il: {{item.dataPagamento |date: 'dd/MM/yy' }}</p>
         <p>Importo: {{item.importo.toFixed(2)}}€</p>
-        <p>Motivazione: {{item.motivazione}}</p>
+        <p>Motivazione: {{item.motivazioni}}</p>
         <hr>
       </div>
 

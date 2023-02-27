@@ -56,4 +56,15 @@ public class GestioneContadinoService implements ContadinoService {
         p.setFrutta(prodottoOrdine.getFrutta());
         return prodottoOrdineRepository.save(prodottoOrdine);
     }
+
+    /**
+     * Restituisce l'elenco degli alberi assegnati a un contadino
+     *
+     * @param idContadino l'id del contadino
+     * @return
+     */
+    @Override
+    public Iterable<ProdottoOrdine> elencoAlberiContadino(Long idContadino) {
+        return prodottoOrdineRepository.findAllByContadino_Id(idContadino);
+    }
 }

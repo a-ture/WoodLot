@@ -7,9 +7,12 @@ import it.unisa.WoodLot.web.controller.ResponseHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+
+import java.io.File;
 import java.io.IOException;
 
 
@@ -45,19 +48,24 @@ public class ControllerCatalogo {
 
     /**
      * Permette di salvare le foto nella loro posizione
-     *
-     * @param img
-     * @return
      */
     @PostMapping("/upload")
-    public ResponseEntity<Object> uploadImage(@RequestParam("img") MultipartFile img) {
-        try {
-            catalogoService.salvaImmagine(img.getBytes(), img.getOriginalFilename());
-            return ResponseEntity.ok("Immagine salvata con successo");
-        } catch (IOException e) {
-            return ResponseHandler.generateResponse(HttpStatus.BAD_REQUEST,
-                    e.getMessage());
+    @ResponseBody
+    public ResponseEntity<Object> uploadImage(@RequestParam("file") MultipartFile file, @RequestParam("treeName") String treeName) throws IOException {
+        String UPLOAD_DIR = "/Users/alessiature/Desktop/WoodLot/Development/WoodLotFrontEnd/src/assets/img/alberi";
+
+        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+
+        File directory = new File(UPLOAD_DIR + "/" + treeName);
+        if (!directory.exists()) {
+            directory.mkdirs();
         }
+
+        File dest = new File(directory.getAbsolutePath() + File.separator + fileName);
+        file.transferTo(dest);
+        System.out.println(dest);
+
+        return ResponseEntity.ok().build();
     }
 
     /**
