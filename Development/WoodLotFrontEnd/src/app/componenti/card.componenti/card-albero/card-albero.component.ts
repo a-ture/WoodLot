@@ -4,8 +4,8 @@ import {Component, Input, OnInit} from '@angular/core';
   selector: 'app-card-albero',
   styleUrls: ['./card-albero.component.scss'],
   template: `
-    <c-card class="mb-3">
-      <img cCardImg="top" src="{{sourceImage}}">
+    <c-card class="mb-3" >
+      <img cCardImg="top" src="{{sourceImage}}" style="max-height: 300px;">
       <c-card-body>
         <h5 cCardTitle>{{titolo}}</h5>
         <p cCardText *ngFor="let item of listaNomi; index as i">

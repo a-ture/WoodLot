@@ -18,6 +18,7 @@ export class SezioneAlberoComponent implements OnInit {
     this.activePane = $event;
     console.log('onTabChange', $event);
   }
+
   @Input()
   public listaAlberi !: ProdottoOrdine[]
 

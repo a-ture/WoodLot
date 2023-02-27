@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Date;
 
 
 /**
@@ -54,6 +55,7 @@ public class GestioneContadinoService implements ContadinoService {
         p.setStato(prodottoOrdine.getStato());
         p.setDescrizione(prodottoOrdine.getDescrizione());
         p.setFrutta(prodottoOrdine.getFrutta());
+        p.setDataModifica(new Date());
         return prodottoOrdineRepository.save(prodottoOrdine);
     }
 

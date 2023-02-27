@@ -29,10 +29,8 @@
           <c-row class="container" [gutter]="2" [xl]="4" [lg]="3" [md]="2" [xs]="2">
 
             <c-col *ngFor="let item of getAlberiPerStato('Assegnato'); index as i">
-              <app-card-albero-contadino [titolo]="item.nomeAlbero"
-                                         [dataModifica]="item?.dataModifica" [id]="item.id"
-                                         [stato]="item.stato"
-                                         [sourceImage]="'assets/img/profiloUtente/alberiUtente/01.jpeg'"
+              <app-card-albero-contadino [alberoContadino]="item"
+                                         [sourceImage]="'assets/img/alberi/'+item.nomeAlbero.toLowerCase()+'/catalogo.webp'"
               ></app-card-albero-contadino>
             </c-col>
           </c-row>
@@ -45,10 +43,8 @@
           <c-row class="container" [gutter]="2" [xl]="4" [lg]="3" [md]="2" [xs]="2">
 
             <c-col *ngFor="let item of getAlberiPerStato('Piantato'); index as i">
-              <app-card-albero-contadino [titolo]="item.nomeAlbero"
-                                         [dataModifica]="item?.dataModifica" [id]="item.id"
-                                         [stato]="item.stato"
-                                         [sourceImage]="'assets/img/profiloUtente/alberiUtente/01.jpeg'"
+              <app-card-albero-contadino [alberoContadino]="item"
+                                         [sourceImage]="'assets/img/alberiUtente/'+contadino.id+'/'+item.id+'.jpeg'"
               ></app-card-albero-contadino>
             </c-col>
           </c-row>
@@ -60,10 +56,8 @@
           </div>
           <c-row class="container" [gutter]="2" [xl]="4" [lg]="3" [md]="2" [xs]="2">
             <c-col *ngFor="let item of getAlberiPerStato('Bocciolo'); index as i">
-              <app-card-albero-contadino [titolo]="item.nomeAlbero"
-                                         [sourceImage]="'assets/img/profiloUtente/alberiUtente/01.jpeg'"
-                                         [dataModifica]="item?.dataModifica" [id]="item.id"
-                                         [stato]="item.stato"
+              <app-card-albero-contadino [alberoContadino]="item"
+                                         [sourceImage]="'assets/img/alberiUtente/'+contadino.id+'/'+item.id+'.jpeg'"
               ></app-card-albero-contadino>
             </c-col>
           </c-row>
@@ -75,10 +69,8 @@
           </div>
           <c-row class="container" [gutter]="2" [xl]="4" [lg]="3" [md]="2" [xs]="2">
             <c-col *ngFor="let item of getAlberiPerStato('Fiore'); index as i">
-              <app-card-albero-contadino [titolo]="item.nomeAlbero"
-                                         [sourceImage]="'assets/img/profiloUtente/alberiUtente/01.jpeg'"
-                                         [dataModifica]="item?.dataModifica" [id]="item.id"
-                                         [stato]="item.stato"
+              <app-card-albero-contadino [alberoContadino]="item"
+                                         [sourceImage]="'assets/img/alberiUtente/'+contadino.id+'/'+item.id+'.jpeg'"
               ></app-card-albero-contadino>
             </c-col>
           </c-row>
@@ -90,10 +82,8 @@
           </div>
           <c-row class="container" [gutter]="2" [xl]="4" [lg]="3" [md]="2" [xs]="2">
             <c-col *ngFor="let item of getAlberiPerStato('Frutto'); index as i">
-              <app-card-albero-contadino [titolo]="item.nomeAlbero"
-                                         [sourceImage]="'assets/img/profiloUtente/alberiUtente/01.jpeg'"
-                                         [dataModifica]="item?.dataModifica" [id]="item.id"
-                                         [stato]="item.stato"
+              <app-card-albero-contadino [sourceImage]="'assets/img/alberiUtente/'+contadino.id+'/'+item.id+'.jpeg'"
+                                         [alberoContadino]="item"
               ></app-card-albero-contadino>
             </c-col>
           </c-row>
@@ -105,10 +95,8 @@
           </div>
           <c-row class="container" [gutter]="2" [xl]="4" [lg]="3" [md]="2" [xs]="2">
             <c-col *ngFor="let item of getAlberiPerStato('Dormienza'); index as i">
-              <app-card-albero-contadino [titolo]="item.nomeAlbero"
-                                         [sourceImage]="'assets/img/profiloUtente/alberiUtente/01.jpeg'"
-                                         [dataModifica]="item?.dataModifica" [id]="item.id"
-                                         [stato]="item.stato"
+              <app-card-albero-contadino [alberoContadino]="item"
+                                         [sourceImage]="'assets/img/alberiUtente/'+contadino.id+'/'+item.id+'.jpeg'"
               ></app-card-albero-contadino>
             </c-col>
           </c-row>

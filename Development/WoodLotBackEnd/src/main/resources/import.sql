@@ -264,22 +264,25 @@ INSERT INTO responsabile_ordini(id,email, password,nome, cognome) VALUES (1,"ord
 
 /*Ordini*/
 /*Ordine 1*/
-INSERT INTO ordine (id,totale,data_ordine,utente_id) VALUES  (1, 94.90, "2022-09-21", 1);
+INSERT INTO ordine (id,totale,data_ordine,utente_id) VALUES  (1, 94.90, "2021-05-21", 1);
 
-INSERT INTO prodotto_ordine(id,nome_albero,co2,stato,prezzo_unitario) VALUES (1,"Arancio",45,1,35);
+/*Albero assegnato al contadino 2*/
+INSERT INTO prodotto_ordine(id,nome_albero,co2,stato,prezzo_unitario,contadino,data_assegnazione,data_modifica,descrizione,frutta) VALUES (1,"Arancio",45,5,35,2,"2021-05-21","2022-02-12","Il tuo albero ha prodotto tanti frutti",20);
 INSERT INTO prodotto_ordine_benefici(prodotto_ordine_id, benefici_nome) VALUES (1,"Sicurezza alimentare");
 INSERT INTO prodotto_ordine_benefici(prodotto_ordine_id, benefici_nome) VALUES (1,"Sviluppo economico");
 INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(1,"Suolo");
 INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(1,"Recinzione");
 INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(1,"Suolo");
 
-INSERT INTO prodotto_ordine(id,nome_albero,co2,stato,prezzo_unitario)VALUES (2,"Banano",34,1,24.90);
+/*Albero assegnato al contadino 3*/
+INSERT INTO prodotto_ordine(id,nome_albero,co2,stato,prezzo_unitario,contadino,data_assegnazione,data_modifica,descrizione,frutta)VALUES (2,"Banano",34,5,24.90,3,"2021-05-21","2022-02-12","Il tuo albero ha prodotto tanti frutti",50);
 INSERT INTO prodotto_ordine_benefici(prodotto_ordine_id, benefici_nome) VALUES (2,"Sicurezza alimentare");
 INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(2,"Allevamento");
 INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(2,"Antivento");
 INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(2,"Insetticida");
 
-INSERT INTO prodotto_ordine(id,nome_albero,co2,stato,prezzo_unitario)VALUES (3,"Anacardo",34,1,35.90);
+/*Albero assegnato al contadino 1*/
+INSERT INTO prodotto_ordine(id,nome_albero,co2,stato,prezzo_unitario,contadino,data_assegnazione,data_modifica,descrizione)VALUES (3,"Anacardo",34,6,35.90,1,"2021-06-09","2022-12-12","Il tuo albero presto tornerà a fare frutti");
 INSERT INTO prodotto_ordine_benefici(prodotto_ordine_id, benefici_nome) VALUES (3,"Sicurezza alimentare");
 INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(3,"Insetticida");
 INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(3,"Antivento");
@@ -300,7 +303,8 @@ INSERT INTO prodotto_ordine_benefici(prodotto_ordine_id, benefici_nome) VALUES (
 INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(5,"Suolo");
 INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(5,"Medicina");
 
-INSERT INTO prodotto_ordine(id,nome_albero,co2,stato,prezzo_unitario)VALUES (6,"Pomelo",34,1,35.90);
+/*Albero assegnato al contadino 1*/
+INSERT INTO prodotto_ordine(id,nome_albero,co2,stato,prezzo_unitario,contadino,data_assegnazione,data_modifica,descrizione)VALUES (6,"Pomelo",34,3,35.90,1,"2022-10-23","2022-12-09","Il tuo albero è stato piantato, presto inizierà a fare frutti");
 INSERT INTO prodotto_ordine_benefici(prodotto_ordine_id, benefici_nome) VALUES (6,"Sicurezza alimentare");
 INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(6,"Suolo");
 INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(6,"Cosmesi");
@@ -311,7 +315,7 @@ INSERT INTO ordine_prodotti_ordine(ordine_id, prodotti_ordine_id) VALUES (2,4);
 INSERT INTO ordine_prodotti_ordine(ordine_id, prodotti_ordine_id) VALUES (2,6);
 
 /*Ordine 3*/
-INSERT INTO ordine (id,totale,data_ordine,utente_id) VALUES  (3, 94.90, "2022-10-21", 3);
+INSERT INTO ordine (id,totale,data_ordine,utente_id) VALUES  (3, 94.90, "2022-04-21", 3);
 
 INSERT INTO prodotto_ordine(id,nome_albero,co2,stato,prezzo_unitario)VALUES (7,"Avocado",34,1,35);
 INSERT INTO prodotto_ordine_benefici(prodotto_ordine_id, benefici_nome) VALUES (7,"Sicurezza alimentare");
@@ -326,7 +330,7 @@ INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALU
 INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(8,"Vendita");
 
 /*Albero assegnato al contadino 1*/
-INSERT INTO prodotto_ordine(id,nome_albero,co2,stato,prezzo_unitario,contadino,data_assegnazione,data_modifica,frutta)VALUES (9,"Limone",98,5,35.90,1,"2022-12-23","2023-02-12",3);
+INSERT INTO prodotto_ordine(id,nome_albero,co2,stato,prezzo_unitario,contadino,data_assegnazione,data_modifica,frutta,descrizione)VALUES (9,"Limone",98,5,35.90,1,"2022-04-23","2023-02-12",3,"Il tuo albero ha prodotto molti frutti");
 INSERT INTO prodotto_ordine_benefici(prodotto_ordine_id, benefici_nome) VALUES (9,"Sicurezza alimentare");
 INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(9,"Suolo");
 INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(9,"Cosmesi");
@@ -337,7 +341,7 @@ INSERT INTO ordine_prodotti_ordine(ordine_id, prodotti_ordine_id) VALUES (3,8);
 INSERT INTO ordine_prodotti_ordine(ordine_id, prodotti_ordine_id) VALUES (3,9);
 
 /*Ordine 4*/
-INSERT INTO ordine (id,totale,data_ordine,utente_id) VALUES  (4, 94.90, "2023-01-21", 9);
+INSERT INTO ordine (id,totale,data_ordine,utente_id) VALUES  (4, 94.90, "2023-01-21", 7);
 
 INSERT INTO prodotto_ordine(id,nome_albero,co2,stato,prezzo_unitario) VALUES (10,"Arancio",45,1,35);
 INSERT INTO prodotto_ordine_benefici(prodotto_ordine_id, benefici_nome) VALUES (10,"Sicurezza alimentare");
@@ -346,14 +350,14 @@ INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALU
 INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(10,"Recinzione");
 INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(10,"Suolo");
 
-INSERT INTO prodotto_ordine(id,nome_albero,co2,stato,prezzo_unitario)VALUES (11,"Banano",34,1,24.90);
+INSERT INTO prodotto_ordine(id,nome_albero,co2,stato,prezzo_unitario)VALUES (11,"Caffè",34,1,24.90);
 INSERT INTO prodotto_ordine_benefici(prodotto_ordine_id, benefici_nome) VALUES (11,"Sicurezza alimentare");
 INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(11,"Allevamento");
 INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(11,"Antivento");
 INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(11,"Insetticida");
 
 /*Albero assegnato al contadino 1*/
-INSERT INTO prodotto_ordine(id,nome_albero,co2,stato,prezzo_unitario,contadino,data_assegnazione,data_modifica)VALUES (12,"Anacardo",34,2,35.90,1,"2023-02-01","2023-02-11");
+INSERT INTO prodotto_ordine(id,nome_albero,co2,stato,prezzo_unitario,contadino,data_assegnazione,data_modifica,descrizione)VALUES (12,"Anacardo",34,2,35.90,1,"2023-02-01","2023-02-11","Il tuo albero è stato piantato! Inizia a crescere");
 INSERT INTO prodotto_ordine_benefici(prodotto_ordine_id, benefici_nome) VALUES (12,"Sicurezza alimentare");
 INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(12,"Insetticida");
 INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(12,"Antivento");
@@ -362,9 +366,221 @@ INSERT INTO ordine_prodotti_ordine(ordine_id, prodotti_ordine_id) VALUES (4,10);
 INSERT INTO ordine_prodotti_ordine(ordine_id, prodotti_ordine_id) VALUES (4,11);
 INSERT INTO ordine_prodotti_ordine(ordine_id, prodotti_ordine_id) VALUES (4,12);
 
+/*Ordine 5*/
+INSERT INTO ordine (id,totale,data_ordine,utente_id) VALUES  (5, 94.90, "2023-02-21", 8);
+
+INSERT INTO prodotto_ordine(id,nome_albero,co2,stato,prezzo_unitario) VALUES (13,"Avocado",56,1,27.90);
+INSERT INTO prodotto_ordine_benefici(prodotto_ordine_id, benefici_nome) VALUES (13,"Sicurezza alimentare");
+INSERT INTO prodotto_ordine_benefici(prodotto_ordine_id, benefici_nome) VALUES (13,"Sviluppo economico");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(13,"Suolo");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(13,"Recinzione");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(13,"Suolo");
+
+INSERT INTO prodotto_ordine(id,nome_albero,co2,stato,prezzo_unitario)VALUES (14,"Papaya",40,1,89.90);
+INSERT INTO prodotto_ordine_benefici(prodotto_ordine_id, benefici_nome) VALUES (14,"Sicurezza alimentare");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(14,"Allevamento");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(14,"Antivento");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(14,"Insetticida");
+
+/*Albero assegnato al contadino 1*/
+INSERT INTO prodotto_ordine(id,nome_albero,co2,stato,prezzo_unitario,contadino,data_assegnazione,data_modifica,descrizione)VALUES (15,"Cacao",34,2,35.90,1,"2023-02-05","2023-02-11","Il tuo albero è stato piantato! Inizia a crescere");
+INSERT INTO prodotto_ordine_benefici(prodotto_ordine_id, benefici_nome) VALUES (15,"Sicurezza alimentare");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(15,"Insetticida");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(15,"Antivento");
+
+INSERT INTO ordine_prodotti_ordine(ordine_id, prodotti_ordine_id) VALUES (5,13);
+INSERT INTO ordine_prodotti_ordine(ordine_id, prodotti_ordine_id) VALUES (5,14);
+INSERT INTO ordine_prodotti_ordine(ordine_id, prodotti_ordine_id) VALUES (5,15);
+
+/*Ordine 6*/
+INSERT INTO ordine (id,totale,data_ordine,utente_id) VALUES  (6, 94.90, "2023-01-21", 2);
+
+INSERT INTO prodotto_ordine(id,nome_albero,co2,stato,prezzo_unitario) VALUES (16,"Arancio",45,1,35);
+INSERT INTO prodotto_ordine_benefici(prodotto_ordine_id, benefici_nome) VALUES (16,"Sicurezza alimentare");
+INSERT INTO prodotto_ordine_benefici(prodotto_ordine_id, benefici_nome) VALUES (16,"Sviluppo economico");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(16,"Suolo");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(16,"Recinzione");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(16,"Suolo");
+
+INSERT INTO prodotto_ordine(id,nome_albero,co2,stato,prezzo_unitario)VALUES (17,"Banano",34,1,24.90);
+INSERT INTO prodotto_ordine_benefici(prodotto_ordine_id, benefici_nome) VALUES (17,"Sicurezza alimentare");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(17,"Allevamento");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(17,"Antivento");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(17,"Insetticida");
+
+/*Albero assegnato al contadino 1*/
+INSERT INTO prodotto_ordine(id,nome_albero,co2,stato,prezzo_unitario,contadino,data_assegnazione,data_modifica,descrizione)VALUES (18,"Anacardo",34,3,35.90,1,"2023-02-03","2023-02-11","Il tuo albero è stato piantato! Inizia a crescere");
+INSERT INTO prodotto_ordine_benefici(prodotto_ordine_id, benefici_nome) VALUES (18,"Sicurezza alimentare");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(18,"Insetticida");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(18,"Antivento");
+
+INSERT INTO ordine_prodotti_ordine(ordine_id, prodotti_ordine_id) VALUES (6,16);
+INSERT INTO ordine_prodotti_ordine(ordine_id, prodotti_ordine_id) VALUES (6,17);
+INSERT INTO ordine_prodotti_ordine(ordine_id, prodotti_ordine_id) VALUES (6,18);
+
+/*Ordine 7*/
+INSERT INTO ordine (id,totale,data_ordine,utente_id) VALUES  (7, 94.90, "2023-02-21", 9);
+
+INSERT INTO prodotto_ordine(id,nome_albero,co2,stato,prezzo_unitario) VALUES (19,"Arancio",45,1,35);
+INSERT INTO prodotto_ordine_benefici(prodotto_ordine_id, benefici_nome) VALUES (19,"Sicurezza alimentare");
+INSERT INTO prodotto_ordine_benefici(prodotto_ordine_id, benefici_nome) VALUES (19,"Sviluppo economico");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(19,"Suolo");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(19,"Recinzione");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(19,"Suolo");
+
+INSERT INTO prodotto_ordine(id,nome_albero,co2,stato,prezzo_unitario)VALUES (20,"Banano",34,1,24.90);
+INSERT INTO prodotto_ordine_benefici(prodotto_ordine_id, benefici_nome) VALUES (20,"Sicurezza alimentare");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(20,"Allevamento");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(20,"Antivento");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(20,"Insetticida");
+
+/*Albero assegnato al contadino 1*/
+INSERT INTO prodotto_ordine(id,nome_albero,co2,stato,prezzo_unitario,contadino,data_assegnazione,data_modifica,descrizione)VALUES (21,"Caffe",34,4,35.90,1,"2023-02-23","2023-04-11","Il tuo albero sta fiorendo presto inizierà a fare frutti! Inizia a crescere");
+INSERT INTO prodotto_ordine_benefici(prodotto_ordine_id, benefici_nome) VALUES (21,"Sicurezza alimentare");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(21,"Insetticida");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(21,"Antivento");
+
+INSERT INTO ordine_prodotti_ordine(ordine_id, prodotti_ordine_id) VALUES (7,19);
+INSERT INTO ordine_prodotti_ordine(ordine_id, prodotti_ordine_id) VALUES (7,20);
+INSERT INTO ordine_prodotti_ordine(ordine_id, prodotti_ordine_id) VALUES (7,21);
+
+/*Ordine 8*/
+INSERT INTO ordine (id,totale,data_ordine,utente_id) VALUES  (8, 94.90, "2023-01-21", 9);
+
+/*Albero assegnato al contadino 1*/
+INSERT INTO prodotto_ordine(id,nome_albero,co2,stato,prezzo_unitario,contadino,data_assegnazione,data_modifica,descrizione) VALUES (22,"Arancio",45,4,35,1,"2023-02-23","2023-04-11","Il tuo albero sta fiorendo presto inizierà a fare frutti! Inizia a crescere");
+INSERT INTO prodotto_ordine_benefici(prodotto_ordine_id, benefici_nome) VALUES (22,"Sicurezza alimentare");
+INSERT INTO prodotto_ordine_benefici(prodotto_ordine_id, benefici_nome) VALUES (22,"Sviluppo economico");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(22,"Suolo");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(22,"Recinzione");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(22,"Suolo");
+
+INSERT INTO prodotto_ordine(id,nome_albero,co2,stato,prezzo_unitario)VALUES (23,"Banano",34,1,24.90);
+INSERT INTO prodotto_ordine_benefici(prodotto_ordine_id, benefici_nome) VALUES (23,"Sicurezza alimentare");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(23,"Allevamento");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(23,"Antivento");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(23,"Insetticida");
+
+INSERT INTO ordine_prodotti_ordine(ordine_id, prodotti_ordine_id) VALUES (8,22);
+INSERT INTO ordine_prodotti_ordine(ordine_id, prodotti_ordine_id) VALUES (8,23);
+
+/*Ordine 9*/
+INSERT INTO ordine (id,totale,data_ordine,utente_id) VALUES  (9, 94.90, "2022-06-21", 9);
+
+INSERT INTO prodotto_ordine(id,nome_albero,co2,stato,prezzo_unitario) VALUES (24,"Arancio",45,1,35);
+INSERT INTO prodotto_ordine_benefici(prodotto_ordine_id, benefici_nome) VALUES (24,"Sicurezza alimentare");
+INSERT INTO prodotto_ordine_benefici(prodotto_ordine_id, benefici_nome) VALUES (24,"Sviluppo economico");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(24,"Suolo");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(24,"Recinzione");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(24,"Suolo");
+
+INSERT INTO prodotto_ordine(id,nome_albero,co2,stato,prezzo_unitario)VALUES (25,"Banano",34,1,24.90);
+INSERT INTO prodotto_ordine_benefici(prodotto_ordine_id, benefici_nome) VALUES (25,"Sicurezza alimentare");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(25,"Allevamento");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(25,"Antivento");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(25,"Insetticida");
+
+/*Albero assegnato al contadino 1*/
+INSERT INTO prodotto_ordine(id,nome_albero,co2,stato,prezzo_unitario,contadino,data_assegnazione,data_modifica,frutta)VALUES (26,"Anacardo",34,5,35.90,1,"2022-07-01","2023-02-11",56);
+INSERT INTO prodotto_ordine_benefici(prodotto_ordine_id, benefici_nome) VALUES (26,"Sicurezza alimentare");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(26,"Insetticida");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(26,"Antivento");
+
+INSERT INTO ordine_prodotti_ordine(ordine_id, prodotti_ordine_id) VALUES (9,24);
+INSERT INTO ordine_prodotti_ordine(ordine_id, prodotti_ordine_id) VALUES (9,25);
+INSERT INTO ordine_prodotti_ordine(ordine_id, prodotti_ordine_id) VALUES (9,26);
+
+/*Ordine 10*/
+INSERT INTO ordine (id,totale,data_ordine,utente_id) VALUES  (10, 94.90, "2022-01-21", 1);
+
+/*Albero assegnato al contadino 3*/
+INSERT INTO prodotto_ordine(id,nome_albero,co2,stato,prezzo_unitario,contadino,data_assegnazione,data_modifica,frutta,descrizione) VALUES (27,"Avocado",45,5,35,3, "2022-01-31","2023-02-24",34,"Fantastico! Il tuo albero ha prodotto tantissimi frutti");
+INSERT INTO prodotto_ordine_benefici(prodotto_ordine_id, benefici_nome) VALUES (27,"Sicurezza alimentare");
+INSERT INTO prodotto_ordine_benefici(prodotto_ordine_id, benefici_nome) VALUES (27,"Sviluppo economico");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(27,"Suolo");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(27,"Recinzione");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(27,"Suolo");
+
+/*Albero assegnato al contadino 2*/
+INSERT INTO prodotto_ordine(id,nome_albero,co2,stato,prezzo_unitario,contadino,data_assegnazione,data_modifica,descrizione)VALUES (28,"Caffe",34,4,24.90,2,"2022-01-31","2023-02-24", "Il tuo albero sta fiorendo!");
+INSERT INTO prodotto_ordine_benefici(prodotto_ordine_id, benefici_nome) VALUES (28,"Sicurezza alimentare");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(28,"Allevamento");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(28,"Antivento");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(28,"Insetticida");
+
+/*Albero assegnato al contadino 1*/
+INSERT INTO prodotto_ordine(id,nome_albero,co2,stato,prezzo_unitario,contadino,data_assegnazione,data_modifica,frutta,descrizione)VALUES (29,"Anacardo",34,5,35.90,1,"2023-02-01","2023-02-11",89,"Gli anacardi prodotti da questo albero sono deliziosi!");
+INSERT INTO prodotto_ordine_benefici(prodotto_ordine_id, benefici_nome) VALUES (29,"Sicurezza alimentare");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(29,"Insetticida");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(29,"Antivento");
+
+INSERT INTO ordine_prodotti_ordine(ordine_id, prodotti_ordine_id) VALUES (10,27);
+INSERT INTO ordine_prodotti_ordine(ordine_id, prodotti_ordine_id) VALUES (10,28);
+INSERT INTO ordine_prodotti_ordine(ordine_id, prodotti_ordine_id) VALUES (10,29);
+
+/*Ordine 11*/
+INSERT INTO ordine (id,totale,data_ordine,utente_id) VALUES (11, 94.90, "2022-07-21", 9);
+
+INSERT INTO prodotto_ordine(id,nome_albero,co2,stato,prezzo_unitario) VALUES (30,"Arancio",45,1,35);
+INSERT INTO prodotto_ordine_benefici(prodotto_ordine_id, benefici_nome) VALUES (30,"Sicurezza alimentare");
+INSERT INTO prodotto_ordine_benefici(prodotto_ordine_id, benefici_nome) VALUES (30,"Sviluppo economico");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(30,"Suolo");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(30,"Recinzione");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(30,"Suolo");
+
+INSERT INTO prodotto_ordine(id,nome_albero,co2,stato,prezzo_unitario)VALUES (31,"Banano",34,1,24.90);
+INSERT INTO prodotto_ordine_benefici(prodotto_ordine_id, benefici_nome) VALUES (31,"Sicurezza alimentare");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(31,"Allevamento");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(31,"Antivento");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(31,"Insetticida");
+
+/*Albero assegnato al contadino 1*/
+INSERT INTO prodotto_ordine(id,nome_albero,co2,stato,prezzo_unitario,contadino,data_assegnazione,data_modifica,frutta)VALUES (32,"Anacardo",34,5,35.90,1,"2022-07-22","2023-02-11",87);
+INSERT INTO prodotto_ordine_benefici(prodotto_ordine_id, benefici_nome) VALUES (32,"Sicurezza alimentare");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(32,"Insetticida");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(32,"Antivento");
+
+INSERT INTO ordine_prodotti_ordine(ordine_id, prodotti_ordine_id) VALUES (11,30);
+INSERT INTO ordine_prodotti_ordine(ordine_id, prodotti_ordine_id) VALUES (11,31);
+INSERT INTO ordine_prodotti_ordine(ordine_id, prodotti_ordine_id) VALUES (11,32);
+
+/*Ordine 12*/
+INSERT INTO ordine (id,totale,data_ordine,utente_id) VALUES (12, 94.90, "2022-07-21", 1);
+
+INSERT INTO prodotto_ordine(id,nome_albero,co2,stato,prezzo_unitario) VALUES (33,"Baobab",45,1,35);
+INSERT INTO prodotto_ordine_benefici(prodotto_ordine_id, benefici_nome) VALUES (33,"Sicurezza alimentare");
+INSERT INTO prodotto_ordine_benefici(prodotto_ordine_id, benefici_nome) VALUES (33,"Sviluppo economico");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(33,"Suolo");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(33,"Recinzione");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(33,"Suolo");
+
+INSERT INTO prodotto_ordine(id,nome_albero,co2,stato,prezzo_unitario)VALUES (34,"Melograno",34,1,24.90);
+INSERT INTO prodotto_ordine_benefici(prodotto_ordine_id, benefici_nome) VALUES (34,"Sicurezza alimentare");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(34,"Allevamento");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(34,"Antivento");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(34,"Insetticida");
+
+/*Albero assegnato al contadino 1*/
+INSERT INTO prodotto_ordine(id,nome_albero,co2,stato,prezzo_unitario,contadino,descrizione)VALUES (35,"Anacardo",34,0,35.90,1,"Il tuo albero è stato presto in cura dal contadino! Presto verrà piantato");
+INSERT INTO prodotto_ordine_benefici(prodotto_ordine_id, benefici_nome) VALUES (35,"Sicurezza alimentare");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(35,"Insetticida");
+INSERT INTO prodotto_ordine_usi_locali(prodotto_ordine_id, usi_locali_nome) VALUES(35,"Antivento");
+
+INSERT INTO ordine_prodotti_ordine(ordine_id, prodotti_ordine_id) VALUES (12,33);
+INSERT INTO ordine_prodotti_ordine(ordine_id, prodotti_ordine_id) VALUES (12,34);
+INSERT INTO ordine_prodotti_ordine(ordine_id, prodotti_ordine_id) VALUES (12,35);
+
 /*Elenco pagamenti*/
 /*Elenco pagamenti al contadino 1*/
-INSERT INTO pagamento(id, data_pagamento,importo, motivazioni, contadino_id) VALUES (1,"2023-02-12", 34.90, "Albero 1", 1);
-INSERT INTO pagamento(id, data_pagamento,importo, motivazioni, contadino_id) VALUES (2,"2023-02-16", 78.90, "Albero 2", 1);
-INSERT INTO pagamento(id, data_pagamento,importo, motivazioni, contadino_id) VALUES (3,"2023-02-15", 39.90, "Albero 3", 1);
+INSERT INTO pagamento(id, data_pagamento,importo, motivazioni, contadino_id) VALUES (1,"2022-08-12", 34.90, "Albero 1", 1);
+INSERT INTO pagamento(id, data_pagamento,importo, motivazioni, contadino_id) VALUES (2,"2022-09-16", 78.90, "Albero 2", 1);
+INSERT INTO pagamento(id, data_pagamento,importo, motivazioni, contadino_id) VALUES (3,"2022-11-15", 39.90, "Albero 3", 1);
+INSERT INTO pagamento(id, data_pagamento,importo, motivazioni, contadino_id) VALUES (4,"2022-12-12", 34.90, "Albero 4", 1);
+INSERT INTO pagamento(id, data_pagamento,importo, motivazioni, contadino_id) VALUES (5,"2022-12-16", 78.90, "Albero 5", 1);
+INSERT INTO pagamento(id, data_pagamento,importo, motivazioni, contadino_id) VALUES (6,"2022-12-15", 39.90, "Albero 6", 1);
+INSERT INTO pagamento(id, data_pagamento,importo, motivazioni, contadino_id) VALUES (7,"2023-01-12", 34.90, "Albero 7", 1);
+INSERT INTO pagamento(id, data_pagamento,importo, motivazioni, contadino_id) VALUES (8,"2023-01-16", 78.90, "Albero 8", 1);
+INSERT INTO pagamento(id, data_pagamento,importo, motivazioni, contadino_id) VALUES (9,"2023-02-15", 39.90, "Albero 9", 1);
+INSERT INTO pagamento(id, data_pagamento,importo, motivazioni, contadino_id) VALUES (10,"2023-02-15", 39.90, "Albero 10", 1);
+
 

@@ -8,7 +8,12 @@ import it.unisa.WoodLot.web.controller.ResponseHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
+import java.io.IOException;
 
 /**
  * Controller per la gestione dei contadini
@@ -47,6 +52,28 @@ public class ControllerContadino {
         } catch (ContadinoException e) {
             return ResponseHandler.generateResponse(HttpStatus.BAD_REQUEST, e.getMessage());
         }
+    }
+
+    /**
+     * Permette di salvare le foto nella loro posizione
+     */
+    @PostMapping("/upload")
+    @ResponseBody
+    public ResponseEntity<Object> uploadImage(@RequestParam("file") MultipartFile file, @RequestParam("contadinoId") String contadinoId) throws IOException {
+        String UPLOAD_DIR = "/Users/alessiature/Desktop/WoodLot/Development/WoodLotFrontEnd/src/assets/img/alberiUtente/";
+
+        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+
+        File directory = new File(UPLOAD_DIR + "/" + contadinoId);
+        if (!directory.exists()) {
+            directory.mkdirs();
+        }
+
+        File dest = new File(directory.getAbsolutePath() + File.separator + fileName);
+        file.transferTo(dest);
+        System.out.println(dest);
+
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping("/alberiContadino/{idContadino}")

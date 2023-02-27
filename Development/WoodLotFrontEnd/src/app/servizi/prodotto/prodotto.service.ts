@@ -63,13 +63,13 @@ export class ProdottoService {
     return this.http.get(url)
   }
 
+  //salva le foto dell'albero
   public salvaFoto(treeName: string,foto: File): Observable<any> {
     const formData: FormData = new FormData();
     formData.append('file', foto, foto.name);
     formData.append('treeName', treeName);
     return this.http.post<any>('http://localhost:8090/api/catalogo/upload', formData);
   }
-
 
   //salva il prodotto
   public salvaAlbero(albero: Albero): Observable<any> {

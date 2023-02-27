@@ -163,6 +163,7 @@ export class SezioneAggiungiComponent implements OnInit {
             (error) => {
               this.errorMessage = JSON.stringify(error.data);
               console.log(this.errorMessage)
+              this.errorMessage = JSON.stringify(error.data)
             }
           );
           this.router.navigate(['/paginaProdotto', albero.nome])

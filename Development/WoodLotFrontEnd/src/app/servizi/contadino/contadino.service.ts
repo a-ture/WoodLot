@@ -20,7 +20,7 @@ export class ContadinoService {
       contadino = JSON.parse(storedContadino);
     }
     console.log(contadino)
-    this.getAlberiContadini(contadino.id).subscribe((data:ProdottoOrdine[]) => {
+    this.getAlberiContadini(contadino.id).subscribe((data: ProdottoOrdine[]) => {
         contadino.listaAlberi = data;
       }
     )
@@ -45,8 +45,23 @@ export class ContadinoService {
     return this.http.get(url)
   }
 
+  //restituisce gli alberi di un contadino
   public getAlberiContadini(idContadino: number): Observable<any> {
     let url = 'http://localhost:8090/api/contadino/alberiContadino/' + idContadino
     return this.http.get(url)
+  }
+
+  //salva la foto dell'albero
+  public salvaFoto(idContadino: string, foto: File): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append('file', foto, foto.name);
+    formData.append('contadinoId', idContadino);
+    return this.http.post<any>('http://localhost:8090/api/contadino/upload', formData);
+  }
+
+  //aggiornare lo stato dell'albero
+  public aggiornaStato(albero: ProdottoOrdine): Observable<any> {
+    let url = 'http://localhost:8090/api/contadino/aggiornaStato/'
+    return this.http.post(url, albero)
   }
 }

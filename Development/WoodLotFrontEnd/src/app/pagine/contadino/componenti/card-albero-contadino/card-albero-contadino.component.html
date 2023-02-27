@@ -1,21 +1,21 @@
 <c-card class="mb-3 text-center">
   <img cCardImg="top" src="{{sourceImage}}">
   <c-card-body>
-    <h5 cCardTitle>{{titolo}}</h5>
+    <h5 cCardTitle>{{alberoContadino.nomeAlbero}}</h5>
     <p cCardText>
-      <b>Id: </b> {{id}}
+      <b>Id: </b> {{alberoContadino.id}}
     </p>
     <p cCardText>
-      <b>Data ultima modifica:</b> {{dataModifica | date: 'dd/MM/yy'}}
+      <b>Data ultima modifica:</b> {{alberoContadino.dataModifica | date: 'dd/MM/yy'}}
     </p>
     <a cCardLink (click)="toggleModal()">Vuoi modificare lo stato?</a>
   </c-card-body>
 </c-card>
 
 <c-modal [visible]="visible" (visibleChange)="handleModal($event)"
-         [backdrop]="false" scrollable id={{titolo}}>
+         [backdrop]="false" scrollable id={{alberoContadino.nomeAlbero}}>
   <c-modal-header>
-    <h2 cModalTitle>{{titolo}}</h2>
+    <h2 cModalTitle>{{alberoContadino.nomeAlbero}}</h2>
   </c-modal-header>
   <div class="modal-body">
     <ng-container *ngTemplateOutlet="form"></ng-container>
@@ -41,7 +41,7 @@
         Looks good!
       </div>
     </c-col>
-    <c-col class="mb-3" [sm]="12" *ngIf="stato == 'frutto'">
+    <c-col class="mb-3" [sm]="12" *ngIf="alberoContadino.stato == 'Frutto'">
       <label cLabel for="frutta">Quantità di frutta raccolta</label>
       <input cFormControl
              id="frutta" formControlName="frutta"
@@ -58,16 +58,22 @@
     </c-col>
     <c-col class="mb-3" [sm]="12">
       <label for="foto" class="form-label">Foto</label>
-      <input cFormControl formControlName="foto" type="file" class="form-control" id="foto"
+      <input (change)="onFileSelected($event)" cFormControl formControlName="foto" type="file" class="form-control"
+             id="foto"
              [ngClass]="{'is-invalid':(submitted || f['foto'].touched) && f['foto'].invalid,
             'is-valid': (submitted ||f['foto'].touched) && f['foto'].valid }">
+      <div *ngIf="f['foto'].invalid" class="invalid-feedback">Compila questo campo</div>
     </c-col>
-    <c-col class="mb-3" [sm]="12">
+    <c-col class="mb-3" [sm]="12" *ngIf="alberoContadino.stato != 'Assegnato'">
       <c-form-check>
-        <input cFormCheckInput id="senescenza" type="checkbox" formControlName="senescenza"/>
-        <label cFormCheckLabel for="senescenza">Comunica la senescenza dell'albeo</label>
+        <input cFormCheckInput id="senescenza" type="checkbox" formControlName="senescenza" [(ngModel)]="isChecked"
+               [ngClass]="{'is-invalid':(submitted || f['senescenza'].touched) && f['senescenza'].invalid,
+            'is-valid': (submitted ||f['senescenza'].touched) && f['senescenza'].valid }"/>
+        <label cFormCheckLabel for="senescenza" class="fs-6">Comunica la senescenza dell'albero</label>
+        <div *ngIf="f['senescenza'].invalid" class="invalid-feedback">Compila questo campo</div>
       </c-form-check>
     </c-col>
+    <div class="text-center my-3" *ngIf="errorMessage!= ''" style="color: red">{{errorMessage}}</div>
     <c-col class="mb-3" [sm]="12">
       <div class="row justify-content-center mt-3">
         <input class="col-6" cButton color="primary" type="submit" value="Aggiorna">
