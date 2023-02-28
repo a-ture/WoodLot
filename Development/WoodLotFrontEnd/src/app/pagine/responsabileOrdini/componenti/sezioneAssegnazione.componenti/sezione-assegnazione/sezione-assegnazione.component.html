@@ -2,7 +2,7 @@
   <div class="col-xl-2">
     <div class="main-box">
       <ul class="menu-item list-unstyled">
-        <li (click)="goTo('Elenco contadini')" [ngClass]="{'onActive':selectedMenu == 'Riassegnazione alberi'}">
+        <li (click)="goTo('Riassegnazione alberi')" [ngClass]="{'onActive':selectedMenu == 'Riassegnazione alberi'}">
           <i class="fa-solid fa-person-digging"></i> Riassegnazione alberi
         </li>
         <li (click)="goTo('Assegna alberi')" [ngClass]="{'onActive':selectedMenu == 'Assegna alberi'}">
@@ -14,7 +14,7 @@
 
   <div class="col-xl-10">
     <div *ngIf="selectedMenu == 'Riassegnazione alberi'">
-
+      <app-riassegnazione-alberi></app-riassegnazione-alberi>
     </div>
     <div *ngIf="selectedMenu == 'Assegna alberi'">
       <app-assegnazione-alberi></app-assegnazione-alberi>

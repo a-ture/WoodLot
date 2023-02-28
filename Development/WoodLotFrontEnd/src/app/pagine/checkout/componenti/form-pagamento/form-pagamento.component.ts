@@ -1,14 +1,15 @@
 import {Component, OnInit} from '@angular/core';
 import {CarrelloService} from "../../../../servizi/carrello/carrello.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {
-  ValidazioneFormPagamentoService
-} from "../../../../servizi/validazioneFormPagamento/validazione-form-pagamento.service";
+
 import {MdbModalRef, MdbModalService} from "mdb-angular-ui-kit/modal";
 import {OrdineEffettuatoComponent} from "../ordine-effettuato/ordine-effettuato.component";
 import {Carrello} from "../../../../entita/carrello/carrello";
 import {OrdineService} from "../../../../servizi/ordine/ordine.service";
 import {Ordine} from "../../../../entita/ordine/ordine";
+import {
+  ValidazioneFormPagamentoService
+} from "../../../../servizi/validazioneFormPagamento/validazione-form-pagamento.service";
 
 
 @Component({

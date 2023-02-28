@@ -1,17 +1,28 @@
-.page-link {
-  --cui-pagination-color: #93C572;
-  --cui-pagination-bg: trasparent;
-  --cui-pagination-border-color: #5E7250;
-  --cui-pagination-focus-color: #93C572;
-  --cui-pagination-active-color: rgba(255, 255, 255, 0.87);
-  --cui-pagination-active-bg: #93C572;
-  --cui-pagination-active-border-color: #93C572;
+.ngx-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+
+
+}
+.ngx-pagination a {
+  color: #93C572 !important;
+  text-decoration: none;
+  padding: 5px 10px;
+  border: 1px solid #5E7250 !important;
+  margin-right: 5px;
+  border-radius: 3px;
 }
 
-.page-link:hover {
-  color: brown;
-  background-color: #C4D89F;
-  border-color: brown;
+.ngx-pagination .current {
+  color: #fff;
+  background: #93C572;
+}
+
+ngx-pagination .navigation {
+  font-weight: bold;
+  margin-right: 15px;
 }
 
 table {

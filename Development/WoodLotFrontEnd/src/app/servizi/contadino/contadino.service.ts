@@ -3,6 +3,7 @@ import {Contadino} from "../../entita/contadino/contadino";
 import {ProdottoOrdine} from "../../entita/prodottoOrdine/prodotto-ordine";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {Pagamento} from "../../entita/pagamento/pagamento";
 
 @Injectable({
   providedIn: 'root'
@@ -39,6 +40,12 @@ export class ContadinoService {
     return this.http.get<ProdottoOrdine[]>(url)
   }
 
+  //restituisci tutti gli alberi non ancora assegnati a un contadino
+  public getAlberiDaRiassegnare(): Observable<ProdottoOrdine[]> {
+    let url = 'http://localhost:8090/api/contadino/alberiDaRevisionare'
+    return this.http.get<ProdottoOrdine[]>(url)
+  }
+
   // restituisce tutti i pagamenti di un contadini
   public getPagamenti(idContadino: number): Observable<any> {
     let url = 'http://localhost:8090/api/pagamento/elencoPagamenti/' + idContadino
@@ -59,9 +66,23 @@ export class ContadinoService {
     return this.http.post<any>('http://localhost:8090/api/contadino/upload', formData);
   }
 
+  //elimina la foto dell'albero
+  public eliminaFoto(idContadino: string, idProdotto: string) {
+    const formData: FormData = new FormData();
+    formData.append('prodottoId', idProdotto);
+    formData.append('contadinoId', idContadino);
+    return this.http.post<any>('http://localhost:8090/api/contadino/delete', formData);
+  }
+
   //aggiornare lo stato dell'albero
   public aggiornaStato(albero: ProdottoOrdine): Observable<any> {
     let url = 'http://localhost:8090/api/contadino/aggiornaStato/'
     return this.http.post(url, albero)
+  }
+
+  //effettua un nuovo pagamento
+  public effettuarePagamento(pagamento: Pagamento) {
+    let url = 'http://localhost:8090/api/pagamento/'
+    return this.http.post(url, pagamento)
   }
 }

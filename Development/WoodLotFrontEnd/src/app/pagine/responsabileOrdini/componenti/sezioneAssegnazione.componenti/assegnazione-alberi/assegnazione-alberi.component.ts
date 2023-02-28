@@ -9,7 +9,6 @@ import {ProdottoOrdine} from "../../../../../entita/prodottoOrdine/prodotto-ordi
 })
 export class AssegnazioneAlberiComponent implements OnInit {
 
-
   selectedMenu: String = ""
 
   goTo(paramText: String) {

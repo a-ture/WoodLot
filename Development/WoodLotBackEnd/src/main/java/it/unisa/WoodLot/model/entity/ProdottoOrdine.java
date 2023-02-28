@@ -25,7 +25,9 @@ public class ProdottoOrdine implements Serializable {
         Fiore,
         Frutto,
         Dormienza,
-        Senescenza
+        Senescenza,
+        Revisione,
+        Riassegnazione
     }
 
     @Id

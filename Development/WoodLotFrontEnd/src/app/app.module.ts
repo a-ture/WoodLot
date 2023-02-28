@@ -191,11 +191,13 @@ import {SezioneOrdiniComponent} from './pagine/responsabileOrdini/componenti/sez
 import { SezionePagamentiComponent } from './pagine/responsabileOrdini/componenti/sezionePagamenti.componenti/sezione-pagamenti/sezione-pagamenti.component';
 import { CardPagamentoComponent } from './pagine/responsabileOrdini/componenti/sezionePagamenti.componenti/card-pagamento/card-pagamento.component';
 import { ElencoContadiniComponent } from './pagine/responsabileOrdini/componenti/sezioneContadini.componenti/elenco-contadini/elenco-contadini.component';
-import { AssegnazioneAlberiComponent } from './pagine/responsabileOrdini/componenti/sezioneContadini.componenti/assegnazione-alberi/assegnazione-alberi.component';
+import { AssegnazioneAlberiComponent } from './pagine/responsabileOrdini/componenti/sezioneAssegnazione.componenti/assegnazione-alberi/assegnazione-alberi.component';
 import { StoricoPagamentiComponent } from './pagine/contadino/componenti/storico-pagamenti/storico-pagamenti.component';
 import { ScegliIlTuoAlberoComponent } from './pagine/home/componenti/scegli-il-tuo-albero/scegli-il-tuo-albero.component';
 import { AccessoNegatoComponent } from './pagine/errori/accesso-negato/accesso-negato.component';
 import { SezioneAssegnazioneComponent } from './pagine/responsabileOrdini/componenti/sezioneAssegnazione.componenti/sezione-assegnazione/sezione-assegnazione.component';
+import {NgxPaginationModule} from "ngx-pagination";
+import { RiassegnazioneAlberiComponent } from './pagine/responsabileOrdini/componenti/sezioneAssegnazione.componenti/riassegnazione-alberi/riassegnazione-alberi.component';
 
 @NgModule({
   declarations: [
@@ -284,49 +286,51 @@ import { SezioneAssegnazioneComponent } from './pagine/responsabileOrdini/compon
     ScegliIlTuoAlberoComponent,
     AccessoNegatoComponent,
     SezioneAssegnazioneComponent,
+    RiassegnazioneAlberiComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    MdbAccordionModule,
-    MdbCarouselModule,
-    MdbCheckboxModule,
-    MdbCollapseModule,
-    MdbDropdownModule,
-    MdbFormsModule,
-    MdbModalModule,
-    MdbPopoverModule,
-    MdbRadioModule,
-    MdbRangeModule,
-    MdbRippleModule,
-    MdbScrollspyModule,
-    MdbTooltipModule,
-    MdbValidationModule,
-    BrowserAnimationsModule,
-    AlertModule,
-    IconModule,
-    HttpClientModule,
-    AvatarModule,
-    CardModule,
-    DropdownModule,
-    ButtonModule,
-    ModalModule,
-    FormModule,
-    CarouselModule,
-    GridModule,
-    AccordionModule,
-    MdbTabsModule,
-    NavModule,
-    TabsModule,
-    OffcanvasModule,
-    ReactiveFormsModule,
-    FormsModule,
-    FooterModule,
-    ToastModule,
-    TableModule,
-    PaginationModule,
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        MdbAccordionModule,
+        MdbCarouselModule,
+        MdbCheckboxModule,
+        MdbCollapseModule,
+        MdbDropdownModule,
+        MdbFormsModule,
+        MdbModalModule,
+        MdbPopoverModule,
+        MdbRadioModule,
+        MdbRangeModule,
+        MdbRippleModule,
+        MdbScrollspyModule,
+        MdbTooltipModule,
+        MdbValidationModule,
+        BrowserAnimationsModule,
+        AlertModule,
+        IconModule,
+        HttpClientModule,
+        AvatarModule,
+        CardModule,
+        DropdownModule,
+        ButtonModule,
+        ModalModule,
+        FormModule,
+        CarouselModule,
+        GridModule,
+        AccordionModule,
+        MdbTabsModule,
+        NavModule,
+        TabsModule,
+        OffcanvasModule,
+        ReactiveFormsModule,
+        FormsModule,
+        FooterModule,
+        ToastModule,
+        TableModule,
+        PaginationModule,
+        NgxPaginationModule,
 
-  ],
+    ],
   providers: [ProdottoService, CategoriaService, PaeseService, UsoLocaleService],
   bootstrap: [AppComponent]
 })

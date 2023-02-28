@@ -17,7 +17,7 @@
           <th scope="row">{{item.id}}</th>
           <td>{{item.totale.toFixed(2)}}€</td>
           <td>{{ item.prodottiOrdine ? item.prodottiOrdine.length : 'N/A' }}</td>
-          <td>{{item.dataOrdine}}</td>
+          <td>{{item.dataOrdine |date: 'dd/MM/yy'}}</td>
         </tr>
         </tbody>
       </table>
@@ -46,7 +46,7 @@
       <div class="row m-3" *ngFor="let item of listaOrdini">
         <hr>
         <h3>Dettaglio ordine n.{{item.id}}</h3>
-        <p>Ordine effettuato il:{{item.dataOrdine}}</p>
+        <p>Ordine effettuato il: {{item.dataOrdine |date: 'dd/MM/yy'}}</p>
         <p>Hai speso: {{item.totale.toFixed(2)}}€</p>
         <p>Alberi che hai acquistato in questo ordine: </p>
         <ul class="mx-5">

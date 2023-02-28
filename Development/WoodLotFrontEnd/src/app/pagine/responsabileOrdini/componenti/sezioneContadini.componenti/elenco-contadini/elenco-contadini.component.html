@@ -11,7 +11,8 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let item of listaContadini">
+      <tr
+        *ngFor="let item of listaContadini | paginate: { itemsPerPage: pageSize, currentPage: currentPage, totalItems: totalItems }">
         <th scope="row">{{item.id}}</th>
         <td>
           {{item.nome}} {{item.cognome}}
@@ -21,22 +22,7 @@
       </tr>
       </tbody>
     </table>
-    <c-pagination aria-label="Page navigation example" class="d-flex justify-content-end mt-4">
-      <li cPageItem>
-        <a cPageLink aria-label="Previous" [routerLink]><span aria-hidden="true">&laquo;</span></a>
-      </li>
-      <li cPageItem>
-        <a cPageLink [routerLink]>1</a>
-      </li>
-      <li cPageItem>
-        <a cPageLink [routerLink]>2</a>
-      </li>
-      <li cPageItem>
-        <a cPageLink [routerLink]>3</a>
-      </li>
-      <li cPageItem>
-        <a cPageLink aria-label="Next" [routerLink]><span aria-hidden="true">&raquo;</span></a>
-      </li>
-    </c-pagination>
+    <pagination-controls class="ngx-pagination" (pageChange)="currentPage = $event">
+    </pagination-controls>
   </div>
 </div>

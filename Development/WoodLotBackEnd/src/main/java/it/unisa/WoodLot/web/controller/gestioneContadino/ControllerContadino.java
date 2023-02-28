@@ -45,6 +45,32 @@ public class ControllerContadino {
         return new ResponseEntity<>(contadinoService.getAlberiNonAssegnati(), HttpStatus.ACCEPTED);
     }
 
+    /**
+     * Metodo GET per visualizzare l'elenco degli alberi da revisionare
+     *
+     * @return
+     */
+    @GetMapping("/alberiDaRevisionare")
+    public ResponseEntity<Object> elencoAlberiDaRevisionare() {
+        return new ResponseEntity<>(contadinoService.prodottiDaRevisionare(), HttpStatus.ACCEPTED);
+    }
+
+    /**
+     * Metodo GET per visualizzare l'elenco degli alberi da riassegnare
+     *
+     * @return
+     */
+    @GetMapping("/alberiDaRiassegnare")
+    public ResponseEntity<Object> elencoAlberiDaRiassegnare() {
+        return new ResponseEntity<>(contadinoService.prodottiDaRiassegnare(), HttpStatus.ACCEPTED);
+    }
+
+    /**
+     * Metodo POST per aggiornare lo stato di un prodotto ordine
+     *
+     * @param prodottoOrdine
+     * @return
+     */
     @PostMapping("/aggiornaStato")
     public ResponseEntity<Object> aggiornaStato(@RequestBody ProdottoOrdine prodottoOrdine) {
         try {
@@ -55,7 +81,7 @@ public class ControllerContadino {
     }
 
     /**
-     * Permette di salvare le foto nella loro posizione
+     * Permette di salvare la foto dell'albero
      */
     @PostMapping("/upload")
     @ResponseBody
@@ -76,6 +102,30 @@ public class ControllerContadino {
         return ResponseEntity.ok().build();
     }
 
+    /**
+     * Permette di eliminare le foto dei prodotti ordini che non sono valide
+     */
+    @PostMapping("/delete")
+    @ResponseBody
+    public ResponseEntity<Object> deleteImage(@RequestParam("prodottoId") String prodottoId, @RequestParam("contadinoId") String contadinoId) throws IOException {
+        String DELETE_DIR = "/Users/alessiature/Desktop/WoodLot/Development/WoodLotFrontEnd/src/assets/img/alberiUtente/"
+                + contadinoId + "/" + prodottoId + ".jpeg";
+        File file = new File(DELETE_DIR);
+
+        if (file.delete()) {
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseHandler.generateResponse(HttpStatus.BAD_REQUEST, "Il file non è stato eliminato");
+        }
+    }
+
+
+    /**
+     * Metodo GET per visualizzare l'elenco degli alberi assegnati a un contadino
+     *
+     * @param idContadino
+     * @return
+     */
     @GetMapping("/alberiContadino/{idContadino}")
     public ResponseEntity<Object> restituisceAlberiContadino(@PathVariable Long idContadino) {
         return new ResponseEntity<>(contadinoService.elencoAlberiContadino(idContadino), HttpStatus.ACCEPTED);

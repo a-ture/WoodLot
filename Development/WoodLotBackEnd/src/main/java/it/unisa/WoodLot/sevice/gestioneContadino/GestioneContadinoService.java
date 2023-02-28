@@ -40,22 +40,37 @@ public class GestioneContadinoService implements ContadinoService {
      *
      * @return l'elenco degli alberi nello stato 'non assegnato'
      */
-
     @Override
     public Iterable<ProdottoOrdine> getAlberiNonAssegnati() {
         return prodottoOrdineRepository.findAllByStatoIs(ProdottoOrdine.Stato.NonAssegnato);
     }
 
+    /**
+     * Permette di aggiornare lo stato di albero
+     *
+     * @param prodottoOrdine l'albero che deve essere aggiornato
+     * @return il prodotto aggiornato
+     * @throws ContadinoException
+     */
     @Override
     @Transactional
     public ProdottoOrdine aggiornaStato(ProdottoOrdine prodottoOrdine) throws ContadinoException {
         ProdottoOrdine p = prodottoOrdineRepository.findById(prodottoOrdine.getId()).orElse(null);
         if (p == null)
             throw new ContadinoException("Non è stato trovato il prodotto ordine");
-        p.setStato(prodottoOrdine.getStato());
-        p.setDescrizione(prodottoOrdine.getDescrizione());
-        p.setFrutta(prodottoOrdine.getFrutta());
-        p.setDataModifica(new Date());
+
+        if (prodottoOrdine.getStato().equals(ProdottoOrdine.Stato.Riassegnazione)) {
+            p.setContadino(null);
+            p.setDataModifica(null);
+            p.setDataAssegnazione(null);
+            p.setStato(ProdottoOrdine.Stato.Riassegnazione);
+        } else {
+            p.setStato(prodottoOrdine.getStato());
+            p.setDescrizione(prodottoOrdine.getDescrizione());
+            p.setFrutta(prodottoOrdine.getFrutta());
+            p.setDataModifica(new Date());
+        }
+
         return prodottoOrdineRepository.save(prodottoOrdine);
     }
 
@@ -68,5 +83,25 @@ public class GestioneContadinoService implements ContadinoService {
     @Override
     public Iterable<ProdottoOrdine> elencoAlberiContadino(Long idContadino) {
         return prodottoOrdineRepository.findAllByContadino_Id(idContadino);
+    }
+
+    /**
+     * Restituisce l'elenco dei prodotti che devono essere revisionati dal responsabile ordini
+     *
+     * @return l'elenco dei prodotti ordini che si trovano nello stato 'revisione'
+     */
+    @Override
+    public Iterable<ProdottoOrdine> prodottiDaRiassegnare() {
+        return prodottoOrdineRepository.findAllByStatoIs(ProdottoOrdine.Stato.Riassegnazione);
+    }
+
+    /**
+     * Restituisce l'elenco dei prodotti che devono essere revisionati dal responsabile ordini
+     *
+     * @return l'elenco dei prodotti ordini che si trovano nello stato 'revisione'
+     */
+    @Override
+    public Iterable<ProdottoOrdine> prodottiDaRevisionare() {
+        return prodottoOrdineRepository.findAllByStatoIs(ProdottoOrdine.Stato.Revisione);
     }
 }

@@ -11,36 +11,23 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let item of listaOrdini">
+      <tr
+        *ngFor="let item of listaOrdini | paginate: { itemsPerPage: pageSize, currentPage: currentPage, totalItems: totalItems }">
         <th scope="row">{{item.id}}</th>
         <td>
           <ul *ngFor="let prod of item!.prodottiOrdine" class="list-unstyled">
-            <li> Nome: {{prod.nomeAlbero}}, Prezzo: {{prod.prezzoUnitario.toFixed(2)}}€,
-              Stato: {{prod.stato}}<ng-template *nfIf="prod.stato != 'NonAssegnato'"> , Data Assegnazione: {{prod.dataAssegnazione}}</ng-template>
+            <li>
+              Nome: {{prod.nomeAlbero}}, Prezzo: {{prod.prezzoUnitario.toFixed(2)}}€,
+              Stato: {{prod.stato}}
             </li>
           </ul>
         </td>
-        <td>{{item.dataOrdine}}</td>
+        <td>{{item.dataOrdine  |date: 'dd/MM/yy'}}</td>
         <td>{{item.totale.toFixed(2)}}€</td>
       </tr>
       </tbody>
     </table>
-    <c-pagination aria-label="Page navigation example" class="d-flex justify-content-end mt-4">
-      <li cPageItem>
-        <a cPageLink aria-label="Previous" [routerLink]><span aria-hidden="true">&laquo;</span></a>
-      </li>
-      <li cPageItem>
-        <a cPageLink [routerLink]>1</a>
-      </li>
-      <li cPageItem>
-        <a cPageLink [routerLink]>2</a>
-      </li>
-      <li cPageItem>
-        <a cPageLink [routerLink]>3</a>
-      </li>
-      <li cPageItem>
-        <a cPageLink aria-label="Next" [routerLink]><span aria-hidden="true">&raquo;</span></a>
-      </li>
-    </c-pagination>
   </div>
+  <pagination-controls class="ngx-pagination" (pageChange)="currentPage = $event">
+  </pagination-controls>
 </div>

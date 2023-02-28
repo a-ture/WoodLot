@@ -1,17 +1,15 @@
 <div class="container text-center mt-4">
-  <h3>Assegna gli alberi hai contadini</h3>
+  <h3>Assegna gli alberi ai contadini</h3>
   <div class="row mt-3">
-    <p>Sono presenti {{listaAlberi.length}} alberi non ancora asseganti.</p>
+    <p>Sono presenti {{listaAlberi.length}} alberi non ancora assegnanti.</p>
   </div>
   <div class="row mt-1 d-flex justify-content-center">
     La nostra IA ti suggerirà un assegnamento possibile di alberi ai contadini.
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-    aliqua. Non pulvinar neque laoreet suspendisse interdum consectetur. Blandit cursus risus at ultrices. In hac
-    habitasse platea dictumst quisque sagittis purus sit amet. Congue nisi vitae suscipit tellus mauris.
-    <button (click)="goTo('alberi')" [ngClass]="{'onActive':selectedMenu == 'alberi'}"
-            class="btn btn-primary mt-3 col-5">Suggerisci assegnamento
-    </button>
   </div>
+  <button (click)="goTo('alberi')" [ngClass]="{'onActive':selectedMenu == 'alberi'}"
+          class="btn btn-primary mt-3 col-5">Suggerisci assegnamento
+  </button>
+
 </div>
 
 <div class="container mt-5" *ngIf="selectedMenu == 'alberi'">

@@ -2,15 +2,92 @@
   <img cCardImg="top" src="{{sourceImage}}">
   <c-card-body>
     <h5 cCardTitle>{{prodottoOrdine.nomeAlbero}}</h5>
-    <p cCardText>
-      <b>Id: </b> {{prodottoOrdine.id}}
-    </p>
-    <div class="row text-center ">
-      <div class="mt-1" cCardText><b>Data modifica:</b> {{prodottoOrdine.dataAssegnazione | date: 'dd/MM/yy'}}</div>
-      <a class="mt-3" cCardText>Effettuare il pagamento</a>
+
+    <div class="row ">
+      <div cCardText>
+        <b>Id: </b> {{prodottoOrdine.id}}
+      </div>
+      <div class="mt-1" cCardText>
+        <b>Contadino:</b> {{prodottoOrdine.contadino?.nome}} {{prodottoOrdine.contadino?.cognome}}</div>
+      <div class="mt-1" cCardText><b>Paese:</b> {{prodottoOrdine?.contadino?.coordinateGeografiche}}
+      </div>
+      <div class="mt-1" cCardText><b>Data assegnazione:</b> {{prodottoOrdine?.dataAssegnazione | date: 'dd/MM/yy'}}
+      </div>
+      <div class="mt-1" cCardText><b>Data modifica:</b> {{prodottoOrdine?.dataModifica | date: 'dd/MM/yy'}}</div>
+      <div class="mt-1" cCardText><b>Descrizione:</b> {{prodottoOrdine?.descrizione}}</div>
+      <a class="mt-3" cCardText (click)="toggleModalPagamento()">Effettua il pagamento</a>
       <br>
-      <a class="mt-3" cCardText>Foto non valida</a>
+      <a class="mt-3" (click)="toggleModalFoto()" cCardText>Foto non valida</a>
     </div>
   </c-card-body>
 </c-card>
 
+<!-- Modal  Pagamento -->
+<c-modal [visible]="visiblePagamento" (visibleChange)="handleModalPagamento($event)"
+         [backdrop]="false" scrollable id=`Pagamento{{prodottoOrdine.nomeAlbero}}`>
+  <c-modal-header>
+    <h2 cModalTitle>Pagamento</h2>
+  </c-modal-header>
+  <div class="modal-body">
+    <ng-container *ngTemplateOutlet="form"></ng-container>
+  </div>
+</c-modal>
+
+<ng-template #form>
+  <div class="row mt-1 my-1"><p>I dati per il pagamento per il contadino
+    <b>{{prodottoOrdine?.contadino?.nome}} {{prodottoOrdine?.contadino?.cognome}}</b>
+    sono i seguenti:
+  </p>
+    <ul class="mx-4">
+      <li><b>Titolare Conto:</b> {{prodottoOrdine?.contadino?.titolareConto}}</li>
+      <li><b>Swift:</b> {{prodottoOrdine?.contadino?.swift}}</li>
+      <li><b>Importo:</b> {{getPagamento().toFixed(2)}}€</li>
+    </ul>
+  </div>
+
+  <form cRow [formGroup]="formPagamento"
+        (ngSubmit)="onSubmitPagamento()">
+    <c-col class="mb-3" [sm]="12">
+      <label cLabel for="motivazione">Motivazione: </label>
+      <textarea cFormControl
+                id="motivazione" formControlName="motivazione"
+                type="text" placeholder="Inserisci la motivazione del pagamento"
+                [ngClass]="{'is-invalid':(submitted || f['motivazione'].touched) && f['motivazione'].invalid,
+            'is-valid': (submitted ||f['motivazione'].touched) && f['motivazione'].valid }">
+      </textarea>
+      <div *ngIf="submitted && f['motivazione'].invalid" class="invalid-feedback">
+        <div *ngIf="f['motivazione'].errors?.['required']">Compila questo campo</div>
+      </div>
+      <div *ngIf="submitted && f['motivazione'].valid" class="valid-feedback">
+        Looks good!
+      </div>
+    </c-col>
+    <div class="text-center my-3" *ngIf="errorMessage" style="color: red">{{errorMessage}}</div>
+    <div class="row justify-content-center mt-3">
+      <input class="col-6" cButton color="primary" type="submit" value="Effettua il pagamento">
+    </div>
+  </form>
+</ng-template>
+
+<!-- Modal  Foto non valida -->
+<c-modal [visible]="visibleFoto" (visibleChange)="handleModalFoto($event)"
+         [backdrop]="false" scrollable id={{prodottoOrdine.nomeAlbero}}>
+  <c-modal-header>
+    <h2 cModalTitle>{{prodottoOrdine.nomeAlbero}}</h2>
+  </c-modal-header>
+  <div class="modal-body">
+    <ng-container *ngTemplateOutlet="fotoNonValida"></ng-container>
+  </div>
+  <c-modal-footer>
+    <button cButton color="secondary" (click)="toggleModalFoto()">Annulla</button>
+    <button cButton color="primary" (click)="handleConfirmClick()">Confermo</button>
+  </c-modal-footer>
+</c-modal>
+
+<!-- Modal  FotoNonValida -->
+<ng-template #fotoNonValida>
+  <div class="row d-flex align-items-center m-4">
+    Proseguendo confermi che la foto inserita non è valida.
+    Sei sicuro di voler procedere?
+  </div>
+</ng-template>
