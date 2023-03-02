@@ -66,6 +66,16 @@ public class ControllerContadino {
     }
 
     /**
+     * Metodo GET per visualizzare l'assegnazione degli alberi
+     *
+     * @return
+     */
+    @GetMapping("/assegnazione")
+    public ResponseEntity<Object> assegnazioneAlberi() {
+        return new ResponseEntity<>(contadinoService.assegnazioneAlberi(), HttpStatus.ACCEPTED);
+    }
+
+    /**
      * Metodo POST per aggiornare lo stato di un prodotto ordine
      *
      * @param prodottoOrdine

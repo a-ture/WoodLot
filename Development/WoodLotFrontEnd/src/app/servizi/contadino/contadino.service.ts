@@ -42,7 +42,7 @@ export class ContadinoService {
 
   //restituisci tutti gli alberi non ancora assegnati a un contadino
   public getAlberiDaRiassegnare(): Observable<ProdottoOrdine[]> {
-    let url = 'http://localhost:8090/api/contadino/alberiDaRevisionare'
+    let url = 'http://localhost:8090/api/contadino/alberiDaRiassegnare'
     return this.http.get<ProdottoOrdine[]>(url)
   }
 
@@ -84,5 +84,11 @@ export class ContadinoService {
   public effettuarePagamento(pagamento: Pagamento) {
     let url = 'http://localhost:8090/api/pagamento/'
     return this.http.post(url, pagamento)
+  }
+
+  // restituisce l'elenco degli alberi assegnati
+  public assegnazioneAlberi(): Observable<any> {
+    let url = 'http://localhost:8090/api/contadino/assegnazione'
+    return this.http.get(url)
   }
 }

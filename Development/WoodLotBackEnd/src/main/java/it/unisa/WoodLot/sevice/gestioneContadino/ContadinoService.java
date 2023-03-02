@@ -20,5 +20,8 @@ public interface ContadinoService {
     Iterable<ProdottoOrdine> elencoAlberiContadino(Long idContadino);
 
     Iterable<ProdottoOrdine> prodottiDaRiassegnare();
+
     Iterable<ProdottoOrdine> prodottiDaRevisionare();
+
+    Iterable<ProdottoOrdine> assegnazioneAlberi();
 }

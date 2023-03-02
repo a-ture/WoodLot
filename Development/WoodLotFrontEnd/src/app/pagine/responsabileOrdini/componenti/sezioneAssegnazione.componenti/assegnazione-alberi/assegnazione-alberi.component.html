@@ -1,34 +1,44 @@
-<div class="container text-center mt-4">
+<div class="container text-center mt-4" [hidden]="selectedMenu === 'alberi'">
   <h3>Assegna gli alberi ai contadini</h3>
   <div class="row mt-3">
-    <p>Sono presenti {{listaAlberi.length}} alberi non ancora assegnanti.</p>
+    <p>Sono presenti {{listaAlberi?.length}} alberi non ancora assegnanti.</p>
   </div>
-  <div class="row mt-1 d-flex justify-content-center">
-    La nostra IA ti suggerirà un assegnamento possibile di alberi ai contadini.
+  <div class="row mt-1 ">
+    <p>La nostra IA ti suggerirà un assegnamento possibile di alberi ai contadini.
+      Ecco i criteri che segue per l'assegnamento:</p>
+    <ul class="list-group-numbered">
+      <li>Rispettare i criteri di biodiversità</li>
+      <li>Dare priorità ai contadini che attualmente curano meno alberi</li>
+      <li>A parità di alberi curati, procederà in modo casuale</li>
+    </ul>
   </div>
+
   <button (click)="goTo('alberi')" [ngClass]="{'onActive':selectedMenu == 'alberi'}"
           class="btn btn-primary mt-3 col-5">Suggerisci assegnamento
   </button>
-
 </div>
 
 <div class="container mt-5" *ngIf="selectedMenu == 'alberi'">
-  <h3 class="text-center mt-3">Assegnamento prodotto</h3>
+  <h3 class="text-center mt-3">Assegnamento suggerito</h3>
   <table class="row" cTable hover class="text-center mt-5">
     <thead>
     <tr>
-      <th scope="col">Contadino</th>
-      <th scope="col">Albero</th>
-      <th scope="col">Modifica</th>
+      <th scope="col"><b>Contadino</b></th>
+      <th scope="col"><b>Albero</b></th>
+      <th scope="col"><b>Modifica</b></th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let item of listaAlberi">
-      <th scope="row">Contadino: nomeContadino</th>
+      <th scope="row"
+          (click)="selectedItem = item; toggleModalContadino()">
+        {{item?.contadino?.nome}} {{item?.contadino?.cognome}}
+        <i class="fa-solid fa-eye"></i></th>
       <td>
-        Albero: {{item.id}}
+        {{item?.nomeAlbero}} (id: {{item?.id}})
       </td>
-      <td><i class="fa-regular fa-pen-to-square"></i></td>
+      <td><i (click)="selectedItem = item; toggleModalModifica()"
+             class="fa-regular fa-pen-to-square"></i></td>
     </tr>
     </tbody>
   </table>
@@ -36,3 +46,47 @@
     <button class="btn btn-primary mt-3 col-5">Conferma assegnamento</button>
   </div>
 </div>
+
+
+<c-modal [visible]="visibleModalModifica" (visibleChange)="handleModalModifica($event)"
+         [backdrop]="false" scrollable>
+  <c-modal-header>
+    <h2 cModalTitle>Modifica assegnamento</h2>
+  </c-modal-header>
+  <div class="modal-body">
+    <ng-container *ngIf="selectedItem">
+      <form>
+        <label for="alberi"> Contadino che vuoi assegnare
+          all'albero {{selectedItem?.nomeAlbero}} (id {{selectedItem?.id}}):</label>
+        <select id="alberi" cSelect [(ngModel)]="contadinoSelezionato" name="alberi">
+          <option value="">Nessuno</option>
+          <option *ngFor="let item of listaContadini" [value]="item.id">{{item.nome}} {{item.cognome}}</option>
+        </select>
+      </form>
+    </ng-container>
+  </div>
+  <c-modal-footer>
+    <button cButton color="secondary" (click)="toggleModalModifica()">Annulla</button>
+    <button cButton color="primary" (click)="handleConfirmClickModifica()">Confermo</button>
+  </c-modal-footer>
+</c-modal>
+
+<c-modal [visible]="visibleModalContadino" (visibleChange)="handleModalContadino($event)"
+         [backdrop]="false" scrollable>
+  <c-modal-header>
+    <h2 cModalTitle>{{selectedItem?.contadino?.nome}} {{selectedItem?.contadino?.cognome}}</h2>
+  </c-modal-header>
+  <div class="modal-body">
+    <ng-container *ngIf="selectedItem">
+      Ecco le informazioni del contadino:
+      <ul>
+        <li><b>Coordinate Geografiche:</b> {{selectedItem?.contadino?.coordinateGeografiche}}</li>
+        <li><b>Numero di alberi curati attualmente (prima di questo
+          assegnamento):</b> {{selectedItem?.contadino?.listaAlberi?.length}}</li>
+      </ul>
+    </ng-container>
+  </div>
+  <c-modal-footer>
+    <button cButton color="primary" (click)="toggleModalContadino()">Capisco</button>
+  </c-modal-footer>
+</c-modal>

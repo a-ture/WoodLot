@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -103,5 +104,10 @@ public class GestioneContadinoService implements ContadinoService {
     @Override
     public Iterable<ProdottoOrdine> prodottiDaRevisionare() {
         return prodottoOrdineRepository.findAllByStatoIs(ProdottoOrdine.Stato.Revisione);
+    }
+
+    @Override
+    public Iterable<ProdottoOrdine> assegnazioneAlberi() {
+        return prodottoOrdineRepository.findAllByStatoIs(ProdottoOrdine.Stato.Assegnato);
     }
 }
