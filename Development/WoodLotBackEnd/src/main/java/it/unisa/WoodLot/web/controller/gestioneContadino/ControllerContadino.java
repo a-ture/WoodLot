@@ -3,6 +3,7 @@ package it.unisa.WoodLot.web.controller.gestioneContadino;
 import it.unisa.WoodLot.model.entity.Contadino;
 import it.unisa.WoodLot.model.entity.ProdottoOrdine;
 import it.unisa.WoodLot.sevice.gestioneContadino.ContadinoService;
+import it.unisa.WoodLot.sevice.gestioneContadino.assegnazioneAlberi.AssegnazioneAlberi;
 import it.unisa.WoodLot.sevice.gestioneContadino.eccezioni.ContadinoException;
 import it.unisa.WoodLot.web.controller.ResponseHandler;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Controller per la gestione dei contadini
@@ -24,6 +26,8 @@ public class ControllerContadino {
 
     @Autowired
     private ContadinoService contadinoService;
+    @Autowired
+    private AssegnazioneAlberi assegnazioneAlberi;
 
     /**
      * Metodo GET per visualizzare l'elenco dei contadini
@@ -72,7 +76,7 @@ public class ControllerContadino {
      */
     @GetMapping("/assegnazione")
     public ResponseEntity<Object> assegnazioneAlberi() {
-        return new ResponseEntity<>(contadinoService.assegnazioneAlberi(), HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(assegnazioneAlberi.assegnazione((List<Contadino>) contadinoService.getElencoContadini(), (List<ProdottoOrdine>) contadinoService.getAlberiNonAssegnati()),HttpStatus.ACCEPTED);
     }
 
     /**

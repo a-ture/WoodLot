@@ -1,6 +1,7 @@
 import {Contadino} from "../contadino/contadino";
 import {UsoLocale} from "../usoLocale/uso-locale";
 import {Beneficio} from "../beneficio/beneficio";
+import {Paese} from "../paese/paese";
 
 export class ProdottoOrdine {
   public id: number
@@ -14,9 +15,10 @@ export class ProdottoOrdine {
   public benefici: Array<Beneficio>
   public dataAssegnazione: Date | undefined
   public dataModifica: Date | undefined
+  public paeseOrigine: Paese
 
   constructor(id: number, prezzo: number,
-              data: Date, stato: String, nomeAlbero: String, usiLocali: Array<UsoLocale>, benefici: Array<Beneficio>,
+              data: Date, stato: String, nomeAlbero: String, usiLocali: Array<UsoLocale>, benefici: Array<Beneficio>, paeseOrigine: Paese,
               contadino?: Contadino, descrizione?: String, frutta?: number, dataAssegnazione?: Date,
               dataModifica?: Date) {
     this.id = id
@@ -30,5 +32,6 @@ export class ProdottoOrdine {
     this.nomeAlbero = nomeAlbero
     this.usiLocali = usiLocali
     this.dataModifica = dataModifica
+    this.paeseOrigine = paeseOrigine
   }
 }

@@ -23,5 +23,4 @@ public interface ContadinoService {
 
     Iterable<ProdottoOrdine> prodottiDaRevisionare();
 
-    Iterable<ProdottoOrdine> assegnazioneAlberi();
 }

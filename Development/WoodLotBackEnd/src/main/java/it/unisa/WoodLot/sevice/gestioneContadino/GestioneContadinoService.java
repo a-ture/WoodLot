@@ -61,18 +61,23 @@ public class GestioneContadinoService implements ContadinoService {
             throw new ContadinoException("Non è stato trovato il prodotto ordine");
 
         if (prodottoOrdine.getStato().equals(ProdottoOrdine.Stato.Riassegnazione)) {
-            p.setContadino(null);
+            p.setContadino(prodottoOrdine.getContadino());
             p.setDataModifica(null);
             p.setDataAssegnazione(null);
             p.setStato(ProdottoOrdine.Stato.Riassegnazione);
+        } else if (prodottoOrdine.getStato().equals(ProdottoOrdine.Stato.Assegnato)) {
+            p.setContadino(prodottoOrdine.getContadino());
+            p.setDataModifica(null);
+            p.setDataAssegnazione(new Date());
+            p.setStato(ProdottoOrdine.Stato.Assegnato);
+            p.setDescrizione("Il tuo albero è stato presto in cura dal contadino! Presto verrà piantato");
         } else {
             p.setStato(prodottoOrdine.getStato());
             p.setDescrizione(prodottoOrdine.getDescrizione());
             p.setFrutta(prodottoOrdine.getFrutta());
             p.setDataModifica(new Date());
         }
-
-        return prodottoOrdineRepository.save(prodottoOrdine);
+        return prodottoOrdineRepository.save(p);
     }
 
     /**
@@ -106,8 +111,4 @@ public class GestioneContadinoService implements ContadinoService {
         return prodottoOrdineRepository.findAllByStatoIs(ProdottoOrdine.Stato.Revisione);
     }
 
-    @Override
-    public Iterable<ProdottoOrdine> assegnazioneAlberi() {
-        return prodottoOrdineRepository.findAllByStatoIs(ProdottoOrdine.Stato.Assegnato);
-    }
 }

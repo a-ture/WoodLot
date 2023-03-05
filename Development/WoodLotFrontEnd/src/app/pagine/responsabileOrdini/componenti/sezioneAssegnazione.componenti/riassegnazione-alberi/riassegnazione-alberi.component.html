@@ -1,9 +1,72 @@
-<div class="container text-center mt-4">
+<div class="container text-center mt-4" *ngIf="listaAlberi && listaAlberi.length > 0">
   <h3>Riassegna gli alberi </h3>
   <div class="row mt-3">
     <p>Sono presenti {{listaAlberi?.length}} alberi da riassegnare.</p>
   </div>
-  <div class="row mt-1 d-flex justify-content-center">
-    Gli alberi in questa sezione devono essere riassegnati
+</div>
+
+<div class="container mt-5" *ngIf="listaAlberi && listaAlberi.length > 0">
+
+  <table class="row" cTable hover class="text-center mt-5">
+    <thead>
+    <tr>
+      <th scope="col"><b>Contadino Precedente</b></th>
+      <th scope="col"><b>Contadino Attuale</b></th>
+      <th scope="col"><b>Albero</b></th>
+      <th scope="col"><b>Assegna</b></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of listaAlberi">
+      <th scope="row" *ngIf="!vecchioContadino"
+          (click)="selectedItem = item;">
+        {{item?.contadino?.nome}} {{item?.contadino?.cognome}}
+      </th>
+      <th scope="row" *ngIf="vecchioContadino">
+        {{vecchioContadino.nome}} {{vecchioContadino.cognome}}
+      </th>
+      <th scope="row" *ngIf="nuovoContadino">
+        {{nuovoContadino.nome}} {{nuovoContadino.cognome}}
+      </th>
+      <th scope="row" *ngIf="!nuovoContadino">
+        Non hai ancora scelto un nuovo contadino
+      </th>
+      <td>
+        {{item?.nomeAlbero}} (id: {{item?.id}})
+      </td>
+      <td><i (click)="selectedItem = item; toggleModalRiassegnazione()"
+             class="fa-regular fa-pen-to-square"></i></td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="d-flex justify-content-center">
+    <button class="btn btn-primary mt-3 col-5" (click)="confermaAssegnamento()" [disabled]="!nuovoContadino">Conferma
+    </button>
   </div>
+</div>
+
+<c-modal [visible]="visibleModalModificaRiassegnazione" (visibleChange)="handleModalRiassegnazione($event)"
+         [backdrop]="false" scrollable>
+  <c-modal-header>
+    <h2 cModalTitle>Riassegna</h2>
+  </c-modal-header>
+  <div class="modal-body">
+    <ng-container *ngIf="selectedItem">
+      <form>
+        <label for="alberi"> Contadino che vuoi assegnare
+          all'albero {{selectedItem?.nomeAlbero}} (id {{selectedItem?.id}}):</label>
+        <select id="alberi" cSelect [(ngModel)]="contadinoSelezionato" name="alberi">
+          <option *ngFor="let item of getContadiniCompatibili(selectedItem.paeseOrigine.nome)"
+                  [value]="item.id">{{item.nome}} {{item.cognome}}</option>
+        </select>
+      </form>
+    </ng-container>
+  </div>
+  <c-modal-footer>
+    <button cButton color="secondary" (click)="toggleModalRiassegnazione()">Annulla</button>
+    <button cButton color="primary" (click)="handleRiassegnazione()">Confermo</button>
+  </c-modal-footer>
+</c-modal>
+<div class="container text-center mt-4 mb-5" *ngIf="!listaAlberi || listaAlberi.length === 0">
+  <h3>Non ci sono alberi da riassegnare</h3>
 </div>

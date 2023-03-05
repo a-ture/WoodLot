@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Albero} from "../../entita/albero/albero";
 import {Observable} from "rxjs";
-import {HttpClient, HttpHeaders, HttpParams, HttpRequest} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'

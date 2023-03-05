@@ -37,6 +37,10 @@ public class ProdottoOrdine implements Serializable {
     @Column(name = "prezzo_unitario", nullable = false)
     private double prezzoUnitario;
 
+    @OneToOne()
+    @JoinColumn(name = "paese_origine", referencedColumnName = "nome")
+    private PaeseOrigine paeseOrigine;
+
     @Column(name = "stato", nullable = false)
     private Stato stato;
 

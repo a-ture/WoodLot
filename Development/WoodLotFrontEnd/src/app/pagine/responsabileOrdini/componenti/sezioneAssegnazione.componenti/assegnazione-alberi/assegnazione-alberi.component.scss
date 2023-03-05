@@ -6,6 +6,9 @@
   --cui-btn-border-radius: 15px;
   --cui-btn-active-bg: #94AD6E;
   --cui-btn-active-border-color: #94AD6E;
+  --cui-btn-disabled-bg: #F8BD7F;
+  --cui-btn-disabled-border-color: #F8BD7F;
+  color: var(--cui-btn-disabled-color);
   text-transform: capitalize;
 }
 

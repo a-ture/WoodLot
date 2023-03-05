@@ -16,6 +16,7 @@ export class AssegnazioneAlberiComponent implements OnInit {
 
   public visibleModalModifica = false;
   public visibleModalContadino = false;
+  public visibleSuccess = false;
   public listaAlberi !: ProdottoOrdine[]
   public listaContadini!: Contadino[]
 
@@ -40,10 +41,20 @@ export class AssegnazioneAlberiComponent implements OnInit {
         )
       }
     )
+    console.log(this.selectedMenu)
   }
 
   handleModalModifica(event: any) {
     this.visibleModalModifica = event;
+  }
+
+  handleSuccess(event: any) {
+    this.visibleSuccess = event;
+  }
+
+
+  toggleModelSuccess() {
+    this.visibleSuccess = !this.visibleSuccess;
   }
 
   toggleModalModifica() {
@@ -60,9 +71,7 @@ export class AssegnazioneAlberiComponent implements OnInit {
 
   handleConfirmClickModifica() {
     const contadinoSelezionato = this.listaContadini.find(contadino => contadino.id === Number(this.contadinoSelezionato));
-
     if (contadinoSelezionato) {
-      console.log('Contadino trovato:', contadinoSelezionato);
       // cerca l'elemento selezionato all'interno dell'array
       const selectedItemIndex = this.listaAlberi.findIndex(item => item === this.selectedItem);
 
@@ -79,6 +88,9 @@ export class AssegnazioneAlberiComponent implements OnInit {
 
 
   goTo(paramText: String) {
+    this.selectedMenu = paramText
+    console.log("ggg")
+    console.log("ee")
     this.serviceContadino.assegnazioneAlberi().subscribe(
       (data) => {
         this.listaAlberi = data
@@ -94,6 +106,35 @@ export class AssegnazioneAlberiComponent implements OnInit {
         })
       }
     )
-    this.selectedMenu = paramText
+    console.log(this.selectedMenu)
+  }
+
+  getContadiniCompatibili(nomePaese: String): Contadino[] {
+    let contadini: Contadino[] = [];
+    this.listaContadini.forEach(e => {
+      if (e.coordinateGeografiche === nomePaese) {
+        contadini.push(e)
+      }
+    })
+    return contadini
+  }
+
+  confermaAssegnamento() {
+    let successo = false
+    this.listaAlberi.forEach(e => {
+      e.stato = "Assegnato"
+      console.log(e)
+      this.serviceContadino.aggiornaStato(e).subscribe(
+        () => {
+          successo = true
+        },
+        (error) => {
+          console.log(error)
+        }
+      )
+    });
+    if (successo)
+      this.toggleModelSuccess()
   }
 }
+

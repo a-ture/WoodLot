@@ -6,7 +6,7 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./sezione-assegnazione.component.scss']
 })
 export class SezioneAssegnazioneComponent implements OnInit {
-  selectedMenu: String = "Riassegnazione alberi"
+  selectedMenu: String = "Assegna alberi"
 
   goTo(paramText: String) {
     this.selectedMenu = paramText
