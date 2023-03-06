@@ -1,11 +1,12 @@
-package it.unisa.WoodLot.service.gestioneContadino.aggiornareStato;
+package it.unisa.WoodLot.service.gestioneContadino.contadino;
 
 import it.unisa.WoodLot.model.entity.Contadino;
 import it.unisa.WoodLot.model.entity.ProdottoOrdine;
 import it.unisa.WoodLot.model.repository.ContadinoRepository;
 import it.unisa.WoodLot.model.repository.ProdottoOrdineRepository;
-import it.unisa.WoodLot.sevice.gestioneContadino.GestioneContadinoService;
+import it.unisa.WoodLot.sevice.gestioneContadino.contadino.GestioneContadinoService;
 import it.unisa.WoodLot.sevice.gestioneContadino.eccezioni.ContadinoException;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -14,10 +15,12 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -89,28 +92,31 @@ public class ContadinoServiceUT {
      * Il test risulta superato se lo stato dell'albero viene aggiornato
      */
     @Test
-    void testAggiornaStatoSuccesso() {
+    public void testAggiornaStatoSuccesso() {
         ProdottoOrdine prodottoOrdine = new ProdottoOrdine();
+        prodottoOrdine.setId(1L);
         prodottoOrdine.setNomeAlbero("Albero1");
         prodottoOrdine.setStato(ProdottoOrdine.Stato.Bocciolo);
+
         ProdottoOrdine prodottoOrdineDb = new ProdottoOrdine();
+        prodottoOrdineDb.setId(1L);
         prodottoOrdineDb.setNomeAlbero("Albero1");
         prodottoOrdineDb.setStato(ProdottoOrdine.Stato.Fiore);
 
         when(prodottoOrdineRepository.findById(prodottoOrdine.getId())).thenReturn(Optional.of(prodottoOrdineDb));
-        when(prodottoOrdineRepository.save(prodottoOrdine)).thenReturn(prodottoOrdine);
+        when(prodottoOrdineRepository.save(any(ProdottoOrdine.class))).thenReturn(prodottoOrdine);
 
         try {
             ProdottoOrdine result = gestioneContadinoService.aggiornaStato(prodottoOrdine);
 
-            assertNotNull(result);
-            assertEquals(prodottoOrdine.getId(), result.getId());
-            assertEquals(prodottoOrdine.getFrutta(), result.getFrutta());
-            assertEquals(prodottoOrdine.getStato(), result.getStato());
-            assertEquals(prodottoOrdine.getDescrizione(), result.getDescrizione());
+            Assertions.assertNotNull(result);
+            Assertions.assertEquals(prodottoOrdine.getId(), result.getId());
+            Assertions.assertEquals(prodottoOrdine.getFrutta(), result.getFrutta());
+            Assertions.assertEquals(prodottoOrdine.getStato(), result.getStato());
+            Assertions.assertEquals(prodottoOrdine.getDescrizione(), result.getDescrizione());
 
             verify(prodottoOrdineRepository, times(1)).findById(prodottoOrdine.getId());
-            verify(prodottoOrdineRepository, times(1)).save(prodottoOrdine);
+            verify(prodottoOrdineRepository, times(1)).save(any(ProdottoOrdine.class));
         } catch (ContadinoException e) {
             fail(e.getMessage());
         }
@@ -134,5 +140,77 @@ public class ContadinoServiceUT {
         } catch (ContadinoException e) {
             assertEquals(messaggio, e.getMessage());
         }
+    }
+
+    /**
+     * Testa il caso in cui si vuole recuperare l'elenco degli alberi di un contadino
+     * Il test risulta superato se vengono recuperati gli alberi del contadino
+     */
+    @Test
+    void elencoAlberiContadinoTest() {
+        Long idContadino = 1L;
+        ProdottoOrdine prodottoOrdine1 = new ProdottoOrdine();
+        prodottoOrdine1.setId(1L);
+        prodottoOrdine1.setNomeAlbero("Olivo");
+        prodottoOrdine1.setContadino(new Contadino());
+        prodottoOrdine1.getContadino().setId(idContadino);
+        ProdottoOrdine prodottoOrdine2 = new ProdottoOrdine();
+        prodottoOrdine2.setId(2L);
+        prodottoOrdine2.setNomeAlbero("Mandorlo");
+        prodottoOrdine2.setContadino(new Contadino());
+        prodottoOrdine2.getContadino().setId(2L);
+        List<ProdottoOrdine> prodottiOrdine = new ArrayList<>();
+        prodottiOrdine.add(prodottoOrdine1);
+        prodottiOrdine.add(prodottoOrdine2);
+
+        when(prodottoOrdineRepository.findAllByContadino_Id(idContadino)).thenReturn((ArrayList<ProdottoOrdine>) prodottiOrdine);
+
+        Iterable<ProdottoOrdine> result = gestioneContadinoService.elencoAlberiContadino(idContadino);
+
+        assertEquals(prodottiOrdine, result);
+    }
+
+    /**
+     * Testa il caso in cui si vuole recuperare l'elenco degli alberi che sono in Stato Revisione
+     * Il test risulta superato se vengono recuperati gli alberi
+     */
+    @Test
+    public void testProdottiDaRevisionare() {
+        // definiamo i dati di test
+        ProdottoOrdine prodotto1 = new ProdottoOrdine();
+        prodotto1.setId(1L);
+        prodotto1.setStato(ProdottoOrdine.Stato.Riassegnazione);
+        ProdottoOrdine prodotto2 = new ProdottoOrdine();
+        prodotto2.setId(2L);
+        prodotto2.setStato(ProdottoOrdine.Stato.Revisione);
+        List<ProdottoOrdine> prodotti = Arrays.asList(prodotto1, prodotto2);
+
+        when(prodottoOrdineRepository.findAllByStatoIs(ProdottoOrdine.Stato.Revisione)).thenReturn(prodotti);
+
+        Iterable<ProdottoOrdine> result = gestioneContadinoService.prodottiDaRevisionare();
+
+        assertEquals(prodotti, result);
+    }
+
+    /**
+     * Testa il caso in cui si vuole recuperare l'elenco degli alberi che sono in Stato Riassegnazione
+     * Il test risulta superato se vengono recuperati gli alberi
+     */
+    @Test
+    void testProdottiDaRiassegnare() {
+        ProdottoOrdine prodotto1 = new ProdottoOrdine();
+        prodotto1.setStato(ProdottoOrdine.Stato.Riassegnazione);
+
+        ProdottoOrdine prodotto2 = new ProdottoOrdine();
+        prodotto2.setStato(ProdottoOrdine.Stato.Riassegnazione);
+
+        when(prodottoOrdineRepository.findAllByStatoIs(ProdottoOrdine.Stato.Riassegnazione))
+                .thenReturn(Arrays.asList(prodotto1, prodotto2));
+
+        Iterable<ProdottoOrdine> prodottiRiassegnazione = gestioneContadinoService.prodottiDaRiassegnare();
+
+        assertThat(prodottiRiassegnazione).hasSize(2);
+        assertThat(prodottiRiassegnazione).contains(prodotto1);
+        assertThat(prodottiRiassegnazione).contains(prodotto2);
     }
 }

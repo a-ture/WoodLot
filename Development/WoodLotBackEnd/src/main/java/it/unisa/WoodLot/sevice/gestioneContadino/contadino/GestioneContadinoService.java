@@ -1,4 +1,4 @@
-package it.unisa.WoodLot.sevice.gestioneContadino;
+package it.unisa.WoodLot.sevice.gestioneContadino.contadino;
 
 import it.unisa.WoodLot.model.entity.Contadino;
 import it.unisa.WoodLot.model.entity.ProdottoOrdine;
@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.Date;
-import java.util.List;
 
 
 /**
@@ -110,5 +109,4 @@ public class GestioneContadinoService implements ContadinoService {
     public Iterable<ProdottoOrdine> prodottiDaRevisionare() {
         return prodottoOrdineRepository.findAllByStatoIs(ProdottoOrdine.Stato.Revisione);
     }
-
 }

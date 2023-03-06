@@ -8,9 +8,15 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.core.io.Resource;
 import org.springframework.http.*;
+import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 
+import java.io.IOException;
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -130,5 +136,36 @@ public class ControllerCatalogoIT {
 
         ResponseEntity<Void> deleteResponse = restTemplate.exchange("http://localhost:8090/api/catalogo/eliminaProdotto/" + albero.getNome(), HttpMethod.GET, null, Void.class);
         assertEquals(HttpStatus.OK, deleteResponse.getStatusCode());
+    }
+
+    /**
+     * Testa il caso in cui viene caricata un img correttamente
+     * Il test risulta superato se l'img viene caricata
+     */
+    @Test
+    void testUploadImage() {
+        // Create a mock file
+        byte[] content = "test file content".getBytes();
+        MockMultipartFile file = new MockMultipartFile("file", "test.jpg", "image/jpeg", content);
+        String treeName = "test-tree";
+
+        Resource resource = new ByteArrayResource(content) {
+            @Override
+            public String getFilename() {
+                return "test.jpg";
+            }
+        };
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.MULTIPART_FORM_DATA);
+
+        MultiValueMap<String, Object> body = new LinkedMultiValueMap<>();
+        body.add("file", resource);
+        body.add("treeName", treeName);
+
+        HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(body, headers);
+
+        ResponseEntity<Object> responseEntity = restTemplate.exchange("http://localhost:8090/api/catalogo/upload", HttpMethod.POST, requestEntity, Object.class);
+        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
     }
 }

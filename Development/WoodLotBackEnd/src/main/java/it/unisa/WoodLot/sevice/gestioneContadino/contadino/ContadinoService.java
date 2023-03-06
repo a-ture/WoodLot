@@ -1,4 +1,4 @@
-package it.unisa.WoodLot.sevice.gestioneContadino;
+package it.unisa.WoodLot.sevice.gestioneContadino.contadino;
 
 import it.unisa.WoodLot.model.entity.Contadino;
 import it.unisa.WoodLot.model.entity.ProdottoOrdine;

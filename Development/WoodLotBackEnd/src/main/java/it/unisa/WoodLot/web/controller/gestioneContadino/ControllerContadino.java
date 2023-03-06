@@ -2,7 +2,7 @@ package it.unisa.WoodLot.web.controller.gestioneContadino;
 
 import it.unisa.WoodLot.model.entity.Contadino;
 import it.unisa.WoodLot.model.entity.ProdottoOrdine;
-import it.unisa.WoodLot.sevice.gestioneContadino.ContadinoService;
+import it.unisa.WoodLot.sevice.gestioneContadino.contadino.ContadinoService;
 import it.unisa.WoodLot.sevice.gestioneContadino.assegnazioneAlberi.AssegnazioneAlberi;
 import it.unisa.WoodLot.sevice.gestioneContadino.eccezioni.ContadinoException;
 import it.unisa.WoodLot.web.controller.ResponseHandler;

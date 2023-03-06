@@ -4,20 +4,25 @@ import it.unisa.WoodLot.model.entity.Albero;
 import it.unisa.WoodLot.sevice.gestioneCatalogo.catalogo.GestioneCatalogoService;
 import it.unisa.WoodLot.sevice.gestioneCatalogo.eccezioni.AlberoException;
 import it.unisa.WoodLot.web.controller.gestioneCatalogo.catalogo.ControllerCatalogo;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.api.io.TempDir;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mock.web.MockMultipartFile;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.Map;
 
 import static org.assertj.core.api.Fail.fail;
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 /**
@@ -32,6 +37,7 @@ public class ControllerCatalogoUT {
     private GestioneCatalogoService gestioneCatalogoService;
     @InjectMocks
     private ControllerCatalogo controllerCatalogo;
+
 
     /**
      * Testa il caso in cui l'albero viene aggiunto con successo al catalogo
@@ -89,4 +95,19 @@ public class ControllerCatalogoUT {
         assertDoesNotThrow(() -> controllerCatalogo.eliminaProdottoCatalogo(idAlbero));
     }
 
+    /**
+     * Testa il caso in cui viene caricata un img correttamente
+     * Il test risulta superato se l'img viene caricata
+     */
+    @Test
+    public void testUploadImage(@TempDir File tempDir) throws IOException {
+        // Create a mock file
+        byte[] content = "test file content".getBytes();
+        MockMultipartFile file = new MockMultipartFile("file", "test.jpg", "image/jpeg", content);
+        String treeName = "test-tree";
+
+        ResponseEntity<Object> responseEntity = controllerCatalogo.uploadImage(file, treeName);
+
+        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
+    }
 }

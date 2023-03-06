@@ -1,19 +1,25 @@
 package it.unisa.WoodLot.service.gestioneContadino.pagamento;
 
+import it.unisa.WoodLot.model.entity.Contadino;
 import it.unisa.WoodLot.model.entity.Pagamento;
+import it.unisa.WoodLot.model.repository.ContadinoRepository;
 import it.unisa.WoodLot.model.repository.PagamentoRepository;
+import it.unisa.WoodLot.sevice.gestioneContadino.eccezioni.ContadinoException;
 import it.unisa.WoodLot.sevice.gestioneContadino.pagamento.GestionePagamentoService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.when;
+import static org.assertj.core.api.Fail.fail;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 /**
  * Test di unità per la classe GestionePagamentoService
@@ -26,7 +32,8 @@ public class PagamentoServiceUT {
 
     @Mock
     private PagamentoRepository pagamentoRepository;
-
+    @Mock
+    private ContadinoRepository contadinoRepository;
     @InjectMocks
     private GestionePagamentoService gestionePagamentoService;
 
@@ -52,6 +59,50 @@ public class PagamentoServiceUT {
 
         assertEquals(result, pagamenti);
     }
+
+    /**
+     * Testa il caso in cui si effettua un nuovo pagamento con successo
+     * Il test risulta superato se viene creato un nuovo pagamento
+     */
+    @Test
+    void testEffettuarePagamentoSuccesso() {
+        Contadino contadino = new Contadino();
+        contadino.setId(1L);
+
+        Pagamento pagamento = new Pagamento();
+        pagamento.setContadino(contadino);
+        pagamento.setMotivazioni("Test");
+        pagamento.setImporto(10.0);
+
+        when(contadinoRepository.findById(1L)).thenReturn(Optional.of(contadino));
+        when(pagamentoRepository.save(any(Pagamento.class))).thenReturn(pagamento);
+
+        try {
+            Pagamento result = gestionePagamentoService.effettuarePagamento(pagamento);
+
+            assertNotNull(result);
+            assertEquals(pagamento.getMotivazioni(), result.getMotivazioni());
+            assertEquals(pagamento.getImporto(), result.getImporto());
+            assertEquals(contadino, result.getContadino());
+        } catch (ContadinoException e) {
+            fail(e.getMessage());
+        }
+    }
+
+    /**
+     * Testa il caso in cui si effettua un nuovo pagamento ma si fornisce un id di un contadino non valido
+     * Il test risulta superato se viene lanciata l'eccezione
+     */
+    @Test
+    public void testEffettuarePagamentoWithInvalidContadinoId() {
+        Pagamento pagamento = new Pagamento();
+        pagamento.setContadino(new Contadino());
+        pagamento.getContadino().setId(2L);
+
+        when(contadinoRepository.findById(2L)).thenReturn(Optional.empty());
+
+        assertThrows(ContadinoException.class, () -> {
+            gestionePagamentoService.effettuarePagamento(pagamento);
+        });
+    }
 }
-
-
