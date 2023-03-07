@@ -12,6 +12,9 @@
   --cui-btn-active-border-color: #94AD6E;
   text-transform: capitalize;
 }
+button.ng-invalid {
+  background-color: red;
+}
 
 .form-control:focus {
   background-color: var(--cui-input-focus-bg, #fff);

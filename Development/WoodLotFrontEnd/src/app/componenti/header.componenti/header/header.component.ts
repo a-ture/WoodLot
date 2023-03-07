@@ -14,9 +14,8 @@ import {LoginComponent} from "../login/login.component";
 export class HeaderComponent implements OnInit {
   public attivo: boolean
   public elementiInCarrello: boolean = false
-
+  public isProfilo: boolean = false
   modalLoginRef: MdbModalRef<LoginComponent> | null = null
-
   config = {
     backdrop: false,
     ignoreBackdropClick: true
@@ -31,6 +30,12 @@ export class HeaderComponent implements OnInit {
       if (carrello.prodottiCarrello?.length > 0)
         this.elementiInCarrello = true
     }
+    this.router.events.subscribe((val) => {
+      this.isProfilo = (this.router.url === '/profiloResponsabileOrdini' ||
+        this.router.url === '/profiloUtente' || this.router.url === '/profiloResponsabileCatalogo' ||
+        this.router.url === '/profiloContadino'
+      );
+    });
   }
 
   ngOnInit(): void {

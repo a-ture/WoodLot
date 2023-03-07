@@ -41,7 +41,6 @@ export class CardInfoProdottoComponent implements OnInit {
   acquista() {
     this.errorMessage = ''
     const storedCarrello = sessionStorage.getItem('carrello');
-    sessionStorage.removeItem('carrello')
     if (this.albero != undefined && storedCarrello != null) {
       let carrello = JSON.parse(storedCarrello)
 
@@ -50,14 +49,18 @@ export class CardInfoProdottoComponent implements OnInit {
       console.log(carrello)
       this.serviceCarrello.aggiungereProdotto(prodottoCarrello, carrello.id).subscribe(
         (data: Carrello) => {
+          sessionStorage.removeItem('carrello')
           carrello = data
           sessionStorage.setItem("carrello", JSON.stringify(carrello))
           this.router.navigate(['/carrello']);
         },
         (error) => {
-          this.errorMessage = JSON.stringify(error)
+          console.log(error)
+          this.errorMessage = JSON.stringify(error.error.data)
         }
       );
+    } else {
+      this.errorMessage = "Devi prima effettuare l'autenticazione!"
     }
   }
 }

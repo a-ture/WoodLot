@@ -52,14 +52,14 @@ export class CardSuperpoteriComponent implements OnInit {
 
   public albero !: Albero
 
-  constructor(private serviceProdotto: ProdottoService,private route: ActivatedRoute) {
+  constructor(private serviceProdotto: ProdottoService, private route: ActivatedRoute) {
 
   }
 
   calcolaStelleAnidrideCarbonica() {
     let array = new Array<String>()
-    let stelleColorate = this.albero?.anidrideCarbonicaAssorbita % 6
-    let stelleNonColorate = 5 - stelleColorate
+    let stelleNonColorate = this.albero?.anidrideCarbonicaAssorbita % 5
+    let stelleColorate = 5 - stelleNonColorate
     for (let i = 0; i < stelleColorate; i++) {
       array.push("stellaColorata")
     }

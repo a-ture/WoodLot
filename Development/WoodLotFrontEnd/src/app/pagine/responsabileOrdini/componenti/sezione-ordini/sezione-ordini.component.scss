@@ -6,23 +6,12 @@
 
 
 }
-.ngx-pagination a {
-  color: #93C572 !important;
-  text-decoration: none;
-  padding: 5px 10px;
-  border: 1px solid #5E7250 !important;
-  margin-right: 5px;
-  border-radius: 3px;
-}
 
-.ngx-pagination .current {
-  color: #fff;
-  background: #93C572;
-}
-
-ngx-pagination .navigation {
-  font-weight: bold;
-  margin-right: 15px;
+pagination-controls ::ng-deep .current {
+  padding: 0.1875rem 0.625rem;
+  background: #93C572 !important;
+  color: #fefefe;
+  cursor: default;
 }
 
 table {

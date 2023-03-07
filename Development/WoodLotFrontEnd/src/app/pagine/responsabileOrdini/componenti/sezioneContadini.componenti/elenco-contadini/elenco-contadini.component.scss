@@ -1,17 +1,17 @@
-.page-link {
-  --cui-pagination-color: #93C572;
-  --cui-pagination-bg: trasparent;
-  --cui-pagination-border-color: #5E7250;
-  --cui-pagination-focus-color: #93C572;
-  --cui-pagination-active-color: rgba(255, 255, 255, 0.87);
-  --cui-pagination-active-bg: #93C572;
-  --cui-pagination-active-border-color: #93C572;
+.ngx-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+
+
 }
 
-.page-link:hover {
-  color: brown;
-  background-color: #C4D89F;
-  border-color: brown;
+pagination-controls ::ng-deep .current {
+  padding: 0.1875rem 0.625rem;
+  background: #93C572 !important;
+  color: #fefefe;
+  cursor: default;
 }
 
 table {

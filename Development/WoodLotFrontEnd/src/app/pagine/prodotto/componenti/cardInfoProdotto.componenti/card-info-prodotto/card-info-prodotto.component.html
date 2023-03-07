@@ -15,7 +15,7 @@
         </div>
       </div>
       <p cCardText class="my-3">
-        <b>Che albero è?: </b><em>{{albero?.descrizioneBreve}}</em>
+        <b>Che albero è? </b><em>{{albero?.descrizioneBreve}}</em>
       </p>
       <div class="row">
         <p cCardText class="col mt-4">
@@ -25,7 +25,7 @@
         <div class="col mt-2">
           <a cButton (click)="acquista()" style="background: #5E7250; border-color:#5E7250">Acquista</a>
         </div>
-        <div *ngIf="errorMessage!=''">{{errorMessage}}</div>
+        <div *ngIf="errorMessage!=''" class="text-danger fs-4">{{errorMessage}}</div>
       </div>
     </c-card-body>
   </c-row>

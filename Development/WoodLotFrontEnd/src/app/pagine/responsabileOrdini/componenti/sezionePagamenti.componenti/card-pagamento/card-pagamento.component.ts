@@ -101,26 +101,28 @@ export class CardPagamentoComponent implements OnInit {
   }
 
   handleConfirmClick() {
-    let idContadino = this.prodottoOrdine.contadino?.id
+    let idContadino = this.prodottoOrdine.contadino?.id;
     if (idContadino) {
+      console.log(idContadino)
       this.serviceContadino.eliminaFoto(idContadino + "", this.prodottoOrdine.id + "").subscribe(
         () => {
-          this.prodottoOrdine.stato = 'Riassegnato'
+          console.log(idContadino)
+          this.prodottoOrdine.stato = "Riassegnazione";
           this.serviceContadino.aggiornaStato(this.prodottoOrdine).subscribe(
             () => {
-              console.log(this.prodottoOrdine)
-              this.toggleModalFoto()
-              this.cambiamentoEffettuato.emit()
+              console.log(this.prodottoOrdine);
+              this.toggleModalFoto();
+              this.cambiamentoEffettuato.emit();
             }, (error) => {
-              console.log(error)
-              this.errorMessage = JSON.stringify(error.data)
-            })
+              console.log(error);
+              this.errorMessage = JSON.stringify(error.data);
+            });
         },
         (error) => {
-          console.log(error)
-          this.errorMessage = JSON.stringify(error.data)
-        },
-      )
+          console.log(error);
+          this.errorMessage = JSON.stringify(error.data);
+        }
+      );
     }
   }
 }

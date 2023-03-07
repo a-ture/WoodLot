@@ -47,7 +47,7 @@ export class CardAlberoListComponent implements OnInit {
 
   public getSourceImage(position: number) {
     let p = this.listaAlberi[position];
-    if (p.stato == 'Non Assegnato' || p.stato == 'Assegnato') {
+    if (p.stato == 'Non Assegnato' || p.stato == 'Assegnato' || p.stato == 'Revisione' || p.stato == 'Riassegnazione') {
       return 'assets/img/alberi/' + p.nomeAlbero.toLowerCase() + '/catalogo.webp'
     } else {
       return 'assets/img/alberiUtente/' + p?.contadino?.id + '/' + p?.id + '.jpeg'

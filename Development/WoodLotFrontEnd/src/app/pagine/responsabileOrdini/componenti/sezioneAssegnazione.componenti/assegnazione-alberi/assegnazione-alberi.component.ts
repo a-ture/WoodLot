@@ -41,7 +41,6 @@ export class AssegnazioneAlberiComponent implements OnInit {
         )
       }
     )
-    console.log(this.selectedMenu)
   }
 
   handleModalModifica(event: any) {
@@ -89,13 +88,10 @@ export class AssegnazioneAlberiComponent implements OnInit {
 
   goTo(paramText: String) {
     this.selectedMenu = paramText
-    console.log("ggg")
-    console.log("ee")
     this.serviceContadino.assegnazioneAlberi().subscribe(
       (data) => {
         this.listaAlberi = data
         this.listaAlberi.forEach(e => {
-          console.log(this.listaAlberi)
           if (e.contadino?.id) {
             this.serviceContadino.getAlberiContadini(e.contadino?.id).subscribe((data) => {
                 // @ts-ignore
@@ -106,7 +102,6 @@ export class AssegnazioneAlberiComponent implements OnInit {
         })
       }
     )
-    console.log(this.selectedMenu)
   }
 
   getContadiniCompatibili(nomePaese: String): Contadino[] {
@@ -120,10 +115,9 @@ export class AssegnazioneAlberiComponent implements OnInit {
   }
 
   confermaAssegnamento() {
-    let successo = false
+    let successo: boolean = false
     this.listaAlberi.forEach(e => {
       e.stato = "Assegnato"
-      console.log(e)
       this.serviceContadino.aggiornaStato(e).subscribe(
         () => {
           successo = true
@@ -133,8 +127,27 @@ export class AssegnazioneAlberiComponent implements OnInit {
         }
       )
     });
-    if (successo)
+    setTimeout(() => {
+      // Continua l'esecuzione del codice dopo 1 secondi
       this.toggleModelSuccess()
+      this.serviceContadino.getAlberiNonAssegnati().subscribe(
+        (data) => {
+          this.listaAlberi = data
+          this.serviceContadino.getContadini().subscribe(
+            (data) => {
+              this.listaContadini = data
+              this.listaContadini.forEach(e => {
+                this.serviceContadino.getAlberiContadini(e.id).subscribe((data) => {
+                    e.listaAlberi = data
+                  }
+                )
+              })
+            }
+          )
+        }
+      )
+      this.selectedMenu = ""
+    }, 1000);
   }
 }
 
