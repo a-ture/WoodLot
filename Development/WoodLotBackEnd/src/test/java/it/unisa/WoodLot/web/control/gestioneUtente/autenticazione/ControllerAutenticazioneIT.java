@@ -43,7 +43,6 @@ public class ControllerAutenticazioneIT {
         ResponseEntity<Object> response = restTemplate.postForEntity("http://localhost:8090/api/autenticazione/login",
                 utenteRegistrato, Object.class);
 
-        assertEquals(HttpStatus.ACCEPTED, response.getStatusCode());
 
         assertEquals(HttpStatus.ACCEPTED, response.getStatusCode());
         Map<String, Object> responseMap = (Map<String, Object>) response.getBody();

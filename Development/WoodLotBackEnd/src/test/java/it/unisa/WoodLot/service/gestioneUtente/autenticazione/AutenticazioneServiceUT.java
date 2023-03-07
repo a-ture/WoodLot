@@ -33,11 +33,10 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 public class AutenticazioneServiceUT {
 
-    @Autowired
+
     @InjectMocks
     private GestioneAutenticazioneService gestioneAutenticazioneService;
     @Mock
-    @Autowired
     private UtenteRepository utenteRepository;
     @Mock
     private ContadinoRepository contadinoRepository;

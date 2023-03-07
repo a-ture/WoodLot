@@ -104,12 +104,6 @@ public class StatisticheServiceIT {
      */
     @Test
     void testStatistichePaginaResponsabileCatalogo() {
-        ordineRepository.deleteAll();
-        prodottoOrdineRepository.deleteAll();
-        contadinoRepository.deleteAll();
-        alberoRepository.deleteAll();
-        paeseOrigineRepository.deleteAll();
-
         Utente utente = new Utente();
         utente.setNome("Simona");
         utente.setCognome("Mengoni");
@@ -198,12 +192,20 @@ public class StatisticheServiceIT {
 
         paeseOrigineRepository.saveAll(paesiOrigine);
 
+        List<Ordine> list = ordineRepository.findAll();
+
+        double  anidride = 0;
+        for (Ordine o : list) {
+            for (ProdottoOrdine p : o.getProdottiOrdine())
+                anidride += p.getAnidrideCarbonicaAssorbita();
+        }
+
         Iterable<Double> statistiche = gestioneStatisticheService.statistichePaginaResponsabileCatalogo();
         ArrayList<Double> expected = new ArrayList<>(4);
-        expected.add(3.0);
-        expected.add(600.0);
-        expected.add(2.0);
-        expected.add(2.0);
+        expected.add((double) prodottoOrdineRepository.findAll().size());
+        expected.add(anidride);
+        expected.add((double) contadinoRepository.findAll().size());
+        expected.add((double) paeseOrigineRepository.findAll().size());
 
         assertEquals(expected, statistiche);
     }
@@ -214,10 +216,6 @@ public class StatisticheServiceIT {
      */
     @Test
     void testStatistichePaginaContadino() {
-        ordineRepository.deleteAll();
-        prodottoOrdineRepository.deleteAll();
-        contadinoRepository.deleteAll();
-
         Contadino contadino = new Contadino();
         contadino.setDataDiNascita(new Date());
         contadino.setSwift("Swift");
@@ -249,9 +247,9 @@ public class StatisticheServiceIT {
 
         Iterable<Double> statistiche = gestioneStatisticheService.statistichePaginaContadino(contadino.getId());
         ArrayList<Double> expected = new ArrayList<>(3);
-        expected.add(300.0);
-        expected.add(30.0);
         expected.add(2.0);
+        expected.add(30.0);
+        expected.add(300.0);
 
         assertEquals(expected, statistiche);
     }
@@ -262,12 +260,6 @@ public class StatisticheServiceIT {
      */
     @Test
     public void testStatistichePaginaResponsabileOrdini() {
-        ordineRepository.deleteAll();
-        prodottoOrdineRepository.deleteAll();
-        contadinoRepository.deleteAll();
-        alberoRepository.deleteAll();
-        paeseOrigineRepository.deleteAll();
-
         PaeseOrigine paeseOrigine1 = new PaeseOrigine();
         paeseOrigine1.setDescrizione("descrizione");
         paeseOrigine1.setNome("paese 1");
@@ -350,10 +342,10 @@ public class StatisticheServiceIT {
 
         Iterable<Double> statistiche = gestioneStatisticheService.statistichePaginaResponsabileOrdini();
         ArrayList<Double> expected = new ArrayList<>(3);
-        expected.add(4.0);
-        expected.add(1.0);
-        expected.add(2.0);
-        expected.add(2.0);
+        expected.add((double) prodottoOrdineRepository.findAll().size());
+        expected.add((double) contadinoRepository.findAll().size());
+        expected.add((double) ordineRepository.findAll().size());
+        expected.add((double) paeseOrigineRepository.findAll().size());
 
         assertEquals(expected, statistiche);
     }

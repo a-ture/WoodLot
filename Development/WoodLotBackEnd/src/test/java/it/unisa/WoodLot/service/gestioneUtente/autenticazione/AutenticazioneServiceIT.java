@@ -1,10 +1,7 @@
 package it.unisa.WoodLot.service.gestioneUtente.autenticazione;
 
 import it.unisa.WoodLot.model.entity.*;
-import it.unisa.WoodLot.model.repository.ContadinoRepository;
-import it.unisa.WoodLot.model.repository.ResponsabileCatalogoRepository;
-import it.unisa.WoodLot.model.repository.ResponsabileOrdiniRepository;
-import it.unisa.WoodLot.model.repository.UtenteRepository;
+import it.unisa.WoodLot.model.repository.*;
 import it.unisa.WoodLot.sevice.gestioneUtente.autenticazione.GestioneAutenticazioneService;
 import it.unisa.WoodLot.sevice.gestioneUtente.eccezioni.LoginException;
 import it.unisa.WoodLot.sevice.gestioneUtente.eccezioni.PasswordException;
@@ -51,19 +48,16 @@ public class AutenticazioneServiceIT {
     public void testLoginSuccesso() {
         Utente utente = new Utente();
         utente.setPassword("password");
-        utente.setEmail("utente@gmail.com");
+        utente.setEmail("briciola@gmail.com");
         utente.setNome("Utente");
         utente.setDataDiNascita(new Date());
         utente.setCognome("Cognome");
-
         utente = utenteRepository.save(utente);
         try {
-            UtenteRegistrato result = gestioneAutenticazioneService.login("utente@gmail.com", "password");
-
+            UtenteRegistrato result = gestioneAutenticazioneService.login(utente.getEmail(), utente.getPassword());
             assertNotNull(result);
             assertEquals(utente, result);
-        } catch (
-                LoginException e) {
+        } catch (LoginException e) {
             fail(e.getMessage());
         }
 
@@ -181,7 +175,7 @@ public class AutenticazioneServiceIT {
     @Test
     public void testReimpostaPasswordSuccesso() {
         Utente utente = new Utente();
-        utente.setEmail("test@test.com");
+        utente.setEmail("test54@test.com");
         utente.setPassword("passwor@d123");
         utente.setCognome("Cognome");
         utente.setNome("Nome");
@@ -189,8 +183,8 @@ public class AutenticazioneServiceIT {
         utenteRepository.save(utente);
 
         try {
-            gestioneAutenticazioneService.reimpostaPassword("test@test.com", "password@456");
-            Utente utenteResult = utenteRepository.findByEmail("test@test.com");
+            gestioneAutenticazioneService.reimpostaPassword("test54@test.com", "password@456");
+            Utente utenteResult = utenteRepository.findByEmail("test54@test.com");
             assertEquals("password@456", utenteResult.getPassword());
         } catch (PasswordException e) {
             fail(e.getMessage());
@@ -223,14 +217,14 @@ public class AutenticazioneServiceIT {
     public void testReimpostazionePasswordCorta() {
         String messaggio = "La password deve essere lunga almeno 8 caratteri";
         Utente utente = new Utente();
-        utente.setEmail("test@test.com");
+        utente.setEmail("test1@test.com");
         utente.setPassword("passwor@d123");
         utente.setCognome("Cognome");
         utente.setNome("Nome");
         utente.setDataDiNascita(new Date());
         utenteRepository.save(utente);
         try {
-            gestioneAutenticazioneService.reimpostaPassword("test@test.com", "passwd@456");
+            gestioneAutenticazioneService.reimpostaPassword("test1@test.com", "passwd@456");
         } catch (PasswordException e) {
             assertEquals(messaggio, e.getMessage());
         }
@@ -247,14 +241,14 @@ public class AutenticazioneServiceIT {
     public void testReimpostazionePasswordFormatoNonValido() {
         String messaggio = "La password deve contenere almeno un carattere tra: @, !, #, $";
         Utente utente = new Utente();
-        utente.setEmail("test@test.com");
+        utente.setEmail("test3@test.com");
         utente.setPassword("passwor@d123");
         utente.setCognome("Cognome");
         utente.setNome("Nome");
         utente.setDataDiNascita(new Date());
         utenteRepository.save(utente);
         try {
-            gestioneAutenticazioneService.reimpostaPassword("test@test.com", "passwordd456");
+            gestioneAutenticazioneService.reimpostaPassword("test3@test.com", "password456");
         } catch (PasswordException e) {
             assertEquals(messaggio, e.getMessage());
         }

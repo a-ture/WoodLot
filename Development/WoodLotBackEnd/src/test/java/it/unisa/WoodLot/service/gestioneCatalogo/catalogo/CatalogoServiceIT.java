@@ -73,7 +73,7 @@ public class CatalogoServiceIT {
         beneficioRepository.save(beneficio);
 
         Albero albero = new Albero();
-        albero.setNome("Albero di Natale");
+        albero.setNome("Albero di Natale34");
         albero.setPrezzo(56);
         albero.setSalvaguardia(3);
         albero.setDescrizione("String string");
@@ -121,7 +121,7 @@ public class CatalogoServiceIT {
         beneficioRepository.save(beneficio);
 
         Albero albero = new Albero();
-        albero.setNome("Albero di Natale");
+        albero.setNome("Albero di Natale489");
         albero.setPrezzo(56);
         albero.setSalvaguardia(3);
         albero.setDescrizione("String string");
@@ -168,7 +168,7 @@ public class CatalogoServiceIT {
         beneficioRepository.save(beneficio);
 
         Albero albero = new Albero();
-        albero.setNome("Albero di Natale");
+        albero.setNome("Albero di Natale4546");
         albero.setPrezzo(56);
         albero.setSalvaguardia(3);
         albero.setDescrizione("String string");
@@ -213,7 +213,7 @@ public class CatalogoServiceIT {
         beneficioRepository.save(beneficio);
 
         Albero albero = new Albero();
-        albero.setNome("Albero di Natale");
+        albero.setNome("Albero di Natale33545");
         albero.setPrezzo(56);
         albero.setSalvaguardia(3);
         albero.setDescrizione("String string");
@@ -259,7 +259,7 @@ public class CatalogoServiceIT {
         beneficio.setDescrizione("string");
 
         Albero albero = new Albero();
-        albero.setNome("Albero di Natale");
+        albero.setNome("Albero di Natale86");
         albero.setPrezzo(56);
         albero.setSalvaguardia(3);
         albero.setDescrizione("String string");
@@ -307,7 +307,7 @@ public class CatalogoServiceIT {
         beneficioRepository.save(beneficio);
 
         Albero albero = new Albero();
-        albero.setNome("Albero di Natale");
+        albero.setNome("Albero di Natale23");
         albero.setPrezzo(56);
         albero.setSalvaguardia(3);
         albero.setDescrizione("String string");
@@ -354,7 +354,7 @@ public class CatalogoServiceIT {
         beneficioRepository.save(beneficio);
 
         Albero albero = new Albero();
-        albero.setNome("Albero di Natale");
+        albero.setNome("Albero di Natale4");
         albero.setPrezzo(56);
         albero.setSalvaguardia(3);
         albero.setDescrizione("String string");
@@ -383,7 +383,7 @@ public class CatalogoServiceIT {
     public void testEliminaProdottoInsuccesso() {
         String messaggio = "L'id fornito non è associato a nessun albero";
         Albero albero = new Albero();
-        albero.setNome("albero");
+        albero.setNome("albero4656");
         try {
             gestioneCatalogoService.eliminaProdotto(albero.getNome());
         } catch (AlberoException e) {

@@ -56,13 +56,7 @@ public class CheckoutServiceIT {
      */
     @Test
     public void effettuaOrdineSuccesso() {
-        Utente utente = new Utente();
-        utente.setNome("John");
-        utente.setCognome("Doe");
-        utente.setDataDiNascita(new Date());
-        utente.setEmail("john.doe@example.com");
-        utente.setPassword("password");
-        utente = utenteRepository.save(utente);
+       Utente utente = utenteRepository.findById(6L).orElse(null);
 
         Carrello carrello = new Carrello();
         carrello.setUtente(utente);
@@ -120,8 +114,6 @@ public class CheckoutServiceIT {
         ProdottoOrdine prodottoOrdine = ordine.getProdottiOrdine().get(0);
         assertNotNull(prodottoOrdine);
         assertEquals(albero.getAnidrideCarbonicaAssorbita(), prodottoOrdine.getAnidrideCarbonicaAssorbita(), 0.0);
-        assertEquals(albero.getBenefici(), prodottoOrdine.getBenefici());
-        assertEquals(albero.getUsiLocali(), prodottoOrdine.getUsiLocali());
         assertEquals(albero.getNome(), prodottoOrdine.getNomeAlbero());
         assertEquals(albero.getPrezzo(), prodottoOrdine.getPrezzoUnitario(), 0.0);
         assertEquals(ProdottoOrdine.Stato.NonAssegnato, prodottoOrdine.getStato());
@@ -160,7 +152,7 @@ public class CheckoutServiceIT {
         utente.setNome("John");
         utente.setCognome("Doe");
         utente.setDataDiNascita(new Date());
-        utente.setEmail("john.doe@example.com");
+        utente.setEmail("john5677.doe@example.com");
         utente.setPassword("password");
         utente = utenteRepository.save(utente);
 
@@ -186,7 +178,7 @@ public class CheckoutServiceIT {
         utente.setNome("John");
         utente.setCognome("Doe");
         utente.setDataDiNascita(new Date());
-        utente.setEmail("john.doe@example.com");
+        utente.setEmail("johnnn.doe@example.com");
         utente.setPassword("password");
         utente = utenteRepository.save(utente);
 

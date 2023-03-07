@@ -50,7 +50,7 @@ public class OrdineServiceIT {
         utente.setNome("John");
         utente.setCognome("Doe");
         utente.setDataDiNascita(new Date(2001 - 02 - 23));
-        utente.setEmail("john.doe@example.com");
+        utente.setEmail("john.doee@example.com");
         utente.setPassword("password");
         utente = utenteRepository.save(utente);
 

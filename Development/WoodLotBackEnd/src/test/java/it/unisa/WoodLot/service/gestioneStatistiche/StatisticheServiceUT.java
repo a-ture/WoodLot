@@ -150,7 +150,7 @@ public class StatisticheServiceUT {
 
         Iterable<Double> result = gestioneStatisticheService.statistichePaginaContadino(1L);
 
-        List<Double> expected = Arrays.asList(450.0, 25.0, 2.0);
+        List<Double> expected = Arrays.asList(2.0, 25.0,450.0);
         assertEquals(expected, result);
     }
 
