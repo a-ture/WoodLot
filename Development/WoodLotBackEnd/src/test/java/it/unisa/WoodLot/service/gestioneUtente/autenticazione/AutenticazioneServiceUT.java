@@ -15,10 +15,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -52,7 +49,7 @@ public class AutenticazioneServiceUT {
 
     @BeforeEach
     public void setUp() {
-        utente = new Utente(1L, "alessiature@gmail.com", "briciola", "Alessia", "Ture", new Date(2001 - 02 - 23));
+        utente = new Utente(1L, "alessiature@gmail.com", "briciola", "Alessia", "Ture");
         contadino = new Contadino(1L, "pedrogarcia@gmail.com", "alessiature01");
         responsabileCatalogo = new ResponsabileCatalogo(1L, "catalogo@gmail.com", "catalogo");
         responsabileOrdini = new ResponsabileOrdini(1L, "ordini@gmail.com", "ordini");

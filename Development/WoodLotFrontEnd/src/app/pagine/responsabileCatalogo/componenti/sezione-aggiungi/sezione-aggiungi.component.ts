@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {BeneficioService} from "../../../../servizi/beneficio/beneficio.service";
 import {UsoLocaleService} from "../../../../servizi/usoLocale/uso-locale.service";
@@ -24,7 +24,7 @@ import {forkJoin} from "rxjs";
 })
 export class SezioneAggiungiComponent implements OnInit {
 
-  formInserimento: FormGroup
+  formInserimento!: FormGroup
   submitted = false;
   formErrori: any;
   errorMessage: string = '';
@@ -43,51 +43,34 @@ export class SezioneAggiungiComponent implements OnInit {
               private serviceBeneficio: BeneficioService, private serviceCategoria: CategoriaService,
               private serviceUsiLocali: UsoLocaleService, private servicePaese: PaeseService,
               private serviceProdotto: ProdottoService, private router: Router) {
-    this.formInserimento = new FormGroup(
-      {
-        nomeAlbero: new FormControl('', [Validators.required,
-          Validators.maxLength(serviceValidazioneFormProdotto.regoleForm.nomeAlberoMax),
-          Validators.pattern(serviceValidazioneFormProdotto.regoleForm.nomeAlbero)]),
-        specieScientifica: new FormControl('', [Validators.required,
-          Validators.maxLength(serviceValidazioneFormProdotto.regoleForm.specieScientificaMax),
-          Validators.pattern(serviceValidazioneFormProdotto.regoleForm.specieScientifca)]),
-        descrizioneBreve: new FormControl('', [Validators.required,
-          Validators.maxLength(serviceValidazioneFormProdotto.regoleForm.descizioneBreveMax)]),
-        descrizione: new FormControl('', [Validators.required,
-          Validators.maxLength(serviceValidazioneFormProdotto.regoleForm.descrizioneMax)]),
-        prezzo: new FormControl('', [Validators.required,
-          Validators.pattern(serviceValidazioneFormProdotto.regoleForm.prezzo)]),
-        salvaguardia: new FormControl('', [Validators.required,
-          Validators.pattern(serviceValidazioneFormProdotto.regoleForm.salvaguardia)]),
-        anidrideCarbonica: new FormControl('', [Validators.required,
-          Validators.pattern(serviceValidazioneFormProdotto.regoleForm.anidrideCarbonica)]),
-        foto1: new FormControl('', [Validators.required]),
-        foto2: new FormControl('', [Validators.required]),
-        foto3: new FormControl('', [Validators.required]),
-        foto4: new FormControl('', [Validators.required]),
-        paese: new FormControl('Argentina', [Validators.required]),
-        usiLocali: new FormControl('', [Validators.required]),
-        benefici: new FormControl('', [Validators.required]),
-        categoria: new FormControl('Rischio estinzione', [Validators.required])
-      }
-    )
-    this.formErrori = serviceValidazioneFormProdotto.errori
   }
 
   onFileSelected1(event: any) {
-    this.fileToUpload1 = event.target.files[0];
+    const file = event.target.files[0];
+    const newName = '1.webp';
+    const modifiedFile = new File([file], newName, {type: file.type});
+    this.fileToUpload1 = modifiedFile;
   }
 
   onFileSelected2(event: any) {
-    this.fileToUpload2 = event.target.files[0];
+    const file = event.target.files[0];
+    const newName = '2.webp';
+    const modifiedFile = new File([file], newName, {type: file.type});
+    this.fileToUpload2 = modifiedFile;
   }
 
   onFileSelected3(event: any) {
-    this.fileToUpload3 = event.target.files[0];
+    const file = event.target.files[0];
+    const newName = '3.webp';
+    const modifiedFile = new File([file], newName, {type: file.type});
+    this.fileToUpload3 = modifiedFile;
   }
 
   onFileSelected4(event: any) {
-    this.fileToUpload4 = event.target.files[0];
+    const file = event.target.files[0];
+    const newName = 'catalogo.webp';
+    const modifiedFile = new File([file], newName, {type: file.type});
+    this.fileToUpload4 = modifiedFile;
   }
 
   ngOnInit(): void {
@@ -103,6 +86,35 @@ export class SezioneAggiungiComponent implements OnInit {
     this.serviceCategoria.getCategorie().subscribe(data => {
       this.listaCategorie = data
     })
+    this.formInserimento = new FormGroup(
+      {
+        nomeAlbero: new FormControl('', [Validators.required,
+          Validators.maxLength(10),
+          Validators.pattern(this.serviceValidazioneFormProdotto.regoleForm.nomeAlbero)]),
+        specieScientifica: new FormControl('', [Validators.required,
+          Validators.maxLength(30),
+          Validators.pattern(this.serviceValidazioneFormProdotto.regoleForm.specieScientifca)]),
+        descrizioneBreve: new FormControl('', [Validators.required,
+          Validators.maxLength(50)]),
+        descrizione: new FormControl('', [Validators.required,
+          Validators.maxLength(500)]),
+        prezzo: new FormControl('', [Validators.required,
+          Validators.pattern(this.serviceValidazioneFormProdotto.regoleForm.prezzo)]),
+        salvaguardia: new FormControl('', [Validators.required,
+          Validators.pattern(this.serviceValidazioneFormProdotto.regoleForm.salvaguardia)]),
+        anidrideCarbonica: new FormControl('', [Validators.required,
+          Validators.pattern(this.serviceValidazioneFormProdotto.regoleForm.anidrideCarbonica)]),
+        foto1: new FormControl('', [Validators.required, Validators.pattern("^\\S+\\.webp$")]),
+        foto2: new FormControl('', [Validators.required, Validators.pattern("^\\S+\\.webp$")]),
+        foto3: new FormControl('', [Validators.required, Validators.pattern("^\\S+\\.webp$")]),
+        foto4: new FormControl('', [Validators.required, Validators.pattern("^\\S+\\.webp$")]),
+        paese: new FormControl('Argentina', [Validators.required]),
+        usiLocali: new FormControl('', [Validators.required]),
+        benefici: new FormControl('', [Validators.required]),
+        categoria: new FormControl('Rischio estinzione', [Validators.required])
+      }
+    )
+    this.formErrori = this.serviceValidazioneFormProdotto.errori
   }
 
   onValidate() {
@@ -178,4 +190,5 @@ export class SezioneAggiungiComponent implements OnInit {
   get f() {
     return this.formInserimento.controls;
   }
+
 }

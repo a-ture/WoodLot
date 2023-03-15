@@ -4,7 +4,7 @@ import {Component, Input, OnInit} from '@angular/core';
   selector: 'app-card-albero',
   styleUrls: ['./card-albero.component.scss'],
   template: `
-    <c-card class="mb-3" >
+    <c-card class="mb-3" id="{{titolo}}}">
       <img cCardImg="top" src="{{sourceImage}}" style="max-height: 300px;">
       <c-card-body>
         <h5 cCardTitle>{{titolo}}</h5>

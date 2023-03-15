@@ -9,7 +9,7 @@ export class ValidazioneFormAggiornamentoStatoService {
   //qui vanno messe le regole
   regoleForm = {
     descizioneBreveMax: 50,
-    quantitaFrutta: '^[0-9]+$',
+    quantitaFrutta: "/^[0-9]+(.[0-9]+)?$/\n"
   };
 
   constructor() {

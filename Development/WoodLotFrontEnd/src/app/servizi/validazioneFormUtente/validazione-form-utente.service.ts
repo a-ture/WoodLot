@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 
-//TODO aggiustare le regex
 @Injectable({
   providedIn: 'root'
 })
@@ -10,11 +9,11 @@ export class ValidazioneFormUtenteService {
 
   //qui vanno messe le regole
   regoleForm = {
-    nonVuota: '^[a-zA-Z]+',
+    nonVuota: '^[a-zA-Z]+$',
     nomeUtenteMax: 25,
     cognomeUtenteMax: 25,
     passwordMin: 8,
-    passwordPattern: '.*[@!#$].*'
+    passwordPattern: '^(?=.*[$@#!])[a-zA-Z0-9$@#!]+$'
   };
 
 
@@ -43,7 +42,7 @@ export class ValidazioneFormUtenteService {
       },
       confermaPassword: {
         required: 'Conferma password è richiesta',
-        passwordMismatch: 'Le password non coincidono'
+        pattern: 'Le password non coincidono'
       },
     };
   }

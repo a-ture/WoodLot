@@ -26,7 +26,7 @@
       />
       <div *ngIf="submitted && f['nomeUtente'].invalid" class="invalid-feedback">
         <div *ngIf="f['nomeUtente'].errors?.['required']">Compila questo campo</div>
-        <div *ngIf="f['nomeUtente'].errors?.['maxLength']">{{formErrori.nomeUtente.maxLength}}</div>
+        <div *ngIf="f['nomeUtente'].errors?.['maxlength']">{{formErrori.nomeUtente.maxLength}}</div>
         <div *ngIf="f['nomeUtente'].errors?.['pattern']">{{formErrori.nomeUtente.pattern}}</div>
       </div>
       <div *ngIf="submitted && f['nomeUtente'].valid" class="valid-feedback">
@@ -44,26 +44,10 @@
       />
       <div *ngIf="submitted && f['cognomeUtente'].invalid" class="invalid-feedback">
         <div *ngIf="f['cognomeUtente'].errors?.['required']">Compila questo campo</div>
-        <div *ngIf="f['cognomeUtente'].errors?.['maxLength']">{{formErrori.conomeUtente.maxLength}}</div>
-        <div *ngIf="f['cognomeUtente'].errors?.['pattern']">{{formErrori.conomeUtente.pattern}}</div>
+        <div *ngIf="f['cognomeUtente'].errors?.['maxlength']">{{formErrori.cognomeUtente.maxLength}}</div>
+        <div *ngIf="f['cognomeUtente'].errors?.['pattern']">{{formErrori.cognomeUtente.pattern}}</div>
       </div>
       <div *ngIf="submitted && f['cognomeUtente'].valid" class="valid-feedback">
-        Looks good!
-      </div>
-    </c-col>
-
-    <c-col class="mb-3" [sm]="12">
-      <label cLabel for="dataDiNascitaUtente">Data di nascita</label>
-      <input cFormControl
-             id="dataDiNascitaUtente" formControlName="dataDiNascitaUtente"
-             type="date" placeholder="dd/MM/aaaa"
-             [ngClass]="{ 'is-invalid': (submitted || f['dataDiNascitaUtente'].touched) && f['dataDiNascitaUtente'].invalid,
-              'is-valid':(submitted || f['dataDiNascitaUtente'].touched) && f['dataDiNascitaUtente'].valid}"
-      />
-      <div *ngIf="submitted && f['dataDiNascitaUtente'].invalid" class="invalid-feedback">
-        <div *ngIf="f['dataDiNascitaUtente'].errors?.['required']">Compila questo campo</div>
-      </div>
-      <div *ngIf="submitted && f['dataDiNascitaUtente'].valid" class="valid-feedback">
         Looks good!
       </div>
     </c-col>
@@ -110,16 +94,17 @@
              [ngClass]="{ 'is-invalid': (submitted || f['ripetiPassword'].touched) && f['ripetiPassword'].invalid,
               'is-valid':(submitted || f['ripetiPassword'].touched) && f['ripetiPassword'].valid}"
       />
-      <div *ngIf="submitted && formRegistrazioneUtente.errors" class="invalid-feedback">
+      <div *ngIf="submitted && f['ripetiPassword'].invalid" class="invalid-feedback">
         <div *ngIf="f['ripetiPassword'].errors?.['required']">Compila questo campo</div>
         <div
-          *ngIf="formRegistrazioneUtente.errors['passwordMismatch']">{{formErrori['confermaPassward'].passwordMismatch}}</div>
+          *ngIf="matchingPasswordValidator">Le password non coincidono!
+        </div>
       </div>
       <div *ngIf="submitted && f['ripetiPassword'].valid" class="valid-feedback">
         Looks good!
       </div>
     </c-col>
-    <div *ngIf="errorMessage!= ''" style="color: red">{{errorMessage}}</div>
+    <div class="text-center" *ngIf="errorMessage!= ''" style="color: red">{{errorMessage}}</div>
     <div class="row justify-content-center mt-3">
       <input class="col-6" cButton color="primary" type="submit" value="Iscriviti">
     </div>

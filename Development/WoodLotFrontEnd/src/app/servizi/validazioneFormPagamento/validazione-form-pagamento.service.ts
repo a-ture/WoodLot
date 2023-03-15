@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 
-//TODO aggiustare le regex
 @Injectable({
   providedIn: 'root'
 })

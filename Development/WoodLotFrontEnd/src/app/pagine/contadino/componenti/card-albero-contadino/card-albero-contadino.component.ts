@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {AbstractControl, FormControl, FormGroup, Validators} from "@angular/forms";
 import {
   ValidazioneFormAggiornamentoStatoService
 } from "../../../../servizi/validazioneFormAggiornamentoStato/validazione-form-aggiornamento-stato.service";
@@ -35,7 +35,14 @@ export class CardAlberoContadinoComponent implements OnInit {
   }
 
   onFileSelected(event: any) {
-    this.fileToUpload = event.target.files[0];
+    const file = event.target.files[0];
+    const newName = this.alberoContadino.id + '.jpeg';
+    const modifiedFile = new File([file], newName, {type: file.type});
+    this.fileToUpload = modifiedFile;
+  }
+
+  get randomParam() {
+    return Math.random();
   }
 
   constructor(private serviceValidazione: ValidazioneFormAggiornamentoStatoService, private serviceContadino: ContadinoService) {
@@ -45,13 +52,16 @@ export class CardAlberoContadinoComponent implements OnInit {
   ngOnInit(): void {
     this.formAggionaStato = new FormGroup({
       breveDescrizione: new FormControl('', [Validators.required,
-        Validators.maxLength(this.serviceValidazione.regoleForm.descizioneBreveMax)]),
+        Validators.maxLength(50)]),
       frutta: new FormControl(''),
-      foto: new FormControl('', [Validators.required]),
+      foto: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^\\S+\\.jpeg$')
+      ]),
       senescenza: new FormControl('')
     })
-    if (this.alberoContadino.stato === 'Frutto') {
-      this.formAggionaStato.get('frutta')?.setValidators([Validators.required, Validators.pattern(this.serviceValidazione.regoleForm.quantitaFrutta)])
+    if (this.alberoContadino.stato === 'Frutto' || this.alberoContadino.stato === 'Fiore') {
+      this.formAggionaStato.get('frutta')?.setValidators([Validators.required, Validators.pattern("^[0-9]+(.[0-9]+)?$")])
     }
     this.formErrori = this.serviceValidazione.errori;
   }

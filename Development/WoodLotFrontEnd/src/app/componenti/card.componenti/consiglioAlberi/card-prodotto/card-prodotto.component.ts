@@ -6,7 +6,7 @@ import {Router} from "@angular/router";
   selector: 'app-card-prodotto',
   styleUrls: ['./card-prodotto.component.scss'],
   template: `
-    <div class="card text-center col rounded rounded-5" style="max-width: 18rem">
+    <div class="card text-center col rounded rounded-5" style="max-width: 18rem" id="{{albero.nome}}">
       <img src="{{sourceImage}}" class="card-img-top"/>
       <div class="card-body">
         <h5 class="card-title">{{albero.nome}}</h5>

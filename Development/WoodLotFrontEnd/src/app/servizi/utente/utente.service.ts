@@ -5,7 +5,6 @@ import {Observable} from "rxjs";
 import {Ordine} from "../../entita/ordine/ordine";
 
 
-// TODO aggiungere collegamento con il back-end
 @Injectable({
   providedIn: 'root'
 })

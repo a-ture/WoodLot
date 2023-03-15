@@ -1,11 +1,11 @@
 <c-card class="mb-3 text-center">
-  <img cCardImg="top" src="{{sourceImage}}">
+  <img cCardImg="top" [src]="sourceImage + '?' + randomParam">
   <c-card-body>
     <h5 cCardTitle>{{alberoContadino.nomeAlbero}}</h5>
     <p cCardText>
       <b>Id: </b> {{alberoContadino.id}}
     </p>
-    <p cCardText>
+    <p cCardText *ngIf="alberoContadino.dataModifica">
       <b>Data ultima modifica:</b> {{alberoContadino.dataModifica | date: 'dd/MM/yy'}}
     </p>
     <a cCardLink (click)="toggleModal()">Vuoi modificare lo stato?</a>
@@ -34,14 +34,15 @@
             'is-valid': (submitted ||f['breveDescrizione'].touched) && f['breveDescrizione'].valid }">
       </textarea>
       <div *ngIf="submitted && f['breveDescrizione'].invalid" class="invalid-feedback">
-        <div *ngIf="f['breveDescrizione'].errors?.['required']">Compila questo campo</div>
-        <div *ngIf="f['breveDescrizione'].errors?.['maxLength']">{{formErrori.descrizioneBreve.maxLength}}</div>
+        <div *ngIf="f['breveDescrizione'].errors?.['required']">Compila questo campo!</div>
+        <div *ngIf="f['breveDescrizione'].errors?.['maxlength']">Inserisci una descrizione più breve
+        </div>
       </div>
       <div *ngIf="submitted && f['breveDescrizione'].valid" class="valid-feedback">
         Looks good!
       </div>
     </c-col>
-    <c-col class="mb-3" [sm]="12" *ngIf="alberoContadino.stato == 'Frutto'">
+    <c-col class="mb-3" [sm]="12" *ngIf="alberoContadino.stato == 'Fiore' || alberoContadino.stato == 'Frutto' ">
       <label cLabel for="frutta">Quantità di frutta raccolta</label>
       <input cFormControl
              id="frutta" formControlName="frutta"
@@ -50,7 +51,7 @@
             'is-valid': (submitted ||f['frutta'].touched) && f['frutta'].valid }"/>
       <div *ngIf="submitted && f['frutta'].invalid" class="invalid-feedback">
         <div *ngIf="f['frutta'].errors?.['required']">Compila questo campo</div>
-        <div *ngIf="f['frutta'].errors?.['pattern']">{{formErrori.frutta.pattern}}</div>
+        <div *ngIf="f['frutta'].errors?.['pattern']">Inserisci un numero maggiore o uguale a zero</div>
       </div>
       <div *ngIf="submitted && f['frutta'].valid" class="valid-feedback">
         Looks good!
@@ -62,7 +63,10 @@
              id="foto"
              [ngClass]="{'is-invalid':(submitted || f['foto'].touched) && f['foto'].invalid,
             'is-valid': (submitted ||f['foto'].touched) && f['foto'].valid }">
-      <div *ngIf="f['foto'].invalid" class="invalid-feedback">Compila questo campo</div>
+      <div *ngIf="submitted && f['foto'].invalid" class="invalid-feedback">
+        <div *ngIf="f['foto'].errors?.['required']">Compila questo campo</div>
+        <div *ngIf="f['foto'].errors?.['pattern']">Il formato accettato per la foto è solo: .jpeg</div>
+      </div>
     </c-col>
     <c-col class="mb-3" [sm]="12" *ngIf="alberoContadino.stato != 'Assegnato'">
       <c-form-check>

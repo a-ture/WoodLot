@@ -200,16 +200,16 @@ INSERT INTO albero_usi_locali (albero_nome, usi_locali_nome) VALUES ("Vite", "Ve
 INSERT INTO albero_benefici (albero_nome, benefici_nome) VALUES ("Vite", "Sviluppo economico");
 
 /*Utenti*/
-INSERT INTO utente (id,nome, cognome, data_di_nascita, email, password) VALUES(1,"Alessia","Ture", '2001-02-23', "alessiature@gmail.com", "briciola");
-INSERT INTO utente (id,nome, cognome, data_di_nascita, email, password) VALUES(2,"Raffaella","Spagnuolo", '2000-04-23', "raffaellaspaguonolo@gmail.com", "frida");
-INSERT INTO utente (id,nome, cognome, data_di_nascita, email, password) VALUES(3,"Salvatore","Di Sanza", '1998-10-23', "salvatoredisanza@gmail.com", "salvatore");
-INSERT INTO utente (id,nome, cognome, data_di_nascita, email, password) VALUES(4,"Antonio","Avino", '2000-07-04', "antonioavino@gmail.com", "brici");
-INSERT INTO utente (id,nome, cognome, data_di_nascita, email, password) VALUES(5,"Elpidio","Mazza", '1998-02-23', "elpidiomazza@gmail.com", "raffy");
-INSERT INTO utente (id,nome, cognome, data_di_nascita, email, password) VALUES(6,"Mario","Rossi", '1963-04-23', "mariorossi@gmail.com", "password");
-INSERT INTO utente (id,nome, cognome, data_di_nascita, email, password) VALUES(7,"Salvatore","Esposito", '1995-10-23', "salvatoreesposito@gmail.com", "salvatore");
-INSERT INTO utente (id,nome, cognome, data_di_nascita, email, password) VALUES(8,"Antonio","Gravino", '2003-07-04', "antoniogravino@gmail.com", "antonio");
-INSERT INTO utente (id,nome, cognome, data_di_nascita, email, password) VALUES(9,"Ester","Esposito", '1963-02-23', "esteresposito@gmail.com", "ester");
-INSERT INTO utente (id,nome, cognome, data_di_nascita, email, password) VALUES(10,"Mario","Contaldi", '1953-04-23', "mariocontaldi@gmail.com", "password");
+INSERT INTO utente (id,nome, cognome, email, password) VALUES(1,"Alessia","Ture", "alessiature@gmail.com", "briciola");
+INSERT INTO utente (id,nome, cognome, email, password) VALUES(2,"Raffaella","Spagnuolo", "raffaellaspaguonolo@gmail.com", "frida");
+INSERT INTO utente (id,nome, cognome, email, password) VALUES(3,"Salvatore","Di Sanza", "salvatoredisanza@gmail.com", "salvatore");
+INSERT INTO utente (id,nome, cognome, email, password) VALUES(4,"Antonio","Avino", "antonioavino@gmail.com", "brici");
+INSERT INTO utente (id,nome, cognome, email, password) VALUES(5,"Elpidio","Mazza", "elpidiomazza@gmail.com", "raffy");
+INSERT INTO utente (id,nome, cognome, email, password) VALUES(6,"Mario","Rossi", "mariorossi@gmail.com", "password");
+INSERT INTO utente (id,nome, cognome, email, password) VALUES(7,"Salvatore","Esposito", "salvatoreesposito@gmail.com", "salvatore");
+INSERT INTO utente (id,nome, cognome, email, password) VALUES(8,"Antonio","Gravino","antoniogravino@gmail.com", "antonio");
+INSERT INTO utente (id,nome, cognome, email, password) VALUES(9,"Ester","Esposito", "esteresposito@gmail.com", "ester");
+INSERT INTO utente (id,nome, cognome, email, password) VALUES(10,"Mario","Contaldi", "mariocontaldi@gmail.com", "password");
 
 /*Contadini*/
 INSERT INTO contadino (id, nome, cognome, data_di_nascita, email, password, coordinate_geografiche, swift, titolare_conto) VALUES(1, "Pedro", "Garica", "1984-05-03", "pedrogarcia@gmail.com", "alessiature01", "Guatemala", "UNCRITMM789", "Pedro Garcia");
@@ -585,4 +585,7 @@ INSERT INTO pagamento(id, data_pagamento,importo, motivazioni, contadino_id) VAL
 INSERT INTO pagamento(id, data_pagamento,importo, motivazioni, contadino_id) VALUES (9,"2023-02-15", 39.90, "Albero 9", 1);
 INSERT INTO pagamento(id, data_pagamento,importo, motivazioni, contadino_id) VALUES (10,"2023-02-15", 39.90, "Albero 10", 1);
 
-
+/*Carrello*/
+INSERT INTO carrello(id, utente_id) VALUES (1, 1);
+INSERT INTO prodotto_carrello(id, albero_nome) VALUES (1,"Baobab");
+INSERT INTO carrello_prodotti_carrello (carrello_id, prodotti_carrello_id) VALUES (1,1);

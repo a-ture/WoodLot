@@ -13,8 +13,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import java.util.Date;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
@@ -45,7 +43,7 @@ public class ControllerRegistrazioneUT {
         utente.setEmail("mario.rossi@example.com");
         utente.setPassword("password");
 
-        when(registrazioneService.registrazione(utente)).thenReturn(new Utente(1L, "mario.rossi@example.com", "password", "Mario", "Rossi", new Date()));
+        when(registrazioneService.registrazione(utente)).thenReturn(new Utente(1L, "mario.rossi@example.com", "password", "Mario", "Rossi"));
 
         ResponseEntity<Object> response = registrazioneController.registrazione(utente);
 

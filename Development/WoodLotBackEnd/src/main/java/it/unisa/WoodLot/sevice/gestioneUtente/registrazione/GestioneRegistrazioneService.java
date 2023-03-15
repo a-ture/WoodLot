@@ -29,7 +29,7 @@ public class GestioneRegistrazioneService implements RegistrazioneService {
         if (utente == null)
             throw new RegistrazioneException("Utente non valido");
 
-        if (utente.getCognome() == null || utente.getDataDiNascita() == null ||
+        if (utente.getCognome() == null ||
                 utente.getNome() == null || utente.getEmail() == null || utente.getPassword() == null)
             throw new RegistrazioneException("Tutti i campi sono obbligatori");
 
@@ -46,7 +46,7 @@ public class GestioneRegistrazioneService implements RegistrazioneService {
             throw new RegistrazioneException("La password deve contenere almeno un carattere tra: @, !, #, $");
 
         if (utenteRepository.existsByEmail(utente.getEmail()))
-            throw new RegistrazioneException("E-mail già presente nel database");
+            throw new RegistrazioneException("E-mail già esistente");
 
         return utenteRepository.save(utente);
     }

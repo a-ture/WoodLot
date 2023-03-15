@@ -17,7 +17,7 @@
             'is-valid': (submitted ||f['nomeAlbero'].touched) && f['nomeAlbero'].valid }">
         <div *ngIf="submitted && f['nomeAlbero'].invalid" class="invalid-feedback">
           <div *ngIf="f['nomeAlbero'].errors?.['required']">Compila questo campo</div>
-          <div *ngIf="f['nomeAlbero'].errors?.['maxLength']">{{formErrori.nomeAlbero.maxLength}}</div>
+          <div *ngIf="f['nomeAlbero'].errors?.['maxlength']">{{formErrori.nomeAlbero.maxLength}}</div>
           <div *ngIf="f['nomeAlbero'].errors?.['pattern']">{{formErrori.nomeAlbero.pattern}}</div>
         </div>
         <div *ngIf="submitted && f['nomeAlbero'].valid" class="valid-feedback">
@@ -33,7 +33,7 @@
             'is-valid': (submitted ||f['specieScientifica'].touched) && f['specieScientifica'].valid }">
         <div *ngIf="submitted && f['specieScientifica'].invalid" class="invalid-feedback">
           <div *ngIf="f['specieScientifica'].errors?.['required']">Compila questo campo</div>
-          <div *ngIf="f['specieScientifica'].errors?.['maxLength']">{{formErrori.specieScientifica.maxLength}}</div>
+          <div *ngIf="f['specieScientifica'].errors?.['maxlength']">{{formErrori.specieScientifica.maxLength}}</div>
           <div *ngIf="f['specieScientifica'].errors?.['pattern']">{{formErrori.specieScientifica.pattern}}</div>
         </div>
         <div *ngIf="submitted && f['specieScientifica'].valid" class="valid-feedback">
@@ -88,7 +88,7 @@
         </textarea>
         <div *ngIf="submitted && f['descrizioneBreve'].invalid" class="invalid-feedback">
           <div *ngIf="f['descrizioneBreve'].errors?.['required']">Compila questo campo</div>
-          <div *ngIf="f['descrizioneBreve'].errors?.['maxLength']">{{formErrori.descrizioneBreve.maxLength}}</div>
+          <div *ngIf="f['descrizioneBreve'].errors?.['maxlength']">Inserisci una descrizione più corta</div>
         </div>
         <div *ngIf="submitted && f['descrizioneBreve'].valid" class="valid-feedback">
           Looks good!
@@ -103,7 +103,7 @@
         </textarea>
         <div *ngIf="submitted && f['descrizione'].invalid" class="invalid-feedback">
           <div *ngIf="f['descrizione'].errors?.['required']">Compila questo campo</div>
-          <div *ngIf="f['descrizione'].errors?.['maxLength']">{{formErrori.descrizione.maxLength}}</div>
+          <div *ngIf="f['descrizione'].errors?.['maxlength']">Inserisci una descrizione più corta</div>
         </div>
         <div *ngIf="submitted && f['descrizione'].valid" class="valid-feedback">
           Looks good!
@@ -172,36 +172,48 @@
 
     <div class="row gy-3">
       <div class="col-md-3">
-        <label for="foto1" class="form-label">Foto</label>
+        <label for="foto1" class="form-label">Foto 1</label>
         <input (change)="onFileSelected1($event)" cFormControl formControlName="foto1" type="file" class="form-control"
                id="foto1"
                [ngClass]="{'is-invalid':(submitted || f['foto1'].touched) && f['foto1'].invalid,
             'is-valid': (submitted ||f['foto1'].touched) && f['foto1'].valid }">
-        <div *ngIf="f['foto1'].invalid" class="invalid-feedback">Compila questo campo</div>
+        <div *ngIf="f['foto1'].invalid" class="invalid-feedback">
+          <div *ngIf="f['foto1'].errors?.['required']">Compila questo campo</div>
+          <div *ngIf="f['foto1'].errors?.['pattern']">Il formato supportato per le foto è unicamente. webp</div>
+        </div>
       </div>
       <div class="col-md-3">
-        <label for="foto2" class="form-label">Foto</label>
+        <label for="foto2" class="form-label">Foto 2</label>
         <input (change)="onFileSelected2($event)" cFormControl formControlName="foto2" type="file" class="form-control"
                id="foto2"
                [ngClass]="{'is-invalid':(submitted || f['foto2'].touched) && f['foto2'].invalid,
             'is-valid': (submitted ||f['foto2'].touched) && f['foto2'].valid }">
-        <div *ngIf="f['foto2'].invalid" class="invalid-feedback">Compila questo campo</div>
+        <div *ngIf="f['foto2'].invalid" class="invalid-feedback">
+          <div *ngIf="f['foto2'].errors?.['required']">Compila questo campo</div>
+          <div *ngIf="f['foto2'].errors?.['pattern']">Il formato supportato per le foto è unicamente. webp</div>
+        </div>
       </div>
       <div class="col-md-3">
-        <label for="foto3" class="form-label">Foto</label>
+        <label for="foto3" class="form-label">Foto 3</label>
         <input (change)="onFileSelected3($event)" cFormControl formControlName="foto3" type="file" class="form-control"
                id="foto3"
                [ngClass]="{'is-invalid':(submitted || f['foto3'].touched) && f['foto3'].invalid,
             'is-valid': (submitted ||f['foto3'].touched) && f['foto3'].valid }">
-        <div *ngIf="f['foto3'].invalid" class="invalid-feedback">Compila questo campo</div>
+        <div *ngIf="f['foto3'].invalid" class="invalid-feedback">
+          <div *ngIf="f['foto3'].errors?.['required']">Compila questo campo</div>
+          <div *ngIf="f['foto3'].errors?.['pattern']">Il formato supportato per le foto è unicamente. webp</div>
+        </div>
       </div>
       <div class="col-md-3">
-        <label for="foto4" class="form-label">Foto</label>
+        <label for="foto4" class="form-label">Foto catalogo</label>
         <input (change)="onFileSelected4($event)" cFormControl formControlName="foto4" type="file" class="form-control"
                id="foto4"
                [ngClass]="{'is-invalid':(submitted || f['foto4'].touched) && f['foto4'].invalid,
             'is-valid': (submitted ||f['foto4'].touched) && f['foto4'].valid }">
-        <div *ngIf="f['foto4'].invalid" class="invalid-feedback">Compila questo campo</div>
+        <div *ngIf="f['foto4'].invalid" class="invalid-feedback">
+          <div *ngIf="f['foto4'].errors?.['required']">Compila questo campo</div>
+          <div *ngIf="f['foto4'].errors?.['pattern']">Il formato supportato per le foto è unicamente. webp</div>
+        </div>
       </div>
     </div>
 

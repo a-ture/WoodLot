@@ -36,7 +36,7 @@ public class RegistrazioneServiceIT {
 
     @BeforeEach
     public void setUp() {
-        utente = new Utente(1L, "alessia.ture@gmail.com", "briciola01@@", "Alessia", "Ture", new Date(2001 - 02 - 23));
+        utente = new Utente(1L, "alessia.ture@gmail.com", "briciola01@@", "Alessia", "Ture");
     }
 
     /**

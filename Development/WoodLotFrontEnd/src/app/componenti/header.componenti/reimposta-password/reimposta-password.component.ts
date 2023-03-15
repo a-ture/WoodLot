@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MdbModalRef, MdbModalService} from "mdb-angular-ui-kit/modal";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {AbstractControl, FormControl, FormGroup, Validators} from "@angular/forms";
 import {
   ValidazioneFormUtenteService
 } from "../../../servizi/validazioneFormUtente/validazione-form-utente.service";
@@ -29,10 +29,24 @@ export class ReimpostaPasswordComponent implements OnInit {
     this.reimpostaPassword = new FormGroup({
       emailUtente: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required,
-        Validators.maxLength(sericeValidazione.regoleForm.passwordMin),
+        Validators.minLength(sericeValidazione.regoleForm.passwordMin),
         Validators.pattern(sericeValidazione.regoleForm.passwordPattern)]),
       ripetiPassword: new FormControl('', [Validators.required])
     })
+    // @ts-ignore
+    this.reimpostaPassword.get('ripetiPassword').setValidators([
+      Validators.required,
+      this.matchingPasswordValidator.bind(this)
+    ]);
+    this.formErrori = this.sericeValidazione.errori;
+  }
+
+  // Funzione validatrice personalizzata per controllare se le password corrispondono
+  matchingPasswordValidator(control: AbstractControl): { [key: string]: boolean } | null {
+    // @ts-ignore
+    const password = this.reimpostaPassword.get('password').value;
+
+    return password && control.value !== password ? {'passwordMismatch': true} : null;
   }
 
   onValidate() {
