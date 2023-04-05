@@ -34,11 +34,11 @@ export class ValidazioneFormProdottoService {
       },
       anidrideCarbonica: {
         required: 'Compila questo campo',
-        pattern: 'Deve contenere solo numeri'
+        pattern: 'Inserisci un numero intero positivo'
       },
       salvaguardia: {
         required: 'Compila questo campo',
-        pattern: 'Inserisci un numero tra 1 e 5'
+        pattern: 'Inserisci un numero intero compreso tra 1 e 5'
       },
       descrizione: {
         required: 'Compila questo campo',

@@ -39,7 +39,7 @@ public class GestioneCatalogoService implements CatalogoService {
      */
     @Override
     public Albero aggiungiProdotto(Albero albero) throws AlberoException {
-        if (alberoRepository.existsById(albero.getNome()))
+        if (alberoRepository.existsById(albero.getNome().toLowerCase()))
             throw new AlberoException("Questo nome è già presente nel catalogo! Scegline un altro");
 
         Categoria categoria = categoriaRepository.findById(albero.getCategoria().getNome()).orElse(null);

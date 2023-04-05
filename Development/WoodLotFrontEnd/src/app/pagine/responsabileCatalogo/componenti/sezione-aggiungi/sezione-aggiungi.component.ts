@@ -162,7 +162,7 @@ export class SezioneAggiungiComponent implements OnInit {
 
       this.serviceProdotto.salvaAlbero(albero).subscribe(
         (data: Albero) => {
-
+          console.log(data)
           const saveFoto1$ = this.serviceProdotto.salvaFoto(nomeAlbero, this.fileToUpload1);
           const saveFoto2$ = this.serviceProdotto.salvaFoto(nomeAlbero, this.fileToUpload2);
           const saveFoto3$ = this.serviceProdotto.salvaFoto(nomeAlbero, this.fileToUpload3);
@@ -173,15 +173,16 @@ export class SezioneAggiungiComponent implements OnInit {
               this.router.navigate(['/paginaProdotto', albero.nome]);
             },
             (error) => {
-              this.errorMessage = JSON.stringify(error.data);
+              this.errorMessage = JSON.stringify(error.error.data);
               console.log(this.errorMessage)
-              this.errorMessage = JSON.stringify(error.data)
+              this.errorMessage = JSON.stringify(error.error.data)
             }
           );
           this.router.navigate(['/paginaProdotto', albero.nome])
         },
         (error) => {
-          this.errorMessage = JSON.stringify(error.data)
+          console.log(error.error.data)
+          this.errorMessage = JSON.stringify(error.error.data)
         })
     }
   }
