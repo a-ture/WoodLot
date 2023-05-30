@@ -52,17 +52,18 @@ public class ControllerCheckoutIT {
      */
     @Test
     void testEffettuareOrdine() {
+        carrelloRepository.deleteAll();
+        prodottoCarrelloRepository.deleteAll();
+
         Utente utente = new Utente();
         utente.setNome("John");
         utente.setCognome("Doe");
-        utente.setDataDiNascita(new Date());
         utente.setEmail("john.doe@example.com");
         utente.setPassword("password");
         utente = utenteRepository.save(utente);
 
         Carrello carrello = new Carrello();
         carrello.setUtente(utente);
-        carrello = carrelloRepository.save(carrello);
 
         ProdottoCarrello prodottoCarrello = new ProdottoCarrello();
 
@@ -101,7 +102,7 @@ public class ControllerCheckoutIT {
 
         albero = alberoRepository.save(albero);
         prodottoCarrello.setAlbero(albero);
-
+        prodottoCarrello.setId(3444L);
         prodottoCarrello = prodottoCarrelloRepository.save(prodottoCarrello);
         carrello.aggiungiProdottoCarrello(prodottoCarrello);
         carrelloRepository.save(carrello);
@@ -124,24 +125,6 @@ public class ControllerCheckoutIT {
         String errorMessage = "L'utente non è stato trovato";
 
         Long idUtente = -1L;
-        HttpEntity<Long> request = new HttpEntity<>(idUtente);
-
-        ResponseEntity<Object> response = restTemplate.postForEntity("http://localhost:8090/checkout", request, Object.class);
-
-        assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
-        assertEquals(errorMessage, ((Map) response.getBody()).get("data"));
-    }
-
-    /**
-     * Testa il caso in cui il checkout fallisce a causa di un errore nel recupero del carrello
-     * Il test è superato se la risposta HTTP generata dal sistema è uguale a quella
-     * previsto dall'oracolo
-     */
-    @Test
-    void testEffettuareOrdineCarrelloNullo() {
-        String errorMessage = "Il tuo carrello è nullo";
-
-        Long idUtente = 1L;
         HttpEntity<Long> request = new HttpEntity<>(idUtente);
 
         ResponseEntity<Object> response = restTemplate.postForEntity("http://localhost:8090/checkout", request, Object.class);

@@ -49,7 +49,7 @@ public class CatalogoServiceUT {
     @Test
     public void testAggiungiProdotto_Successo() {
         Albero albero = new Albero();
-        albero.setNome("Albero 1");
+        albero.setNome("albero 1");
 
         Categoria categoria = new Categoria();
         categoria.setNome("Categoria 1");
@@ -75,20 +75,20 @@ public class CatalogoServiceUT {
         albero.setPaeseOrigine(paeseOrigine);
         when(paeseOrigineRepository.findById("Paese Origine 1")).thenReturn(Optional.of(paeseOrigine));
 
-        when(alberoRepository.existsById("Albero 1")).thenReturn(false);
+        when(alberoRepository.existsById(albero.getNome())).thenReturn(false);
         when(alberoRepository.save(albero)).thenReturn(albero);
 
         try {
             Albero risultato = gestioneCatalogoService.aggiungiProdotto(albero);
 
             assertNotNull(risultato);
-            assertEquals("Albero 1", risultato.getNome());
+            assertEquals("albero 1", risultato.getNome());
 
             verify(categoriaRepository, times(1)).findById("Categoria 1");
             verify(usoLocaleRepository, times(1)).findById("Uso Locale 1");
             verify(beneficioRepository, times(1)).findById("Beneficio 1");
             verify(paeseOrigineRepository, times(1)).findById("Paese Origine 1");
-            verify(alberoRepository, times(1)).existsById("Albero 1");
+            verify(alberoRepository, times(1)).existsById("albero 1");
             verify(alberoRepository, times(1)).save(albero);
         } catch (AlberoException e) {
             fail(e.getMessage());
@@ -102,7 +102,7 @@ public class CatalogoServiceUT {
     @Test
     void testAggiungiProdotto_nomeEsistente() {
         Albero albero = new Albero();
-        albero.setNome("Albero esistente");
+        albero.setNome("albero esistente");
         String messaggio = "Questo nome è già presente nel catalogo! Scegline un altro";
 
         when(alberoRepository.existsById(albero.getNome())).thenReturn(true);
@@ -122,6 +122,7 @@ public class CatalogoServiceUT {
     @Test
     void aggiungiProdotto_categoriaInvalida() {
         Albero albero = new Albero();
+        albero.setNome("albero");
         Categoria categoria = new Categoria();
         categoria.setNome("Categoria non esistente");
         albero.setCategoria(categoria);
@@ -131,6 +132,7 @@ public class CatalogoServiceUT {
 
         try {
             gestioneCatalogoService.aggiungiProdotto(albero);
+
         } catch (AlberoException e) {
             assertEquals(messaggio, e.getMessage());
         }
@@ -144,7 +146,7 @@ public class CatalogoServiceUT {
     void aggiungiProdotto_usoLocaleInvalido() {
         String messaggio = "L'uso locale fornito non è valido";
         Albero albero = new Albero();
-
+        albero.setNome("albero");
         Categoria categoria = new Categoria();
         categoria.setNome("Categoria 1");
         albero.setCategoria(categoria);
@@ -172,6 +174,7 @@ public class CatalogoServiceUT {
         String messaggio = "Il beneficio fornito non è valido";
 
         Albero albero = new Albero();
+        albero.setNome("albero");
         Beneficio beneficio = new Beneficio();
         beneficio.setNome("Beneficio non esistente");
         albero.setBenefici(Arrays.asList(beneficio));
@@ -204,6 +207,7 @@ public class CatalogoServiceUT {
         String messaggio = "Il paese fornito non è valido";
 
         Albero albero = new Albero();
+        albero.setNome("albero");
         Beneficio beneficio = new Beneficio();
         beneficio.setNome("Beneficio esistente");
         albero.setBenefici(Arrays.asList(beneficio));

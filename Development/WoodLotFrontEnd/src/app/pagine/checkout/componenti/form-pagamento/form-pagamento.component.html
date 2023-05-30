@@ -49,8 +49,10 @@
             'is-valid': (submitted ||f['nomeTitolare'].touched) && f['nomeTitolare'].valid }">
             <div *ngIf="submitted && f['nomeTitolare'].invalid" class="invalid-feedback">
               <div *ngIf="f['nomeTitolare'].errors?.['required']">Compila questo campo</div>
-              <div *ngIf="f['nomeTitolare'].errors?.['maxLength']">{{formErrori.nomeTitolareCarta.maxLength}}</div>
-              <div *ngIf="f['nomeTitolare'].errors?.['pattern']">{{formErrori.nomeTitolareCarta.pattern}}</div>
+              <div *ngIf="f['nomeTitolare'].errors?.['maxlength']">La lunghezza massima per questo campo è 50
+                caratteri
+              </div>
+              <div *ngIf="f['nomeTitolare'].errors?.['pattern']">{{formErrori['nomeTitolareCarta'].pattern}}</div>
             </div>
             <div *ngIf="submitted && f['nomeTitolare'].valid" class="valid-feedback">
               Looks good!
@@ -62,13 +64,15 @@
             <input cFormControl formControlName="numeroCartaDiCredito" type="text" class="form-control" id="cc-number"
                    placeholder="Numero della carta di credito"
                    [ngClass]="{'is-invalid':(submitted || f['numeroCartaDiCredito'].touched) && f['numeroCartaDiCredito'].invalid,
-            'is-valid': (submitted ||f['numeroCartaDiCredito'].touched) && f['numeroCartaDiCredito'].valid }">
+            'is-valid': (submitted ||f['numeroCartaDiCredito'].touched) && f['numeroCartaDiCredito'].valid }"
+                   (input)="updateTipoCarta(f['numeroCartaDiCredito'].value)"
+            >
             <div *ngIf="submitted && f['numeroCartaDiCredito'].invalid" class="invalid-feedback">
               <div *ngIf="f['numeroCartaDiCredito'].errors?.['required']">Compila questo campo</div>
               <div
-                *ngIf="f['numeroCartaDiCredito'].errors?.['maxLength']">{{formErrori.numeroCartaDiCredito.maxLength}}</div>
+                *ngIf="f['numeroCartaDiCredito'].errors?.['maxlength']">{{formErrori['numeroCartaDiCredito'].maxLength}}</div>
               <div
-                *ngIf="f['numeroCartaDiCredito'].errors?.['pattern']">{{formErrori.numeroCartaDiCredito.pattern}}</div>
+                *ngIf="f['numeroCartaDiCredito'].errors?.['pattern']">{{formErrori['numeroCartaDiCredito'].pattern}}</div>
             </div>
             <div *ngIf="submitted && f['numeroCartaDiCredito'].valid" class="valid-feedback">
               Looks good!
@@ -77,13 +81,20 @@
 
           <div class="col-md-3">
             <label for="cc-expiration" class="form-label">Data di scadenza</label>
-            <input cFormControl formControlName="dataScadenza" type="date" class="form-control" id="cc-expiration"
-                   placeholder="" [ngClass]="{'is-invalid':(submitted || f['dataScadenza'].touched) && f['dataScadenza'].invalid,
-            'is-valid': (submitted ||f['dataScadenza'].touched) && f['dataScadenza'].valid }">
+            <input cFormControl formControlName="dataScadenza" type="text" class="form-control" id="cc-expiration"
+                   placeholder="MM/YY" [ngClass]="{'is-invalid': (submitted || f['dataScadenza'].touched) && f['dataScadenza'].invalid,
+                                      'is-valid': (submitted || f['dataScadenza'].touched) && f['dataScadenza'].valid }"
+                  >
+            <div *ngIf="submitted && f['dataScadenza'].invalid" class="invalid-feedback">
+              <div *ngIf="f['dataScadenza'].errors?.['required']">Compila questo campo</div>
+              <div *ngIf="f['dataScadenza'].errors?.['pattern']">La data inserita non risulta essere valida, rispetto al formato MM/AA</div>
+              <div *ngIf="f['dataScadenza'].errors?.['dataScaduta']">La data di scadenza è precedente alla data odierna</div>
+            </div>
             <div *ngIf="submitted && f['dataScadenza'].valid" class="valid-feedback">
               Looks good!
             </div>
           </div>
+
 
           <div class="col-md-3">
             <label for="cc-cvv" class="form-label">CVV</label>
@@ -94,9 +105,9 @@
             <div *ngIf="submitted && f['cvv'].invalid" class="invalid-feedback">
               <div *ngIf="f['cvv'].errors?.['required']">Compila questo campo</div>
               <div
-                *ngIf="f['cvv'].errors?.['maxLength']">{{formErrori.numeroCartaDiCredito.maxLength}}</div>
+                *ngIf="f['cvv'].errors?.['maxlength']">{{formErrori.cvv.maxLength}}</div>
               <div
-                *ngIf="f['cvv'].errors?.['pattern']">{{formErrori.numeroCartaDiCredito.pattern}}</div>
+                *ngIf="f['cvv'].errors?.['pattern']">{{formErrori.cvv.pattern}}</div>
             </div>
             <div *ngIf="submitted && f['cvv'].valid" class="valid-feedback">
               Looks good!

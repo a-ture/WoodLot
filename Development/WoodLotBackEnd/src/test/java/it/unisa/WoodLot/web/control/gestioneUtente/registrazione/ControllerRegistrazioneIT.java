@@ -32,7 +32,6 @@ public class ControllerRegistrazioneIT {
         utente.setCognome("Rossi");
         utente.setEmail("mariano.rossi@example.com");
         utente.setPassword("password!@123");
-        utente.setDataDiNascita(new Date());
 
         ResponseEntity<Utente> response = restTemplate.postForEntity("http://localhost:8090/api/registrazione/registrazioneUtente", utente, Utente.class);
 

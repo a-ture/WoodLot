@@ -142,24 +142,6 @@ public class RegistrazioneServiceUT {
     }
 
     /**
-     * Testa il caso in cui la data di nascita è nulla
-     *
-     * @result Il test è superato se il messaggio generato dal sistema è uguale a quello
-     * previsto dall'oracolo.
-     */
-    @Test
-    public void testRegistrazioneDataNascitaNulla() {
-        String messaggio = "Tutti i campi sono obbligatori";
-        Date data = null;
-        utente.setDataDiNascita(data);
-        try {
-            gestioneRegistrazioneService.registrazione(utente);
-        } catch (RegistrazioneException e) {
-            assertEquals(messaggio, e.getMessage());
-        }
-    }
-
-    /**
      * Testa il caso in cui il formato della email non è valida
      *
      * @result Il test è superato se il messaggio generato dal sistema è uguale a quello

@@ -107,7 +107,6 @@ public class CarrelloServiceIT {
         utente.setPassword("password");
         utente.setEmail("utente@gmail.com");
         utente.setNome("Utente");
-        utente.setDataDiNascita(new Date());
         utente.setCognome("Cognome");
 
         utente = utenteRepository.save(utente);
@@ -133,7 +132,6 @@ public class CarrelloServiceIT {
         utente.setPassword("password");
         utente.setEmail("utente@gmail.com");
         utente.setNome("Utente");
-        utente.setDataDiNascita(new Date());
         utente.setCognome("Cognome");
 
         utente = utenteRepository.save(utente);

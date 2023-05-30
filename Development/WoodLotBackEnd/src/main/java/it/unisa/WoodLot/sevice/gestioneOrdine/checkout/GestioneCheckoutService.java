@@ -69,7 +69,7 @@ public class GestioneCheckoutService implements CheckoutService {
             prodottoOrdine.setPrezzoUnitario(prodottoCarrello.getAlbero().getPrezzo());
             prodottoOrdine.setStato(ProdottoOrdine.Stato.NonAssegnato);
             prodottoOrdine.setPaeseOrigine(prodottoCarrello.getAlbero().getPaeseOrigine());
-            prodottoOrdine.setDescrizione("Il albero presto conoscerà il suo contadino!");
+            prodottoOrdine.setDescrizione("Il tuo albero presto conoscerà il suo contadino!");
             ordine.aggiungiProdotto(prodottoOrdine);
             prodottoCarrelloRepository.deleteById(prodottoCarrello.getId());
         }

@@ -144,23 +144,6 @@ public class RegistrazioneServiceIT {
         }
     }
 
-    /**
-     * Testa il caso in cui la data di nascita è nulla
-     * <p>
-     * Il test è superato se il messaggio generato dal sistema è uguale a quello
-     * previsto dall'oracolo.
-     */
-    @Test
-    public void testRegistrazioneDataNascitaNulla() {
-        String messaggio = "Tutti i campi sono obbligatori";
-        Date data = null;
-        utente.setDataDiNascita(data);
-        try {
-            gestioneRegistrazioneService.registrazione(utente);
-        } catch (RegistrazioneException e) {
-            assertEquals(messaggio, e.getMessage());
-        }
-    }
 
     /**
      * Testa il caso in cui il formato della email non è valida
@@ -224,7 +207,7 @@ public class RegistrazioneServiceIT {
      */
     @Test
     public void testRegistrazioneEmailEsistente() {
-        String messaggio = "E-mail già presente nel database";
+        String messaggio = "E-mail già esistente";
         String email = "alessiature@gmail.com";
         utente.setEmail(email);
         utenteRepository.save(utente);

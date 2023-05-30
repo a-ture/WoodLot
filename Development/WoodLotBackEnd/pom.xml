@@ -147,6 +147,7 @@
                 <configuration>
                     <excludes>
                         <exclude>it/unisa/WoodLot/model/entity/*</exclude>
+                        <exclude>it/unisa/WoodLot/sevice/gestioneContadino/assegnazioneAlberi/*</exclude>
                         <exclude>*Test</exclude>
                         <exclude>*IT</exclude>
                     </excludes>

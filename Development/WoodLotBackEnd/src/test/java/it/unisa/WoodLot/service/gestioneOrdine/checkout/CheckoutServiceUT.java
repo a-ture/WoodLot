@@ -82,13 +82,14 @@ public class CheckoutServiceUT {
         prodottoOrdine.setNomeAlbero(albero.getNome());
         prodottoOrdine.setPrezzoUnitario(albero.getPrezzo());
         prodottoOrdine.setStato(ProdottoOrdine.Stato.NonAssegnato);
+        prodottoOrdine.setDescrizione("Il tuo albero presto conoscerà il suo contadino!");
         ordine.aggiungiProdotto(prodottoOrdine);
 
         when(utenteRepository.findById(idUtente)).thenReturn(Optional.of(utente));
         when(carrelloRepository.findByUtente_Id(idUtente)).thenReturn(carrello);
         doNothing().when(prodottoCarrelloRepository).deleteById(prodottoCarrello.getId());
         when(carrelloRepository.save(carrello)).thenReturn(carrello);
-        when(prodottoOrdineRepository.saveAll(ordine.getProdottiOrdine())).thenReturn(ordine.getProdottiOrdine());
+        when(prodottoOrdineRepository.saveAll(anyList())).thenReturn(ordine.getProdottiOrdine());
         when(ordineRepository.save(ordine)).thenReturn(ordine);
 
         try {

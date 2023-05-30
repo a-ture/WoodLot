@@ -50,7 +50,6 @@ public class AutenticazioneServiceIT {
         utente.setPassword("password");
         utente.setEmail("briciola@gmail.com");
         utente.setNome("Utente");
-        utente.setDataDiNascita(new Date());
         utente.setCognome("Cognome");
         utente = utenteRepository.save(utente);
         try {
@@ -179,7 +178,6 @@ public class AutenticazioneServiceIT {
         utente.setPassword("passwor@d123");
         utente.setCognome("Cognome");
         utente.setNome("Nome");
-        utente.setDataDiNascita(new Date());
         utenteRepository.save(utente);
 
         try {
@@ -221,7 +219,6 @@ public class AutenticazioneServiceIT {
         utente.setPassword("passwor@d123");
         utente.setCognome("Cognome");
         utente.setNome("Nome");
-        utente.setDataDiNascita(new Date());
         utenteRepository.save(utente);
         try {
             gestioneAutenticazioneService.reimpostaPassword("test1@test.com", "passwd@456");
@@ -245,7 +242,6 @@ public class AutenticazioneServiceIT {
         utente.setPassword("passwor@d123");
         utente.setCognome("Cognome");
         utente.setNome("Nome");
-        utente.setDataDiNascita(new Date());
         utenteRepository.save(utente);
         try {
             gestioneAutenticazioneService.reimpostaPassword("test3@test.com", "password456");

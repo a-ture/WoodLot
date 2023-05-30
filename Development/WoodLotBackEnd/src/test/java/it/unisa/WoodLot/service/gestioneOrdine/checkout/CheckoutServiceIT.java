@@ -151,7 +151,6 @@ public class CheckoutServiceIT {
         Utente utente = new Utente();
         utente.setNome("John");
         utente.setCognome("Doe");
-        utente.setDataDiNascita(new Date());
         utente.setEmail("john5677.doe@example.com");
         utente.setPassword("password");
         utente = utenteRepository.save(utente);
@@ -177,7 +176,6 @@ public class CheckoutServiceIT {
         Utente utente = new Utente();
         utente.setNome("John");
         utente.setCognome("Doe");
-        utente.setDataDiNascita(new Date());
         utente.setEmail("johnnn.doe@example.com");
         utente.setPassword("password");
         utente = utenteRepository.save(utente);

@@ -34,7 +34,7 @@ public class ControllerAutenticazioneIT {
      * Il test è superato se l'utente è recuperato correttamente
      */
     @Test
-    void testLogin() throws ParseException {
+    void testLogin() {
         UtenteRegistrato utenteRegistrato = new UtenteRegistrato();
         utenteRegistrato.setEmail("alessiature@gmail.com");
         utenteRegistrato.setPassword("briciola");
@@ -57,11 +57,6 @@ public class ControllerAutenticazioneIT {
         assertEquals(utente.getPassword(), utenteResponse.getPassword());
         assertEquals(utente.getNome(), utenteResponse.getNome());
         assertEquals(utente.getCognome(), utenteResponse.getCognome());
-
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
-        Date expectedDate = sdf.parse("2001-02-23 00:00:00.0");
-        Date actualDate = sdf.parse(sdf.format(utenteResponse.getDataDiNascita()));
-        assertEquals(expectedDate, actualDate);
     }
 
     /**

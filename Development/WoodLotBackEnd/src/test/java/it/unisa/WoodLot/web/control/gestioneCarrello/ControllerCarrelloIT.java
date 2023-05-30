@@ -86,7 +86,6 @@ public class ControllerCarrelloIT {
         albero = alberoRepository.save(albero);
 
         utente = new Utente();
-        utente.setDataDiNascita(new Date());
         utente.setPassword("briciolina");
         utente.setNome("Test");
         utente.setCognome("Test");

@@ -55,7 +55,6 @@ public class StatisticheServiceIT {
         utente.setCognome("Mengoni");
         utente.setPassword("password");
         utente.setEmail("simona@gmail.com");
-        utente.setDataDiNascita(new Date());
         utenteRepository.save(utente);
 
         Ordine ordine1 = new Ordine();
@@ -109,7 +108,6 @@ public class StatisticheServiceIT {
         utente.setCognome("Mengoni");
         utente.setPassword("password");
         utente.setEmail("simona@gmail.com");
-        utente.setDataDiNascita(new Date());
         utenteRepository.save(utente);
 
         Ordine ordine1 = new Ordine();
