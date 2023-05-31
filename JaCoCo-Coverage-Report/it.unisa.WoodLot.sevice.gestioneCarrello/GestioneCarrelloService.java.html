@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GestioneCarrelloService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">WoodLot</a> &gt; <a href="index.source.html" class="el_package">it.unisa.WoodLot.sevice.gestioneCarrello</a> &gt; <span class="el_source">GestioneCarrelloService.java</span></div><h1>GestioneCarrelloService.java</h1><pre class="source lang-java linenums">package it.unisa.WoodLot.sevice.gestioneCarrello;
+
+import it.unisa.WoodLot.model.entity.Albero;
+import it.unisa.WoodLot.model.entity.Carrello;
+import it.unisa.WoodLot.model.entity.ProdottoCarrello;
+import it.unisa.WoodLot.model.entity.Utente;
+import it.unisa.WoodLot.model.repository.AlberoRepository;
+import it.unisa.WoodLot.model.repository.CarrelloRepository;
+import it.unisa.WoodLot.model.repository.ProdottoCarrelloRepository;
+import it.unisa.WoodLot.model.repository.UtenteRepository;
+import it.unisa.WoodLot.sevice.gestioneCarrello.eccezzioni.CarrelloException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
+
+/**
+ * La classe fornisce i metodi per la logica di business per la gestione del carrello
+ *
+ * @author Alessia Ture
+ */
+@Service
+<span class="fc" id="L23">public class GestioneCarrelloService implements CarrelloService {</span>
+
+    @Autowired
+    private CarrelloRepository carrelloRepository;
+
+    @Autowired
+    private ProdottoCarrelloRepository prodottoCarrelloRepository;
+
+    @Autowired
+    private UtenteRepository utenteRepository;
+
+    @Autowired
+    private AlberoRepository alberoRepository;
+
+    /**
+     * Permette di recuperare il carrello di un utente
+     * Se non esiste nessun carrello associato all'utente lo crea
+     *
+     * @param idUtente
+     * @return
+     */
+    @Override
+    public Carrello getCarrello(Long idUtente) throws CarrelloException {
+<span class="fc" id="L46">        Utente utente = utenteRepository.findById(idUtente).orElse(null);</span>
+<span class="fc bfc" id="L47" title="All 2 branches covered.">        if (utente == null)</span>
+<span class="fc" id="L48">            throw new CarrelloException(&quot;L'idUtente fornito non risulta associato a nessun utente&quot;);</span>
+<span class="fc" id="L49">        Carrello carrello = carrelloRepository.findByUtente_Id(idUtente);</span>
+<span class="fc bfc" id="L50" title="All 2 branches covered.">        if (carrello == null) {</span>
+<span class="fc" id="L51">            carrello = new Carrello();</span>
+<span class="fc" id="L52">            carrello.setUtente(utente);</span>
+<span class="fc" id="L53">            carrello = carrelloRepository.save(carrello);</span>
+        }
+<span class="fc" id="L55">        return carrello;</span>
+    }
+
+    /**
+     * Permette di aggiungere un prodotto a un carrello
+     *
+     * @param idCarrello l'id del carrello a cui aggiungere il prodotto
+     * @param nomeAlbero il nome dell'albero che si intende aggiungere
+     * @throws CarrelloException lanciata nel caso in cui l'utente o l'albero in ingresso non siano validi
+     */
+    @Override
+    @Transactional
+    public Carrello aggiungiProdotto(Long idCarrello, String nomeAlbero) throws CarrelloException {
+
+<span class="fc" id="L69">        Albero albero = alberoRepository.findById(nomeAlbero).orElse(null);</span>
+
+<span class="fc bfc" id="L71" title="All 2 branches covered.">        if (albero == null) throw new CarrelloException(&quot;L'albero non è stato trovato&quot;);</span>
+
+<span class="fc" id="L73">        Carrello carrello = carrelloRepository.findById(idCarrello).orElse(null);</span>
+
+<span class="fc bfc" id="L75" title="All 2 branches covered.">        if (carrello == null)</span>
+<span class="fc" id="L76">            throw new CarrelloException(&quot;Il carrello non  è stato trovato&quot;);</span>
+
+<span class="fc bfc" id="L78" title="All 2 branches covered.">        if (carrello.getProdottiCarrello().stream().anyMatch(pc -&gt; pc.getAlbero().getNome().equals(nomeAlbero)))</span>
+<span class="fc" id="L79">            throw new CarrelloException(&quot;Il prodotto è già presente nel carrello&quot;);</span>
+
+<span class="fc" id="L81">        ProdottoCarrello prodottoCarrello = new ProdottoCarrello();</span>
+<span class="fc" id="L82">        prodottoCarrello.setAlbero(albero);</span>
+<span class="fc" id="L83">        carrello.aggiungiProdottoCarrello(prodottoCarrello);</span>
+
+<span class="fc" id="L85">        prodottoCarrelloRepository.save(prodottoCarrello);</span>
+<span class="fc" id="L86">        return carrelloRepository.save(carrello);</span>
+    }
+
+    /**
+     * Permette di rimuovere un prodotto da un carrello
+     *
+     * @param idCarrello         l'id del carrello a cui aggiungere il prodotto
+     * @param idProdottoCarrello l'id del prodotto carrello da eliminare
+     * @throws CarrelloException viene lanciata nel caso in cui l'idProdottoCarrello sia nullo
+     */
+    @Override
+    public Carrello rimuoviProdotto(Long idCarrello, Long idProdottoCarrello) throws CarrelloException {
+<span class="fc" id="L98">        Carrello carrello = carrelloRepository.findById(idCarrello).orElse(null);</span>
+<span class="fc bfc" id="L99" title="All 2 branches covered.">        if (carrello == null)</span>
+<span class="fc" id="L100">            throw new CarrelloException(&quot;Il carrello non  è stato trovato&quot;);</span>
+
+<span class="fc" id="L102">        ProdottoCarrello prodottoCarrello = prodottoCarrelloRepository.findById(idProdottoCarrello).orElse(null);</span>
+<span class="fc bfc" id="L103" title="All 2 branches covered.">        if (prodottoCarrello == null)</span>
+<span class="fc" id="L104">            throw new CarrelloException(&quot;L'id del prodotto fornito non è valido&quot;);</span>
+
+<span class="fc" id="L106">        carrello.rimuoviProdotto(prodottoCarrello);</span>
+<span class="fc" id="L107">        carrello = carrelloRepository.save(carrello);</span>
+<span class="fc" id="L108">        prodottoCarrelloRepository.delete(prodottoCarrello);</span>
+<span class="fc" id="L109">        return carrello;</span>
+    }
+
+    /**
+     * Permette di svuotare un carrello
+     *
+     * @param idCarrello l'id del carrello da svuotare
+     * @throws CarrelloException
+     */
+    @Override
+    @Transactional
+    public Carrello svuotareCarrello(Long idCarrello) throws CarrelloException {
+<span class="fc" id="L121">        Carrello carrello = carrelloRepository.findById(idCarrello).orElseThrow(() -&gt; new CarrelloException(&quot;Carrello non trovato&quot;));</span>
+<span class="fc" id="L122">        carrelloRepository.deleteById(idCarrello);</span>
+<span class="fc" id="L123">        Carrello carrello1 = new Carrello();</span>
+<span class="fc" id="L124">        carrello1.setUtente(carrello.getUtente());</span>
+<span class="fc" id="L125">        return carrelloRepository.save(carrello1);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

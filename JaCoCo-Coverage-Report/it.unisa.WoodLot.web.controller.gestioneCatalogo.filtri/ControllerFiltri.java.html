@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ControllerFiltri.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">WoodLot</a> &gt; <a href="index.source.html" class="el_package">it.unisa.WoodLot.web.controller.gestioneCatalogo.filtri</a> &gt; <span class="el_source">ControllerFiltri.java</span></div><h1>ControllerFiltri.java</h1><pre class="source lang-java linenums">package it.unisa.WoodLot.web.controller.gestioneCatalogo.filtri;
+
+import it.unisa.WoodLot.model.entity.Albero;
+
+import it.unisa.WoodLot.sevice.gestioneCatalogo.filtri.FiltriService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+/**
+ * Controller per i filtri del catalogo
+ *
+ * @author Alessia Ture
+ */
+@RestController
+@RequestMapping(&quot;/api/filtri&quot;)
+<span class="fc" id="L19">public class ControllerFiltri {</span>
+
+    @Autowired
+    private FiltriService filtriService;
+
+    /**
+     * Metodo GET per restituire tutti i prodotti del catalogo
+     *
+     * @return un set contenente tutti i prodotti
+     */
+    @GetMapping(&quot;/prodotti&quot;)
+    public Iterable&lt;Albero&gt; restituisciProdotti() {
+<span class="fc" id="L31">        return filtriService.getProdotti();</span>
+    }
+
+    /**
+     * Metodo GET che restituisce i prodotti ordinati in base al prezzo crescente o decrescente
+     *
+     * @param parametro indica come vogliamo effettuare l'ordinamento, specificare prezzoCrescente per ordinare per prezzo crescente,
+     *                  specificare prezzoDecrecente per ordinare per prezzo decrescente
+     * @return i prodotti ordinati in base al prezzo crescete o decrescente
+     */
+    @GetMapping(&quot;/filtroPrezzo/{prezzo}&quot;)
+    public Iterable&lt;Albero&gt; restituisciProdottiFiltratiByPrezzo(@PathVariable(value = &quot;prezzo&quot;) String parametro) {
+<span class="fc" id="L43">        return filtriService.getProdottiFiltratiByPrezzo(parametro);</span>
+    }
+
+    /**
+     * Metodo GET che restituisce i prodotti filtrati in base al paese in cui vengono piantati
+     *
+     * @param parametro il paese usato per il filtraggio
+     * @return un set degli alberi che vengono piantati nel paese indicato
+     */
+    @GetMapping(&quot;/filtroPaese/{nomePaese}&quot;)
+    public Iterable&lt;Albero&gt; restituisciProdottiFiltratiByPaese(@PathVariable(value = &quot;nomePaese&quot;) String parametro) {
+<span class="fc" id="L54">        return filtriService.getProdottiFiltratiByPaese(parametro);</span>
+    }
+
+    /**
+     * Metodo GET che restituisce i prodotti filtrati in base all'uso locale
+     *
+     * @param parametro l'uso locale in base al quale effettuare il filtraggio
+     * @return un set di alberi che ha l'uso locale specificato
+     */
+    @GetMapping(&quot;/filtroUsoLocale/{nomeUsoLocale}&quot;)
+    public Iterable&lt;Albero&gt; restituisciProdottiFiltratiByUsoLocale(@PathVariable(value = &quot;nomeUsoLocale&quot;) String parametro) {
+<span class="fc" id="L65">        return filtriService.getProdottiFiltratiByUsoLocale(parametro);</span>
+    }
+
+    /**
+     * Metodo GET che restituisce tutti i prodotti presenti nel catalogo filtrati in base alla categoria
+     *
+     * @param parametro la categoria in base alla quale effettuare il filtraggio
+     * @return un set di alberi che ha come categoria quella indicata
+     */
+    @GetMapping(&quot;/filtroCategoria/{nomeCategoria}&quot;)
+    public Iterable&lt;Albero&gt; restituisciProdottiByCategoria(@PathVariable(value = &quot;nomeCategoria&quot;) String parametro) {
+<span class="fc" id="L76">        return filtriService.getProdottiFiltratiByCategoria(parametro);</span>
+    }
+
+    /**
+     * Metodo GET che restituisce tutti i prodotti presenti nel catalogo ordinati in base all'anidride carbonica
+     *
+     * @param parametro rappresenta il parametro di filtraggio dell'anidride carbonica
+     * @return tutti i prodotti presenti nel db ordinati in base al valore dell'anidride carboncica crescete o descrecente
+     */
+    @GetMapping(&quot;/filtroAndirideCarbonica/{anidrideCarbonica}&quot;)
+    public Iterable&lt;Albero&gt; restituisciProdottiByAnidrideCarbonica(@PathVariable(value = &quot;anidrideCarbonica&quot;) String parametro) {
+<span class="fc" id="L87">        return filtriService.getProdottiFiltratiByAnidrideCarbonica(parametro);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

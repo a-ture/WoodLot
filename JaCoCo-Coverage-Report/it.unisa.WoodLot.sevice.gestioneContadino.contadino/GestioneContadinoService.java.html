@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GestioneContadinoService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">WoodLot</a> &gt; <a href="index.source.html" class="el_package">it.unisa.WoodLot.sevice.gestioneContadino.contadino</a> &gt; <span class="el_source">GestioneContadinoService.java</span></div><h1>GestioneContadinoService.java</h1><pre class="source lang-java linenums">package it.unisa.WoodLot.sevice.gestioneContadino.contadino;
+
+import it.unisa.WoodLot.model.entity.Contadino;
+import it.unisa.WoodLot.model.entity.ProdottoOrdine;
+import it.unisa.WoodLot.model.repository.ContadinoRepository;
+import it.unisa.WoodLot.model.repository.ProdottoOrdineRepository;
+import it.unisa.WoodLot.sevice.gestioneContadino.eccezioni.ContadinoException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
+import java.util.Date;
+
+
+/**
+ * La classe fornisce i metodi per la logica di business per la gestione dei contadini
+ *
+ * @author Alessia Ture
+ */
+@Service
+<span class="fc" id="L21">public class GestioneContadinoService implements ContadinoService {</span>
+    @Autowired
+    private ContadinoRepository contadinoRepository;
+
+    @Autowired
+    private ProdottoOrdineRepository prodottoOrdineRepository;
+
+    /**
+     * Restituisce l'elenco dei contadini presenti nel database
+     *
+     * @return l'elenco dei contadini
+     */
+    @Override
+    public Iterable&lt;Contadino&gt; getElencoContadini() {
+<span class="fc" id="L35">        return contadinoRepository.findAll();</span>
+    }
+
+    /**
+     * Restituisce l'elenco degli alberi che non sono stati assegnati a un contadino
+     *
+     * @return l'elenco degli alberi nello stato 'non assegnato'
+     */
+    @Override
+    public Iterable&lt;ProdottoOrdine&gt; getAlberiNonAssegnati() {
+<span class="fc" id="L45">        return prodottoOrdineRepository.findAllByStatoIs(ProdottoOrdine.Stato.NonAssegnato);</span>
+    }
+
+    /**
+     * Permette di aggiornare lo stato di albero
+     *
+     * @param prodottoOrdine l'albero che deve essere aggiornato
+     * @return il prodotto aggiornato
+     * @throws ContadinoException
+     */
+    @Override
+    @Transactional
+    public ProdottoOrdine aggiornaStato(ProdottoOrdine prodottoOrdine) throws ContadinoException {
+<span class="fc" id="L58">        ProdottoOrdine p = prodottoOrdineRepository.findById(prodottoOrdine.getId()).orElse(null);</span>
+<span class="fc bfc" id="L59" title="All 2 branches covered.">        if (p == null)</span>
+<span class="fc" id="L60">            throw new ContadinoException(&quot;Non è stato trovato il prodotto ordine&quot;);</span>
+
+<span class="pc bpc" id="L62" title="1 of 2 branches missed.">        if (prodottoOrdine.getStato().equals(ProdottoOrdine.Stato.Riassegnazione)) {</span>
+<span class="nc" id="L63">            p.setContadino(prodottoOrdine.getContadino());</span>
+<span class="nc" id="L64">            p.setDataModifica(null);</span>
+<span class="nc" id="L65">            p.setDataAssegnazione(null);</span>
+<span class="nc" id="L66">            p.setStato(ProdottoOrdine.Stato.Riassegnazione);</span>
+<span class="pc bpc" id="L67" title="1 of 2 branches missed.">        } else if (prodottoOrdine.getStato().equals(ProdottoOrdine.Stato.Assegnato)) {</span>
+<span class="nc" id="L68">            p.setContadino(prodottoOrdine.getContadino());</span>
+<span class="nc" id="L69">            p.setDataModifica(null);</span>
+<span class="nc" id="L70">            p.setDataAssegnazione(new Date());</span>
+<span class="nc" id="L71">            p.setStato(ProdottoOrdine.Stato.Assegnato);</span>
+<span class="nc" id="L72">            p.setDescrizione(&quot;Il tuo albero è stato presto in cura dal contadino! Presto verrà piantato&quot;);</span>
+        } else {
+<span class="fc" id="L74">            p.setStato(prodottoOrdine.getStato());</span>
+<span class="fc" id="L75">            p.setDescrizione(prodottoOrdine.getDescrizione());</span>
+<span class="fc" id="L76">            p.setFrutta(prodottoOrdine.getFrutta());</span>
+<span class="fc" id="L77">            p.setDataModifica(new Date());</span>
+        }
+<span class="fc" id="L79">        return prodottoOrdineRepository.save(p);</span>
+    }
+
+    /**
+     * Restituisce l'elenco degli alberi assegnati a un contadino
+     *
+     * @param idContadino l'id del contadino
+     * @return
+     */
+    @Override
+    public Iterable&lt;ProdottoOrdine&gt; elencoAlberiContadino(Long idContadino) {
+<span class="fc" id="L90">        return prodottoOrdineRepository.findAllByContadino_Id(idContadino);</span>
+    }
+
+    /**
+     * Restituisce l'elenco dei prodotti che devono essere revisionati dal responsabile ordini
+     *
+     * @return l'elenco dei prodotti ordini che si trovano nello stato 'revisione'
+     */
+    @Override
+    public Iterable&lt;ProdottoOrdine&gt; prodottiDaRiassegnare() {
+<span class="fc" id="L100">        return prodottoOrdineRepository.findAllByStatoIs(ProdottoOrdine.Stato.Riassegnazione);</span>
+    }
+
+    /**
+     * Restituisce l'elenco dei prodotti che devono essere revisionati dal responsabile ordini
+     *
+     * @return l'elenco dei prodotti ordini che si trovano nello stato 'revisione'
+     */
+    @Override
+    public Iterable&lt;ProdottoOrdine&gt; prodottiDaRevisionare() {
+<span class="fc" id="L110">        return prodottoOrdineRepository.findAllByStatoIs(ProdottoOrdine.Stato.Revisione);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

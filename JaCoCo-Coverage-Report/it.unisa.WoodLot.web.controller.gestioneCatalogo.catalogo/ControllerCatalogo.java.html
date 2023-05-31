@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ControllerCatalogo.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">WoodLot</a> &gt; <a href="index.source.html" class="el_package">it.unisa.WoodLot.web.controller.gestioneCatalogo.catalogo</a> &gt; <span class="el_source">ControllerCatalogo.java</span></div><h1>ControllerCatalogo.java</h1><pre class="source lang-java linenums">package it.unisa.WoodLot.web.controller.gestioneCatalogo.catalogo;
+
+import it.unisa.WoodLot.model.entity.Albero;
+import it.unisa.WoodLot.sevice.gestioneCatalogo.eccezioni.AlberoException;
+import it.unisa.WoodLot.sevice.gestioneCatalogo.catalogo.CatalogoService;
+import it.unisa.WoodLot.web.controller.ResponseHandler;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+
+import java.io.File;
+import java.io.IOException;
+
+
+/**
+ * Controller per la gestione del catalogo
+ *
+ * @author Alessia Ture
+ */
+
+@RestController
+@RequestMapping(&quot;/api/catalogo&quot;)
+<span class="fc" id="L27">public class ControllerCatalogo {</span>
+
+    @Autowired
+    private CatalogoService catalogoService;
+
+    /**
+     * Metodo POST per inserire un prodotto nel catalogo
+     *
+     * @param albero è il prodotto da inserire nel catalogo
+     * @return true se l'inserimento ha avuto esito positivo, false altrimenti
+     */
+    @PostMapping(&quot;/inserimentoProdotto&quot;)
+    public ResponseEntity&lt;Object&gt; inserimentoCatalogo(@RequestBody Albero albero) {
+        try {
+<span class="fc" id="L41">            Albero a = catalogoService.aggiungiProdotto(albero);</span>
+<span class="fc" id="L42">            return new ResponseEntity&lt;&gt;(a, HttpStatus.CREATED);</span>
+<span class="fc" id="L43">        } catch (AlberoException e) {</span>
+<span class="fc" id="L44">            return ResponseHandler.generateResponse(HttpStatus.BAD_REQUEST,</span>
+<span class="fc" id="L45">                    e.getMessage());</span>
+        }
+    }
+
+    /**
+     * Permette di salvare le foto nella loro posizione
+     */
+    @PostMapping(&quot;/upload&quot;)
+    @ResponseBody
+    public ResponseEntity&lt;Object&gt; uploadImage(@RequestParam(&quot;file&quot;) MultipartFile file, @RequestParam(&quot;treeName&quot;) String treeName) throws IOException {
+<span class="fc" id="L55">        String UPLOAD_DIR = &quot;/Users/alessiature/Desktop/WoodLot/Development/WoodLotFrontEnd/src/assets/img/alberi&quot;;</span>
+
+<span class="fc" id="L57">        String fileName = StringUtils.cleanPath(file.getOriginalFilename());</span>
+
+<span class="fc" id="L59">        File directory = new File(UPLOAD_DIR + &quot;/&quot; + treeName);</span>
+<span class="pc bpc" id="L60" title="1 of 2 branches missed.">        if (!directory.exists()) {</span>
+<span class="nc" id="L61">            directory.mkdirs();</span>
+        }
+
+<span class="fc" id="L64">        File dest = new File(directory.getAbsolutePath() + File.separator + fileName);</span>
+<span class="fc" id="L65">        file.transferTo(dest);</span>
+<span class="fc" id="L66">        System.out.println(dest);</span>
+
+<span class="fc" id="L68">        return ResponseEntity.ok().build();</span>
+    }
+
+    /**
+     * Metodo GET per eliminare un prodotto dal catalogo
+     *
+     * @param idAlbero è l'id del albero da eliminare dal catalogo
+     */
+    @GetMapping(&quot;/eliminaProdotto/{idAlbero}&quot;)
+    public void eliminaProdottoCatalogo(@PathVariable String idAlbero) throws AlberoException {
+<span class="fc" id="L78">        catalogoService.eliminaProdotto(idAlbero);</span>
+<span class="fc" id="L79">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

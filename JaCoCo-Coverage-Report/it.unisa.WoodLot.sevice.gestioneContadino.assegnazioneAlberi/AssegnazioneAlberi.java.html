@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AssegnazioneAlberi.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">WoodLot</a> &gt; <a href="index.source.html" class="el_package">it.unisa.WoodLot.sevice.gestioneContadino.assegnazioneAlberi</a> &gt; <span class="el_source">AssegnazioneAlberi.java</span></div><h1>AssegnazioneAlberi.java</h1><pre class="source lang-java linenums">package it.unisa.WoodLot.sevice.gestioneContadino.assegnazioneAlberi;
+
+import it.unisa.WoodLot.model.entity.Contadino;
+import it.unisa.WoodLot.model.entity.ProdottoOrdine;
+import it.unisa.WoodLot.model.repository.ProdottoOrdineRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+/**
+ * Algoritmo greedy per l'assegnamento degli alberi ai contadini
+ *
+ * @author Alessia Ture
+ */
+@Service
+<span class="fc" id="L20">public class AssegnazioneAlberi {</span>
+    @Autowired
+    private ProdottoOrdineRepository contadinoRepository;
+
+    public List&lt;ProdottoOrdine&gt; assegnazione(List&lt;Contadino&gt; farmers, List&lt;ProdottoOrdine&gt; trees) {
+<span class="nc" id="L25">        List&lt;ProdottoOrdine&gt; prodotti = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L26">        List&lt;Contadino&gt; assignedFarmers = new ArrayList&lt;&gt;();</span>
+
+<span class="nc bnc" id="L28" title="All 2 branches missed.">        for (ProdottoOrdine tree : trees) {</span>
+            // creiamo una lista di contadini compatibili per ogni albero, escludendo quelli già assegnati
+<span class="nc" id="L30">            List&lt;Contadino&gt; compatibleFarmers = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L31" title="All 2 branches missed.">            for (Contadino farmer : farmers) {</span>
+<span class="nc bnc" id="L32" title="All 4 branches missed.">                if (!assignedFarmers.contains(farmer) &amp;&amp; farmer.getCoordinateGeografiche().equals(tree.getPaeseOrigine().getNome())) {</span>
+<span class="nc" id="L33">                    compatibleFarmers.add(farmer);</span>
+                }
+<span class="nc" id="L35">            }</span>
+
+            // ordiniamo i contadini compatibili in base al numero di alberi piantati
+<span class="nc" id="L38">            Collections.sort(compatibleFarmers, new Comparator&lt;Contadino&gt;() {</span>
+                public int compare(Contadino f1, Contadino f2) {
+<span class="nc" id="L40">                    return contadinoRepository.findAllByContadino_Id(f1.getId()).size() - contadinoRepository.findAllByContadino_Id(f2.getId()).size();</span>
+                }
+            });
+
+            // assegniamo l'albero al contadino con meno alberi piantati solo se ci sono contadini compatibili
+<span class="nc bnc" id="L45" title="All 2 branches missed.">            if (compatibleFarmers.size() &gt; 0) {</span>
+<span class="nc" id="L46">                Contadino assignedFarmer = compatibleFarmers.get(0);</span>
+<span class="nc" id="L47">                tree.setContadino(assignedFarmer);</span>
+<span class="nc" id="L48">                prodotti.add(tree);</span>
+<span class="nc" id="L49">                assignedFarmers.add(assignedFarmer);</span>
+            }
+<span class="nc" id="L51">        }</span>
+<span class="nc" id="L52">        return prodotti;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

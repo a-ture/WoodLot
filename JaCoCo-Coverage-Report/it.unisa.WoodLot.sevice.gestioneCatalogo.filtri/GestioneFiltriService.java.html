@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GestioneFiltriService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">WoodLot</a> &gt; <a href="index.source.html" class="el_package">it.unisa.WoodLot.sevice.gestioneCatalogo.filtri</a> &gt; <span class="el_source">GestioneFiltriService.java</span></div><h1>GestioneFiltriService.java</h1><pre class="source lang-java linenums">package it.unisa.WoodLot.sevice.gestioneCatalogo.filtri;
+
+import it.unisa.WoodLot.model.entity.Albero;
+import it.unisa.WoodLot.model.repository.AlberoRepository;
+import it.unisa.WoodLot.model.repository.CategoriaRepository;
+import it.unisa.WoodLot.model.repository.PaeseOrigineRepository;
+import it.unisa.WoodLot.model.repository.UsoLocaleRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.Spliterator;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
+
+/**
+ * La classe fornisce i metodi per la logica di business della gestione dei filtri
+ *
+ * @author Alessia Ture
+ */
+@Service
+<span class="fc" id="L21">public class GestioneFiltriService implements FiltriService {</span>
+
+    @Autowired
+    private AlberoRepository alberoRepository;
+
+    @Autowired
+    private PaeseOrigineRepository paeseOrigineRepository;
+
+    @Autowired
+    private UsoLocaleRepository usoLocaleRepository;
+
+    @Autowired
+    private CategoriaRepository categoriaRepository;
+
+    /**
+     * Restituisce tutti i prodotti presenti nel catalogo
+     *
+     * @return i prodotto presenti nel DB
+     */
+    @Override
+    public Iterable&lt;Albero&gt; getProdotti() {
+<span class="fc" id="L42">        Spliterator&lt;Albero&gt; prodotti = alberoRepository.findAll().spliterator();</span>
+<span class="fc" id="L43">        return StreamSupport.stream(prodotti, false).collect(Collectors.toSet());</span>
+    }
+
+    /**
+     * Restituisce i prodotti ordinati in base al prezzo crescente o decrescente
+     *
+     * @param parametro rappresenta il parametro di filtraggio,
+     *                  può essere: prezzoCrescente, prezzoDecrescente
+     * @return i prodotti ordinati in base al prezzo
+     */
+
+    @Override
+    public Iterable&lt;Albero&gt; getProdottiFiltratiByPrezzo(String parametro) {
+<span class="fc bfc" id="L56" title="All 2 branches covered.">        if (parametro.equalsIgnoreCase(&quot;prezzoCrescente&quot;)) {</span>
+<span class="fc" id="L57">            return alberoRepository.findAllByOrderByPrezzoAsc();</span>
+<span class="fc bfc" id="L58" title="All 2 branches covered.">        } else if (parametro.equalsIgnoreCase(&quot;prezzoDecrescente&quot;)) {</span>
+<span class="fc" id="L59">            return alberoRepository.findAllByOrderByPrezzoDesc();</span>
+        }
+<span class="fc" id="L61">        return null;  // restituisce null nel caso il parametro sia sbagliato</span>
+    }
+
+    /**
+     * Restituisce tutti i prodotti presenti nel catalogo ordinati in base al valore dell'anidride carbonica
+     *
+     * @param parametro rappresenta il parametro di filtraggio,
+     *                  può essere: anidrideCrescente, anidrideDecrescente
+     * @return i prodotti ordinati in base al valore dell'anidride carbonica
+     */
+    @Override
+    public Iterable&lt;Albero&gt; getProdottiFiltratiByAnidrideCarbonica(String parametro) {
+<span class="fc bfc" id="L73" title="All 2 branches covered.">        if (parametro.equalsIgnoreCase(&quot;anidrideCrescente&quot;)) {</span>
+<span class="fc" id="L74">            return alberoRepository.findAllByOrderByAnidrideCarbonicaAssorbitaAsc();</span>
+<span class="fc bfc" id="L75" title="All 2 branches covered.">        } else if (parametro.equalsIgnoreCase(&quot;anidrideDecrescente&quot;)) {</span>
+<span class="fc" id="L76">            return alberoRepository.findAllByOrderByAnidrideCarbonicaAssorbitaDesc();</span>
+        }
+<span class="fc" id="L78">        return null;  // restituisce null nel caso il parametro sia sbagliato</span>
+    }
+
+    /**
+     * Restituisce tutti i prodotti presenti nel catalogo filtrati in base al paese in cui vengono piantati
+     *
+     * @param nomePaese rappresenta il parametro di filtraggio,
+     * @return un set degli alberi che vengono piantati nel paese indicato
+     */
+    @Override
+    public Iterable&lt;Albero&gt; getProdottiFiltratiByPaese(String nomePaese) {
+
+<span class="fc" id="L90">        return alberoRepository.findAllByPaeseOrigine(paeseOrigineRepository.findById(nomePaese));</span>
+
+    }
+
+    /**
+     * Restituisce tutti i prodotti presenti nel catalogo filtrati in base ad un loro uso locale
+     *
+     * @param usoLocale l'uso locale in base al quale effettuare il filtraggio
+     * @return un set di alberi che ha l'uso locale specificato
+     */
+    @Override
+    public Iterable&lt;Albero&gt; getProdottiFiltratiByUsoLocale(String usoLocale) {
+<span class="fc" id="L102">        return alberoRepository.findAllByUsiLocali(usoLocaleRepository.findById(usoLocale));</span>
+    }
+
+    /**
+     * Restituisce tutti i prodotti presenti nel catalogo filtrati in base alla categoria
+     *
+     * @param nomeCategoria la categoria in base alla quale effettuare il filtraggio
+     * @return un set di alberi che ha come categoria quella indicata
+     */
+    @Override
+    public Iterable&lt;Albero&gt; getProdottiFiltratiByCategoria(String nomeCategoria) {
+<span class="fc" id="L113">        return alberoRepository.findAllByCategoria(categoriaRepository.findById(nomeCategoria));</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ControllerContadino.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">WoodLot</a> &gt; <a href="index.source.html" class="el_package">it.unisa.WoodLot.web.controller.gestioneContadino</a> &gt; <span class="el_source">ControllerContadino.java</span></div><h1>ControllerContadino.java</h1><pre class="source lang-java linenums">package it.unisa.WoodLot.web.controller.gestioneContadino;
+
+import it.unisa.WoodLot.model.entity.Contadino;
+import it.unisa.WoodLot.model.entity.ProdottoOrdine;
+import it.unisa.WoodLot.sevice.gestioneContadino.contadino.ContadinoService;
+import it.unisa.WoodLot.sevice.gestioneContadino.assegnazioneAlberi.AssegnazioneAlberi;
+import it.unisa.WoodLot.sevice.gestioneContadino.eccezioni.ContadinoException;
+import it.unisa.WoodLot.web.controller.ResponseHandler;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
+
+/**
+ * Controller per la gestione dei contadini
+ */
+@RestController
+@RequestMapping(&quot;/api/contadino&quot;)
+<span class="fc" id="L25">public class ControllerContadino {</span>
+
+    @Autowired
+    private ContadinoService contadinoService;
+    @Autowired
+    private AssegnazioneAlberi assegnazioneAlberi;
+
+    /**
+     * Metodo GET per visualizzare l'elenco dei contadini
+     *
+     * @return
+     */
+    @GetMapping(&quot;&quot;)
+    public ResponseEntity&lt;Object&gt; visualizzaElencoContadini() {
+<span class="fc" id="L39">        return new ResponseEntity&lt;&gt;(contadinoService.getElencoContadini(), HttpStatus.ACCEPTED);</span>
+    }
+
+    /**
+     * Metodo GET per visualizzare l'elenco degli alberi non ancora assegnati
+     *
+     * @return
+     */
+    @GetMapping(&quot;/alberiNonAssegnati&quot;)
+    public ResponseEntity&lt;Object&gt; elencoAlberiNonAssegnati() {
+<span class="fc" id="L49">        return new ResponseEntity&lt;&gt;(contadinoService.getAlberiNonAssegnati(), HttpStatus.ACCEPTED);</span>
+    }
+
+    /**
+     * Metodo GET per visualizzare l'elenco degli alberi da revisionare
+     *
+     * @return
+     */
+    @GetMapping(&quot;/alberiDaRevisionare&quot;)
+    public ResponseEntity&lt;Object&gt; elencoAlberiDaRevisionare() {
+<span class="fc" id="L59">        return new ResponseEntity&lt;&gt;(contadinoService.prodottiDaRevisionare(), HttpStatus.ACCEPTED);</span>
+    }
+
+    /**
+     * Metodo GET per visualizzare l'elenco degli alberi da riassegnare
+     *
+     * @return
+     */
+    @GetMapping(&quot;/alberiDaRiassegnare&quot;)
+    public ResponseEntity&lt;Object&gt; elencoAlberiDaRiassegnare() {
+<span class="fc" id="L69">        return new ResponseEntity&lt;&gt;(contadinoService.prodottiDaRiassegnare(), HttpStatus.ACCEPTED);</span>
+    }
+
+    /**
+     * Metodo GET per visualizzare l'assegnazione degli alberi
+     *
+     * @return
+     */
+    @GetMapping(&quot;/assegnazione&quot;)
+    public ResponseEntity&lt;Object&gt; assegnazioneAlberi() {
+<span class="nc" id="L79">        return new ResponseEntity&lt;&gt;(assegnazioneAlberi.assegnazione((List&lt;Contadino&gt;) contadinoService.getElencoContadini(), (List&lt;ProdottoOrdine&gt;) contadinoService.getAlberiNonAssegnati()),HttpStatus.ACCEPTED);</span>
+    }
+
+    /**
+     * Metodo POST per aggiornare lo stato di un prodotto ordine
+     *
+     * @param prodottoOrdine
+     * @return
+     */
+    @PostMapping(&quot;/aggiornaStato&quot;)
+    public ResponseEntity&lt;Object&gt; aggiornaStato(@RequestBody ProdottoOrdine prodottoOrdine) {
+        try {
+<span class="fc" id="L91">            return new ResponseEntity&lt;&gt;(contadinoService.aggiornaStato(prodottoOrdine), HttpStatus.CREATED);</span>
+<span class="fc" id="L92">        } catch (ContadinoException e) {</span>
+<span class="fc" id="L93">            return ResponseHandler.generateResponse(HttpStatus.BAD_REQUEST, e.getMessage());</span>
+        }
+    }
+
+    /**
+     * Permette di salvare la foto dell'albero
+     */
+    @PostMapping(&quot;/upload&quot;)
+    @ResponseBody
+    public ResponseEntity&lt;Object&gt; uploadImage(@RequestParam(&quot;file&quot;) MultipartFile file, @RequestParam(&quot;contadinoId&quot;) String contadinoId) throws IOException {
+<span class="fc" id="L103">        String UPLOAD_DIR = &quot;/Users/alessiature/Desktop/WoodLot/Development/WoodLotFrontEnd/src/assets/img/alberiUtente/&quot;;</span>
+
+<span class="fc" id="L105">        String fileName = StringUtils.cleanPath(file.getOriginalFilename());</span>
+
+<span class="fc" id="L107">        File directory = new File(UPLOAD_DIR + &quot;/&quot; + contadinoId);</span>
+<span class="pc bpc" id="L108" title="1 of 2 branches missed.">        if (!directory.exists()) {</span>
+<span class="nc" id="L109">            directory.mkdirs();</span>
+        }
+
+<span class="fc" id="L112">        File dest = new File(directory.getAbsolutePath() + File.separator + fileName);</span>
+<span class="fc" id="L113">        file.transferTo(dest);</span>
+<span class="fc" id="L114">        System.out.println(dest);</span>
+
+<span class="fc" id="L116">        return ResponseEntity.ok().build();</span>
+    }
+
+    /**
+     * Permette di eliminare le foto dei prodotti ordini che non sono valide
+     */
+    @PostMapping(&quot;/delete&quot;)
+    @ResponseBody
+    public ResponseEntity&lt;Object&gt; deleteImage(@RequestParam(&quot;prodottoId&quot;) String prodottoId, @RequestParam(&quot;contadinoId&quot;) String contadinoId) throws IOException {
+<span class="fc" id="L125">        String DELETE_DIR = &quot;/Users/alessiature/Desktop/WoodLot/Development/WoodLotFrontEnd/src/assets/img/alberiUtente/&quot;</span>
+                + contadinoId + &quot;/&quot; + prodottoId + &quot;.jpeg&quot;;
+<span class="fc" id="L127">        File file = new File(DELETE_DIR);</span>
+
+<span class="pc bpc" id="L129" title="1 of 2 branches missed.">        if (file.delete()) {</span>
+<span class="fc" id="L130">            return ResponseEntity.ok().build();</span>
+        } else {
+<span class="nc" id="L132">            return ResponseHandler.generateResponse(HttpStatus.BAD_REQUEST, &quot;Il file non è stato eliminato&quot;);</span>
+        }
+    }
+
+
+    /**
+     * Metodo GET per visualizzare l'elenco degli alberi assegnati a un contadino
+     *
+     * @param idContadino
+     * @return
+     */
+    @GetMapping(&quot;/alberiContadino/{idContadino}&quot;)
+    public ResponseEntity&lt;Object&gt; restituisceAlberiContadino(@PathVariable Long idContadino) {
+<span class="fc" id="L145">        return new ResponseEntity&lt;&gt;(contadinoService.elencoAlberiContadino(idContadino), HttpStatus.ACCEPTED);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ControllerAutenticazione.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">WoodLot</a> &gt; <a href="index.source.html" class="el_package">it.unisa.WoodLot.web.controller.gestioneUtente.autenticazione</a> &gt; <span class="el_source">ControllerAutenticazione.java</span></div><h1>ControllerAutenticazione.java</h1><pre class="source lang-java linenums">package it.unisa.WoodLot.web.controller.gestioneUtente.autenticazione;
+
+import it.unisa.WoodLot.model.entity.*;
+import it.unisa.WoodLot.sevice.gestioneUtente.autenticazione.AutenticazioneService;
+import it.unisa.WoodLot.sevice.gestioneUtente.eccezioni.LoginException;
+import it.unisa.WoodLot.sevice.gestioneUtente.eccezioni.PasswordException;
+import it.unisa.WoodLot.web.controller.ResponseHandler;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+
+/**
+ * Controller per l'autenticazione
+ *
+ * @author Alessia Ture
+ */
+@RestController
+@RequestMapping(&quot;/api/autenticazione&quot;)
+<span class="fc" id="L22">public class ControllerAutenticazione {</span>
+    @Autowired
+    private AutenticazioneService autenticazioneService;
+    @Autowired
+    HttpServletRequest request;
+
+    /**
+     * Metodo POST per effettuare il login
+     *
+     * @param utenteRegistrato un utente registrato al sistema
+     * @return l'utente
+     * @throws LoginException se le credenziali sono errate
+     */
+    @PostMapping(&quot;/login&quot;)
+    public ResponseEntity&lt;Object&gt; login(@RequestBody UtenteRegistrato utenteRegistrato) {
+        try {
+<span class="fc" id="L38">            UtenteRegistrato u = autenticazioneService.login(utenteRegistrato.getEmail(), utenteRegistrato.getPassword());</span>
+<span class="pc bpc" id="L39" title="1 of 2 branches missed.">            if (u instanceof Utente)</span>
+<span class="fc" id="L40">                return ResponseHandler.generateResponse(HttpStatus.ACCEPTED, &quot;utente&quot;, u);</span>
+<span class="nc bnc" id="L41" title="All 2 branches missed.">            else if (u instanceof Contadino)</span>
+<span class="nc" id="L42">                return ResponseHandler.generateResponse(HttpStatus.ACCEPTED, &quot;contadino&quot;, u);</span>
+<span class="nc bnc" id="L43" title="All 2 branches missed.">            else if (u instanceof ResponsabileOrdini)</span>
+<span class="nc" id="L44">                return ResponseHandler.generateResponse(HttpStatus.ACCEPTED, &quot;responsabileOrdini&quot;, u);</span>
+            else
+<span class="nc" id="L46">                return ResponseHandler.generateResponse(HttpStatus.ACCEPTED, &quot;responsabileCatalogo&quot;, u);</span>
+<span class="fc" id="L47">        } catch (LoginException e) {</span>
+<span class="fc" id="L48">            return ResponseHandler.generateResponse(HttpStatus.BAD_REQUEST,</span>
+<span class="fc" id="L49">                    e.getMessage());</span>
+        }
+    }
+
+    /**
+     * Metodo GET per effettuare il logout
+     */
+    @GetMapping(&quot;/logout&quot;)
+    public void logout() {
+<span class="nc" id="L58">        autenticazioneService.logout();</span>
+<span class="nc" id="L59">    }</span>
+
+    /**
+     * Metodo POST per reimpostare la password di un utente registrato
+     *
+     * @param utenteRegistrato
+     * @throws PasswordException
+     */
+    @PostMapping(&quot;/reimpostarePassword&quot;)
+    public ResponseEntity&lt;Object&gt; reimpostarePassword(@RequestBody UtenteRegistrato utenteRegistrato) {
+        try {
+<span class="fc" id="L70">            autenticazioneService.reimpostaPassword(utenteRegistrato.getEmail(), utenteRegistrato.getPassword());</span>
+<span class="fc" id="L71">            return ResponseHandler.generateResponse(HttpStatus.ACCEPTED, &quot;La password è stata cambiata con successo&quot;);</span>
+<span class="fc" id="L72">        } catch (PasswordException e) {</span>
+<span class="fc" id="L73">            return ResponseHandler.generateResponse(HttpStatus.BAD_REQUEST,</span>
+<span class="fc" id="L74">                    e.getMessage());</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

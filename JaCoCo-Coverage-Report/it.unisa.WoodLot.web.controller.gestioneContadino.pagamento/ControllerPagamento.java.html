@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ControllerPagamento.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">WoodLot</a> &gt; <a href="index.source.html" class="el_package">it.unisa.WoodLot.web.controller.gestioneContadino.pagamento</a> &gt; <span class="el_source">ControllerPagamento.java</span></div><h1>ControllerPagamento.java</h1><pre class="source lang-java linenums">package it.unisa.WoodLot.web.controller.gestioneContadino.pagamento;
+
+import it.unisa.WoodLot.model.entity.Pagamento;
+import it.unisa.WoodLot.model.entity.ProdottoOrdine;
+import it.unisa.WoodLot.sevice.gestioneContadino.eccezioni.ContadinoException;
+import it.unisa.WoodLot.sevice.gestioneContadino.pagamento.PagamentoService;
+import it.unisa.WoodLot.web.controller.ResponseHandler;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+/**
+ * Controller per la gestione dei pagamenti ai contadini
+ */
+@RestController
+@RequestMapping(&quot;/api/pagamento&quot;)
+<span class="fc" id="L18">public class ControllerPagamento {</span>
+
+    @Autowired
+    private PagamentoService pagamentoService;
+
+    /**
+     * Metodo GET per visalizzare l'elenco dei pagamenti
+     *
+     * @param idContadino
+     * @return
+     */
+    @GetMapping(&quot;/elencoPagamenti/{idContadino}&quot;)
+    public ResponseEntity&lt;Object&gt; elencoPagamentiContadino(@PathVariable Long idContadino) {
+<span class="fc" id="L31">        return new ResponseEntity&lt;&gt;(pagamentoService.visualizzaElencoPagamenti(idContadino), HttpStatus.ACCEPTED);</span>
+    }
+
+    /**
+     * Metodo POST per effettuare un nuovo pagamento
+     *
+     * @return
+     */
+    @PostMapping
+    public ResponseEntity&lt;Object&gt; effettuarePagamento(@RequestBody Pagamento pagamento) {
+        try {
+<span class="fc" id="L42">            return new ResponseEntity&lt;&gt;(pagamentoService.effettuarePagamento(pagamento), HttpStatus.CREATED);</span>
+<span class="fc" id="L43">        } catch (ContadinoException e) {</span>
+<span class="fc" id="L44">            return ResponseHandler.generateResponse(HttpStatus.BAD_REQUEST, e.getMessage());</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

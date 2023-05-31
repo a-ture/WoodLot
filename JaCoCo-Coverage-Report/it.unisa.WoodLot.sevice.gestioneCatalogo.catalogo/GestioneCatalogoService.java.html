@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GestioneCatalogoService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">WoodLot</a> &gt; <a href="index.source.html" class="el_package">it.unisa.WoodLot.sevice.gestioneCatalogo.catalogo</a> &gt; <span class="el_source">GestioneCatalogoService.java</span></div><h1>GestioneCatalogoService.java</h1><pre class="source lang-java linenums">package it.unisa.WoodLot.sevice.gestioneCatalogo.catalogo;
+
+import it.unisa.WoodLot.model.entity.*;
+import it.unisa.WoodLot.model.repository.*;
+import it.unisa.WoodLot.sevice.gestioneCatalogo.eccezioni.AlberoException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+
+/**
+ * La classe fornisce i metodi per la logica di business della gestione del catalogo
+ *
+ * @author Alessia Ture
+ */
+@Service
+<span class="fc" id="L17">public class GestioneCatalogoService implements CatalogoService {</span>
+
+    @Autowired
+    private AlberoRepository alberoRepository;
+
+    @Autowired
+    private CategoriaRepository categoriaRepository;
+
+    @Autowired
+    private UsoLocaleRepository usoLocaleRepository;
+
+    @Autowired
+    private BeneficioRepository beneficioRepository;
+
+    @Autowired
+    private PaeseOrigineRepository paeseOrigineRepository;
+
+    /**
+     * Permette di aggiungere un prodotto nel catalogo
+     *
+     * @param albero è il prodotto da inserire
+     * @return albero il prodotto inserito nel database.
+     */
+    @Override
+    public Albero aggiungiProdotto(Albero albero) throws AlberoException {
+<span class="fc bfc" id="L42" title="All 2 branches covered.">        if (alberoRepository.existsById(albero.getNome().toLowerCase()))</span>
+<span class="fc" id="L43">            throw new AlberoException(&quot;Questo nome è già presente nel catalogo! Scegline un altro&quot;);</span>
+
+<span class="fc" id="L45">        Categoria categoria = categoriaRepository.findById(albero.getCategoria().getNome()).orElse(null);</span>
+
+<span class="fc bfc" id="L47" title="All 2 branches covered.">        if (categoria == null)</span>
+<span class="fc" id="L48">            throw new AlberoException(&quot;La categoria fornita non è valida&quot;);</span>
+
+<span class="fc" id="L50">        ArrayList&lt;UsoLocale&gt; usiLocali = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L51" title="All 2 branches covered.">        for (UsoLocale u : albero.getUsiLocali()) {</span>
+<span class="fc" id="L52">            u = usoLocaleRepository.findById(u.getNome()).orElse(null);</span>
+<span class="fc bfc" id="L53" title="All 2 branches covered.">            if (u == null)</span>
+<span class="fc" id="L54">                throw new AlberoException(&quot;L'uso locale fornito non è valido&quot;);</span>
+<span class="fc" id="L55">            usiLocali.add(u);</span>
+<span class="fc" id="L56">        }</span>
+
+<span class="fc" id="L58">        ArrayList&lt;Beneficio&gt; benefici = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L59" title="All 2 branches covered.">        for (Beneficio b : albero.getBenefici()) {</span>
+<span class="fc" id="L60">            b = beneficioRepository.findById(b.getNome()).orElse(null);</span>
+<span class="fc bfc" id="L61" title="All 2 branches covered.">            if (b == null)</span>
+<span class="fc" id="L62">                throw new AlberoException(&quot;Il beneficio fornito non è valido&quot;);</span>
+<span class="fc" id="L63">            benefici.add(b);</span>
+<span class="fc" id="L64">        }</span>
+
+<span class="fc" id="L66">        PaeseOrigine p = paeseOrigineRepository.findById(albero.getPaeseOrigine().getNome()).orElse(null);</span>
+<span class="fc bfc" id="L67" title="All 2 branches covered.">        if (p == null)</span>
+<span class="fc" id="L68">            throw new AlberoException(&quot;Il paese fornito non è valido&quot;);</span>
+
+<span class="fc" id="L70">        albero.setBenefici(benefici);</span>
+<span class="fc" id="L71">        albero.setUsiLocali(usiLocali);</span>
+<span class="fc" id="L72">        albero.setCategoria(categoria);</span>
+
+<span class="fc" id="L74">        return alberoRepository.save(albero);</span>
+    }
+
+    /**
+     * Permette di eliminare un albero dal catalogo
+     *
+     * @param idAlbero l'id dell'albero da eliminare
+     */
+    @Override
+    public void eliminaProdotto(String idAlbero) throws AlberoException {
+<span class="fc" id="L84">        Albero albero = alberoRepository.findById(idAlbero).orElse(null);</span>
+<span class="fc bfc" id="L85" title="All 2 branches covered.">        if (albero == null)</span>
+<span class="fc" id="L86">            throw new AlberoException(&quot;L'id fornito non è associato a nessun albero&quot;);</span>
+<span class="fc" id="L87">        alberoRepository.deleteById(idAlbero);</span>
+<span class="fc" id="L88">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

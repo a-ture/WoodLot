@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GestioneCheckoutService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">WoodLot</a> &gt; <a href="index.source.html" class="el_package">it.unisa.WoodLot.sevice.gestioneOrdine.checkout</a> &gt; <span class="el_source">GestioneCheckoutService.java</span></div><h1>GestioneCheckoutService.java</h1><pre class="source lang-java linenums">package it.unisa.WoodLot.sevice.gestioneOrdine.checkout;
+
+import it.unisa.WoodLot.model.entity.*;
+import it.unisa.WoodLot.model.repository.*;
+import it.unisa.WoodLot.sevice.gestioneOrdine.eccezioni.OrdineException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * La classe fornisce i metodi per la logica di business per il checkout
+ *
+ * @author Alessia Ture
+ */
+@Service
+<span class="fc" id="L20">public class GestioneCheckoutService implements CheckoutService {</span>
+    @Autowired
+    private OrdineRepository ordineRepository;
+
+    @Autowired
+    private CarrelloRepository carrelloRepository;
+    @Autowired
+    private ProdottoOrdineRepository prodottoOrdineRepository;
+
+    @Autowired
+    private ProdottoCarrelloRepository prodottoCarrelloRepository;
+
+    @Autowired
+    private UtenteRepository utenteRepository;
+
+    /**
+     * Permette di creare un nuovo
+     *
+     * @param idUtente l'id dell'utente che deve effettuare l'ordine
+     * @return il nuovo ordine
+     */
+    @Transactional
+    public Ordine effettuareOrdine(Long idUtente) {
+
+<span class="fc" id="L44">        Utente utente = utenteRepository.findById(idUtente).orElse(null);</span>
+<span class="fc bfc" id="L45" title="All 2 branches covered.">        if (utente == null)</span>
+<span class="fc" id="L46">            throw new OrdineException(&quot;L'utente non è stato trovato&quot;);</span>
+
+<span class="fc" id="L48">        Carrello carrello = carrelloRepository.findByUtente_Id(idUtente);</span>
+<span class="fc" id="L49">        Ordine ordine = new Ordine();</span>
+<span class="fc bfc" id="L50" title="All 2 branches covered.">        if (carrello == null)</span>
+<span class="fc" id="L51">            throw new OrdineException(&quot;Il tuo carrello è nullo&quot;);</span>
+<span class="fc bfc" id="L52" title="All 2 branches covered.">        if (carrello.getProdottiCarrello().size() == 0)</span>
+<span class="fc" id="L53">            throw new OrdineException(&quot;Il tuo carrello è vuoto! Aggiungi degli alberi prima di continuare&quot;);</span>
+
+<span class="fc" id="L55">        ordine.setDataOrdine(LocalDate.now());</span>
+<span class="fc" id="L56">        ordine.setUtente(utente);</span>
+
+<span class="fc" id="L58">        List&lt;ProdottoCarrello&gt; prodottiCarrello = carrello.getProdottiCarrello();</span>
+<span class="fc bfc" id="L59" title="All 2 branches covered.">        for (ProdottoCarrello prodottoCarrello : prodottiCarrello) {</span>
+<span class="fc" id="L60">            ProdottoOrdine prodottoOrdine = new ProdottoOrdine();</span>
+<span class="fc" id="L61">            prodottoOrdine.setAnidrideCarbonicaAssorbita(prodottoCarrello.getAlbero().getAnidrideCarbonicaAssorbita());</span>
+            // facciamo una nuova lista per evitare la condivisione della lista
+<span class="fc" id="L63">            List&lt;Beneficio&gt; benefici = new ArrayList&lt;&gt;(prodottoCarrello.getAlbero().getBenefici());</span>
+<span class="fc" id="L64">            prodottoOrdine.setBenefici(benefici);</span>
+            // facciamo una nuova lista per evitare la condivisione della lista
+<span class="fc" id="L66">            List&lt;UsoLocale&gt; usi = new ArrayList&lt;&gt;(prodottoCarrello.getAlbero().getUsiLocali());</span>
+<span class="fc" id="L67">            prodottoOrdine.setUsiLocali(usi);</span>
+<span class="fc" id="L68">            prodottoOrdine.setNomeAlbero(prodottoCarrello.getAlbero().getNome());</span>
+<span class="fc" id="L69">            prodottoOrdine.setPrezzoUnitario(prodottoCarrello.getAlbero().getPrezzo());</span>
+<span class="fc" id="L70">            prodottoOrdine.setStato(ProdottoOrdine.Stato.NonAssegnato);</span>
+<span class="fc" id="L71">            prodottoOrdine.setPaeseOrigine(prodottoCarrello.getAlbero().getPaeseOrigine());</span>
+<span class="fc" id="L72">            prodottoOrdine.setDescrizione(&quot;Il tuo albero presto conoscerà il suo contadino!&quot;);</span>
+<span class="fc" id="L73">            ordine.aggiungiProdotto(prodottoOrdine);</span>
+<span class="fc" id="L74">            prodottoCarrelloRepository.deleteById(prodottoCarrello.getId());</span>
+<span class="fc" id="L75">        }</span>
+
+<span class="fc" id="L77">        carrello.svuotareCarrello();</span>
+<span class="fc" id="L78">        carrelloRepository.save(carrello);</span>
+<span class="fc" id="L79">        prodottoOrdineRepository.saveAll(ordine.getProdottiOrdine());</span>
+<span class="fc" id="L80">        ordine = ordineRepository.save(ordine);</span>
+<span class="fc" id="L81">        return ordine;</span>
+
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
