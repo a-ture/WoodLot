@@ -7,6 +7,7 @@ import {
 import {UtenteRegistrato} from "../../../entita/utenteRegistrato/utente-registrato";
 import {AutenticazioneService} from "../../../servizi/autenticazione/autenticazione.service";
 import {LoginComponent} from "../login/login.component";
+import {MD5} from "crypto-js";
 
 @Component({
   selector: 'app-reimposta-password',
@@ -61,7 +62,9 @@ export class ReimpostaPasswordComponent implements OnInit {
       this.errorMessage = ''
       let email = this.reimpostaPassword.get('emailUtente')?.value
       let password = this.reimpostaPassword.get('password')?.value
-      let utenteRegistrato = new UtenteRegistrato(email, password)
+      // Genera l'hash MD5 della password
+      let hashedPassword = MD5(password).toString();
+      let utenteRegistrato = new UtenteRegistrato(email, hashedPassword)
       this.serviceAutenticazione.reimpostaPassword(utenteRegistrato).subscribe(
         (data) => {
           this.modalRef.close()

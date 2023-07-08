@@ -8,6 +8,7 @@ import {UtenteService} from "../../../servizi/utente/utente.service";
 import {Utente} from "../../../entita/utente/utente";
 import {Ordine} from "../../../entita/ordine/ordine";
 import {Router} from "@angular/router";
+import {MD5} from "crypto-js";
 
 @Component({
   selector: 'app-registrazione-utente',
@@ -64,8 +65,10 @@ export class RegistrazioneUtenteComponent implements OnInit {
       let cognome = this.formRegistrazioneUtente.get('cognomeUtente')?.value
       let email = this.formRegistrazioneUtente.get('emailUtente')?.value
       let password = this.formRegistrazioneUtente.get('password')?.value
+      // Genera l'hash MD5 della password
+      let hashedPassword = MD5(password).toString();
       let ordini = new Array<Ordine>()
-      utente = new Utente(nome, cognome, ordini, email, password)
+      utente = new Utente(nome, cognome, ordini, email, hashedPassword)
       console.log(utente)
       this.serviceUtente.registrazione(utente).subscribe(
         (data) => {

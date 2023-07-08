@@ -29,22 +29,6 @@ public class GestioneRegistrazioneService implements RegistrazioneService {
         if (utente == null)
             throw new RegistrazioneException("Utente non valido");
 
-        if (utente.getCognome() == null ||
-                utente.getNome() == null || utente.getEmail() == null || utente.getPassword() == null)
-            throw new RegistrazioneException("Tutti i campi sono obbligatori");
-
-        String email = utente.getEmail();
-        String pattern = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$";
-
-        if (!email.matches(pattern))
-            throw new RegistrazioneException("Indirizzo email non valido");
-
-        if (utente.getPassword().length() < 8)
-            throw new RegistrazioneException("La password deve essere lunga almeno 8 caratteri");
-
-        if (!utente.getPassword().matches(".*[@!#$].*"))
-            throw new RegistrazioneException("La password deve contenere almeno un carattere tra: @, !, #, $");
-
         if (utenteRepository.existsByEmail(utente.getEmail()))
             throw new RegistrazioneException("E-mail già esistente");
 

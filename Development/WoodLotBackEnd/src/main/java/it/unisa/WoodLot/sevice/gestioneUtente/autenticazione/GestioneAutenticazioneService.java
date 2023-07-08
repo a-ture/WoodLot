@@ -94,12 +94,6 @@ public class GestioneAutenticazioneService implements AutenticazioneService {
         if (utente == null && contadino == null && responsabileCatalogo == null && responsabileOrdini == null)
             throw new PasswordException("L' email inserita non è associata a nessun utente");
 
-        if (password.length() < 8)
-            throw new PasswordException("La password deve essere lunga almeno 8 caratteri");
-
-        if (!password.matches(".*[@!#$].*"))
-            throw new PasswordException("La password deve contenere almeno un carattere tra: @, !, #, $");
-
         if (utente != null) {
             utente.setPassword(password);
             utenteRepository.save(utente);

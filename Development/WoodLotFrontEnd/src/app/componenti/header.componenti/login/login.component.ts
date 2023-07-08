@@ -8,6 +8,7 @@ import {UtenteRegistrato} from "../../../entita/utenteRegistrato/utente-registra
 import {Router} from "@angular/router";
 import {Carrello} from "../../../entita/carrello/carrello";
 import {CarrelloService} from "../../../servizi/carrello/carrello.service";
+import { MD5 } from 'crypto-js';
 
 
 @Component({
@@ -43,7 +44,8 @@ export class LoginComponent implements OnInit {
     this.errorMessage = ''
     let email = this.formLogin.get('emailUtenteLogin')?.value
     let password = this.formLogin.get('passwordLogin')?.value
-    let utenteRegistrato = new UtenteRegistrato(email, password)
+    let encryptedPassword = MD5(password).toString();
+    let utenteRegistrato = new UtenteRegistrato(email, encryptedPassword)
     this.autenticazioneService.login(utenteRegistrato).subscribe(
       (data) => {
         console.log(data)
