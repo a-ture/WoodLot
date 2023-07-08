@@ -57,48 +57,38 @@ export class CardPagamentoComponent implements OnInit {
   }
 
   onSubmitPagamento(): void {
-    if (this.onValidate()) {
-      console.log(this.prodottoOrdine)
-      let motivazione = this.formPagamento.get('motivazione')?.value
-      let contadino = this.prodottoOrdine.contadino
-      let importo = this.getPagamento()
-      if (contadino) {
-        let pagamento = new Pagamento(0, importo, new Date, motivazione, contadino)
-        console.log(pagamento)
-        this.serviceContadino.effettuarePagamento(pagamento).subscribe(
-          () => {
-            // aggiornare lo stato ha piantato
-            this.prodottoOrdine.stato = 'Piantato'
-            this.serviceContadino.aggiornaStato(this.prodottoOrdine).subscribe(
-              () => {
-                console.log(this.prodottoOrdine)
-                this.toggleModalPagamento()
-                this.cambiamentoEffettuato.emit()
-              }, (error) => {
-                console.log(error)
-                this.errorMessage = JSON.stringify(error.data)
-              },
-            )
-          },
-          (error) => {
-            console.log(error)
-            this.errorMessage = JSON.stringify(error.data)
-          }
-        )
-      }
+
+    console.log(this.prodottoOrdine)
+    let contadino = this.prodottoOrdine.contadino
+    let motivazione = "Compenso contadino " + contadino?.nome + " " + contadino?.cognome + " per la piantumazione dell'albero";
+    let importo = this.getPagamento()
+    if (contadino) {
+      let pagamento = new Pagamento(0, importo, new Date, motivazione, contadino)
+      console.log(pagamento)
+      this.serviceContadino.effettuarePagamento(pagamento).subscribe(
+        () => {
+          // aggiornare lo stato ha piantato
+          this.prodottoOrdine.stato = 'Piantato'
+          this.serviceContadino.aggiornaStato(this.prodottoOrdine).subscribe(
+            () => {
+              console.log(this.prodottoOrdine)
+              this.toggleModalPagamento()
+              this.cambiamentoEffettuato.emit()
+            }, (error) => {
+              console.log(error)
+              this.errorMessage = JSON.stringify(error.data)
+            },
+          )
+        },
+        (error) => {
+          console.log(error)
+          this.errorMessage = JSON.stringify(error.data)
+        }
+      )
     }
+
   }
 
-  onValidate() {
-    this.submitted = true;
-    //fermati qui se il modulo non è valido
-    return this.formPagamento.status === 'VALID';
-  }
-
-  //getter per un facile accesso ai campi del modulo
-  get f() {
-    return this.formPagamento.controls;
-  }
 
   handleConfirmClick() {
     let idContadino = this.prodottoOrdine.contadino?.id;

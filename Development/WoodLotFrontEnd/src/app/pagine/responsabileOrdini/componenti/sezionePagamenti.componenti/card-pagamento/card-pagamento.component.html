@@ -45,28 +45,12 @@
     </ul>
   </div>
 
-  <form cRow [formGroup]="formPagamento"
-        (ngSubmit)="onSubmitPagamento()">
-    <c-col class="mb-3" [sm]="12">
-      <label cLabel for="motivazione">Motivazione: </label>
-      <textarea cFormControl
-                id="motivazione" formControlName="motivazione"
-                type="text" placeholder="Inserisci la motivazione del pagamento"
-                [ngClass]="{'is-invalid':(submitted || f['motivazione'].touched) && f['motivazione'].invalid,
-            'is-valid': (submitted ||f['motivazione'].touched) && f['motivazione'].valid }">
-      </textarea>
-      <div *ngIf="submitted && f['motivazione'].invalid" class="invalid-feedback">
-        <div *ngIf="f['motivazione'].errors?.['required']">Compila questo campo</div>
-      </div>
-      <div *ngIf="submitted && f['motivazione'].valid" class="valid-feedback">
-        Looks good!
-      </div>
-    </c-col>
-    <div class="text-center my-3" *ngIf="errorMessage" style="color: red">{{errorMessage}}</div>
     <div class="row justify-content-center mt-3">
-      <input class="col-6" cButton color="primary" type="submit" value="Effettua il pagamento">
+      <button class="col-6" cButton
+             (click)="onSubmitPagamento()"
+       color="primary" > Effettua il pagamento
+      </button>
     </div>
-  </form>
 </ng-template>
 
 <!-- Modal  Foto non valida -->

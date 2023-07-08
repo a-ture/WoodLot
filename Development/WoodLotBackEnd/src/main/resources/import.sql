@@ -574,16 +574,16 @@ INSERT INTO ordine_prodotti_ordine(ordine_id, prodotti_ordine_id) VALUES (12,35)
 
 /*Elenco pagamenti*/
 /*Elenco pagamenti al contadino 1*/
-INSERT INTO pagamento(id, data_pagamento,importo, motivazioni, contadino_id) VALUES (1,"2022-08-12", 34.90, "Albero 1", 1);
-INSERT INTO pagamento(id, data_pagamento,importo, motivazioni, contadino_id) VALUES (2,"2022-09-16", 78.90, "Albero 2", 1);
-INSERT INTO pagamento(id, data_pagamento,importo, motivazioni, contadino_id) VALUES (3,"2022-11-15", 39.90, "Albero 3", 1);
-INSERT INTO pagamento(id, data_pagamento,importo, motivazioni, contadino_id) VALUES (4,"2022-12-12", 34.90, "Albero 4", 1);
-INSERT INTO pagamento(id, data_pagamento,importo, motivazioni, contadino_id) VALUES (5,"2022-12-16", 78.90, "Albero 5", 1);
-INSERT INTO pagamento(id, data_pagamento,importo, motivazioni, contadino_id) VALUES (6,"2022-12-15", 39.90, "Albero 6", 1);
-INSERT INTO pagamento(id, data_pagamento,importo, motivazioni, contadino_id) VALUES (7,"2023-01-12", 34.90, "Albero 7", 1);
-INSERT INTO pagamento(id, data_pagamento,importo, motivazioni, contadino_id) VALUES (8,"2023-01-16", 78.90, "Albero 8", 1);
-INSERT INTO pagamento(id, data_pagamento,importo, motivazioni, contadino_id) VALUES (9,"2023-02-15", 39.90, "Albero 9", 1);
-INSERT INTO pagamento(id, data_pagamento,importo, motivazioni, contadino_id) VALUES (10,"2023-02-15", 39.90, "Albero 10", 1);
+INSERT INTO pagamento(id, data_pagamento,importo, motivazioni, contadino_id) VALUES (1,"2022-08-12", 34.90, "Compenso per il contadino Pedro Garcia per la piantumazione dell'albero", 1);
+INSERT INTO pagamento(id, data_pagamento,importo, motivazioni, contadino_id) VALUES (2,"2022-09-16", 78.90, "Compenso per il contadino Pedro Garcia per la piantumazione dell'albero", 1);
+INSERT INTO pagamento(id, data_pagamento,importo, motivazioni, contadino_id) VALUES (3,"2022-11-15", 39.90, "Compenso per il contadino Pedro Garcia per la piantumazione dell'albero", 1);
+INSERT INTO pagamento(id, data_pagamento,importo, motivazioni, contadino_id) VALUES (4,"2022-12-12", 34.90, "Compenso per il contadino Pedro Garcia per la piantumazione dell'albero", 1);
+INSERT INTO pagamento(id, data_pagamento,importo, motivazioni, contadino_id) VALUES (5,"2022-12-16", 78.90, "Compenso per il contadino Pedro Garcia per la piantumazione dell'albero", 1);
+INSERT INTO pagamento(id, data_pagamento,importo, motivazioni, contadino_id) VALUES (6,"2022-12-15", 39.90, "Compenso per il contadino Pedro Garcia per la piantumazione dell'albero", 1);
+INSERT INTO pagamento(id, data_pagamento,importo, motivazioni, contadino_id) VALUES (7,"2023-01-12", 34.90, "Compenso per il contadino Pedro Garcia per la piantumazione dell'albero", 1);
+INSERT INTO pagamento(id, data_pagamento,importo, motivazioni, contadino_id) VALUES (8,"2023-01-16", 78.90, "Compenso per il contadino Pedro Garcia per la piantumazione dell'albero", 1);
+INSERT INTO pagamento(id, data_pagamento,importo, motivazioni, contadino_id) VALUES (9,"2023-02-15", 39.90, "Compenso per il contadino Pedro Garcia per la piantumazione dell'albero", 1);
+INSERT INTO pagamento(id, data_pagamento,importo, motivazioni, contadino_id) VALUES (10,"2023-02-15", 39.90, "Compenso per il contadino Pedro Garcia per la piantumazione dell'albero", 1);
 
 /*Carrello*/
 INSERT INTO carrello(id, utente_id) VALUES (1, 1);
