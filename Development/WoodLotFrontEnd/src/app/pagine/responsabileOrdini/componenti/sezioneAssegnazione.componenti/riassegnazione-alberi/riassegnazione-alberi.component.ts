@@ -14,10 +14,10 @@ export class RiassegnazioneAlberiComponent implements OnInit {
   public listaAlberi !: ProdottoOrdine[]
   selectedItem!: ProdottoOrdine;
   contadinoSelezionato: number = 0
-  nuovoContadino !: Contadino
-  vecchioContadino !: Contadino
+  contadinoAttualeMap: { [alberoId: number]: Contadino|undefined } = {};
   public visibleModalModificaRiassegnazione = false;
   public listaContadini!: Contadino[]
+  contadinoPrecedenteMap: { [alberoId: number]: Contadino|undefined } = {};
 
   constructor(private serviceContadino: ContadinoService) {
 
@@ -26,17 +26,25 @@ export class RiassegnazioneAlberiComponent implements OnInit {
   ngOnInit(): void {
     this.serviceContadino.getAlberiDaRiassegnare().subscribe(
       (data) => {
-        this.listaAlberi = data
+        this.listaAlberi = data;
+        this.listaAlberi.forEach((albero) => {
+          this.contadinoPrecedenteMap[albero.id] =  albero.contadino;
+          this.contadinoAttualeMap[albero.id] = undefined;
+        });
       },
       (error) => {
-        console.log(error)
+        console.log(error);
       }
-    )
+    );
+
     this.serviceContadino.getContadini().subscribe(
       (data) => {
-        this.listaContadini = data
+        this.listaContadini = data;
+      },
+      (error) => {
+        console.log(error);
       }
-    )
+    );
   }
 
   toggleModalRiassegnazione() {
@@ -45,18 +53,20 @@ export class RiassegnazioneAlberiComponent implements OnInit {
 
 
   handleRiassegnazione() {
-    // @ts-ignore
-    this.vecchioContadino = this.selectedItem.contadino
+
+
     const contadinoSelezionato = this.listaContadini.find(contadino => contadino.id === Number(this.contadinoSelezionato));
     if (contadinoSelezionato) {
+      this.contadinoPrecedenteMap[this.selectedItem.id] = this.selectedItem.contadino;
       // cerca l'elemento selezionato all'interno dell'array
       const selectedItemIndex = this.listaAlberi.findIndex(item => item === this.selectedItem);
 
       if (selectedItemIndex !== -1) {
         // modifica il contadino associato all'elemento selezionato
         this.listaAlberi[selectedItemIndex].contadino = contadinoSelezionato;
+
       }
-      this.nuovoContadino = contadinoSelezionato;
+      this.contadinoAttualeMap[this.selectedItem.id] = contadinoSelezionato;
     } else {
       console.log('Nessun contadino trovato.');
     }
@@ -96,5 +106,10 @@ export class RiassegnazioneAlberiComponent implements OnInit {
   handleModalRiassegnazione(event: any) {
     this.visibleModalModificaRiassegnazione = event;
   }
+
+  checkContadinoAttualeUndefined(): boolean {
+    return Object.values(this.contadinoAttualeMap).some(contadino => contadino === undefined);
+  }
+
 
 }

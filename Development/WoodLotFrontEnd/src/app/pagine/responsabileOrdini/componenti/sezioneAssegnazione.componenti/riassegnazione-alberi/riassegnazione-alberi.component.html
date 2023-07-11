@@ -18,18 +18,13 @@
     </thead>
     <tbody>
     <tr *ngFor="let item of listaAlberi">
-      <th scope="row" *ngIf="!vecchioContadino"
+      <th scope="row"
           (click)="selectedItem = item;">
-        {{item?.contadino?.nome}} {{item?.contadino?.cognome}}
+        {{ contadinoPrecedenteMap[item.id]?.nome }} {{ contadinoPrecedenteMap[item.id]?.cognome }}
       </th>
-      <th scope="row" *ngIf="vecchioContadino">
-        {{vecchioContadino.nome}} {{vecchioContadino.cognome}}
-      </th>
-      <th scope="row" *ngIf="nuovoContadino">
-        {{nuovoContadino.nome}} {{nuovoContadino.cognome}}
-      </th>
-      <th scope="row" *ngIf="!nuovoContadino">
-        Non hai ancora scelto un nuovo contadino
+      <th scope="row">
+        {{ contadinoAttualeMap[item.id]?.nome }} {{ contadinoAttualeMap[item.id]?.cognome }}
+        <span *ngIf="!contadinoAttualeMap[item.id]">Non hai ancora scelto un contadino </span>
       </th>
       <td>
         {{item?.nomeAlbero}} (id: {{item?.id}})
@@ -40,8 +35,8 @@
     </tbody>
   </table>
   <div class="d-flex justify-content-center">
-    <button class="btn btn-primary mt-3 col-5" (click)="confermaAssegnamento()" [disabled]="!nuovoContadino">Conferma
-    </button>
+    <button class="btn btn-primary mt-3 col-5" (click)="confermaAssegnamento()" [disabled]="checkContadinoAttualeUndefined()">Conferma</button>
+
   </div>
 </div>
 
